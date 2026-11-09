@@ -70,7 +70,11 @@ const slides = [
         <div class="sha-carousel__inner">
           <div class="sha-carousel__callout">
             <span class="usa-tag sha-carousel__tag">{slide.tag}</span>
-            <h1 class="sha-carousel__heading">{slide.title}</h1>
+            {i === 0 ? (
+              <h1 class="sha-carousel__heading">{slide.title}</h1>
+            ) : (
+              <h2 class="sha-carousel__heading">{slide.title}</h2>
+            )}
             <p class="sha-carousel__desc">{slide.desc}</p>
             <div class="sha-carousel__actions">
               <a href={slide.cta1.href} class="usa-button sha-btn-primary">{slide.cta1.label}</a>

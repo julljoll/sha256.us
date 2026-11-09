@@ -3,7 +3,7 @@ title: "Guía Esencial de GitHub para Desarrolladores: De Git Básico a la Colab
 description: "Aprende los fundamentos de GitHub: control de versiones, ramas, Pull Requests, flujos de trabajo en equipo y buenas prácticas para proyectos modernos."
 pubDate: 2026-11-09
 updatedDate: 2026-11-09
-author: "Equipo sha256.us"
+author: "Jull (jull.sha256.us) — Equipo Pericial sha256.us"
 tags: ["github", "git", "desarrollo-web", "open-source", "tutorial"]
 category: "Guía Técnica"
 heroImage: "../../assets/blog-placeholder-1.jpg"

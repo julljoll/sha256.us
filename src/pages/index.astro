@@ -1,232 +1,206 @@
 ---
-import { Image } from 'astro:assets';
 import { getCollection } from 'astro:content';
-import BaseHead from '../components/BaseHead.astro';
-import Footer from '../components/Footer.astro';
-import FormattedDate from '../components/FormattedDate.astro';
-import Header from '../components/Header.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
 import HeroCarousel from '../components/HeroCarousel.astro';
-import { SITE_DESCRIPTION, SITE_TITLE, STANDARDS } from '../consts';
+import BlogCard from '../components/BlogCard.astro';
+import { CORE_SERVICES, FOUNDER, SITE_DESCRIPTION, SITE_TITLE, STANDARDS } from '../consts';
 
-const latestPosts = (await getCollection('blog'))
+const latestPosts = (await getCollection('blog', ({ data }) => !data.draft))
 	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
 	.slice(0, 3);
 ---
 
-<!doctype html>
-<html lang="es">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-	</head>
-	<body>
-		<Header />
-		<main id="main-content">
+<BaseLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
+	<!-- ======= HERO CAROUSEL ======= -->
+	<HeroCarousel />
 
-			<!-- ======= HERO CAROUSEL ======= -->
-			<HeroCarousel />
+	<!-- ======= TRUST BAR ======= -->
+	<section class="sha-trustbar">
+		<div class="sha-trustbar__inner">
+			<div class="sha-trust-item">
+				<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
+				<span>ISO/IEC 27037</span>
+			</div>
+			<div class="sha-trust-item">
+				<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
+				<span>ISO/IEC 27042</span>
+			</div>
+			<div class="sha-trust-item">
+				<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
+				<span>NIST SP 800</span>
+			</div>
+			<div class="sha-trust-item">
+				<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
+				<span>MUCC-2017 Venezuela</span>
+			</div>
+			<div class="sha-trust-item">
+				<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-7 9h-2V5h2v6zm0 4h-2v-2h2v2z"/></svg>
+				<span>Peritaje con Validez Judicial</span>
+			</div>
+		</div>
+	</section>
 
-			<!-- ======= TRUST BAR ======= -->
-			<section class="sha-trustbar">
-				<div class="sha-trustbar__inner">
-					<div class="sha-trust-item">
-						<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
-						<span>ISO/IEC 27037</span>
-					</div>
-					<div class="sha-trust-item">
-						<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
-						<span>ISO/IEC 27042</span>
-					</div>
-					<div class="sha-trust-item">
-						<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
-						<span>NIST SP 800</span>
-					</div>
-					<div class="sha-trust-item">
-						<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
-						<span>MUCC-2017 Venezuela</span>
-					</div>
-					<div class="sha-trust-item">
-						<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-7 9h-2V5h2v6zm0 4h-2v-2h2v2z"/></svg>
-						<span>Peritaje con Validez Judicial</span>
-					</div>
-				</div>
-			</section>
+	<!-- ======= SERVICES ======= -->
+	<section id="servicios" class="sha-section bg-white">
+		<div class="sha-container">
+			<div class="sha-section__header text-center">
+				<span class="usa-tag sha-tag--primary">ÁREAS DE EXPERTICIA</span>
+				<h2 class="sha-section__title">Servicios Corporativos de Informática Forense</h2>
+				<p class="sha-section__sub">Identificación, adquisición, preservación y peritaje forense de medios digitales para procesos corporativos y judiciales.</p>
+			</div>
 
-			<!-- ======= SERVICES ======= -->
-			<section id="servicios" class="sha-section bg-white">
-				<div class="sha-container">
-					<div class="sha-section__header text-center">
-						<span class="usa-tag sha-tag--primary">ÁREAS DE EXPERTICIA</span>
-						<h2 class="sha-section__title">Análisis Preliminar para el Diagnóstico por Consignación</h2>
-						<p class="sha-section__sub">Recuperación, validación y certificación forense de medios digitales para procesos corporativos y judiciales.</p>
-					</div>
-
-					<div class="sha-card-grid">
-						<!-- Card 1 -->
-						<div class="sha-card">
-							<div class="sha-card__icon sha-card__icon--blue">
-								<svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M20 18c1.1 0 1.99-.9 1.99-2L22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2H0v2h24v-2h-4zM4 6h16v10H4V6z"/></svg>
-							</div>
-							<div class="sha-card__body">
-								<h3 class="sha-card__title">Reparación, Extracción y Análisis</h3>
-								<p class="sha-card__sub">Unidades de Almacenamiento HDD, SSD, NVMe</p>
-								<p class="sha-card__text">Especialistas en la recuperación de información desde medios físicamente dañados o con corrupción lógica. Cada proceso incluye imagen forense bit a bit, verificación de hash SHA-256 e informe pericial.</p>
-								<a href="/servicios#almacenamiento" class="sha-link">Conocer protocolo de discos →</a>
-							</div>
+			<div class="sha-card-grid">
+				{CORE_SERVICES.map((serv, index) => (
+					<div class="sha-card">
+						<div class={`sha-card__icon ${index === 0 ? 'sha-card__icon--blue' : index === 1 ? 'sha-card__icon--teal' : index === 2 ? 'sha-card__icon--red' : 'sha-card__icon--blue'}`}>
+							<svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+								<path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-1 6h2v6h-2V7zm0 8h2v2h-2v-2z"/>
+							</svg>
 						</div>
-
-						<!-- Card 2 -->
-						<div class="sha-card">
-							<div class="sha-card__icon sha-card__icon--teal">
-								<svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"/></svg>
-							</div>
-							<div class="sha-card__body">
-								<h3 class="sha-card__title">Forense de Dispositivos Móviles</h3>
-								<p class="sha-card__sub">Smartphones, Tablets y Mensajería Digital</p>
-								<p class="sha-card__text">Extracción, descifrado y certificación de evidencias: audios, capturas, WhatsApp, Telegram, redes sociales y correos. Metodología conforme a ISO/IEC 27042 con cadena de custodia inviolable.</p>
-								<a href="/servicios#moviles" class="sha-link">Conocer validación de mensajería →</a>
-							</div>
-						</div>
-
-						<!-- Card 3 -->
-						<div class="sha-card">
-							<div class="sha-card__icon sha-card__icon--red">
-								<svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
-							</div>
-							<div class="sha-card__body">
-								<h3 class="sha-card__title">Contratos y Documentos Digitales</h3>
-								<p class="sha-card__sub">Verificación de Autenticidad y Metadatos</p>
-								<p class="sha-card__text">Análisis forense de documentos electrónicos, firmas digitales, sellos de tiempo y metadatos para determinar origen, autoría y posibles alteraciones en controversias contractuales.</p>
-								<a href="/servicios" class="sha-link">Ver análisis documental →</a>
-							</div>
+						<div class="sha-card__body">
+							<span class="font-sans-3xs text-bold text-primary">{serv.tag}</span>
+							<h3 class="sha-card__title">{serv.title}</h3>
+							<p class="sha-card__sub">{serv.sub}</p>
+							<p class="sha-card__text">{serv.desc}</p>
+							<a href={serv.href} class="sha-link">Conocer detalles técnicos &rarr;</a>
 						</div>
 					</div>
-				</div>
-			</section>
+				))}
+			</div>
+		</div>
+	</section>
 
-			<!-- ======= PROCESS STEPS ======= -->
-			<section class="sha-section sha-section--light">
-				<div class="sha-container">
-					<div class="sha-section__header text-center">
-						<span class="usa-tag sha-tag--secondary">PROTOCOLO SEGURO</span>
-						<h2 class="sha-section__title">¿Qué debo hacer? — Primeros Pasos</h2>
-						<p class="sha-section__sub">Proceso formal y documentado para la recepción, adquisición y blindaje de la evidencia digital.</p>
+	<!-- ======= FOUNDER & SPECIALIST BACKING SECTION ======= -->
+	<section class="sha-section bg-base-lightest border-top-1px border-bottom-1px border-base-lighter">
+		<div class="sha-container">
+			<div class="bg-white padding-4 tablet:padding-6 radius-lg shadow-2 border-left-1 border-primary">
+				<div class="grid-row grid-gap flex-align-center">
+					<div class="tablet:grid-col-8">
+						<span class="usa-tag bg-primary text-white margin-bottom-1">DIRECCIÓN PERICIAL & RESPALDO</span>
+						<h2 class="font-sans-xl text-bold text-primary-darker margin-top-1 margin-bottom-2">
+							Respaldo Corporativo de sha256.us y Especialista Líder: {FOUNDER.name} (<a href={FOUNDER.url} target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">{FOUNDER.handle}</a>)
+						</h2>
+						<p class="font-sans-sm text-base-dark line-height-sans-4 margin-bottom-2">
+							Detrás de la firma pericial <strong>sha256.us</strong> se encuentra la práctica profesional de <strong>{FOUNDER.name} ({FOUNDER.handle})</strong>, quien encabeza los peritajes forenses, dictámenes judiciales y diagnósticos por consignación. Los mismos servicios de alta especialización en informática forense, análisis de evidencias digitales y cadena de custodia son prestados y auditados bajo los más rigurosos estándares internacionales.
+						</p>
+						<ul class="font-sans-xs text-base-dark line-height-sans-4 margin-bottom-3 padding-left-3">
+							{FOUNDER.specialties.map((spec) => (
+								<li>{spec}</li>
+							))}
+						</ul>
+						<div class="display-flex flex-wrap gap-2">
+							<a href="/about" class="usa-button usa-button--primary">Conocer trayectoria y laboratorio</a>
+							<a href={FOUNDER.url} target="_blank" rel="noopener noreferrer" class="usa-button usa-button--outline">Visitar {FOUNDER.handle} &rarr;</a>
+						</div>
 					</div>
-
-					<div class="sha-steps">
-						<div class="sha-step">
-							<div class="sha-step__num">01</div>
-							<div class="sha-step__connector sha-step__connector--primary"></div>
-							<h3 class="sha-step__title">Cuéntanos tu caso</h3>
-							<p class="sha-step__text">Entrevista técnica detallada para determinar qué información es jurídicamente relevante verificar para tu caso.</p>
-						</div>
-						<div class="sha-step">
-							<div class="sha-step__num">02</div>
-							<div class="sha-step__connector sha-step__connector--primary"></div>
-							<h3 class="sha-step__title">Consigna el dispositivo</h3>
-							<p class="sha-step__text">Recepción en laboratorio con emisión de planilla oficial. Se genera imagen forense bit a bit sin alterar el original.</p>
-						</div>
-						<div class="sha-step">
-							<div class="sha-step__num">03</div>
-							<div class="sha-step__connector sha-step__connector--primary"></div>
-							<h3 class="sha-step__title">Devolución ágil</h3>
-							<p class="sha-step__text">Retorno del equipo físico una vez completados los procedimientos técnico-administrativos básicos de laboratorio.</p>
-						</div>
-						<div class="sha-step">
-							<div class="sha-step__num">04</div>
-							<div class="sha-step__connector sha-step__connector--accent"></div>
-							<h3 class="sha-step__title">Planillas Oficiales</h3>
-							<p class="sha-step__text">Cadena de custodia inalterable, blindada conforme a MUCC-2017 para total validez ante tribunales nacionales.</p>
+					<div class="tablet:grid-col-4 margin-top-3 tablet:margin-top-0">
+						<div class="bg-primary-darker text-white padding-4 radius-lg text-center shadow-1">
+							<h3 class="font-sans-md text-bold text-white margin-top-0 margin-bottom-1">{FOUNDER.name}</h3>
+							<p class="font-sans-3xs text-secondary-light text-uppercase text-bold margin-bottom-2">{FOUNDER.role}</p>
+							<p class="font-sans-3xs text-base-lightest line-height-sans-3 margin-bottom-3">
+								Garantía de inalterabilidad matemática con SHA-256 y validez procesal en sede judicial.
+							</p>
+							<div class="display-flex flex-column gap-1">
+								<a href={FOUNDER.url} target="_blank" rel="noopener noreferrer" class="usa-button usa-button--secondary font-sans-3xs width-full">
+									Perfil {FOUNDER.handle}
+								</a>
+								<a href={FOUNDER.linkedin} target="_blank" rel="noopener noreferrer" class="usa-button usa-button--outline text-white border-white font-sans-3xs width-full">
+									LinkedIn Pericial
+								</a>
+							</div>
 						</div>
 					</div>
 				</div>
-			</section>
+			</div>
+		</div>
+	</section>
 
-			<!-- ======= STANDARDS ======= -->
-			<section class="sha-section bg-white">
-				<div class="sha-container">
-					<div class="sha-section__header text-center">
-						<span class="usa-tag sha-tag--primary">MARCO REGULATORIO</span>
-						<h2 class="sha-section__title">Normas Internacionales y Regulaciones Nacionales</h2>
-						<p class="sha-section__sub">La validez forense descansa en la metodología. Operamos bajo los estándares técnicos más exigentes del mundo.</p>
-					</div>
-					<div class="sha-standards-grid">
-						{STANDARDS.map((std) => (
-							<div class="sha-standard">
-								<div class="sha-standard__tag">{std.tag}</div>
-								<div class="sha-standard__code">{std.code}</div>
-								<div class="sha-standard__title">{std.title}</div>
-								<p class="sha-standard__desc">{std.desc}</p>
-							</div>
-						))}
-					</div>
-				</div>
-			</section>
+	<!-- ======= PROCESS STEPS ======= -->
+	<section class="sha-section sha-section--light">
+		<div class="sha-container">
+			<div class="sha-section__header text-center">
+				<span class="usa-tag sha-tag--secondary">PROTOCOLO SEGURO</span>
+				<h2 class="sha-section__title">¿Qué debo hacer? — Primeros Pasos</h2>
+				<p class="sha-section__sub">Proceso formal y documentado para la recepción, adquisición y blindaje de la evidencia digital.</p>
+			</div>
 
-			<!-- ======= LATEST POSTS ======= -->
-			<section class="sha-section sha-section--light">
-				<div class="sha-container">
-					<div class="sha-blog-header">
-						<div>
-							<span class="usa-tag sha-tag--secondary">DIVULGACIÓN TÉCNICA</span>
-							<h2 class="sha-section__title margin-top-1 margin-bottom-0">Noticias & Casos de Investigación</h2>
-						</div>
-						<a href="/blog" class="usa-button usa-button--outline sha-btn-ghost">Ver todo el Blog</a>
-					</div>
-					<div class="sha-blog-grid">
-						{latestPosts.map((post) => (
-							<article class="sha-blog-card">
-								{post.data.heroImage && (
-									<div class="sha-blog-card__media">
-										<a href={`/blog/${post.id}/`} class="display-block overflow-hidden width-full height-full">
-											<Image
-												width={640}
-												height={340}
-												src={post.data.heroImage}
-												alt={post.data.title}
-												class="sha-blog-card__img"
-											/>
-										</a>
-									</div>
-								)}
-								<div class="sha-blog-card__body">
-									<div class="sha-blog-card__meta">
-										<span class="usa-tag bg-base-light text-base-darkest font-sans-3xs">
-											{post.data.category || 'Investigación'}
-										</span>
-										<span class="sha-blog-card__date">
-											<FormattedDate date={post.data.pubDate} />
-										</span>
-									</div>
-									<h3 class="sha-blog-card__title">
-										<a href={`/blog/${post.id}/`}>{post.data.title}</a>
-									</h3>
-									<p class="sha-blog-card__desc">{post.data.description}</p>
-									<a href={`/blog/${post.id}/`} class="usa-button usa-button--primary sha-blog-card__btn">
-										Leer artículo completo &rarr;
-									</a>
-								</div>
-							</article>
-						))}
-					</div>
+			<div class="sha-steps">
+				<div class="sha-step">
+					<div class="sha-step__num">01</div>
+					<h3 class="sha-step__title">Cuéntanos tu caso</h3>
+					<p class="sha-step__text">Entrevista técnica detallada para determinar qué información es jurídicamente relevante verificar para tu caso.</p>
 				</div>
-			</section>
+				<div class="sha-step">
+					<div class="sha-step__num">02</div>
+					<h3 class="sha-step__title">Consigna el dispositivo</h3>
+					<p class="sha-step__text">Recepción en laboratorio con emisión de planilla oficial. Se genera imagen forense bit a bit sin alterar el original.</p>
+				</div>
+				<div class="sha-step">
+					<div class="sha-step__num">03</div>
+					<h3 class="sha-step__title">Devolución ágil</h3>
+					<p class="sha-step__text">Retorno del equipo físico una vez completados los procedimientos técnico-administrativos básicos de laboratorio.</p>
+				</div>
+				<div class="sha-step">
+					<div class="sha-step__num">04</div>
+					<h3 class="sha-step__title">Planillas Oficiales</h3>
+					<p class="sha-step__text">Cadena de custodia inalterable, blindada conforme a MUCC-2017 para total validez ante tribunales nacionales.</p>
+				</div>
+			</div>
+		</div>
+	</section>
 
-			<!-- ======= CTA CONTACT BANNER ======= -->
-			<section class="sha-cta-banner">
-				<div class="sha-container sha-cta-banner__inner">
-					<div class="sha-cta-banner__text">
-						<h2 class="sha-cta-banner__title">¿Necesitas consolidar un medio de prueba digital?</h2>
-						<p class="sha-cta-banner__sub">Comunícate con nuestro laboratorio forense para una evaluación preliminar confidencial y profesional.</p>
+	<!-- ======= STANDARDS ======= -->
+	<section class="sha-section bg-white">
+		<div class="sha-container">
+			<div class="sha-section__header text-center">
+				<span class="usa-tag sha-tag--primary">MARCO REGULATORIO</span>
+				<h2 class="sha-section__title">Normas Internacionales y Regulaciones Nacionales</h2>
+				<p class="sha-section__sub">La validez forense descansa en la metodología. Operamos bajo los estándares técnicos más exigentes del mundo.</p>
+			</div>
+			<div class="sha-standards-grid">
+				{STANDARDS.map((std) => (
+					<div class="sha-standard">
+						<div class="sha-standard__tag">{std.tag}</div>
+						<div class="sha-standard__code">{std.code}</div>
+						<div class="sha-standard__title">{std.title}</div>
+						<p class="sha-standard__desc">{std.desc}</p>
 					</div>
-					<div class="sha-cta-banner__actions">
-						<a href="/contacto" class="usa-button usa-button--big sha-cta-banner__btn-primary">Contactar sha256.us</a>
-					</div>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<!-- ======= LATEST POSTS ======= -->
+	<section class="sha-section sha-section--light">
+		<div class="sha-container">
+			<div class="sha-blog-header">
+				<div>
+					<span class="usa-tag sha-tag--secondary">DIVULGACIÓN TÉCNICA</span>
+					<h2 class="sha-section__title margin-top-1 margin-bottom-0">Noticias & Casos de Investigación</h2>
 				</div>
-			</section>
-		</main>
-		<Footer />
-	</body>
-</html>
+				<a href="/blog" class="usa-button usa-button--outline sha-btn-ghost">Ver todo el Blog</a>
+			</div>
+			<div class="sha-blog-grid">
+				{latestPosts.map((post) => (
+					<BlogCard post={post} HeadingTag="h3" />
+				))}
+			</div>
+		</div>
+	</section>
+
+	<!-- ======= CTA CONTACT BANNER ======= -->
+	<section class="sha-cta-banner">
+		<div class="sha-container sha-cta-banner__inner">
+			<div class="sha-cta-banner__text">
+				<h2 class="sha-cta-banner__title">¿Necesitas consolidar un medio de prueba digital?</h2>
+				<p class="sha-cta-banner__sub">Comunícate con nuestro laboratorio forense para una evaluación preliminar confidencial y profesional.</p>
+			</div>
+			<div class="sha-cta-banner__actions">
+				<a href="/contacto" class="usa-button usa-button--big sha-cta-banner__btn-primary">Contactar sha256.us</a>
+			</div>
+		</div>
+	</section>
+</BaseLayout>
 
 <style>
   /* ====== TRUSTBAR ====== */
@@ -344,7 +318,6 @@ const latestPosts = (await getCollection('blog'))
     font-variant-numeric: tabular-nums;
   }
   .sha-step:last-child .sha-step__num { color: #d83933; }
-  .sha-step__connector { display: none; }
   .sha-step__title { font-size: 1rem; font-weight: 700; color: #1a2b4b; margin: 0 0 0.5rem 0; }
   .sha-step__text { font-size: 0.875rem; color: #3d4551; line-height: 1.65; margin: 0; }
 
@@ -378,7 +351,7 @@ const latestPosts = (await getCollection('blog'))
   .sha-standard__title { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; color: #565c65; letter-spacing: 0.05em; }
   .sha-standard__desc { font-size: 0.8rem; color: #3d4551; line-height: 1.6; margin: 0.35rem 0 0 0; }
 
-  /* ====== BLOG SECTION & CARDS ====== */
+  /* ====== BLOG SECTION ====== */
   .sha-blog-header {
     display: flex;
     flex-wrap: wrap;
@@ -387,111 +360,6 @@ const latestPosts = (await getCollection('blog'))
     gap: 1.25rem;
     margin-bottom: 2.5rem;
   }
-  .sha-blog-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 380px));
-    gap: 1.5rem;
-  }
-  @media (max-width: 640px) {
-    .sha-blog-grid {
-      grid-template-columns: 1fr;
-    }
-  }
-  .sha-blog-card {
-    background: #fff;
-    border: 1px solid #dfe1e2;
-    border-top: 3px solid #005ea2;
-    border-radius: 8px;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
-    transition: box-shadow 0.2s ease, transform 0.15s ease;
-  }
-  .sha-blog-card:hover {
-    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
-    transform: translateY(-2px);
-  }
-  .sha-blog-card__media {
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    overflow: hidden;
-    background-color: #f0f2f5;
-  }
-  .sha-blog-card__img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    transition: transform 0.3s ease;
-  }
-  .sha-blog-card:hover .sha-blog-card__img {
-    transform: scale(1.04);
-  }
-  .sha-blog-card__body {
-    padding: 1.25rem 1.5rem 1.5rem;
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    gap: 0.65rem;
-  }
-  .sha-blog-card__meta {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 0.25rem;
-  }
-  .sha-blog-card__date {
-    font-size: 0.72rem;
-    color: #71767a;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-  }
-  .sha-blog-card__title {
-    font-size: 1.05rem;
-    font-weight: 700;
-    margin: 0;
-    line-height: 1.35;
-  }
-  .sha-blog-card__title a {
-    color: #1a2b4b;
-    text-decoration: none;
-    transition: color 0.15s ease;
-  }
-  .sha-blog-card__title a:hover {
-    color: #005ea2;
-    text-decoration: underline;
-  }
-  .sha-blog-card__desc {
-    font-size: 0.85rem;
-    color: #3d4551;
-    line-height: 1.6;
-    margin: 0;
-    flex: 1;
-  }
-  .sha-blog-card__btn {
-    margin-top: 1rem !important;
-    width: 100% !important;
-    font-size: 0.85rem !important;
-    padding: 0.65rem 1rem !important;
-    text-align: center !important;
-    background-color: #005ea2 !important;
-    color: #ffffff !important;
-    font-weight: 700 !important;
-    border-radius: 4px !important;
-    transition: background-color 0.2s ease, transform 0.15s ease !important;
-    text-decoration: none !important;
-    display: block;
-    box-sizing: border-box;
-  }
-  .sha-blog-card__btn:hover {
-    background-color: #0050a4 !important;
-    transform: translateY(-1px);
-    text-decoration: none !important;
-  }
-
-  /* Ghost button */
   .sha-btn-ghost {
     border-color: #005ea2 !important;
     color: #005ea2 !important;

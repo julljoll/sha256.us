@@ -1,68 +1,88 @@
 ---
 import { Image } from 'astro:assets';
 import type { CollectionEntry } from 'astro:content';
-import BaseHead from '../components/BaseHead.astro';
-import Footer from '../components/Footer.astro';
+import BaseLayout from './BaseLayout.astro';
 import FormattedDate from '../components/FormattedDate.astro';
-import Header from '../components/Header.astro';
+import { COMPANY, FOUNDER } from '../consts';
 
 type Props = CollectionEntry<'blog'>['data'];
 
 const { title, description, pubDate, updatedDate, heroImage, author, category, tags } = Astro.props;
 ---
 
-<!doctype html>
-<html lang="es">
-	<head>
-		<BaseHead title={`${title} | sha256.us`} description={description} image={heroImage} />
-	</head>
-
-	<body class="bg-base-lightest font-sans">
-		<Header />
-		<main id="main-content" class="padding-y-6">
-			<article class="grid-container maxw-desktop margin-x-auto padding-x-2">
-				<!-- Encabezado del artículo -->
-				<header class="margin-bottom-4 border-bottom-1px border-base-lighter padding-bottom-3">
-					<div class="display-flex flex-wrap flex-align-center gap-1 margin-bottom-1">
-						{category ? (
-							<span class="usa-tag bg-primary-dark text-white text-uppercase">{category}</span>
-						) : (
-							<span class="usa-tag bg-primary-dark text-white">Investigación</span>
-						)}
-						{tags && tags.slice(0, 3).map((tag: string) => (
-							<span class="usa-tag bg-secondary-dark text-white font-mono text-3xs">#{tag}</span>
-						))}
-					</div>
-					<h1 class="font-sans-2xl tablet:font-sans-3xl text-bold text-primary-darker line-height-sans-2 margin-top-1 margin-bottom-2">
-						{title}
-					</h1>
-					<p class="font-sans-md text-base-dark line-height-sans-3 maxw-tablet margin-top-0 margin-bottom-2">
-						{description}
-					</p>
-					<div class="font-sans-sm text-base display-flex flex-wrap flex-align-center gap-2">
-						<span class="text-base-dark">Publicado: <FormattedDate date={pubDate} /></span>
-						{updatedDate && (
-							<span class="font-italic text-base">
-								(Actualizado: <FormattedDate date={updatedDate} />)
-							</span>
-						)}
-						<span class="text-base">&bull; Por {author || 'Equipo Pericial sha256.us'}</span>
-					</div>
-				</header>
-
-				<!-- Imagen Principal -->
-				{heroImage && (
-					<div class="margin-bottom-5 radius-lg overflow-hidden shadow-2">
-						<Image width={1200} height={560} src={heroImage} alt={title} class="width-full height-auto display-block" />
-					</div>
+<BaseLayout
+	title={`${title} | ${COMPANY.name}`}
+	description={description}
+	image={heroImage}
+	type="article"
+	pubDate={pubDate}
+	updatedDate={updatedDate}
+	author={author || `${FOUNDER.name} (${FOUNDER.handle})`}
+	mainClass="padding-y-6"
+>
+	<article class="grid-container maxw-desktop margin-x-auto padding-x-2">
+		<!-- Encabezado del artículo -->
+		<header class="margin-bottom-4 border-bottom-1px border-base-lighter padding-bottom-3">
+			<div class="display-flex flex-wrap flex-align-center gap-1 margin-bottom-1">
+				{category ? (
+					<span class="usa-tag bg-primary-dark text-white text-uppercase">{category}</span>
+				) : (
+					<span class="usa-tag bg-primary-dark text-white">Informática Forense</span>
 				)}
+				{tags && tags.slice(0, 3).map((tag: string) => (
+					<span class="usa-tag bg-secondary-dark text-white font-mono text-3xs">#{tag}</span>
+				))}
+			</div>
+			<h1 class="font-sans-2xl tablet:font-sans-3xl text-bold text-primary-darker line-height-sans-2 margin-top-1 margin-bottom-2">
+				{title}
+			</h1>
+			<p class="font-sans-md text-base-dark line-height-sans-3 maxw-tablet margin-top-0 margin-bottom-2">
+				{description}
+			</p>
+			<div class="font-sans-sm text-base display-flex flex-wrap flex-align-center gap-2">
+				<span class="text-base-dark">Publicado: <FormattedDate date={pubDate} /></span>
+				{updatedDate && (
+					<span class="font-italic text-base">
+						(Actualizado: <FormattedDate date={updatedDate} />)
+					</span>
+				)}
+				<span class="text-base">&bull; Por {author || `${FOUNDER.name} (${FOUNDER.handle})`}</span>
+			</div>
+		</header>
 
-				<!-- Contenido del Artículo -->
-				<div class="usa-prose maxw-none font-sans-md line-height-sans-4 text-base-darkest bg-white padding-4 tablet:padding-6 radius-lg shadow-1 border-1px border-base-lighter">
-					<slot />
+		<!-- Imagen Principal -->
+		{heroImage && (
+			<div class="margin-bottom-5 radius-lg overflow-hidden shadow-2">
+				<Image width={1200} height={560} src={heroImage} alt={title} class="width-full height-auto display-block" />
+			</div>
+		)}
+
+		<!-- Contenido del Artículo -->
+		<div class="usa-prose maxw-none font-sans-md line-height-sans-4 text-base-darkest bg-white padding-4 tablet:padding-6 radius-lg shadow-1 border-1px border-base-lighter">
+			<slot />
+		</div>
+
+		<!-- Bloque E-E-A-T Autor y Respaldo Institucional -->
+		<div class="bg-white padding-4 radius-lg shadow-1 border-left-1 border-primary margin-top-4">
+			<div class="grid-row grid-gap flex-align-center">
+				<div class="tablet:grid-col-8">
+					<span class="font-sans-3xs text-bold text-primary text-uppercase">AUTORIDAD Y PERITAJE FORENSE</span>
+					<h3 class="font-sans-md text-bold text-primary-darker margin-top-0 margin-bottom-1">
+						{COMPANY.name} &bull; Dirección Técnica: {FOUNDER.name} (<a href={FOUNDER.url} target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">{FOUNDER.handle}</a>)
+					</h3>
+					<p class="font-sans-xs text-base-dark line-height-sans-3 margin-0">
+						Gabinete pericial especializado en auditoría de dispositivos digitales, análisis forense de telefonía móvil y WhatsApp, recuperación en unidades de almacenamiento masivo y elaboración de dictámenes con estricta cadena de custodia conforme a <strong>ISO/IEC 27037</strong>, <strong>ISO/IEC 27042</strong>, <strong>NIST SP 800</strong> y <strong>MUCC-2017</strong>.
+					</p>
 				</div>
-			</article>
-		</main>
-		<Footer />
-	</body>
-</html>
+				<div class="tablet:grid-col-4 display-flex flex-column gap-1 margin-top-2 tablet:margin-top-0">
+					<a href="/contacto" class="usa-button usa-button--primary font-sans-3xs width-full text-center">
+						Solicitar Dictamen Pericial
+					</a>
+					<a href={FOUNDER.url} target="_blank" rel="noopener noreferrer" class="usa-button usa-button--outline font-sans-3xs width-full text-center">
+						Ver Perfil en {FOUNDER.handle} &rarr;
+					</a>
+				</div>
+			</div>
+		</div>
+	</article>
+</BaseLayout>

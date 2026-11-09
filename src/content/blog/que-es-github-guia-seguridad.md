@@ -3,7 +3,7 @@ title: "GitHub: Ecosistema colaborativo, integridad criptográfica y seguridad"
 description: "Descubre qué es GitHub, su impacto en el desarrollo moderno, la transición criptográfica hacia SHA-256 y las mejores prácticas de DevSecOps en repositorios."
 pubDate: 2026-11-09
 updatedDate: 2026-11-09
-author: "Equipo Editorial sha256.us"
+author: "Jull (jull.sha256.us) — Equipo Pericial sha256.us"
 tags: ["github", "git", "sha-256", "devsecops", "ciberseguridad", "codigo-abierto"]
 category: "Guía Técnica"
 heroImage: "../../assets/blog-placeholder-1.jpg"

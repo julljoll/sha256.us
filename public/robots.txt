@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://sha256.us/sitemap-index.xml
+

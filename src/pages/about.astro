@@ -1,91 +1,110 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Footer from '../components/Footer.astro';
-import Header from '../components/Header.astro';
-import { CONTACT, SITE_TITLE, STANDARDS } from '../consts';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { COMPANY, CONTACT, FOUNDER, SITE_TITLE, STANDARDS } from '../consts';
 ---
 
-<!doctype html>
-<html lang="es">
-	<head>
-		<BaseHead
-			title={`Sobre Nosotros | ${SITE_TITLE}`}
-			description="Conoce al equipo de sha256.us. Especialistas en informática forense, análisis de evidencias digitales, cadena de custodia y normativas ISO/NIST."
-		/>
-	</head>
-	<body class="bg-base-lightest font-sans">
-		<Header />
-		<main id="main-content" class="padding-y-6">
-			<div class="grid-container maxw-desktop margin-x-auto padding-x-2">
-				<!-- Header de página -->
-				<div class="margin-bottom-6 border-bottom-2px border-base-lighter padding-bottom-3">
-					<span class="usa-tag bg-primary text-white margin-bottom-1">CONÓCENOS</span>
-					<h1 class="font-sans-2xl tablet:font-sans-3xl text-bold text-primary-darker margin-top-1 margin-bottom-2">
-						Sobre sha256.us — Análisis Forense Digital Seguro
-					</h1>
-					<p class="font-sans-md text-base-dark line-height-sans-4 maxw-tablet">
-						Somos un equipo profesional multidisciplinario comprometido con la rigurosidad científica, la ética y la inviolabilidad de la evidencia digital.
+<BaseLayout
+	title={`Sobre Nosotros | ${SITE_TITLE}`}
+	description={`Conoce a sha256.us y a su fundador ${FOUNDER.name} (${FOUNDER.handle}). Laboratorio de informática forense, análisis de evidencias digitales, peritajes judiciales y cadena de custodia bajo ISO/IEC y NIST.`}
+	mainClass="padding-y-6"
+>
+	<div class="grid-container maxw-desktop margin-x-auto padding-x-2">
+		<!-- Header de página -->
+		<div class="margin-bottom-6 border-bottom-2px border-base-lighter padding-bottom-3">
+			<span class="usa-tag bg-primary text-white margin-bottom-1">CONÓCENOS</span>
+			<h1 class="font-sans-2xl tablet:font-sans-3xl text-bold text-primary-darker margin-top-1 margin-bottom-2">
+				Sobre {COMPANY.name} — Análisis Forense Digital Seguro
+			</h1>
+			<p class="font-sans-md text-base-dark line-height-sans-4 maxw-tablet">
+				Firma corporativa y laboratorio multidisciplinario comprometido con la rigurosidad científica, la ética y la inviolabilidad de la evidencia digital.
+			</p>
+		</div>
+
+		<div class="grid-row grid-gap margin-bottom-8">
+			<div class="tablet:grid-col-8">
+				<div class="bg-white padding-4 tablet:padding-6 radius-lg shadow-1 border-1px border-base-lighter margin-bottom-4">
+					<h2 class="font-sans-xl text-bold text-primary-darker margin-top-0 margin-bottom-2">Nuestra Misión Institucional</h2>
+					<p class="font-sans-sm text-base-dark line-height-sans-4 margin-bottom-3">
+						En <strong>{COMPANY.name}</strong> analizamos evidencias digitales empleando tecnología avanzada y metodología forense estandarizada para garantizar que cualquier elemento de convicción mantenga su integridad, autenticidad e inalterabilidad frente a tribunales y órganos judiciales.
 					</p>
-				</div>
+					<p class="font-sans-sm text-base-dark line-height-sans-4 margin-bottom-3">
+						Nuestro nombre, inspirado en la función criptográfica <strong>SHA-256</strong>, refleja el pilar central de nuestra práctica: la garantía matemática e irreversible de que los datos consignados no han sido alterados ni manipulados en ninguna fase de la investigación.
+					</p>
 
-				<div class="grid-row grid-gap margin-bottom-8">
-					<div class="tablet:grid-col-8">
-						<div class="bg-white padding-4 tablet:padding-6 radius-lg shadow-1 border-1px border-base-lighter margin-bottom-4">
-							<h2 class="font-sans-xl text-bold text-primary-darker margin-top-0 margin-bottom-2">Nuestra Misión Institucional</h2>
-							<p class="font-sans-sm text-base-dark line-height-sans-4 margin-bottom-3">
-								En <strong>sha256.us</strong> analizamos evidencias digitales empleando tecnología avanzada y metodología forense estandarizada para garantizar que cualquier elemento de prueba mantenga su integridad, autenticidad e inalterabilidad frente a tribunales y órganos judiciales.
-							</p>
-							<p class="font-sans-sm text-base-dark line-height-sans-4 margin-bottom-3">
-								Nuestro nombre, inspirado en la función criptográfica <strong>SHA-256</strong>, refleja el pilar central de nuestra práctica: la garantía matemática e irreversible de que los datos consignados no han sido alterados ni manipulados en ninguna fase de la investigación.
-							</p>
-
-							<h2 class="font-sans-xl text-bold text-primary-darker margin-top-4 margin-bottom-2">Equipo Profesional y Experiencia</h2>
-							<p class="font-sans-sm text-base-dark line-height-sans-4 margin-bottom-3">
-								Contamos con años de experiencia en la intervención de dispositivos comprometidos, peritajes judiciales en controversias civiles y penales, así como diagnósticos especializados por consignación técnica en laboratorio.
-							</p>
-
-							<div class="usa-alert usa-alert--info radius-md margin-top-4">
-								<div class="usa-alert__body">
-									<h3 class="usa-alert__heading font-sans-sm text-bold">Instalaciones y Cadena de Custodia</h3>
-									<p class="usa-alert__text font-sans-xs line-height-sans-3">
-										Nuestra sede principal en Quíbor, Estado Lara, cuenta con área técnica para la recepción y resguardo controlado de dispositivos bajo planillas oficiales de cadena de custodia (MUCC-2017).
-									</p>
-								</div>
-							</div>
+					<!-- Bloque de Dirección Pericial: jull.sha256.us -->
+					<div class="bg-primary-lighter padding-4 radius-lg border-left-1 border-primary margin-top-4 margin-bottom-4">
+						<span class="font-sans-3xs text-bold text-primary text-uppercase">DIRECCIÓN TÉCNICA Y ESPECIALISTA LÍDER</span>
+						<h3 class="font-sans-lg text-bold text-primary-darker margin-top-05 margin-bottom-2">
+							{FOUNDER.name} — <a href={FOUNDER.url} target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">{FOUNDER.handle}</a>
+						</h3>
+						<p class="font-sans-xs text-base-dark line-height-sans-3 margin-bottom-2">
+							{FOUNDER.summary}
+						</p>
+						<p class="font-sans-xs text-base-dark line-height-sans-3 margin-bottom-2">
+							Como persona detrás de la firma corporativa, su perfil profesional <strong><a href={FOUNDER.url} target="_blank" rel="noopener noreferrer" class="text-primary-darker text-bold hover:underline">{FOUNDER.handle}</a></strong> articula y respalda los mismos servicios especializados prestados en <strong>{COMPANY.name}</strong>:
+						</p>
+						<ul class="font-sans-3xs text-base-dark line-height-sans-3 padding-left-3 margin-bottom-3">
+							{FOUNDER.specialties.map((item) => (
+								<li>{item}</li>
+							))}
+						</ul>
+						<div class="display-flex flex-wrap gap-2">
+							<a href={FOUNDER.url} target="_blank" rel="noopener noreferrer" class="usa-button usa-button--primary font-sans-3xs">
+								Visitar Perfil en {FOUNDER.handle} &rarr;
+							</a>
+							<a href={FOUNDER.linkedin} target="_blank" rel="noopener noreferrer" class="usa-button usa-button--outline font-sans-3xs">
+								Perfil LinkedIn
+							</a>
 						</div>
 					</div>
 
-					<!-- Sidebar con normas y contacto rápido -->
-					<div class="tablet:grid-col-4">
-						<div class="bg-white padding-4 radius-lg shadow-1 border-1px border-base-lighter margin-bottom-4">
-							<h3 class="font-sans-md text-bold text-primary-darker margin-top-0 margin-bottom-2">Acreditaciones Técnicas</h3>
-							<ul class="list-style-none padding-0 margin-0">
-								{STANDARDS.map((s) => (
-									<li class="border-bottom-1px border-base-lighter padding-y-2">
-										<span class="usa-tag bg-primary-lighter text-primary-darker font-sans-3xs text-bold margin-bottom-05">{s.tag}</span>
-										<strong class="font-sans-xs text-primary-darker display-block">{s.code}</strong>
-										<span class="font-sans-3xs text-base-dark">{s.title}</span>
-									</li>
-								))}
-							</ul>
-						</div>
+					<h2 class="font-sans-xl text-bold text-primary-darker margin-top-4 margin-bottom-2">Equipo Profesional y Cadena de Custodia</h2>
+					<p class="font-sans-sm text-base-dark line-height-sans-4 margin-bottom-3">
+						Contamos con experiencia probada en la intervención de dispositivos comprometidos, peritajes judiciales en controversias civiles, mercantiles y penales, así como diagnósticos especializados por consignación técnica en laboratorio.
+					</p>
 
-						<div class="bg-primary-darker text-white padding-4 radius-lg shadow-1">
-							<h3 class="font-sans-md text-bold text-white margin-top-0 margin-bottom-2">Contacto Directo</h3>
-							<p class="font-sans-xs text-base-light margin-y-1">
-								<strong>Sede:</strong> {CONTACT.address}
+					<div class="usa-alert usa-alert--info radius-md margin-top-4">
+						<div class="usa-alert__body">
+							<h3 class="usa-alert__heading font-sans-sm text-bold">Instalaciones y Cadena de Custodia Oficial</h3>
+							<p class="usa-alert__text font-sans-xs line-height-sans-3">
+								Nuestra sede principal en Quíbor, Estado Lara, cuenta con área técnica para la recepción y resguardo controlado de dispositivos bajo planillas oficiales de cadena de custodia (MUCC-2017).
 							</p>
-							<p class="font-sans-xs text-base-light margin-y-1">
-								<strong>Email:</strong> {CONTACT.email}
-							</p>
-							<div class="margin-top-3">
-								<a href="/contacto" class="usa-button usa-button--secondary width-full text-center">Ir a Contacto</a>
-							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-		</main>
-		<Footer />
-	</body>
-</html>
+
+			<!-- Sidebar con normas y contacto rápido -->
+			<div class="tablet:grid-col-4">
+				<div class="bg-white padding-4 radius-lg shadow-1 border-1px border-base-lighter margin-bottom-4">
+					<h3 class="font-sans-md text-bold text-primary-darker margin-top-0 margin-bottom-2">Acreditaciones Técnicas</h3>
+					<ul class="list-style-none padding-0 margin-0">
+						{STANDARDS.map((s) => (
+							<li class="border-bottom-1px border-base-lighter padding-y-2">
+								<span class="usa-tag bg-primary-lighter text-primary-darker font-sans-3xs text-bold margin-bottom-05">{s.tag}</span>
+								<strong class="font-sans-xs text-primary-darker display-block">{s.code}</strong>
+								<span class="font-sans-3xs text-base-dark">{s.title}</span>
+							</li>
+						))}
+					</ul>
+				</div>
+
+				<div class="bg-primary-darker text-white padding-4 radius-lg shadow-1">
+					<h3 class="font-sans-md text-bold text-white margin-top-0 margin-bottom-2">Contacto Directo</h3>
+					<p class="font-sans-xs text-base-light margin-y-1">
+						<strong>Sede:</strong> {CONTACT.address}
+					</p>
+					<p class="font-sans-xs text-base-light margin-y-1">
+						<strong>Email:</strong> {CONTACT.email}
+					</p>
+					<p class="font-sans-xs text-base-light margin-y-1">
+						<strong>WhatsApp:</strong> {CONTACT.phone.display}
+					</p>
+					<div class="margin-top-3">
+						<a href="/contacto" class="usa-button usa-button--secondary width-full text-center">Ir a Contacto</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</BaseLayout>

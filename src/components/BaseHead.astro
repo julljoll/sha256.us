@@ -1,20 +1,98 @@
 ---
-// Import global styles (USWDS + Tailwind CSS)
 import '../styles/global.css';
 import type { ImageMetadata } from 'astro';
 import FallbackImage from '../assets/blog-placeholder-1.jpg';
-import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+import { COMPANY, CONTACT, FOUNDER, SITE_DESCRIPTION, SITE_TITLE, SITE_URL } from '../consts';
 
 interface Props {
-	title: string;
+	title?: string;
 	description?: string;
 	image?: ImageMetadata;
+	type?: 'website' | 'article';
+	pubDate?: Date;
+	updatedDate?: Date;
+	author?: string;
 }
 
-const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const canonicalURL = new URL(Astro.url.pathname, Astro.site || SITE_URL);
+const {
+	title = SITE_TITLE,
+	description = SITE_DESCRIPTION,
+	image = FallbackImage,
+	type = 'website',
+	pubDate,
+	updatedDate,
+	author = FOUNDER.name,
+} = Astro.props;
 
-const { title, description = SITE_DESCRIPTION, image = FallbackImage } = Astro.props;
-const imageURL = new URL(typeof image === 'string' ? image : image?.src || '/logo-head.png', Astro.url);
+const imageURL = new URL(typeof image === 'string' ? image : image?.src || '/logo-head.png', Astro.site || SITE_URL);
+
+const schemaOrg = {
+	'@context': 'https://schema.org',
+	'@graph': [
+		{
+			'@type': ['Organization', 'ProfessionalService'],
+			'@id': `${SITE_URL}/#organization`,
+			name: COMPANY.name,
+			legalName: COMPANY.legalBrand,
+			url: SITE_URL,
+			logo: `${SITE_URL}/logo-head.png`,
+			description: SITE_DESCRIPTION,
+			email: CONTACT.email,
+			telephone: CONTACT.phone.display,
+			address: {
+				'@type': 'PostalAddress',
+				streetAddress: 'Avenida 6 con Calle 7, Edificio Mercantil La Ceiba, Primer Piso, Oficina N° 8',
+				addressLocality: 'Quíbor',
+				addressRegion: 'Lara',
+				addressCountry: 'VE',
+			},
+			founder: {
+				'@id': `${FOUNDER.url}/#person`,
+			},
+			sameAs: [
+				FOUNDER.url,
+				CONTACT.social.linkedin,
+				CONTACT.social.twitter,
+				CONTACT.social.instagram,
+			],
+		},
+		{
+			'@type': 'Person',
+			'@id': `${FOUNDER.url}/#person`,
+			name: FOUNDER.name,
+			alternateName: FOUNDER.handle,
+			jobTitle: FOUNDER.role,
+			url: FOUNDER.url,
+			description: FOUNDER.summary,
+			worksFor: {
+				'@id': `${SITE_URL}/#organization`,
+			},
+			sameAs: [FOUNDER.url, FOUNDER.linkedin, FOUNDER.github],
+		},
+		...(type === 'article' && pubDate
+			? [
+					{
+						'@type': 'BlogPosting',
+						headline: title,
+						description: description,
+						image: imageURL.toString(),
+						datePublished: pubDate.toISOString(),
+						dateModified: (updatedDate || pubDate).toISOString(),
+						author: {
+							'@type': 'Person',
+							name: author,
+							url: FOUNDER.url,
+						},
+						publisher: {
+							'@id': `${SITE_URL}/#organization`,
+						},
+						mainEntityOfPage: canonicalURL.toString(),
+					},
+				]
+			: []),
+	],
+};
 ---
 
 <!-- Global Metadata -->
@@ -22,12 +100,13 @@ const imageURL = new URL(typeof image === 'string' ? image : image?.src || '/log
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <link rel="icon" type="image/png" href="/favicon.png" />
+<link rel="shortcut icon" href="/favicon.ico" />
 <link rel="sitemap" href="/sitemap-index.xml" />
 <link
 	rel="alternate"
 	type="application/rss+xml"
 	title={SITE_TITLE}
-	href={new URL('rss.xml', Astro.site)}
+	href={new URL('rss.xml', Astro.site || SITE_URL)}
 />
 <meta name="generator" content={Astro.generator} />
 
@@ -37,19 +116,29 @@ const imageURL = new URL(typeof image === 'string' ? image : image?.src || '/log
 <!-- Primary Meta Tags -->
 <title>{title}</title>
 <meta name="description" content={description} />
-<meta name="keywords" content="análisis digital, informática forense, seguridad de datos, diagnóstico por consignación, registro fotográfico, servicio confiable, ISO 27037, NIST" />
-<meta name="geo.placename" content="Quibor - Lara - Venezuela" />
+<meta
+	name="keywords"
+	content="informática forense, peritaje informático, evidencia digital, cadena de custodia, sha256.us, jull.sha256.us, análisis forense digital, ISO 27037, ISO 27042, NIST, MUCC-2017, Venezuela"
+/>
+<meta name="author" content={`${FOUNDER.name} (${FOUNDER.handle}) - ${COMPANY.name}`} />
+<meta name="geo.placename" content="Quíbor - Lara - Venezuela" />
 
 <!-- Open Graph / Facebook -->
-<meta property="og:type" content="article" />
-<meta property="og:url" content={Astro.url} />
+<meta property="og:type" content={type} />
+<meta property="og:site_name" content={COMPANY.name} />
+<meta property="og:locale" content="es_VE" />
+<meta property="og:url" content={canonicalURL} />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
 <meta property="og:image" content={imageURL} />
 
-<!-- Twitter -->
-<meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:url" content={Astro.url} />
-<meta property="twitter:title" content={title} />
-<meta property="twitter:description" content={description} />
-<meta property="twitter:image" content={imageURL} />
+<!-- Twitter / X -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@sha256us" />
+<meta name="twitter:url" content={canonicalURL} />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={imageURL} />
+
+<!-- Schema.org JSON-LD -->
+<script type="application/ld+json" set:html={JSON.stringify(schemaOrg)} />

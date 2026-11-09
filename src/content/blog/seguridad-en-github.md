@@ -3,7 +3,7 @@ title: "GitHub y la Seguridad en el Desarrollo: Protección del Código y la Cad
 description: "Aprende cómo proteger repositorios en GitHub frente a fugas de credenciales, vulnerabilidades en dependencias y riesgos en la cadena de suministro de software."
 pubDate: 2026-11-09
 updatedDate: 2026-11-09
-author: "Equipo Pericial sha256.us"
+author: "Jull (jull.sha256.us) — Equipo Pericial sha256.us"
 tags: ["github", "devsecops", "ciberseguridad", "git", "seguridad-software"]
 category: "Guía Técnica"
 heroImage: "../../assets/blog-placeholder-1.jpg"

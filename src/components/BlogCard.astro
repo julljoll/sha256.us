@@ -1,0 +1,52 @@
+---
+import { Image } from 'astro:assets';
+import type { CollectionEntry } from 'astro:content';
+import FormattedDate from './FormattedDate.astro';
+
+interface Props {
+	post: CollectionEntry<'blog'>;
+	HeadingTag?: 'h2' | 'h3';
+}
+
+const { post, HeadingTag = 'h3' } = Astro.props;
+---
+
+<article class="sha-blog-card">
+	{
+		post.data.heroImage && (
+			<div class="sha-blog-card__media">
+				<a
+					href={`/blog/${post.id}/`}
+					class="display-block overflow-hidden width-full height-full"
+					aria-label={`Leer artículo: ${post.data.title}`}
+				>
+					<Image
+						width={640}
+						height={360}
+						src={post.data.heroImage}
+						alt={post.data.title}
+						class="sha-blog-card__img"
+					/>
+				</a>
+			</div>
+		)
+	}
+	<div class="sha-blog-card__body">
+		<div class="sha-blog-card__meta">
+			<span class="usa-tag bg-base-light text-base-darkest font-sans-3xs">
+				{post.data.category || 'Informática Forense'}
+			</span>
+			<span class="sha-blog-card__date">
+				<FormattedDate date={post.data.pubDate} />
+			</span>
+		</div>
+		<HeadingTag class="sha-blog-card__title">
+			<a href={`/blog/${post.id}/`}>{post.data.title}</a>
+		</HeadingTag>
+		<p class="sha-blog-card__desc">{post.data.description}</p>
+		<a href={`/blog/${post.id}/`} class="usa-button usa-button--primary sha-blog-card__btn">
+			Leer artículo completo &rarr;
+		</a>
+	</div>
+</article>
+
