@@ -3,6 +3,7 @@ import { Image } from 'astro:assets';
 import type { CollectionEntry } from 'astro:content';
 import BaseLayout from './BaseLayout.astro';
 import FormattedDate from '../components/FormattedDate.astro';
+import ShareButtons from '../components/ShareButtons.astro';
 import { COMPANY, FOUNDER } from '../consts';
 
 type Props = CollectionEntry<'blog'>['data'];
@@ -61,6 +62,9 @@ const { title, description, pubDate, updatedDate, heroImage, author, category, t
 		<div class="usa-prose maxw-none font-sans-md line-height-sans-4 text-base-darkest bg-white padding-4 tablet:padding-6 radius-lg shadow-1 border-1px border-base-lighter">
 			<slot />
 		</div>
+
+		<!-- Botones para compartir en redes sociales -->
+		<ShareButtons title={title} description={description} />
 
 		<!-- Bloque E-E-A-T Autor y Respaldo Institucional -->
 		<div class="bg-white padding-4 radius-lg shadow-1 border-left-1 border-primary margin-top-4">
