@@ -3,10 +3,10 @@
 # sha256.us
 ### Laboratorio Corporativo de Informática Forense Digital & Peritajes Judiciales
 
-[![Norma ISO/IEC 27037](https://img.shields.io/badge/Est%C3%A1ndar-ISO%2FIEC%2027037-005ea2?style=for-the-badge)](https://sha256.us)
-[![Norma ISO/IEC 27042](https://img.shields.io/badge/Est%C3%A1ndar-ISO%2FIEC%2027042-005ea2?style=for-the-badge)](https://sha256.us)
-[![NIST SP 800](https://img.shields.io/badge/Metodolog%C3%ADa-NIST%20SP%20800-005ea2?style=for-the-badge)](https://sha256.us)
-[![Cadena de Custodia MUCC-2017](https://img.shields.io/badge/Custodia-MUCC--2017-d83933?style=for-the-badge)](https://sha256.us)
+[![Norma ISO/IEC 27037](https://img.shields.io/badge/ISO%2FIEC%2027037-Preservaci%C3%B3n%20Digital-005ea2?style=for-the-badge&logo=shield)](https://sha256.us)
+[![Norma ISO/IEC 27042](https://img.shields.io/badge/ISO%2FIEC%2027042-An%C3%A1lisis%20Pericial-005ea2?style=for-the-badge&logo=search)](https://sha256.us)
+[![NIST SP 800](https://img.shields.io/badge/NIST%20SP%20800--86%2F101-Metodolog%C3%ADa%20Forense-005ea2?style=for-the-badge&logo=verified)](https://sha256.us)
+[![Cadena de Custodia MUCC-2017](https://img.shields.io/badge/MUCC--2017-Cadena%20de%20Custodia-d83933?style=for-the-badge&logo=gavel)](https://sha256.us)
 
 <p align="center">
   <strong>Garantía matemática de inalterabilidad probatoria y dictámenes periciales con plena eficacia procesal ante juzgados y tribunales.</strong>
@@ -31,11 +31,11 @@
 
 ## 🎯 Propósito y Misión Institucional
 
-**sha256.us** opera como una firma pericial y laboratorio especializado en la **adquisición, preservación, análisis técnico e interpretación de evidencias digitales**. 
+**sha256.us** opera como una firma pericial y laboratorio corporativo especializado en la **adquisición, preservación, análisis técnico e interpretación de evidencias digitales**. 
 
-En controversias judiciales (penales, civiles, laborales y mercantiles) y auditorías corporativas, el mayor riesgo procesal radica en la manipulación o pérdida de autenticidad de los registros electrónicos. Nuestra misión es dotar a firmas legales, empresas e instituciones de dictámenes periciales irrefutables basados en la verdad técnica y en la estricta inalterabilidad matemática.
+En controversias judiciales (penales, civiles, laborales y mercantiles) y auditorías corporativas, el mayor riesgo procesal radica en la manipulación, pérdida de autenticidad o desestimación probatoria de los registros electrónicos. Nuestra misión es dotar a firmas legales, empresas e instituciones de dictámenes periciales irrefutables basados en la verdad técnica y en la estricta inalterabilidad matemática.
 
-El nombre **sha256.us** rinde tributo al estándar criptográfico **SHA-256**, pilar indispensable para certificar el principio de *mismidad*: la certeza absoluta de que el dato recolectado en la escena o laboratorio es exactamente el mismo exhibido ante el juez.
+El nombre **sha256.us** rinde tributo a la función criptográfica **SHA-256**, pilar indispensable para garantizar el principio procesal de *mismidad*: la certeza científica de que la evidencia digital analizada y presentada ante el tribunal no ha sufrido la más mínima alteración respecto a su estado original en el dispositivo consignado.
 
 ---
 
@@ -55,12 +55,12 @@ La dirección pericial y las operaciones técnicas del laboratorio están encabe
 
 Tanto la firma **sha256.us** como el perfil pericial de **jull.sha256.us** articulan una visión unificada:
 - Intervención forense con instrumental certificado libre de contaminación probatoria.
-- Redacción de informes periciales comprensibles para magistrados, fiscales y partes procesales.
-- Comparecencia y defensa oral de dictámenes en juicio bajo juramento legal.
+- Redacción de informes periciales con lenguaje técnico-procesal claro para magistrados, fiscales y partes procesales.
+- Comparecencia y defensa oral de dictámenes en juicio bajo juramento de ley.
 
 ---
 
-## 🏛️ Áreas de Especialización y Práctica Pericial
+## 💼 Áreas de Especialización y Práctica Pericial
 
 ```
  ┌────────────────────────────────────────────────────────────────────────┐
@@ -94,12 +94,27 @@ Validación de integridad en documentos digitales, análisis de sellos de tiempo
 
 ## 🛡️ Marco Normativo y Rigor Metodológico
 
-Todas las actuaciones practicadas por **sha256.us** y **jull.sha256.us** se apegan a los estándares técnicos internacionales y normas nacionales de mayor exigencia:
+La validez procesal y la certeza convictiva de todo peritaje practicado por **sha256.us** y **jull.sha256.us** se sustenta en un marco normativo estructurado en tres niveles: estándares técnicos internacionales, doctrina metodológica forense y la legislación especial positiva venezolana.
 
-- **ISO/IEC 27037:** Directrices para la identificación, recolección, adquisición y preservación de evidencia digital.
-- **ISO/IEC 27042:** Directrices para el análisis, interpretación y presentación de evidencia informática.
-- **NIST SP 800 (86 / 101):** Guías metodológicas de informática forense para incidentes de seguridad y telefonía móvil.
-- **MUCC-2017:** Manual Único de Cadena de Custodia de Evidencias Físicas y Digitales de la República Bolivariana de Venezuela.
+### 1. Estándares Técnicos Internacionales (ISO/IEC & UNE)
+* <img src="https://fonts.gstatic.com/s/i/materialicons/verified_user/v16/24px.svg" width="16" height="16" style="vertical-align:middle;" /> **ISO/IEC 27037:2012:** *Information technology — Security techniques — Guidelines for identification, collection, acquisition, and preservation of digital evidence.* Define los principios rectores de relevancia, confiabilidad, suficiencia y preservación de la evidencia digital.
+* <img src="https://fonts.gstatic.com/s/i/materialicons/policy/v16/24px.svg" width="16" height="16" style="vertical-align:middle;" /> **ISO/IEC 27042:2015 / 2020:** *Directrices para el análisis e interpretación de evidencia digital.* Metodología para contrastar hipótesis periciales y evaluar la coherencia de trazas informáticas.
+* <img src="https://fonts.gstatic.com/s/i/materialicons/lock/v16/24px.svg" width="16" height="16" style="vertical-align:middle;" /> **ISO/IEC 27001 & 27002:2022:** Sistemas de gestión de seguridad de la información (SGSI) y catálogo exhaustivo de controles para salvaguardar la confidencialidad de la información consignada.
+* <img src="https://fonts.gstatic.com/s/i/materialicons/description/v16/24px.svg" width="16" height="16" style="vertical-align:middle;" /> **UNE 71505 (2013) & UNE 197010:2015:** Sistema de gestión de evidencias electrónicas (SGEE) y criterios normalizados para la redacción y sustentación de informes periciales.
+
+### 2. Guías Metodológicas Internacionales
+* <img src="https://fonts.gstatic.com/s/i/materialicons/memory/v16/24px.svg" width="16" height="16" style="vertical-align:middle;" /> **RFC 3227 (IETF):** *Guidelines for Evidence Collection and Archiving.* Protocolo del orden de volatilidad para la adquisición en caliente de memoria RAM, conexiones de red y registros efímeros antes de desenergizar sistemas.
+* <img src="https://fonts.gstatic.com/s/i/materialicons/phone_android/v16/24px.svg" width="16" height="16" style="vertical-align:middle;" /> **NIST SP 800-101 Rev. 1:** *Guidelines on Mobile Device Forensics.* Metodología forense para la extracción física, lógica y análisis de sistemas operativos móviles (Android e iOS).
+* <img src="https://fonts.gstatic.com/s/i/materialicons/security/v16/24px.svg" width="16" height="16" style="vertical-align:middle;" /> **NIST SP 800-86:** *Guide to Integrating Forensic Techniques into Incident Response.* Integración de técnicas forenses para la respuesta a incidentes de seguridad y preservación de trazas de red.
+* <img src="https://fonts.gstatic.com/s/i/materialicons/assignment_turned_in/v16/24px.svg" width="16" height="16" style="vertical-align:middle;" /> **Guía ACPO (Reino Unido, v5):** *Good Practice Guide for Digital Evidence.* Cuatro principios fundacionales sobre la no alteración del dispositivo original y la justificación de cada acción pericial.
+
+### 3. Ordenamiento Jurídico y Protocolos Nacionales (Venezuela)
+* <img src="https://fonts.gstatic.com/s/i/materialicons/gavel/v16/24px.svg" width="16" height="16" style="vertical-align:middle;" /> **Constitución de la República Bolivariana de Venezuela (CRBV, Arts. 28, 49, 60 y 110):** Tutela judicial efectiva, debido proceso, inviolabilidad de las comunicaciones privadas y autodeterminación informativa.
+* <img src="https://fonts.gstatic.com/s/i/materialicons/fact_check/v16/24px.svg" width="16" height="16" style="vertical-align:middle;" /> **Manual Único de Cadena de Custodia de Evidencias Físicas (MUCC-2017):** Protocolo obligatorio de rango legal del Ministerio Público y Órganos de Seguridad Ciudadana (CICPC) para la fijación, rotulación, resguardo y traslado inalterable de evidencias.
+* <img src="https://fonts.gstatic.com/s/i/materialicons/warning/v16/24px.svg" width="16" height="16" style="vertical-align:middle;" /> **Ley Especial Contra los Delitos Informáticos (Gaceta Oficial N° 37.313):** Tipificación y base penal frente a accesos indebidos, sabotajes, espionaje informático y falsificación de documentos.
+* <img src="https://fonts.gstatic.com/s/i/materialicons/fingerprint/v16/24px.svg" width="16" height="16" style="vertical-align:middle;" /> **Ley sobre Mensajes de Datos y Firmas Electrónicas (Gaceta Oficial N° 37.148):** Confiere plena eficacia probatoria a los datos en formato digital que conserven su integridad bajo algoritmos de hash y certificados válidos.
+* <img src="https://fonts.gstatic.com/s/i/materialicons/account_balance/v16/24px.svg" width="16" height="16" style="vertical-align:middle;" /> **Normativas SUSCERTE & Creación del CENIF (Gaceta Oficial N° 39.847):** Normas técnicas de la Superintendencia de Servicios de Certificación Electrónica (SUSCERTE) y directrices del Centro Nacional de Informática Forense para peritajes oficiales.
+* <img src="https://fonts.gstatic.com/s/i/materialicons/library_books/v16/24px.svg" width="16" height="16" style="vertical-align:middle;" /> **Compendio de Protocolos de Actuación (Tomos I y II, 2022-2023):** Normas de actuación pericial unificadas para el fortalecimiento de la investigación penal en el territorio nacional.
 
 ---
 
