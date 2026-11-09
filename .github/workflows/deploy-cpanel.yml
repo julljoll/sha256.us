@@ -33,7 +33,7 @@ jobs:
       - name: Deploy via FTPS to cPanel
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
-          server: ${{ secrets.FTP_SERVER }}
+          server: ${{ secrets.FTP_SERVER || 'ftp.sha256.us' }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           port: ${{ secrets.FTP_PORT || 21 }}
@@ -41,4 +41,3 @@ jobs:
           local-dir: ./dist/
           server-dir: ./
           dangerous-clean-slate: false
-
