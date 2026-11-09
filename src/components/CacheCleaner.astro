@@ -1,0 +1,158 @@
+---
+// CacheCleaner.astro - Botón para purgar caché local (Service Workers, CacheStorage, localStorage y recarga forzada)
+---
+
+<div class="sha-cache-widget">
+	<button
+		type="button"
+		class="sha-cache-btn"
+		id="btnPurgeCache"
+		title="Limpiar caché local y recargar la última versión del portal"
+		aria-label="Limpiar caché y recargar"
+	>
+		<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" id="cacheIcon">
+			<path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"></path>
+		</svg>
+		<span class="sha-cache-btn__text">Limpiar Caché</span>
+	</button>
+</div>
+
+<!-- Notificación Toast -->
+<div id="cacheToast" class="sha-cache-toast" style="display: none;" role="status" aria-live="polite">
+	<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="margin-right-05">
+		<path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
+	</svg>
+	<span>Caché purgada. Recargando versión fresca...</span>
+</div>
+
+<style>
+	.sha-cache-widget {
+		position: fixed;
+		bottom: 1rem;
+		right: 1rem;
+		z-index: 9998;
+	}
+
+	.sha-cache-btn {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.4rem;
+		background: rgba(26, 43, 75, 0.92);
+		backdrop-filter: blur(8px);
+		-webkit-backdrop-filter: blur(8px);
+		color: #ffffff;
+		border: 1px solid rgba(255, 255, 255, 0.2);
+		border-radius: 50px;
+		padding: 0.5rem 0.9rem;
+		font-size: 0.72rem;
+		font-weight: 700;
+		cursor: pointer;
+		box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+		transition: all 0.2s ease;
+		line-height: 1;
+	}
+
+	.sha-cache-btn:hover {
+		background: #005ea2;
+		border-color: #005ea2;
+		transform: translateY(-2px);
+		box-shadow: 0 6px 18px rgba(0, 94, 162, 0.4);
+	}
+
+	.sha-cache-btn:active svg {
+		transform: rotate(360deg);
+		transition: transform 0.5s ease;
+	}
+
+	.sha-cache-toast {
+		position: fixed;
+		bottom: 4rem;
+		right: 1rem;
+		background: #005ea2;
+		color: #ffffff;
+		padding: 0.65rem 1.15rem;
+		border-radius: 6px;
+		font-size: 0.8rem;
+		font-weight: 600;
+		display: flex;
+		align-items: center;
+		box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+		z-index: 10000;
+		animation: fadeIn 0.2s ease-out;
+	}
+
+	@keyframes fadeIn {
+		from { opacity: 0; transform: translateY(10px); }
+		to { opacity: 1; transform: translateY(0); }
+	}
+
+	@media (max-width: 640px) {
+		.sha-cache-widget {
+			bottom: 4.5rem;
+			right: 0.75rem;
+		}
+		.sha-cache-btn__text {
+			display: none;
+		}
+		.sha-cache-btn {
+			padding: 0.65rem;
+			border-radius: 50%;
+		}
+	}
+</style>
+
+<script>
+	(function () {
+		const btn = document.getElementById('btnPurgeCache');
+		const toast = document.getElementById('cacheToast');
+		const icon = document.getElementById('cacheIcon');
+
+		if (!btn) return;
+
+		btn.addEventListener('click', async () => {
+			if (icon) {
+				icon.style.transform = 'rotate(720deg)';
+				icon.style.transition = 'transform 0.8s ease';
+			}
+
+			// 1. Limpiar Service Workers si existen
+			if ('serviceWorker' in navigator) {
+				try {
+					const registrations = await navigator.serviceWorker.getRegistrations();
+					for (const reg of registrations) {
+						await reg.unregister();
+					}
+				} catch (e) {
+					console.warn('Error purgando service workers:', e);
+				}
+			}
+
+			// 2. Limpiar Caches de CacheStorage
+			if ('caches' in window) {
+				try {
+					const cacheNames = await caches.keys();
+					await Promise.all(cacheNames.map((name) => caches.delete(name)));
+				} catch (e) {
+					console.warn('Error purgando cache storage:', e);
+				}
+			}
+
+			// 3. Limpiar almacenamiento de sesión y local (respetando cookies para no desloguear si hubiera)
+			try {
+				sessionStorage.clear();
+			} catch (e) {}
+
+			// 4. Mostrar feedback visual
+			if (toast) {
+				toast.style.display = 'flex';
+			}
+
+			// 5. Recarga forzada desde el servidor con parámetro timestamp para romper caché HTTP
+			setTimeout(() => {
+				const url = new URL(window.location.href);
+				url.searchParams.set('_nocache', Date.now().toString());
+				window.location.replace(url.toString());
+			}, 700);
+		});
+	})();
+</script>

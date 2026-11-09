@@ -1,0 +1,164 @@
+---
+// CookieBanner.astro - Banner de cookies conforme a RGPD / ePrivacy y normativa de protección de datos
+---
+
+<div id="cookieBanner" class="sha-cookie-banner" role="dialog" aria-live="polite" aria-label="Consentimiento de cookies" style="display: none;">
+	<div class="sha-cookie-banner__inner">
+		<div class="sha-cookie-banner__content">
+			<div class="sha-cookie-banner__icon" aria-hidden="true">
+				<svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+					<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10c0-.64-.06-1.27-.18-1.87-.24-1.2-.84-2.26-1.7-3.08-.85-.82-1.92-1.38-3.12-1.55C8.4 4.3 7.6 3.32 7.6 2.2c0-.07.01-.13.01-.2C10.42 2.01 11.22 2 12 2zm-1.5 6.5c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5-1.5-.67-1.5-1.5.67-1.5 1.5-1.5zm-3 4c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5-1.5-.67-1.5-1.5.67-1.5 1.5-1.5zm6 3c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5-1.5-.67-1.5-1.5.67-1.5 1.5-1.5zm2-6c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5-1.5-.67-1.5-1.5.67-1.5 1.5-1.5z"/>
+				</svg>
+			</div>
+			<div class="sha-cookie-banner__text">
+				<p class="font-sans-xs margin-0 text-white line-height-sans-3">
+					<strong>Privacidad y Evidencia Digital en sha256.us:</strong> Utilizamos cookies técnicas estrictamente necesarias para garantizar el funcionamiento seguro del portal, navegación cifrada y rendimiento óptimo conforme a los estándares de seguridad pericial.
+				</p>
+			</div>
+		</div>
+
+		<div class="sha-cookie-banner__actions">
+			<button type="button" class="usa-button sha-cookie-btn sha-cookie-btn--accept" id="btnAcceptCookies">
+				Aceptar Todas
+			</button>
+			<button type="button" class="usa-button sha-cookie-btn sha-cookie-btn--essential" id="btnEssentialCookies">
+				Solo Esenciales
+			</button>
+		</div>
+	</div>
+</div>
+
+<style>
+	.sha-cookie-banner {
+		position: fixed;
+		bottom: 1rem;
+		left: 1rem;
+		right: 1rem;
+		max-width: 1100px;
+		margin: 0 auto;
+		background: rgba(15, 29, 53, 0.96);
+		backdrop-filter: blur(10px);
+		-webkit-backdrop-filter: blur(10px);
+		border: 1px solid rgba(255, 255, 255, 0.15);
+		border-left: 5px solid #005ea2;
+		border-radius: 8px;
+		box-shadow: 0 12px 36px rgba(0, 0, 0, 0.45);
+		z-index: 9999;
+		padding: 1rem 1.25rem;
+		animation: slideUp 0.3s ease-out forwards;
+	}
+
+	@keyframes slideUp {
+		from {
+			transform: translateY(100%);
+			opacity: 0;
+		}
+		to {
+			transform: translateY(0);
+			opacity: 1;
+		}
+	}
+
+	.sha-cookie-banner__inner {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: space-between;
+		gap: 1rem;
+	}
+
+	.sha-cookie-banner__content {
+		display: flex;
+		align-items: center;
+		gap: 0.75rem;
+		flex: 1;
+		min-width: 280px;
+	}
+
+	.sha-cookie-banner__icon {
+		color: #69b4e9;
+		flex-shrink: 0;
+	}
+
+	.sha-cookie-banner__actions {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 0.5rem;
+		flex-shrink: 0;
+	}
+
+	.sha-cookie-btn {
+		font-size: 0.78rem !important;
+		padding: 0.55rem 1rem !important;
+		min-height: auto !important;
+		border-radius: 4px !important;
+		margin: 0 !important;
+		font-weight: 700 !important;
+		cursor: pointer;
+		white-space: nowrap;
+	}
+
+	.sha-cookie-btn--accept {
+		background-color: #005ea2 !important;
+		color: #ffffff !important;
+		border: 1px solid #005ea2 !important;
+	}
+	.sha-cookie-btn--accept:hover {
+		background-color: #0050a4 !important;
+	}
+
+	.sha-cookie-btn--essential {
+		background-color: transparent !important;
+		color: #ffffff !important;
+		border: 1px solid rgba(255, 255, 255, 0.4) !important;
+	}
+	.sha-cookie-btn--essential:hover {
+		background-color: rgba(255, 255, 255, 0.1) !important;
+		border-color: #ffffff !important;
+	}
+
+	@media (max-width: 640px) {
+		.sha-cookie-banner {
+			bottom: 0.5rem;
+			left: 0.5rem;
+			right: 0.5rem;
+			padding: 0.85rem;
+		}
+		.sha-cookie-banner__actions {
+			width: 100%;
+		}
+		.sha-cookie-btn {
+			flex: 1;
+			text-align: center;
+		}
+	}
+</style>
+
+<script>
+	(function () {
+		const banner = document.getElementById('cookieBanner');
+		const btnAccept = document.getElementById('btnAcceptCookies');
+		const btnEssential = document.getElementById('btnEssentialCookies');
+		const COOKIE_KEY = 'sha256_cookie_consent';
+
+		if (!banner) return;
+
+		// Comprobar si ya existe consentimiento
+		const consent = localStorage.getItem(COOKIE_KEY);
+		if (!consent) {
+			banner.style.display = 'block';
+		}
+
+		function saveConsent(value: string) {
+			localStorage.setItem(COOKIE_KEY, value);
+			banner.style.animation = 'slideDown 0.25s ease-in forwards';
+			setTimeout(() => {
+				banner.style.display = 'none';
+			}, 250);
+		}
+
+		btnAccept?.addEventListener('click', () => saveConsent('all'));
+		btnEssential?.addEventListener('click', () => saveConsent('essential'));
+	})();
+</script>

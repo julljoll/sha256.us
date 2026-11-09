@@ -3,6 +3,8 @@ import type { ImageMetadata } from 'astro';
 import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
+import CookieBanner from '../components/CookieBanner.astro';
+import CacheCleaner from '../components/CacheCleaner.astro';
 
 interface Props {
 	title?: string;
@@ -49,6 +51,8 @@ const {
 			<slot />
 		</main>
 		<Footer />
+		<CookieBanner />
+		<CacheCleaner />
 	</body>
 </html>
 
