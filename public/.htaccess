@@ -8,11 +8,14 @@ DirectoryIndex index.html
 # 1. Página 404 personalizada
 ErrorDocument 404 /404.html
 
-# 2. Forzar HTTPS en producción
+# 2. Forzar HTTPS y Redirección de sitemap.xml a sitemap-index.xml
 <IfModule mod_rewrite.c>
   RewriteEngine On
   RewriteCond %{HTTPS} off
   RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+  # Redireccionar peticiones del sitemap viejo al nuevo sitemap oficial de Astro
+  RewriteRule ^sitemap\.xml$ /sitemap-index.xml [R=301,L]
 </IfModule>
 
 # 3. Cabeceras de Seguridad (Estándar Laboratorio de Ciberseguridad)
