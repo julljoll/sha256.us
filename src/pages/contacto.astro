@@ -6,59 +6,96 @@ import { COMPANY, CONTACT, FOUNDER, SITE_TITLE } from '../consts';
 <BaseLayout
 	title={`Contacto y Ubicación | ${SITE_TITLE}`}
 	description={`Canales de atención pericial de ${COMPANY.name}. Dirección pericial a cargo de ${FOUNDER.name} (${FOUNDER.handle}). Sede principal en Quíbor, Lara, Venezuela.`}
-	mainClass="padding-y-6"
+	mainClass="padding-y-5 tablet:padding-y-6"
 >
 	<div class="grid-container maxw-desktop margin-x-auto padding-x-2">
 		<!-- Header de página -->
-		<div class="margin-bottom-6 border-bottom-2px border-base-lighter padding-bottom-3">
-			<span class="usa-tag bg-primary text-white margin-bottom-1">CANALES DE ATENCIÓN</span>
+		<div class="margin-bottom-4 border-bottom-2px border-base-lighter padding-bottom-3">
+			<span class="usa-tag bg-primary text-white margin-bottom-1 font-sans-3xs">CANALES DE ATENCIÓN</span>
 			<h1 class="font-sans-2xl tablet:font-sans-3xl text-bold text-primary-darker margin-top-1 margin-bottom-2">
 				Contáctanos — Laboratorio {COMPANY.name}
 			</h1>
-			<p class="font-sans-md text-base-dark line-height-sans-4 maxw-tablet">
-				Estamos a tu disposición para atender consultas técnicas, recibir dispositivos por consignación pericial y coordinar informes para tribunales.
+			<p class="font-sans-md text-base-dark line-height-sans-4 maxw-tablet margin-bottom-0">
+				Estamos a tu disposición para atender consultas técnicas preliminares, recibir dispositivos por consignación pericial y coordinar informes para tribunales.
 			</p>
+		</div>
+
+		<!-- Opción Rápida en 1 Toque (Pensada para usuarios no técnicos y móviles) -->
+		<div class="bg-primary-lighter border-1px border-primary-light radius-lg padding-3 tablet:padding-4 margin-bottom-5 shadow-1">
+			<div class="display-flex flex-wrap flex-align-center flex-justify-between gap-2">
+				<div class="flex-1 minw-mobile">
+					<span class="usa-tag bg-primary text-white font-sans-3xs margin-bottom-05">ATENCIÓN DIRECTA</span>
+					<h2 class="font-sans-md text-bold text-primary-darker margin-y-05">
+						¿Prefieres atención inmediata sin llenar formularios?
+					</h2>
+					<p class="font-sans-xs text-base-dark margin-0">
+						Escribe directamente por WhatsApp al perito principal para coordinar la recepción de tu evidencia o evaluar la urgencia de tu caso.
+					</p>
+				</div>
+				<div class="width-full tablet:width-auto">
+					<a
+						href={CONTACT.whatsapp}
+						target="_blank"
+						rel="noopener noreferrer"
+						class="usa-button usa-button--secondary width-full tablet:width-auto text-center display-inline-flex flex-align-center flex-justify-center font-sans-xs"
+					>
+						<svg width="18" height="18" viewBox="0 0 24 24" fill="#25D366" aria-hidden="true" style="margin-right:6px">
+							<path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.23 8.23 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24m4.52 11.66c-.25-.13-1.47-.72-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.13-1.06-.39-2.02-1.25-.75-.67-1.25-1.5-1.4-1.75-.15-.25-.02-.39.11-.51.11-.11.25-.29.37-.44.13-.14.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.56-1.34-.76-1.84-.2-.49-.4-.42-.56-.43h-.47c-.17 0-.44.06-.67.31-.23.25-.87.85-.87 2.07 0 1.22.89 2.4 1.01 2.57.13.17 1.75 2.67 4.24 3.75.59.26 1.05.41 1.41.53.6.19 1.14.16 1.57.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.08.15-1.18-.06-.1-.23-.17-.48-.29z"/>
+						</svg>
+						Escribir a WhatsApp ({CONTACT.phone.display}) &rarr;
+					</a>
+				</div>
+			</div>
 		</div>
 
 		<div class="grid-row grid-gap margin-bottom-8">
 			<!-- Formulario de Contacto Funcional -->
 			<div class="tablet:grid-col-7 margin-bottom-4 tablet:margin-bottom-0">
-				<div class="bg-white padding-4 tablet:padding-6 radius-lg shadow-1 border-1px border-base-lighter">
+				<div class="bg-white padding-3 tablet:padding-6 radius-lg shadow-1 border-1px border-base-lighter">
 					<h2 class="font-sans-xl text-bold text-primary-darker margin-top-0 margin-bottom-2">
-						Envíanos un mensaje sobre tu caso
+						Envíanos los datos de tu caso
 					</h2>
-					<p class="font-sans-xs text-base-dark margin-bottom-4">
-						Completa los datos del requerimiento para canalizarlo de inmediato con el equipo pericial a través de WhatsApp o Correo Institucional.
+					<p class="font-sans-xs text-base-dark margin-bottom-3">
+						Completa el siguiente formulario para canalizar tu solicitud por WhatsApp o Correo Institucional:
 					</p>
+
+					<!-- Mensaje de Validación Visual USWDS -->
+					<div id="contactFormAlert" class="usa-alert usa-alert--warning margin-bottom-3" style="display: none;" role="alert">
+						<div class="usa-alert__body">
+							<p class="usa-alert__text font-sans-xs" id="contactFormAlertText">
+								Por favor completa Nombre, Correo Electrónico y el Mensaje para continuar.
+							</p>
+						</div>
+					</div>
 
 					<form class="usa-form maxw-full" id="contactForm">
 						<label class="usa-label font-sans-xs text-bold" for="nombre">Nombre Completo o Razón Social</label>
-						<input class="usa-input width-full" id="nombre" name="nombre" type="text" required />
+						<input class="usa-input width-full" id="nombre" name="nombre" type="text" required placeholder="Ej: Abg. Carlos Mendoza o Tu Nombre" />
 
 						<label class="usa-label font-sans-xs text-bold margin-top-2" for="email">Correo Electrónico</label>
-						<input class="usa-input width-full" id="email" name="email" type="email" required />
+						<input class="usa-input width-full" id="email" name="email" type="email" required placeholder="tu-correo@ejemplo.com" />
 
 						<label class="usa-label font-sans-xs text-bold margin-top-2" for="telefono">Teléfono / WhatsApp</label>
 						<input class="usa-input width-full" id="telefono" name="telefono" type="tel" placeholder="+57 316 3931945" />
 
-						<label class="usa-label font-sans-xs text-bold margin-top-2" for="servicio">Tipo de Evidencia o Servicio</label>
+						<label class="usa-label font-sans-xs text-bold margin-top-2" for="servicio">¿Qué tipo de problema necesitas resolver?</label>
 						<select class="usa-select width-full" id="servicio" name="servicio">
-							<option value="Peritaje Judicial de Informática Forense">Peritaje Judicial de Informática Forense</option>
-							<option value="Peritaje de Dispositivo Móvil (WhatsApp, Audios, etc.)">Peritaje de Dispositivo Móvil (WhatsApp, Audios, etc.)</option>
-							<option value="Reparación / Extracción de Disco o Servidor">Reparación / Extracción de Disco o Servidor</option>
-							<option value="Auditoría de Contratos Digitales o Correos">Auditoría de Contratos Digitales o Correos</option>
-							<option value="Otra consulta pericial">Otra consulta pericial</option>
+							<option value="Peritaje Judicial de Informática Forense">Peritaje Judicial para Juicio (Pruebas digitales)</option>
+							<option value="Peritaje de Dispositivo Móvil (WhatsApp, Audios, etc.)">Certificación de WhatsApp, Teléfono o Mensajes</option>
+							<option value="Reparación / Extracción de Disco o Servidor">Recuperación de Archivos en Disco o Memoria dañada</option>
+							<option value="Auditoría de Contratos Digitales o Correos">Verificación de Contrato PDF, Firma o Correo</option>
+							<option value="Otra consulta pericial">Otra consulta o asesoría técnica</option>
 						</select>
 
-						<label class="usa-label font-sans-xs text-bold margin-top-2" for="mensaje">Detalles del caso o evidencia</label>
-						<textarea class="usa-textarea width-full" id="mensaje" name="mensaje" rows="4" required placeholder="Describe brevemente la situación, urgencia o estado del medio digital..."></textarea>
+						<label class="usa-label font-sans-xs text-bold margin-top-2" for="mensaje">Detalles de la situación</label>
+						<textarea class="usa-textarea width-full" id="mensaje" name="mensaje" rows="4" required placeholder="Describe brevemente qué ocurrió, qué archivos necesitas o si tienes una fecha límite de tribunal..."></textarea>
 
 						<div class="display-flex flex-wrap gap-2 margin-top-3">
-							<button class="usa-button usa-button--primary" type="button" id="btnWhatsapp">
+							<button class="usa-button usa-button--primary width-full tablet:width-auto text-center" type="button" id="btnWhatsapp">
 								Enviar por WhatsApp &rarr;
 							</button>
-							<button class="usa-button usa-button--outline" type="button" id="btnEmail">
-								Enviar por Email &rarr;
+							<button class="usa-button usa-button--outline width-full tablet:width-auto text-center" type="button" id="btnEmail">
+								Enviar por Correo &rarr;
 							</button>
 						</div>
 					</form>
@@ -67,7 +104,7 @@ import { COMPANY, CONTACT, FOUNDER, SITE_TITLE } from '../consts';
 
 			<!-- Datos de Contacto y Ubicación -->
 			<div class="tablet:grid-col-5">
-				<div class="bg-white padding-4 tablet:padding-6 radius-lg shadow-1 border-1px border-base-lighter height-full display-flex flex-column">
+				<div class="bg-white padding-3 tablet:padding-6 radius-lg shadow-1 border-1px border-base-lighter height-full display-flex flex-column">
 					<h2 class="font-sans-xl text-bold text-primary-darker margin-top-0 margin-bottom-3">
 						Información Oficial
 					</h2>
@@ -152,11 +189,25 @@ import { COMPANY, CONTACT, FOUNDER, SITE_TITLE } from '../consts';
 
 <script>
 	(function () {
-		const form = document.getElementById('contactForm') as HTMLFormElement;
 		const btnWhatsapp = document.getElementById('btnWhatsapp');
 		const btnEmail = document.getElementById('btnEmail');
+		const alertBox = document.getElementById('contactFormAlert');
+		const alertText = document.getElementById('contactFormAlertText');
+
+		function showAlert(msg: string) {
+			if (alertBox && alertText) {
+				alertText.textContent = msg;
+				alertBox.style.display = 'block';
+				alertBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+			}
+		}
+
+		function hideAlert() {
+			if (alertBox) alertBox.style.display = 'none';
+		}
 
 		function getFormData() {
+			hideAlert();
 			const nombre = (document.getElementById('nombre') as HTMLInputElement)?.value.trim();
 			const email = (document.getElementById('email') as HTMLInputElement)?.value.trim();
 			const telefono = (document.getElementById('telefono') as HTMLInputElement)?.value.trim();
@@ -164,7 +215,7 @@ import { COMPANY, CONTACT, FOUNDER, SITE_TITLE } from '../consts';
 			const mensaje = (document.getElementById('mensaje') as HTMLTextAreaElement)?.value.trim();
 
 			if (!nombre || !email || !mensaje) {
-				alert('Por favor completa al menos Nombre, Correo Electrónico y el Mensaje.');
+				showAlert('Por favor completa al menos Nombre, Correo Electrónico y el Mensaje.');
 				return null;
 			}
 

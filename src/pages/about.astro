@@ -6,23 +6,51 @@ import { COMPANY, CONTACT, FOUNDER, SITE_TITLE, STANDARDS } from '../consts';
 <BaseLayout
 	title={`Sobre Nosotros | ${SITE_TITLE}`}
 	description={`Conoce a sha256.us y a su fundador ${FOUNDER.name} (${FOUNDER.handle}). Laboratorio de informática forense, análisis de evidencias digitales, peritajes judiciales y cadena de custodia bajo ISO/IEC y NIST.`}
-	mainClass="padding-y-6"
+	mainClass="padding-y-5 tablet:padding-y-6"
 >
 	<div class="grid-container maxw-desktop margin-x-auto padding-x-2">
 		<!-- Header de página -->
-		<div class="margin-bottom-6 border-bottom-2px border-base-lighter padding-bottom-3">
-			<span class="usa-tag bg-primary text-white margin-bottom-1">CONÓCENOS</span>
+		<div class="margin-bottom-4 border-bottom-2px border-base-lighter padding-bottom-3">
+			<span class="usa-tag bg-primary text-white margin-bottom-1 font-sans-3xs">CONÓCENOS</span>
 			<h1 class="font-sans-2xl tablet:font-sans-3xl text-bold text-primary-darker margin-top-1 margin-bottom-2">
 				Sobre {COMPANY.name} — Análisis Forense Digital Seguro
 			</h1>
-			<p class="font-sans-md text-base-dark line-height-sans-4 maxw-tablet">
-				Firma corporativa y laboratorio multidisciplinario comprometido con la rigurosidad científica, la ética y la inviolabilidad de la evidencia digital.
+			<p class="font-sans-md text-base-dark line-height-sans-4 maxw-tablet margin-bottom-3">
+				Firma corporativa y laboratorio pericial comprometido con la rigurosidad científica, la ética y la inviolabilidad de la evidencia digital.
 			</p>
+
+			<!-- 3 Pilares Fundamentales Escaneables -->
+			<div class="grid-row grid-gap margin-top-2">
+				<div class="tablet:grid-col-4 margin-bottom-2 tablet:margin-bottom-0">
+					<div class="bg-white padding-3 radius-md border-top-05 border-primary shadow-1 height-full">
+						<strong class="font-sans-xs text-primary-darker display-block margin-bottom-05">1. Evidencia Inalterable</strong>
+						<span class="font-sans-3xs text-base-dark line-height-sans-3">
+							Cálculo matemático con el algoritmo SHA-256 para demostrar que ningún archivo fue manipulado.
+						</span>
+					</div>
+				</div>
+				<div class="tablet:grid-col-4 margin-bottom-2 tablet:margin-bottom-0">
+					<div class="bg-white padding-3 radius-md border-top-05 border-primary shadow-1 height-full">
+						<strong class="font-sans-xs text-primary-darker display-block margin-bottom-05">2. Validez ante Tribunales</strong>
+						<span class="font-sans-3xs text-base-dark line-height-sans-3">
+							Protocolos formales y cadena de custodia oficial blindada para que el juez admita la prueba.
+						</span>
+					</div>
+				</div>
+				<div class="tablet:grid-col-4">
+					<div class="bg-white padding-3 radius-md border-top-05 border-primary shadow-1 height-full">
+						<strong class="font-sans-xs text-primary-darker display-block margin-bottom-05">3. Explicación Clara</strong>
+						<span class="font-sans-3xs text-base-dark line-height-sans-3">
+							Traducimos la complejidad informática a conclusiones comprensibles para abogados y clientes.
+						</span>
+					</div>
+				</div>
+			</div>
 		</div>
 
 		<div class="grid-row grid-gap margin-bottom-8">
 			<div class="tablet:grid-col-8">
-				<div class="bg-white padding-4 tablet:padding-6 radius-lg shadow-1 border-1px border-base-lighter margin-bottom-4">
+				<div class="bg-white padding-3 tablet:padding-6 radius-lg shadow-1 border-1px border-base-lighter margin-bottom-4">
 					<h2 class="font-sans-xl text-bold text-primary-darker margin-top-0 margin-bottom-2">Nuestra Misión Institucional</h2>
 					<p class="font-sans-sm text-base-dark line-height-sans-4 margin-bottom-3">
 						En <strong>{COMPANY.name}</strong> analizamos evidencias digitales empleando tecnología avanzada y metodología forense estandarizada para garantizar que cualquier elemento de convicción mantenga su integridad, autenticidad e inalterabilidad frente a tribunales y órganos judiciales.
@@ -32,7 +60,7 @@ import { COMPANY, CONTACT, FOUNDER, SITE_TITLE, STANDARDS } from '../consts';
 					</p>
 
 					<!-- Bloque de Dirección Pericial: jull.sha256.us -->
-					<div class="bg-primary-lighter padding-4 radius-lg border-left-1 border-primary margin-top-4 margin-bottom-4">
+					<div class="bg-primary-lighter padding-3 tablet:padding-4 radius-lg border-left-1 border-primary margin-top-4 margin-bottom-4">
 						<span class="font-sans-3xs text-bold text-primary text-uppercase">DIRECCIÓN TÉCNICA Y ESPECIALISTA LÍDER</span>
 						<h3 class="font-sans-lg text-bold text-primary-darker margin-top-05 margin-bottom-2">
 							{FOUNDER.name} — <a href={FOUNDER.url} target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">{FOUNDER.handle}</a>
@@ -49,10 +77,10 @@ import { COMPANY, CONTACT, FOUNDER, SITE_TITLE, STANDARDS } from '../consts';
 							))}
 						</ul>
 						<div class="display-flex flex-wrap gap-2">
-							<a href={FOUNDER.url} target="_blank" rel="noopener noreferrer" class="usa-button usa-button--primary font-sans-3xs">
+							<a href={FOUNDER.url} target="_blank" rel="noopener noreferrer" class="usa-button usa-button--primary font-sans-xs">
 								Visitar Perfil en {FOUNDER.handle} &rarr;
 							</a>
-							<a href={FOUNDER.linkedin} target="_blank" rel="noopener noreferrer" class="usa-button usa-button--outline font-sans-3xs">
+							<a href={FOUNDER.linkedin} target="_blank" rel="noopener noreferrer" class="usa-button usa-button--outline font-sans-xs">
 								Perfil LinkedIn
 							</a>
 						</div>
@@ -75,7 +103,7 @@ import { COMPANY, CONTACT, FOUNDER, SITE_TITLE, STANDARDS } from '../consts';
 			</div>
 
 			<!-- Sidebar con normas y contacto rápido -->
-			<div class="tablet:grid-col-4">
+			<div class="tablet:grid-col-4 margin-top-4 tablet:margin-top-0">
 				<div class="bg-white padding-4 radius-lg shadow-1 border-1px border-base-lighter margin-bottom-4">
 					<h3 class="font-sans-md text-bold text-primary-darker margin-top-0 margin-bottom-2">Acreditaciones Técnicas</h3>
 					<ul class="list-style-none padding-0 margin-0">

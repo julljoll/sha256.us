@@ -15,28 +15,23 @@ const navItems = [
 <section class="usa-banner" aria-label="Portal oficial sha256.us">
   <div class="usa-banner__header sha-banner__header">
     <div class="usa-banner__inner sha-banner__inner">
-      <div class="grid-col-auto margin-right-1">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="text-primary margin-top-neg-05" style="vertical-align:middle">
+      <div class="grid-col-auto margin-right-1 display-flex flex-align-center">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="text-primary" style="vertical-align:middle">
           <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/>
         </svg>
       </div>
       <div class="grid-col-fill">
         <p class="usa-banner__header-text">
-          <strong>sha256.us</strong> — Empresa de Informática Forense Digital &bull; Dirección Pericial: <a href="https://jull.sha256.us" target="_blank" rel="noopener noreferrer" class="text-white text-underline">jull.sha256.us</a>
+          <strong>sha256.us</strong> — Laboratorio de Informática Forense
+          <span class="display-none tablet:display-inline">&bull; Dirección Pericial: <a href="https://jull.sha256.us" target="_blank" rel="noopener noreferrer" class="text-white text-underline">jull.sha256.us</a></span>
         </p>
       </div>
-      <div class="grid-col-auto display-none tablet:display-flex flex-align-center">
-        <a href={CONTACT.whatsapp} target="_blank" rel="noopener noreferrer" class="sha-banner__contact margin-right-2" title={`WhatsApp: ${CONTACT.phone.display}`}>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="#25D366" aria-hidden="true" style="vertical-align:middle;margin-right:4px">
+      <div class="grid-col-auto display-flex flex-align-center">
+        <a href={CONTACT.whatsapp} target="_blank" rel="noopener noreferrer" class="sha-banner__contact" title={`WhatsApp: ${CONTACT.phone.display}`}>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="#25D366" aria-hidden="true" style="vertical-align:middle;margin-right:3px">
             <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.23 8.23 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24m4.52 11.66c-.25-.13-1.47-.72-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.13-1.06-.39-2.02-1.25-.75-.67-1.25-1.5-1.4-1.75-.15-.25-.02-.39.11-.51.11-.11.25-.29.37-.44.13-.14.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.56-1.34-.76-1.84-.2-.49-.4-.42-.56-.43h-.47c-.17 0-.44.06-.67.31-.23.25-.87.85-.87 2.07 0 1.22.89 2.4 1.01 2.57.13.17 1.75 2.67 4.24 3.75.59.26 1.05.41 1.41.53.6.19 1.14.16 1.57.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.08.15-1.18-.06-.1-.23-.17-.48-.29z"/>
           </svg>
-          {CONTACT.phone.display}
-        </a>
-        <a href={`mailto:${CONTACT.email}`} class="sha-banner__contact">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="vertical-align:middle;margin-right:3px">
-            <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
-          </svg>
-          {CONTACT.email}
+          <span>{CONTACT.phone.display}</span>
         </a>
       </div>
     </div>
@@ -65,20 +60,38 @@ const navItems = [
 
       <!-- Top-right actions -->
       <div class="sha-header__actions">
-        <a href="/contacto" class="usa-button usa-button--primary sha-header__cta">
+        <!-- Direct Desktop CTA -->
+        <a href="/contacto" class="usa-button usa-button--primary sha-header__cta display-none tablet:display-inline-flex">
           Solicitar Peritaje
         </a>
-        <!-- Mobile menu toggle -->
+
+        <!-- Quick 1-Touch Mobile WhatsApp Pill -->
+        <a
+          href={CONTACT.whatsapp}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="sha-header__mobile-wa display-inline-flex tablet:display-none"
+          title="Atención directa por WhatsApp"
+          aria-label="Atención directa por WhatsApp"
+        >
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#25D366" aria-hidden="true">
+            <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.23 8.23 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24m4.52 11.66c-.25-.13-1.47-.72-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.13-1.06-.39-2.02-1.25-.75-.67-1.25-1.5-1.4-1.75-.15-.25-.02-.39.11-.51.11-.11.25-.29.37-.44.13-.14.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.56-1.34-.76-1.84-.2-.49-.4-.42-.56-.43h-.47c-.17 0-.44.06-.67.31-.23.25-.87.85-.87 2.07 0 1.22.89 2.4 1.01 2.57.13.17 1.75 2.67 4.24 3.75.59.26 1.05.41 1.41.53.6.19 1.14.16 1.57.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.08.15-1.18-.06-.1-.23-.17-.48-.29z"/>
+          </svg>
+          <span>WhatsApp</span>
+        </a>
+
+        <!-- Mobile menu toggle button with 44px minimum touch target -->
         <button
           class="sha-header__menu-toggle"
           id="mobileMenuToggle"
           aria-controls="mobileNav"
           aria-expanded="false"
-          aria-label="Abrir menú"
+          aria-label="Abrir menú de navegación"
         >
           <span class="sha-hamburger" id="hamburgerIcon" aria-hidden="true">
             <span></span><span></span><span></span>
           </span>
+          <span class="sha-menu-text">Menú</span>
         </button>
       </div>
     </div>
@@ -92,11 +105,30 @@ const navItems = [
           </li>
         ))}
       </ul>
-      <!-- Nav secondary: standards badge -->
+
+      <!-- Nav secondary: standards badge (desktop) -->
       <div class="sha-nav__badges display-none tablet:display-flex">
         <span class="sha-badge">ISO/IEC 27037</span>
         <span class="sha-badge">NIST SP 800</span>
         <span class="sha-badge sha-badge--accent">MUCC-2017</span>
+      </div>
+
+      <!-- Mobile drawer quick actions -->
+      <div class="sha-nav__mobile-actions display-flex tablet:display-none flex-column gap-1 padding-2 bg-base-lightest border-top-1px border-base-lighter">
+        <a href="/contacto" class="usa-button usa-button--primary width-full text-center">
+          Solicitar Peritaje Forense
+        </a>
+        <a
+          href={CONTACT.whatsapp}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="usa-button usa-button--outline width-full text-center text-primary-darker display-flex flex-align-center flex-justify-center"
+        >
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#25D366" aria-hidden="true" style="margin-right:6px">
+            <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.23 8.23 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24m4.52 11.66c-.25-.13-1.47-.72-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.13-1.06-.39-2.02-1.25-.75-.67-1.25-1.5-1.4-1.75-.15-.25-.02-.39.11-.51.11-.11.25-.29.37-.44.13-.14.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.56-1.34-.76-1.84-.2-.49-.4-.42-.56-.43h-.47c-.17 0-.44.06-.67.31-.23.25-.87.85-.87 2.07 0 1.22.89 2.4 1.01 2.57.13.17 1.75 2.67 4.24 3.75.59.26 1.05.41 1.41.53.6.19 1.14.16 1.57.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.08.15-1.18-.06-.1-.23-.17-.48-.29z"/>
+          </svg>
+          Hablar por WhatsApp
+        </a>
       </div>
     </nav>
   </div>
@@ -120,14 +152,16 @@ const navItems = [
   }
   .usa-banner__header-text {
     font-size: 0.72rem;
-    color: rgba(255,255,255,0.82);
+    color: rgba(255,255,255,0.85);
     margin: 0;
   }
   .sha-banner__contact {
-    font-size: 0.7rem;
-    color: rgba(255,255,255,0.78);
+    font-size: 0.72rem;
+    color: rgba(255,255,255,0.9);
     text-decoration: none;
     white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
     transition: color 0.2s;
   }
   .sha-banner__contact:hover { color: #fff; }
@@ -153,7 +187,7 @@ const navItems = [
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0.875rem 0;
+    padding: 0.75rem 0;
     border-bottom: 1px solid #e1e7ee;
   }
   .sha-header__logo-wrap { display: flex; align-items: center; }
@@ -164,7 +198,7 @@ const navItems = [
     text-decoration: none;
   }
   .sha-header__logo-img {
-    height: 48px;
+    height: 46px;
     width: auto;
     object-fit: contain;
   }
@@ -191,12 +225,28 @@ const navItems = [
   .sha-header__actions {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
+    gap: 0.5rem;
   }
   .sha-header__cta {
     font-size: 0.8rem;
-    padding: 0.5rem 1rem;
+    padding: 0.55rem 1.15rem;
     white-space: nowrap;
+  }
+
+  /* Mobile WhatsApp Direct Pill */
+  .sha-header__mobile-wa {
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.45rem 0.65rem;
+    background-color: #f0fdf4;
+    border: 1px solid #22c55e;
+    color: #15803d;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-decoration: none !important;
+    white-space: nowrap;
+    min-height: 40px;
   }
 
   /* ====== NAV ROW ====== */
@@ -264,19 +314,30 @@ const navItems = [
   /* ====== MOBILE MENU TOGGLE ====== */
   .sha-header__menu-toggle {
     display: none;
-    background: none;
-    border: 2px solid #005ea2;
+    background: #f8fafc;
+    border: 1.5px solid #005ea2;
     cursor: pointer;
-    padding: 0.4rem;
-    border-radius: 2px;
+    padding: 0.45rem 0.65rem;
+    border-radius: 4px;
     align-items: center;
     justify-content: center;
+    gap: 0.4rem;
+    min-height: 42px;
+    min-width: 44px;
+    touch-action: manipulation;
+  }
+  .sha-menu-text {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #005ea2;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
   }
   .sha-hamburger {
     display: flex;
     flex-direction: column;
-    gap: 4px;
-    width: 22px;
+    gap: 3.5px;
+    width: 18px;
   }
   .sha-hamburger span {
     display: block;
@@ -288,10 +349,10 @@ const navItems = [
 
   /* Mobile styles */
   @media (max-width: 767px) {
-    .sha-header__cta { display: none; }
     .sha-header__menu-toggle { display: flex; }
     .sha-header__logo-img { height: 38px; }
-    .sha-header__logo-name { font-size: 1rem; }
+    .sha-header__logo-name { font-size: 1.05rem; }
+    .sha-header__logo-tagline { font-size: 0.6rem; }
 
     .sha-header__nav {
       display: none;
@@ -299,18 +360,19 @@ const navItems = [
       align-items: stretch;
       background: #fff;
       border-top: 1px solid #e1e7ee;
-      padding: 0.5rem 0;
+      padding: 0.25rem 0 0 0;
     }
     .sha-header__nav.is-open { display: flex; }
     .sha-nav__list { flex-direction: column; }
     :global(.sha-nav__link) {
-      padding: 0.875rem 1rem;
+      padding: 0.95rem 1.25rem;
+      font-size: 0.95rem;
       border-bottom: 1px solid #f0f2f5;
       border-left: 4px solid transparent;
     }
     :global(.sha-nav__link.active) {
       border-left-color: #005ea2;
-      border-bottom-color: transparent;
+      border-bottom-color: #f0f2f5;
       background: rgba(0,94,162,0.04);
     }
     .sha-nav__badges { display: none !important; }
@@ -325,22 +387,48 @@ const navItems = [
 
     if (!toggle || !nav) return;
 
+    function closeNav() {
+      nav?.classList.remove('is-open');
+      toggle?.setAttribute('aria-expanded', 'false');
+      toggle?.setAttribute('aria-label', 'Abrir menú de navegación');
+      if (icon) {
+        const spans = icon.querySelectorAll('span');
+        spans.forEach((s: Element) => {
+          (s as HTMLElement).style.transform = '';
+          (s as HTMLElement).style.opacity = '';
+        });
+      }
+    }
+
     toggle.addEventListener('click', () => {
       const isOpen = nav.classList.toggle('is-open');
       toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-      toggle.setAttribute('aria-label', isOpen ? 'Cerrar menú' : 'Abrir menú');
+      toggle.setAttribute('aria-label', isOpen ? 'Cerrar menú' : 'Abrir menú de navegación');
       if (icon) {
         const spans = icon.querySelectorAll('span');
         if (isOpen) {
-          (spans[0] as HTMLElement).style.transform = 'translateY(6px) rotate(45deg)';
+          (spans[0] as HTMLElement).style.transform = 'translateY(5.5px) rotate(45deg)';
           (spans[1] as HTMLElement).style.opacity = '0';
-          (spans[2] as HTMLElement).style.transform = 'translateY(-6px) rotate(-45deg)';
+          (spans[2] as HTMLElement).style.transform = 'translateY(-5.5px) rotate(-45deg)';
         } else {
           spans.forEach((s: Element) => {
             (s as HTMLElement).style.transform = '';
             (s as HTMLElement).style.opacity = '';
           });
         }
+      }
+    });
+
+    // Close on link click in mobile menu
+    nav.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', closeNav);
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && nav.classList.contains('is-open')) {
+        closeNav();
+        toggle.focus();
       }
     });
   })();

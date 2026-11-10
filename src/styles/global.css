@@ -15,7 +15,7 @@
   max-width: 100% !important;
   margin-right: 0 !important;
   height: auto !important;
-  min-height: 2.75rem !important;
+  min-height: 2.75rem !important; /* 44px minimum touch target WCAG 2.2 */
   line-height: 1.25 !important;
   padding: 0.75rem 1.25rem !important;
   display: inline-flex !important;
@@ -24,6 +24,17 @@
   word-break: normal;
   overflow-wrap: normal;
   vertical-align: middle;
+  touch-action: manipulation;
+}
+
+/* Prevent auto-zoom on iOS/Android devices when focusing form inputs */
+@media (max-width: 767px) {
+  .usa-input,
+  .usa-select,
+  .usa-textarea {
+    font-size: 16px !important;
+    line-height: 1.4 !important;
+  }
 }
 
 /* When in flex containers, prevent shrinking awkwardly or breaking layout */
@@ -87,19 +98,21 @@
   column-count: 1;
   column-gap: 2.25rem;
   column-rule: 1px solid #dfe1e2;
-  text-align: justify;
+  text-align: left; /* Left alignment on mobile avoids awkward river of spaces */
   hyphens: auto;
 }
 
 @media (min-width: 768px) {
   .editorial-three-columns {
     column-count: 2;
+    text-align: justify;
   }
 }
 
 @media (min-width: 1024px) {
   .editorial-three-columns {
     column-count: 3;
+    text-align: justify;
   }
 }
 
@@ -162,20 +175,22 @@
   border-radius: 0 4px 4px 0;
 }
 
-
 /* ==============================================================================
    Blog Grid & Cards Global (sha256.us)
    ============================================================================== */
 .sha-blog-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 380px));
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
   gap: 1.5rem;
 }
+
 @media (max-width: 640px) {
   .sha-blog-grid {
     grid-template-columns: 1fr;
+    gap: 1.25rem;
   }
 }
+
 .sha-blog-card {
   background: #fff;
   border: 1px solid #dfe1e2;
@@ -187,16 +202,19 @@
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
   transition: box-shadow 0.2s ease, transform 0.15s ease;
 }
+
 .sha-blog-card:hover {
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
   transform: translateY(-2px);
 }
+
 .sha-blog-card__media {
   width: 100%;
   aspect-ratio: 16 / 9;
   overflow: hidden;
   background-color: #f0f2f5;
 }
+
 .sha-blog-card__img {
   width: 100%;
   height: 100%;
@@ -204,9 +222,11 @@
   display: block;
   transition: transform 0.3s ease;
 }
+
 .sha-blog-card:hover .sha-blog-card__img {
   transform: scale(1.04);
 }
+
 .sha-blog-card__body {
   padding: 1.25rem 1.5rem 1.5rem;
   display: flex;
@@ -214,12 +234,20 @@
   flex: 1;
   gap: 0.65rem;
 }
+
+@media (max-width: 480px) {
+  .sha-blog-card__body {
+    padding: 1rem 1.15rem 1.25rem;
+  }
+}
+
 .sha-blog-card__meta {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 0.25rem;
 }
+
 .sha-blog-card__date {
   font-size: 0.72rem;
   color: #71767a;
@@ -227,21 +255,25 @@
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
+
 .sha-blog-card__title {
   font-size: 1.05rem;
   font-weight: 700;
   margin: 0;
   line-height: 1.35;
 }
+
 .sha-blog-card__title a {
   color: #1a2b4b;
   text-decoration: none;
   transition: color 0.15s ease;
 }
+
 .sha-blog-card__title a:hover {
   color: #005ea2;
   text-decoration: underline;
 }
+
 .sha-blog-card__desc {
   font-size: 0.85rem;
   color: #3d4551;
@@ -249,6 +281,7 @@
   margin: 0;
   flex: 1;
 }
+
 .sha-blog-card__btn {
   margin-top: 1rem !important;
   width: 100% !important;
@@ -264,8 +297,107 @@
   display: block;
   box-sizing: border-box;
 }
+
 .sha-blog-card__btn:hover {
   background-color: #0050a4 !important;
   transform: translateY(-1px);
   text-decoration: none !important;
+}
+
+/* ==============================================================================
+   5. USWDS-Compliant Visual Scanning Utilities (Easy for Non-Tech Users)
+   ============================================================================== */
+.sha-plain-summary {
+  background: #f0f5fa;
+  border-left: 5px solid #005ea2;
+  border-radius: 0 6px 6px 0;
+  padding: 1rem 1.25rem;
+  margin: 1.25rem 0;
+}
+
+.sha-plain-summary__label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: #005ea2;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.35rem;
+}
+
+.sha-plain-summary__text {
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: #1a2b4b;
+  margin: 0;
+  font-weight: 500;
+}
+
+/* Quick Navigation Pills for Mobile */
+.sha-quick-nav {
+  display: flex;
+  gap: 0.5rem;
+  overflow-x: auto;
+  padding: 0.5rem 0 1rem 0;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.sha-quick-nav::-webkit-scrollbar {
+  display: none;
+}
+
+.sha-pill-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.55rem 0.95rem;
+  background-color: #ffffff;
+  border: 1px solid #005ea2;
+  color: #005ea2;
+  border-radius: 50px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-decoration: none !important;
+  white-space: nowrap;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  transition: all 0.15s ease;
+  touch-action: manipulation;
+}
+.sha-pill-link:hover,
+.sha-pill-link:active {
+  background-color: #005ea2;
+  color: #ffffff;
+}
+
+/* Clean Scan List with Checkmarks */
+.sha-check-list {
+  list-style: none;
+  padding: 0;
+  margin: 0.75rem 0;
+}
+.sha-check-list li {
+  position: relative;
+  padding-left: 1.75rem;
+  margin-bottom: 0.65rem;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: #1b1b1b;
+}
+.sha-check-list li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1.25rem;
+  height: 1.25rem;
+  background: #005ea2;
+  color: #fff;
+  font-weight: 800;
+  font-size: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
 }

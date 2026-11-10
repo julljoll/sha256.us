@@ -36,20 +36,23 @@
 	.sha-cache-btn {
 		display: inline-flex;
 		align-items: center;
+		justify-content: center;
 		gap: 0.4rem;
-		background: rgba(26, 43, 75, 0.92);
+		background: rgba(26, 43, 75, 0.94);
 		backdrop-filter: blur(8px);
 		-webkit-backdrop-filter: blur(8px);
 		color: #ffffff;
-		border: 1px solid rgba(255, 255, 255, 0.2);
+		border: 1px solid rgba(255, 255, 255, 0.25);
 		border-radius: 50px;
-		padding: 0.5rem 0.9rem;
-		font-size: 0.72rem;
+		padding: 0.55rem 0.95rem;
+		font-size: 0.75rem;
 		font-weight: 700;
 		cursor: pointer;
 		box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
 		transition: all 0.2s ease;
 		line-height: 1;
+		touch-action: manipulation;
+		min-height: 40px;
 	}
 
 	.sha-cache-btn:hover {
@@ -95,7 +98,11 @@
 			display: none;
 		}
 		.sha-cache-btn {
-			padding: 0.65rem;
+			padding: 0;
+			width: 44px;
+			height: 44px;
+			min-width: 44px;
+			min-height: 44px;
 			border-radius: 50%;
 		}
 	}
@@ -137,7 +144,7 @@
 				}
 			}
 
-			// 3. Limpiar almacenamiento de sesión y local (respetando cookies para no desloguear si hubiera)
+			// 3. Limpiar almacenamiento de sesión
 			try {
 				sessionStorage.clear();
 			} catch (e) {}
@@ -156,4 +163,3 @@
 		});
 	})();
 </script>
-

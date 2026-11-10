@@ -84,6 +84,12 @@ export const CORE_SERVICES = [
 		title: 'Informática Forense y Peritajes Judiciales',
 		sub: 'Dictámenes Periciales con Validez Procesal',
 		desc: 'Identificación, adquisición bit a bit, preservación con hash criptográfico SHA-256 y elaboración de informes periciales para procesos penales, civiles, laborales y mercantiles.',
+		simpleDesc: 'Validamos y certificamos pruebas digitales para que un juez o tribunal las acepte legalmente en tu juicio o demanda.',
+		cases: [
+			'Pruebas digitales para juicios laborales, civiles o penales',
+			'Demostración de que la información no fue alterada ni manipulada',
+			'Dictamen firmado por perito informático con comparecencia en tribunales',
+		],
 		href: '/servicios#forense',
 	},
 	{
@@ -92,6 +98,12 @@ export const CORE_SERVICES = [
 		title: 'Extracción y Certificación de Dispositivos Móviles',
 		sub: 'Smartphones, Tablets, WhatsApp, Telegram y Redes',
 		desc: 'Extracción lógica y física de mensajería instantánea, notas de voz, correos, geolocalización y registros eliminados bajo norma ISO/IEC 27042.',
+		simpleDesc: 'Extraemos y certificamos conversaciones de WhatsApp, audios, fotos y mensajes borrados de teléfonos celulares y tablets.',
+		cases: [
+			'Chats, notas de voz y archivos de WhatsApp o Telegram',
+			'Recuperación de mensajes y fotografías borradas',
+			'Certificación de remitente, fecha, hora y ubicación exacta',
+		],
 		href: '/servicios#moviles',
 	},
 	{
@@ -100,6 +112,12 @@ export const CORE_SERVICES = [
 		title: 'Recuperación y Análisis de Almacenamiento',
 		sub: 'Discos HDD, SSD, NVMe, Memorias Flash y Servidores',
 		desc: 'Diagnóstico por consignación, recuperación de información en medios con daño lógico o físico y clonado forense con bloqueadores de escritura.',
+		simpleDesc: 'Recuperamos tus archivos importantes de discos duros, memorias USB, computadoras o servidores dañados o que no abren.',
+		cases: [
+			'Discos duros mecánicos o SSD que no encienden o hacen ruido',
+			'Archivos y carpetas borradas accidental o maliciosamente',
+			'Copia de seguridad idéntica en laboratorio sin alterar el original',
+		],
 		href: '/servicios#almacenamiento',
 	},
 	{
@@ -108,6 +126,12 @@ export const CORE_SERVICES = [
 		title: 'Peritaje de Contratos y Documentos Electrónicos',
 		sub: 'Autenticidad, Metadatos y Firmas Electrónicas',
 		desc: 'Verificación técnica de integridad documental, sellos de tiempo, cabeceras de correo electrónico y trazabilidad de autoría frente a impugnaciones.',
+		simpleDesc: 'Demostramos si un documento PDF, firma electrónica o correo electrónico es auténtico o fue falsificado o modificado.',
+		cases: [
+			'Verificación de firmas digitales y contratos en PDF',
+			'Auditoría de correos electrónicos para detectar estafas o suplantación',
+			'Comprobación de quién creó el archivo y en qué fecha real',
+		],
 		href: '/servicios#documentos',
 	},
 ];

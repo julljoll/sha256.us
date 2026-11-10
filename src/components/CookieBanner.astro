@@ -91,12 +91,13 @@
 	.sha-cookie-btn {
 		font-size: 0.78rem !important;
 		padding: 0.55rem 1rem !important;
-		min-height: auto !important;
+		min-height: 2.75rem !important;
 		border-radius: 4px !important;
 		margin: 0 !important;
 		font-weight: 700 !important;
 		cursor: pointer;
 		white-space: nowrap;
+		touch-action: manipulation;
 	}
 
 	.sha-cookie-btn--accept {
@@ -127,10 +128,13 @@
 		}
 		.sha-cookie-banner__actions {
 			width: 100%;
+			gap: 0.5rem;
 		}
 		.sha-cookie-btn {
 			flex: 1;
 			text-align: center;
+			min-height: 44px !important;
+			font-size: 0.82rem !important;
 		}
 	}
 </style>
@@ -162,4 +166,3 @@
 		btnEssential?.addEventListener('click', () => saveConsent('essential'));
 	})();
 </script>
-

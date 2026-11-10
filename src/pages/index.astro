@@ -18,24 +18,20 @@ const latestPosts = (await getCollection('blog', ({ data }) => !data.draft))
 	<section class="sha-trustbar">
 		<div class="sha-trustbar__inner">
 			<div class="sha-trust-item">
-				<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
-				<span>ISO/IEC 27037</span>
+				<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-7 9h-2V5h2v6zm0 4h-2v-2h2v2z"/></svg>
+				<span>Validez en Juicios y Tribunales</span>
 			</div>
 			<div class="sha-trust-item">
-				<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
-				<span>ISO/IEC 27042</span>
+				<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
+				<span>Prueba Intacta (Hash SHA-256)</span>
 			</div>
 			<div class="sha-trust-item">
-				<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
-				<span>NIST SP 800</span>
+				<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
+				<span>Cadena de Custodia MUCC-2017</span>
 			</div>
 			<div class="sha-trust-item">
-				<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
-				<span>MUCC-2017 Venezuela</span>
-			</div>
-			<div class="sha-trust-item">
-				<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-7 9h-2V5h2v6zm0 4h-2v-2h2v2z"/></svg>
-				<span>Peritaje con Validez Judicial</span>
+				<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
+				<span>Estándares ISO/IEC & NIST</span>
 			</div>
 		</div>
 	</section>
@@ -44,28 +40,90 @@ const latestPosts = (await getCollection('blog', ({ data }) => !data.draft))
 	<section id="servicios" class="sha-section bg-white">
 		<div class="sha-container">
 			<div class="sha-section__header text-center">
-				<span class="usa-tag sha-tag--primary">ÁREAS DE EXPERTICIA</span>
-				<h2 class="sha-section__title">Servicios Corporativos de Informática Forense</h2>
-				<p class="sha-section__sub">Identificación, adquisición, preservación y peritaje forense de medios digitales para procesos corporativos y judiciales.</p>
+				<span class="usa-tag sha-tag--primary">¿EN QUÉ PODEMOS AYUDARTE?</span>
+				<h2 class="sha-section__title">Servicios de Informática Forense y Peritaje</h2>
+				<p class="sha-section__sub">Soluciones claras para abogados, empresas y particulares que necesitan demostrar la verdad técnica ante un juez o resolver un incidente digital.</p>
 			</div>
 
 			<div class="sha-card-grid">
 				{CORE_SERVICES.map((serv, index) => (
 					<div class="sha-card">
-						<div class={`sha-card__icon ${index === 0 ? 'sha-card__icon--blue' : index === 1 ? 'sha-card__icon--teal' : index === 2 ? 'sha-card__icon--red' : 'sha-card__icon--blue'}`}>
-							<svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
-								<path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-1 6h2v6h-2V7zm0 8h2v2h-2v-2z"/>
-							</svg>
+						<div class="display-flex flex-align-center gap-1">
+							<div class={`sha-card__icon ${index === 0 ? 'sha-card__icon--blue' : index === 1 ? 'sha-card__icon--teal' : index === 2 ? 'sha-card__icon--red' : 'sha-card__icon--blue'}`}>
+								<svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+									<path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-1 6h2v6h-2V7zm0 8h2v2h-2v-2z"/>
+								</svg>
+							</div>
+							<div>
+								<span class="font-sans-3xs text-bold text-primary display-block">{serv.tag}</span>
+								<h3 class="sha-card__title">{serv.title}</h3>
+							</div>
 						</div>
+
 						<div class="sha-card__body">
-							<span class="font-sans-3xs text-bold text-primary">{serv.tag}</span>
-							<h3 class="sha-card__title">{serv.title}</h3>
-							<p class="sha-card__sub">{serv.sub}</p>
-							<p class="sha-card__text">{serv.desc}</p>
-							<a href={serv.href} class="sha-link">Conocer detalles técnicos &rarr;</a>
+							<!-- Explicación sencilla para no técnicos -->
+							<div class="sha-plain-summary margin-y-1">
+								<span class="sha-plain-summary__label">
+									<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
+									En palabras sencillas:
+								</span>
+								<p class="sha-plain-summary__text">{serv.simpleDesc}</p>
+							</div>
+
+							<!-- Casos frecuentes escaneables -->
+							<span class="font-sans-3xs text-bold text-base-dark text-uppercase letter-spacing-1 margin-top-1 display-block">
+								Casos frecuentes que resolvemos:
+							</span>
+							<ul class="sha-check-list margin-top-05 margin-bottom-2">
+								{serv.cases.map((c) => (
+									<li>{c}</li>
+								))}
+							</ul>
+
+							<a href={serv.href} class="usa-button usa-button--outline width-full text-center margin-top-auto font-sans-xs">
+								Ver detalles técnicos y solicitar &rarr;
+							</a>
 						</div>
 					</div>
 				))}
+			</div>
+		</div>
+	</section>
+
+	<!-- ======= PROCESS STEPS ======= -->
+	<section class="sha-section sha-section--light">
+		<div class="sha-container">
+			<div class="sha-section__header text-center">
+				<span class="usa-tag sha-tag--secondary">PASO A PASO FÁCIL</span>
+				<h2 class="sha-section__title">¿Cómo es el proceso de peritaje?</h2>
+				<p class="sha-section__sub">Un procedimiento transparente y blindado para que sepas exactamente qué pasará con tu caso y tus dispositivos.</p>
+			</div>
+
+			<div class="sha-steps">
+				<div class="sha-step">
+					<span class="usa-tag bg-primary text-white margin-bottom-1 font-sans-3xs">PASO 01</span>
+					<div class="sha-step__num">01</div>
+					<h3 class="sha-step__title">Cuéntanos tu situación</h3>
+					<p class="sha-step__text">Conversamos sobre lo ocurrido. Te explicamos de forma sencilla si tus mensajes, correos o archivos pueden servir como prueba legal válida.</p>
+				</div>
+				<div class="sha-step">
+					<span class="usa-tag bg-primary text-white margin-bottom-1 font-sans-3xs">PASO 02</span>
+					<div class="sha-step__num">02</div>
+					<h3 class="sha-step__title">Consignación en laboratorio</h3>
+					<p class="sha-step__text">Recibimos el teléfono, disco o memoria y te emitimos una planilla oficial. Hacemos una copia bit a bit sin alterar ni borrar nada de tu equipo original.</p>
+				</div>
+				<div class="sha-step">
+					<span class="usa-tag bg-primary text-white margin-bottom-1 font-sans-3xs">PASO 03</span>
+					<div class="sha-step__num">03</div>
+					<h3 class="sha-step__title">Devolución rápida del equipo</h3>
+					<p class="sha-step__text">Una vez realizada la copia de seguridad forense, te devolvemos tu equipo físico para que puedas seguir usándolo con normalidad.</p>
+				</div>
+				<div class="sha-step">
+					<span class="usa-tag bg-secondary-dark text-white margin-bottom-1 font-sans-3xs">PASO 04</span>
+					<div class="sha-step__num">04</div>
+					<h3 class="sha-step__title">Dictamen con validez legal</h3>
+					<p class="sha-step__text">Elaboramos el informe pericial firmado con cadena de custodia (MUCC-2017) listo para presentar ante el juez o tribunal.</p>
+				</div>
 			</div>
 		</div>
 	</section>
@@ -76,12 +134,12 @@ const latestPosts = (await getCollection('blog', ({ data }) => !data.draft))
 			<div class="bg-white padding-4 tablet:padding-6 radius-lg shadow-2 border-left-1 border-primary">
 				<div class="grid-row grid-gap flex-align-center">
 					<div class="tablet:grid-col-8">
-						<span class="usa-tag bg-primary text-white margin-bottom-1">DIRECCIÓN PERICIAL & RESPALDO</span>
+						<span class="usa-tag bg-primary text-white margin-bottom-1">RESPALDO PROFESIONAL</span>
 						<h2 class="font-sans-xl text-bold text-primary-darker margin-top-1 margin-bottom-2">
-							Respaldo Corporativo de sha256.us y Especialista Líder: {FOUNDER.name} (<a href={FOUNDER.url} target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">{FOUNDER.handle}</a>)
+							Dirección Técnica Especializada: {FOUNDER.name} (<a href={FOUNDER.url} target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">{FOUNDER.handle}</a>)
 						</h2>
 						<p class="font-sans-sm text-base-dark line-height-sans-4 margin-bottom-2">
-							Detrás de la firma pericial <strong>sha256.us</strong> se encuentra la práctica profesional de <strong>{FOUNDER.name} ({FOUNDER.handle})</strong>, quien encabeza los peritajes forenses, dictámenes judiciales y diagnósticos por consignación. Los mismos servicios de alta especialización en informática forense, análisis de evidencias digitales y cadena de custodia son prestados y auditados bajo los más rigurosos estándares internacionales.
+							Cada peritaje, análisis de evidencias digitales y dictamen emitido por <strong>sha256.us</strong> cuenta con la dirección y firma del perito informático <strong>{FOUNDER.name} ({FOUNDER.handle})</strong>, garantizando estricta validez procesal y apego a normas científicas internacionales.
 						</p>
 						<ul class="font-sans-xs text-base-dark line-height-sans-4 margin-bottom-3 padding-left-3">
 							{FOUNDER.specialties.map((spec) => (
@@ -115,47 +173,13 @@ const latestPosts = (await getCollection('blog', ({ data }) => !data.draft))
 		</div>
 	</section>
 
-	<!-- ======= PROCESS STEPS ======= -->
-	<section class="sha-section sha-section--light">
-		<div class="sha-container">
-			<div class="sha-section__header text-center">
-				<span class="usa-tag sha-tag--secondary">PROTOCOLO SEGURO</span>
-				<h2 class="sha-section__title">¿Qué debo hacer? — Primeros Pasos</h2>
-				<p class="sha-section__sub">Proceso formal y documentado para la recepción, adquisición y blindaje de la evidencia digital.</p>
-			</div>
-
-			<div class="sha-steps">
-				<div class="sha-step">
-					<div class="sha-step__num">01</div>
-					<h3 class="sha-step__title">Cuéntanos tu caso</h3>
-					<p class="sha-step__text">Entrevista técnica detallada para determinar qué información es jurídicamente relevante verificar para tu caso.</p>
-				</div>
-				<div class="sha-step">
-					<div class="sha-step__num">02</div>
-					<h3 class="sha-step__title">Consigna el dispositivo</h3>
-					<p class="sha-step__text">Recepción en laboratorio con emisión de planilla oficial. Se genera imagen forense bit a bit sin alterar el original.</p>
-				</div>
-				<div class="sha-step">
-					<div class="sha-step__num">03</div>
-					<h3 class="sha-step__title">Devolución ágil</h3>
-					<p class="sha-step__text">Retorno del equipo físico una vez completados los procedimientos técnico-administrativos básicos de laboratorio.</p>
-				</div>
-				<div class="sha-step">
-					<div class="sha-step__num">04</div>
-					<h3 class="sha-step__title">Planillas Oficiales</h3>
-					<p class="sha-step__text">Cadena de custodia inalterable, blindada conforme a MUCC-2017 para total validez ante tribunales nacionales.</p>
-				</div>
-			</div>
-		</div>
-	</section>
-
 	<!-- ======= STANDARDS ======= -->
 	<section class="sha-section bg-white">
 		<div class="sha-container">
 			<div class="sha-section__header text-center">
 				<span class="usa-tag sha-tag--primary">MARCO REGULATORIO</span>
-				<h2 class="sha-section__title">Normas Internacionales y Regulaciones Nacionales</h2>
-				<p class="sha-section__sub">La validez forense descansa en la metodología. Operamos bajo los estándares técnicos más exigentes del mundo.</p>
+				<h2 class="sha-section__title">Normas Técnicas y Protocolos Oficiales</h2>
+				<p class="sha-section__sub">La validez jurídica de una prueba depende del método. Aplicamos los estándares internacionales más rigurosos.</p>
 			</div>
 			<div class="sha-standards-grid">
 				{STANDARDS.map((std) => (
@@ -192,8 +216,8 @@ const latestPosts = (await getCollection('blog', ({ data }) => !data.draft))
 	<section class="sha-cta-banner">
 		<div class="sha-container sha-cta-banner__inner">
 			<div class="sha-cta-banner__text">
-				<h2 class="sha-cta-banner__title">¿Necesitas consolidar un medio de prueba digital?</h2>
-				<p class="sha-cta-banner__sub">Comunícate con nuestro laboratorio forense para una evaluación preliminar confidencial y profesional.</p>
+				<h2 class="sha-cta-banner__title">¿Tienes un caso y necesitas asesoría profesional?</h2>
+				<p class="sha-cta-banner__sub">Escríbenos para una evaluación preliminar confidencial sobre la viabilidad técnica de tu evidencia digital.</p>
 			</div>
 			<div class="sha-cta-banner__actions">
 				<a href="/contacto" class="usa-button usa-button--big sha-cta-banner__btn-primary">Contactar sha256.us</a>
@@ -211,39 +235,56 @@ const latestPosts = (await getCollection('blog', ({ data }) => !data.draft))
   .sha-trustbar__inner {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0.75rem 1.25rem;
+    padding: 0.85rem 1.25rem;
     display: flex;
     flex-wrap: wrap;
-    gap: 1.25rem;
+    gap: 1rem 1.5rem;
     justify-content: center;
     align-items: center;
   }
   .sha-trust-item {
     display: flex;
     align-items: center;
-    gap: 0.4rem;
-    font-size: 0.75rem;
+    gap: 0.45rem;
+    font-size: 0.78rem;
     font-weight: 600;
-    color: rgba(255,255,255,0.85);
+    color: rgba(255,255,255,0.92);
     white-space: nowrap;
   }
   .sha-trust-item svg { color: #69b4e9; flex-shrink: 0; }
 
+  @media (max-width: 640px) {
+    .sha-trustbar__inner {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.65rem;
+      padding: 0.75rem 1rem;
+    }
+    .sha-trust-item {
+      font-size: 0.72rem;
+      white-space: normal;
+      line-height: 1.3;
+    }
+  }
+
   /* ====== SHARED LAYOUT ====== */
   .sha-section { padding: 4.5rem 0; }
+  @media (max-width: 640px) {
+    .sha-section { padding: 2.75rem 0; }
+  }
   .sha-section--light { background-color: #f0f2f5; }
   .sha-container { max-width: 1200px; margin: 0 auto; padding: 0 1.25rem; }
 
-  .sha-section__header { margin-bottom: 2.5rem; }
+  .sha-section__header { margin-bottom: 2.25rem; }
   .sha-section__title {
-    font-size: clamp(1.4rem, 2.5vw, 1.9rem);
+    font-size: clamp(1.35rem, 2.5vw, 1.9rem);
     font-weight: 700;
     color: #1a2b4b;
     margin: 0.5rem 0 0.75rem 0;
     line-height: 1.25;
   }
   .sha-section__sub {
-    font-size: 1rem;
+    font-size: 0.95rem;
     color: #565c65;
     max-width: 640px;
     line-height: 1.6;
@@ -264,15 +305,17 @@ const latestPosts = (await getCollection('blog', ({ data }) => !data.draft))
     background: #fff;
     border: 1px solid #dfe1e2;
     border-top: 4px solid #005ea2;
-    padding: 1.75rem;
+    border-radius: 6px;
+    padding: 1.5rem;
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 0.85rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
     transition: box-shadow 0.2s, transform 0.15s;
   }
   .sha-card:hover { box-shadow: 0 6px 20px rgba(0,0,0,0.1); transform: translateY(-2px); }
   .sha-card__icon {
-    width: 52px; height: 52px;
+    width: 44px; height: 44px;
     border-radius: 4px;
     display: flex; align-items: center; justify-content: center;
     flex-shrink: 0;
@@ -281,22 +324,19 @@ const latestPosts = (await getCollection('blog', ({ data }) => !data.draft))
   .sha-card__icon--teal { background: #ccece9; color: #07706e; }
   .sha-card__icon--red  { background: #f8dde0; color: #b50909; }
   .sha-card__body { display: flex; flex-direction: column; gap: 0.35rem; flex: 1; }
-  .sha-card__title { font-size: 1.05rem; font-weight: 700; color: #1a2b4b; margin: 0; }
-  .sha-card__sub { font-size: 0.72rem; color: #71767a; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin: 0; }
-  .sha-card__text { font-size: 0.875rem; color: #3d4551; line-height: 1.65; margin: 0.25rem 0 auto 0; }
-  .sha-link { font-size: 0.82rem; font-weight: 700; color: #005ea2; text-decoration: none; margin-top: 0.75rem; display: inline-block; }
-  .sha-link:hover { color: #0050a4; text-decoration: underline; }
+  .sha-card__title { font-size: 1.05rem; font-weight: 700; color: #1a2b4b; margin: 0; line-height: 1.3; }
 
   /* ====== PROCESS STEPS ====== */
   .sha-steps {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 1.5rem;
+    gap: 1.25rem;
   }
   .sha-step {
     background: #fff;
     border: 1px solid #dfe1e2;
-    padding: 1.75rem 1.5rem;
+    border-radius: 6px;
+    padding: 1.5rem 1.25rem;
     position: relative;
     overflow: hidden;
   }
@@ -309,17 +349,19 @@ const latestPosts = (await getCollection('blog', ({ data }) => !data.draft))
   }
   .sha-step:last-child::before { background: #d83933; }
   .sha-step__num {
-    font-size: 3rem;
+    position: absolute;
+    right: 0.75rem;
+    top: 0.75rem;
+    font-size: 2.25rem;
     font-weight: 800;
     color: #005ea2;
-    opacity: 0.15;
+    opacity: 0.25;
     line-height: 1;
-    margin-bottom: 0.75rem;
     font-variant-numeric: tabular-nums;
   }
   .sha-step:last-child .sha-step__num { color: #d83933; }
-  .sha-step__title { font-size: 1rem; font-weight: 700; color: #1a2b4b; margin: 0 0 0.5rem 0; }
-  .sha-step__text { font-size: 0.875rem; color: #3d4551; line-height: 1.65; margin: 0; }
+  .sha-step__title { font-size: 1rem; font-weight: 700; color: #1a2b4b; margin: 0 0 0.5rem 0; line-height: 1.3; }
+  .sha-step__text { font-size: 0.85rem; color: #3d4551; line-height: 1.6; margin: 0; }
 
   /* ====== STANDARDS ====== */
   .sha-standards-grid {
@@ -330,7 +372,8 @@ const latestPosts = (await getCollection('blog', ({ data }) => !data.draft))
   .sha-standard {
     border: 1px solid #dfe1e2;
     border-top: 4px solid #1a2b4b;
-    padding: 1.5rem;
+    border-radius: 4px;
+    padding: 1.35rem;
     background: #f0f2f5;
     display: flex;
     flex-direction: column;
@@ -346,8 +389,9 @@ const latestPosts = (await getCollection('blog', ({ data }) => !data.draft))
     padding: 0.18rem 0.5rem;
     display: inline-block;
     align-self: flex-start;
+    border-radius: 2px;
   }
-  .sha-standard__code { font-size: 1.1rem; font-weight: 800; color: #1a2b4b; margin-top: 0.4rem; }
+  .sha-standard__code { font-size: 1.05rem; font-weight: 800; color: #1a2b4b; margin-top: 0.4rem; }
   .sha-standard__title { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; color: #565c65; letter-spacing: 0.05em; }
   .sha-standard__desc { font-size: 0.8rem; color: #3d4551; line-height: 1.6; margin: 0.35rem 0 0 0; }
 
@@ -358,7 +402,7 @@ const latestPosts = (await getCollection('blog', ({ data }) => !data.draft))
     align-items: flex-end;
     justify-content: space-between;
     gap: 1.25rem;
-    margin-bottom: 2.5rem;
+    margin-bottom: 2rem;
   }
   .sha-btn-ghost {
     border-color: #005ea2 !important;
@@ -370,26 +414,34 @@ const latestPosts = (await getCollection('blog', ({ data }) => !data.draft))
   }
 
   /* ====== CTA BANNER ====== */
-  .sha-cta-banner { background: linear-gradient(135deg, #1a2b4b 0%, #0050a4 100%); padding: 3.5rem 0; }
+  .sha-cta-banner { background: linear-gradient(135deg, #1a2b4b 0%, #0050a4 100%); padding: 3rem 0; }
   .sha-cta-banner__inner {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
-    gap: 2rem;
+    gap: 1.75rem;
   }
   .sha-cta-banner__text { flex: 1; min-width: 280px; }
   .sha-cta-banner__title { font-size: clamp(1.2rem, 2vw, 1.6rem); font-weight: 700; color: #fff; margin: 0 0 0.5rem 0; }
-  .sha-cta-banner__sub { font-size: 0.9rem; color: rgba(255,255,255,0.78); line-height: 1.6; margin: 0; }
-  .sha-cta-banner__actions { display: flex; align-items: center; flex-shrink: 0; }
+  .sha-cta-banner__sub { font-size: 0.9rem; color: rgba(255,255,255,0.85); line-height: 1.6; margin: 0; }
+  .sha-cta-banner__actions { display: flex; align-items: center; flex-shrink: 0; width: auto; }
   .sha-cta-banner__btn-primary {
     background: #d83933 !important;
     border-color: #d83933 !important;
     color: #fff !important;
-    max-width: 100%;
     box-sizing: border-box;
     text-align: center;
     margin: 0 !important;
   }
   .sha-cta-banner__btn-primary:hover { background: #b50909 !important; border-color: #b50909 !important; }
+
+  @media (max-width: 640px) {
+    .sha-cta-banner__actions {
+      width: 100%;
+    }
+    .sha-cta-banner__btn-primary {
+      width: 100% !important;
+    }
+  }
 </style>
