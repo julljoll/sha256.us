@@ -9,11 +9,13 @@ import CacheCleaner from '../components/CacheCleaner.astro';
 interface Props {
 	title?: string;
 	description?: string;
-	image?: ImageMetadata;
+	image?: ImageMetadata | string;
 	type?: 'website' | 'article';
 	pubDate?: Date;
 	updatedDate?: Date;
 	author?: string;
+	section?: string;
+	tags?: string[];
 	mainClass?: string;
 	bodyClass?: string;
 }
@@ -26,6 +28,8 @@ const {
 	pubDate,
 	updatedDate,
 	author,
+	section,
+	tags,
 	mainClass = '',
 	bodyClass = 'bg-base-lightest font-sans display-flex flex-column min-h-screen',
 } = Astro.props;
@@ -42,6 +46,8 @@ const {
 			pubDate={pubDate}
 			updatedDate={updatedDate}
 			author={author}
+			section={section}
+			tags={tags}
 		/>
 	</head>
 	<body class={bodyClass}>
