@@ -1,5 +1,5 @@
 @echo off
-title Iniciar Blog sha256.us (Astro + USWDS)
+title Iniciar sha256.us (Astro + USWDS)
 cd /d "%~dp0"
 
 echo =======================================================
