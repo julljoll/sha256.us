@@ -48,9 +48,20 @@ jobs:
           ftp.connect(server, port, timeout=30)
           ftp.login(user, passwd)
           ftp.prot_p()
+          print('User format (has @?):', '@' in user)
+          if '@' in user:
+              print('Username suffix:', user.split('@')[1] if len(user.split('@')) > 1 else 'none')
           print('Initial PWD:', ftp.pwd())
-          print('=== ROOT LISTING ===')
-          ftp.dir()
+          
+          # Probar si se puede navegar a public_html o directorios superiores
+          for path in ['..', '../public_html', '/public_html', 'public_html']:
+              try:
+                  ftp.cwd(path)
+                  print(f'Successfully changed dir to: {path}, PWD: {ftp.pwd()}')
+                  ftp.dir()
+                  break
+              except Exception as e:
+                  print(f'Failed to cwd to {path}:', e)
           try:
               files = ftp.nlst()
           except Exception:
