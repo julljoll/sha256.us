@@ -30,6 +30,45 @@ jobs:
       - name: Build Astro site
         run: npm run build
 
+      - name: Diagnose cPanel FTP directory structure
+        env:
+          FTP_SERVER: ${{ secrets.CPANEL_FTP_SERVER || secrets.FTP_SERVER || 'ftp.sha256.us' }}
+          FTP_USER: ${{ secrets.CPANEL_FTP_USERNAME || secrets.FTP_USERNAME }}
+          FTP_PASS: ${{ secrets.CPANEL_FTP_PASSWORD || secrets.FTP_PASSWORD }}
+          FTP_PORT: ${{ secrets.CPANEL_FTP_PORT || secrets.FTP_PORT || '21' }}
+        run: |
+          python3 -c "
+          import ftplib, os, ssl
+          server = os.environ.get('FTP_SERVER', 'ftp.sha256.us')
+          user = os.environ.get('FTP_USER')
+          passwd = os.environ.get('FTP_PASS')
+          port = int(os.environ.get('FTP_PORT', '21'))
+
+          ftp = ftplib.FTP_TLS()
+          ftp.connect(server, port, timeout=30)
+          ftp.login(user, passwd)
+          ftp.prot_p()
+          print('Initial PWD:', ftp.pwd())
+          print('=== ROOT LISTING ===')
+          ftp.dir()
+          try:
+              files = ftp.nlst()
+          except Exception:
+              files = []
+          print('Root entries:', files)
+          for candidate in ['public_html', 'www', 'sha256.us']:
+              if candidate in files:
+                  print(f'=== LISTING {candidate} ===')
+                  try:
+                      ftp.cwd(candidate)
+                      print('PWD now:', ftp.pwd())
+                      ftp.dir()
+                      ftp.cwd('..')
+                  except Exception as e:
+                      print('Error accessing', candidate, e)
+          ftp.quit()
+          "
+
       - name: Deploy via FTPS to cPanel
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
