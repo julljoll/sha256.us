@@ -1,6 +1,18 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { COMPANY, CONTACT, SITE_TITLE } from '../consts';
+import { COMPANY, SITE_TITLE } from '../consts';
+import PillNav from '../components/molecules/PillNav.astro';
+import ServiceForense from '../components/organisms/services/ServiceForense.astro';
+import ServiceMoviles from '../components/organisms/services/ServiceMoviles.astro';
+import ServiceAlmacenamiento from '../components/organisms/services/ServiceAlmacenamiento.astro';
+import ServiceDocumentos from '../components/organisms/services/ServiceDocumentos.astro';
+
+const servicePills = [
+	{ href: '#forense', label: 'Pruebas para Juicios', icon: '⚖️' },
+	{ href: '#moviles', label: 'WhatsApp y Móviles', icon: '📱' },
+	{ href: '#almacenamiento', label: 'Discos y Memorias', icon: '💾' },
+	{ href: '#documentos', label: 'Contratos y Correos PDF', icon: '📄' },
+];
 ---
 
 <BaseLayout
@@ -20,195 +32,19 @@ import { COMPANY, CONTACT, SITE_TITLE } from '../consts';
 			</p>
 
 			<!-- Barra de Salto Rápido para Teléfonos y Escritorio -->
-			<div>
-				<span class="font-sans-3xs text-bold text-base-dark text-uppercase letter-spacing-1 display-block margin-bottom-1">
-					Salta directamente a lo que necesitas:
-				</span>
-				<div class="sha-quick-nav">
-					<a href="#forense" class="sha-pill-link">⚖️ Pruebas para Juicios</a>
-					<a href="#moviles" class="sha-pill-link">📱 WhatsApp y Móviles</a>
-					<a href="#almacenamiento" class="sha-pill-link">💾 Discos y Memorias</a>
-					<a href="#documentos" class="sha-pill-link">📄 Contratos y Correos PDF</a>
-				</div>
-			</div>
+			<PillNav items={servicePills} />
 		</div>
 
 		<!-- Servicio 1: Informática Forense y Peritaje Judicial -->
-		<section id="forense" class="margin-bottom-6 tablet:margin-bottom-8 bg-white padding-3 tablet:padding-6 radius-lg shadow-1 border-1px border-base-lighter">
-			<div class="grid-row grid-gap flex-align-center">
-				<div class="tablet:grid-col-8">
-					<span class="usa-tag bg-primary-dark text-white margin-bottom-1 font-sans-3xs">SERVICIO PRINCIPAL</span>
-					<h2 class="font-sans-xl text-bold text-primary-darker margin-top-1 margin-bottom-2">
-						Informática Forense y Peritajes Judiciales
-					</h2>
-
-					<!-- Resumen claro para no técnicos -->
-					<div class="sha-plain-summary margin-bottom-3">
-						<span class="sha-plain-summary__label">
-							<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
-							¿Para qué sirve este servicio?
-						</span>
-						<p class="sha-plain-summary__text">
-							Si estás en un juicio (laboral, civil, mercantil o penal) y necesitas que un juez admita mensajes, correos, transferencias o archivos digitales sin que la otra parte pueda alegar que fueron alterados o inventados.
-						</p>
-					</div>
-
-					<p class="font-sans-sm text-base-dark line-height-sans-4 margin-bottom-2">
-						Elaboramos dictámenes periciales informáticos con plena validez procesal para su incorporación como prueba fehaciente ante juzgados y tribunales de la República:
-					</p>
-					<ul class="font-sans-sm text-base-dark line-height-sans-4 margin-bottom-3 padding-left-3">
-						<li><strong>Adquisición de evidencias:</strong> Copiado bit a bit utilizando bloqueadores físicos de escritura certificados bajo norma ISO/IEC 27037.</li>
-						<li><strong>Garantía de inalterabilidad:</strong> Generación simultánea de resúmenes criptográficos con el algoritmo SHA-256 para demostrar la estricta mismidad probatoria.</li>
-						<li><strong>Cadena de custodia blindada:</strong> Registro minucioso de cada fase de posesión, resguardo y análisis conforme al Manual Único (MUCC-2017).</li>
-						<li><strong>Defensa oral del informe:</strong> Comparecencia y sustentación técnica del dictamen pericial en audiencias judiciales por peritos acreditados.</li>
-					</ul>
-				</div>
-				<div class="tablet:grid-col-4 margin-top-3 tablet:margin-top-0 display-flex flex-column flex-center text-center">
-					<div class="bg-primary-lighter padding-4 radius-lg width-full border-1px border-primary-light">
-						<h3 class="font-sans-md text-bold text-primary-darker margin-top-0 margin-bottom-1">¿Requieres un peritaje judicial?</h3>
-						<p class="font-sans-xs text-base-dark margin-bottom-3">Evaluación preliminar confidencial de viabilidad técnica y legal.</p>
-						<a href="/contacto" class="usa-button usa-button--primary width-full">Solicitar Consulta Pericial</a>
-					</div>
-				</div>
-			</div>
-		</section>
+		<ServiceForense />
 
 		<!-- Servicio 2: Dispositivos Móviles -->
-		<section id="moviles" class="margin-bottom-6 tablet:margin-bottom-8 bg-white padding-3 tablet:padding-6 radius-lg shadow-1 border-1px border-base-lighter">
-			<div class="grid-row grid-gap flex-align-center">
-				<div class="tablet:grid-col-8">
-					<span class="usa-tag bg-secondary-dark text-white margin-bottom-1 font-sans-3xs">DISPOSITIVOS MÓVILES</span>
-					<h2 class="font-sans-xl text-bold text-primary-darker margin-top-1 margin-bottom-2">
-						Reparación, Extracción y Análisis de Smartphones y Tablets
-					</h2>
-
-					<!-- Resumen claro para no técnicos -->
-					<div class="sha-plain-summary margin-bottom-3">
-						<span class="sha-plain-summary__label">
-							<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
-							¿Para qué sirve este servicio?
-						</span>
-						<p class="sha-plain-summary__text">
-							Si necesitas demostrar ante un juez o autoridad lo que se dijo en conversaciones de WhatsApp, notas de voz, fotos o llamadas, incluso si los mensajes fueron borrados del celular.
-						</p>
-					</div>
-
-					<p class="font-sans-sm text-base-dark line-height-sans-4 margin-bottom-2">
-						Los dispositivos móviles albergan la evidencia digital más determinante en controversias civiles, mercantiles y penales. Empleamos herramientas de nivel forense para validar y certificar:
-					</p>
-					<div class="grid-row grid-gap margin-bottom-3">
-						<div class="mobile:grid-col-6">
-							<div class="bg-base-lightest padding-2 radius-md border-left-05 border-primary margin-bottom-2">
-								<strong class="font-sans-xs text-primary-darker display-block">Mensajería Instantánea</strong>
-								<span class="font-sans-3xs text-base">WhatsApp, Telegram, Signal, chats eliminados, audios y bases SQLite.</span>
-							</div>
-						</div>
-						<div class="mobile:grid-col-6">
-							<div class="bg-base-lightest padding-2 radius-md border-left-05 border-primary margin-bottom-2">
-								<strong class="font-sans-xs text-primary-darker display-block">Audios e Imágenes</strong>
-								<span class="font-sans-3xs text-base">Notas de voz, fotografías, capturas y verificación de metadatos EXIF.</span>
-							</div>
-						</div>
-						<div class="mobile:grid-col-6">
-							<div class="bg-base-lightest padding-2 radius-md border-left-05 border-primary margin-bottom-2">
-								<strong class="font-sans-xs text-primary-darker display-block">Redes Sociales</strong>
-								<span class="font-sans-3xs text-base">Interacciones en Instagram, Facebook, X, TikTok y registros de navegación web.</span>
-							</div>
-						</div>
-						<div class="mobile:grid-col-6">
-							<div class="bg-base-lightest padding-2 radius-md border-left-05 border-primary margin-bottom-2">
-								<strong class="font-sans-xs text-primary-darker display-block">Correos y Mensajes de Texto</strong>
-								<span class="font-sans-3xs text-base">SMS nativos, bandejas de correo electrónico y registros de llamadas entrantes/salientes.</span>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="tablet:grid-col-4 margin-top-3 tablet:margin-top-0 display-flex flex-column flex-center text-center">
-					<div class="bg-accent-cool-lighter padding-4 radius-lg width-full border-1px border-accent-cool-light">
-						<h3 class="font-sans-md text-bold text-primary-darker margin-top-0 margin-bottom-1">Peritaje de Móvil</h3>
-						<p class="font-sans-xs text-base-dark margin-bottom-3">Extracción física y lógica con cadena de custodia formal.</p>
-						<a href="/contacto" class="usa-button usa-button--secondary width-full">Consultar con Perito</a>
-					</div>
-				</div>
-			</div>
-		</section>
+		<ServiceMoviles />
 
 		<!-- Servicio 3: Almacenamiento -->
-		<section id="almacenamiento" class="margin-bottom-6 tablet:margin-bottom-8 bg-white padding-3 tablet:padding-6 radius-lg shadow-1 border-1px border-base-lighter">
-			<div class="grid-row grid-gap flex-align-center">
-				<div class="tablet:grid-col-8">
-					<span class="usa-tag bg-primary-dark text-white margin-bottom-1 font-sans-3xs">UNIDADES DE ALMACENAMIENTO</span>
-					<h2 class="font-sans-xl text-bold text-primary-darker margin-top-1 margin-bottom-2">
-						Reparación, Extracción y Recuperación de Medios de Almacenamiento
-					</h2>
-
-					<!-- Resumen claro para no técnicos -->
-					<div class="sha-plain-summary margin-bottom-3">
-						<span class="sha-plain-summary__label">
-							<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
-							¿Para qué sirve este servicio?
-						</span>
-						<p class="sha-plain-summary__text">
-							Si tu disco duro, computadora, servidor o memoria USB dejó de funcionar, no es detectado o fue formateado accidentalmente y necesitas recuperar tu información en laboratorio sin destruirla.
-						</p>
-					</div>
-
-					<p class="font-sans-sm text-base-dark line-height-sans-4 margin-bottom-2">
-						Nos especializamos en la intervención de unidades que presentan fallas físicas o daño lógico con metodología forense estricta:
-					</p>
-					<ul class="font-sans-sm text-base-dark line-height-sans-4 margin-bottom-3 padding-left-3">
-						<li><strong>Discos mecánicos (HDD):</strong> Intervención en caso de fallos de PCB, sectores defectuosos o problemas lógicos severos.</li>
-						<li><strong>Unidades de estado sólido (SSD, NVMe, M.2):</strong> Lectura controlada, reconstrucción de particiones dañadas y análisis de bloques.</li>
-						<li><strong>Servidores y RAID:</strong> Reensamblaje virtual de arreglos RAID, recuperación de bases de datos y cálculo de hashes de integridad.</li>
-					</ul>
-				</div>
-				<div class="tablet:grid-col-4 margin-top-3 tablet:margin-top-0 display-flex flex-column flex-center text-center">
-					<div class="bg-primary-lighter padding-4 radius-lg width-full border-1px border-primary-light">
-						<h3 class="font-sans-md text-bold text-primary-darker margin-top-0 margin-bottom-1">¿Tienes un disco dañado?</h3>
-						<p class="font-sans-xs text-base-dark margin-bottom-3">Consígnalo en laboratorio para diagnóstico pericial preliminar.</p>
-						<a href="/contacto" class="usa-button usa-button--primary width-full">Solicitar Recepción</a>
-					</div>
-				</div>
-			</div>
-		</section>
+		<ServiceAlmacenamiento />
 
 		<!-- Servicio 4: Contratos y Documentos Digitales -->
-		<section id="documentos" class="margin-bottom-6 tablet:margin-bottom-8 bg-white padding-3 tablet:padding-6 radius-lg shadow-1 border-1px border-base-lighter">
-			<div class="grid-row grid-gap flex-align-center">
-				<div class="tablet:grid-col-8">
-					<span class="usa-tag bg-secondary-dark text-white margin-bottom-1 font-sans-3xs">AUDITORÍA DOCUMENTAL</span>
-					<h2 class="font-sans-xl text-bold text-primary-darker margin-top-1 margin-bottom-2">
-						Verificación de Contratos Digitales, Metadatos y Firmas Electrónicas
-					</h2>
-
-					<!-- Resumen claro para no técnicos -->
-					<div class="sha-plain-summary margin-bottom-3">
-						<span class="sha-plain-summary__label">
-							<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
-							¿Para qué sirve este servicio?
-						</span>
-						<p class="sha-plain-summary__text">
-							Si sospechas que un contrato en PDF fue alterado, que una firma electrónica no corresponde al autor real o que un correo electrónico con facturas o transferencias fue suplantado para una estafa.
-						</p>
-					</div>
-
-					<p class="font-sans-sm text-base-dark line-height-sans-4 margin-bottom-2">
-						Determinamos la autenticidad, autoría y cronología de documentos digitales ante sospechas de alteración o repudio:
-					</p>
-					<ul class="font-sans-sm text-base-dark line-height-sans-4 margin-bottom-3 padding-left-3">
-						<li><strong>Análisis de firmas electrónicas:</strong> Validación de certificados digitales, autoridades certificadoras y sellos de tiempo.</li>
-						<li><strong>Auditoría de metadatos:</strong> Trazabilidad del software de creación, historial de modificaciones y autoría original de PDFs y ofimática.</li>
-						<li><strong>Cabeceras de correo electrónico:</strong> Trazabilidad de servidores remitentes, verificación SPF, DKIM y DMARC contra fraudes de suplantación.</li>
-					</ul>
-				</div>
-				<div class="tablet:grid-col-4 margin-top-3 tablet:margin-top-0 display-flex flex-column flex-center text-center">
-					<div class="bg-accent-cool-lighter padding-4 radius-lg width-full border-1px border-accent-cool-light">
-						<h3 class="font-sans-md text-bold text-primary-darker margin-top-0 margin-bottom-1">Peritaje Documental</h3>
-						<p class="font-sans-xs text-base-dark margin-bottom-3">Verificación pericial para controversias comerciales o arbitrajes.</p>
-						<a href="/contacto" class="usa-button usa-button--secondary width-full">Auditar Documento</a>
-					</div>
-				</div>
-			</div>
-		</section>
+		<ServiceDocumentos />
 	</div>
 </BaseLayout>

@@ -1,0 +1,24 @@
+---
+import { CONTACT, STANDARDS } from '../../consts';
+import Badge from '../atoms/Badge.astro';
+---
+
+<div class="bg-white padding-4 radius-lg shadow-1 border-1px border-base-lighter height-full display-flex flex-column">
+  <h3 class="font-sans-md text-bold text-primary-darker margin-top-0 margin-bottom-2">
+    Acreditaciones Técnicas
+  </h3>
+  <ul class="list-style-none padding-0 margin-0 flex-1">
+    {STANDARDS.map((s) => (
+      <li class="border-bottom-1px border-base-lighter padding-y-2">
+        <Badge variant="light" class="margin-bottom-05">{s.tag}</Badge>
+        <strong class="font-sans-xs text-primary-darker display-block">{s.code}</strong>
+        <span class="font-sans-3xs text-base-dark">{s.title}</span>
+      </li>
+    ))}
+  </ul>
+  <div class="margin-top-3">
+    <a href="/servicios" class="usa-button usa-button--outline width-full text-center font-sans-xs">
+      Ver Servicios Técnicos
+    </a>
+  </div>
+</div>

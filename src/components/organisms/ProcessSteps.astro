@@ -1,0 +1,86 @@
+---
+import SectionHeader from '../atoms/SectionHeader.astro';
+import ProcessStepCard from '../molecules/ProcessStepCard.astro';
+
+const steps = [
+  {
+    stepNumber: '01',
+    badgeTag: 'PASO 01',
+    badgeVariant: 'primary' as const,
+    title: 'Cuéntanos tu situación',
+    description:
+      'Conversamos sobre lo ocurrido. Te explicamos de forma sencilla si tus mensajes, correos o archivos pueden servir como prueba legal válida.',
+  },
+  {
+    stepNumber: '02',
+    badgeTag: 'PASO 02',
+    badgeVariant: 'primary' as const,
+    title: 'Consignación en laboratorio',
+    description:
+      'Recibimos el teléfono, disco o memoria y te emitimos una planilla oficial. Hacemos una copia bit a bit sin alterar ni borrar nada de tu equipo original.',
+  },
+  {
+    stepNumber: '03',
+    badgeTag: 'PASO 03',
+    badgeVariant: 'primary' as const,
+    title: 'Devolución rápida del equipo',
+    description:
+      'Una vez realizada la copia de seguridad forense, te devolvemos tu equipo físico para que puedas seguir usándolo con normalidad.',
+  },
+  {
+    stepNumber: '04',
+    badgeTag: 'PASO 04',
+    badgeVariant: 'accent' as const,
+    title: 'Dictamen con validez legal',
+    description:
+      'Elaboramos el informe pericial firmado con cadena de custodia (MUCC-2017) listo para presentar ante el juez o tribunal.',
+  },
+];
+---
+
+<section class="sha-section sha-section--light">
+  <div class="sha-container">
+    <SectionHeader
+      tag="PASO A PASO FÁCIL"
+      tagVariant="secondary"
+      title="¿Cómo es el proceso de peritaje?"
+      sub="Un procedimiento transparente y blindado para que sepas exactamente qué pasará con tu caso y tus dispositivos."
+    />
+
+    <div class="sha-steps">
+      {steps.map((s) => (
+        <ProcessStepCard
+          stepNumber={s.stepNumber}
+          badgeTag={s.badgeTag}
+          badgeVariant={s.badgeVariant}
+          title={s.title}
+          description={s.description}
+        />
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .sha-section {
+    padding: 4.5rem 0;
+  }
+  @media (max-width: 640px) {
+    .sha-section {
+      padding: 2.75rem 0;
+    }
+  }
+  .sha-section--light {
+    background-color: #f0f2f5;
+  }
+  .sha-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.25rem;
+  }
+  .sha-steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.25rem;
+  }
+</style>

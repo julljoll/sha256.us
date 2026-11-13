@@ -1,0 +1,26 @@
+---
+import { TEAM_MEMBERS } from '../../consts';
+import Badge from '../atoms/Badge.astro';
+import TeamMemberCard from '../molecules/TeamMemberCard.astro';
+---
+
+<section id="equipo" class="margin-top-6 border-top-2px border-base-lighter padding-top-5">
+  <div class="margin-bottom-4 text-center maxw-tablet margin-x-auto">
+    <Badge variant="primary" class="margin-bottom-1">RESPALDO PROFESIONAL</Badge>
+    <h2 class="font-sans-2xl text-bold text-primary-darker margin-top-1 margin-bottom-1">
+      Equipo Forense y Pericial Multidisciplinario
+    </h2>
+    <p class="font-sans-sm text-base-dark line-height-sans-4">
+      Nuestra práctica pericial articula de forma especializada las fases de recepción, entrevistas y adquisición técnica con el análisis forense avanzado de datos y la defensa de dictámenes ante estrados judiciales.
+    </p>
+  </div>
+
+  <!-- Grid con los perfiles del equipo -->
+  <div class="grid-row grid-gap">
+    {TEAM_MEMBERS.map((member) => (
+      <div class="tablet:grid-col-6 margin-bottom-4">
+        <TeamMemberCard member={member} />
+      </div>
+    ))}
+  </div>
+</section>

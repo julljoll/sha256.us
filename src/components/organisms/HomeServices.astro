@@ -1,0 +1,43 @@
+---
+import SectionHeader from '../atoms/SectionHeader.astro';
+import ServiceCard from '../molecules/ServiceCard.astro';
+import { CORE_SERVICES } from '../../consts';
+---
+
+<section id="servicios" class="sha-section bg-white">
+  <div class="sha-container">
+    <SectionHeader
+      tag="¿EN QUÉ PODEMOS AYUDARTE?"
+      tagVariant="primary"
+      title="Servicios de Informática Forense y Peritaje"
+      sub="Soluciones claras para abogados, empresas y particulares que necesitan demostrar la verdad técnica ante un juez o resolver un incidente digital."
+    />
+
+    <div class="sha-card-grid">
+      {CORE_SERVICES.map((serv, index) => (
+        <ServiceCard service={serv} index={index} />
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .sha-section {
+    padding: 4.5rem 0;
+  }
+  @media (max-width: 640px) {
+    .sha-section {
+      padding: 2.75rem 0;
+    }
+  }
+  .sha-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.25rem;
+  }
+  .sha-card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+</style>

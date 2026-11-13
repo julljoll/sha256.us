@@ -1,0 +1,122 @@
+---
+import { CONTACT } from '../../consts';
+---
+
+<div class="bg-white padding-3 tablet:padding-6 radius-lg shadow-1 border-1px border-base-lighter">
+	<h2 class="font-sans-xl text-bold text-primary-darker margin-top-0 margin-bottom-2">
+		Envíanos los datos de tu caso
+	</h2>
+	<p class="font-sans-xs text-base-dark margin-bottom-3">
+		Completa el siguiente formulario para canalizar tu solicitud por WhatsApp o Correo Institucional:
+	</p>
+
+	<!-- Mensaje de Validación Visual USWDS -->
+	<div id="contactFormAlert" class="usa-alert usa-alert--warning margin-bottom-3" style="display: none;" role="alert">
+		<div class="usa-alert__body">
+			<p class="usa-alert__text font-sans-xs" id="contactFormAlertText">
+				Por favor completa Nombre, Correo Electrónico y el Mensaje para continuar.
+			</p>
+		</div>
+	</div>
+
+	<form class="usa-form maxw-full" id="contactForm">
+		<label class="usa-label font-sans-xs text-bold" for="nombre">Nombre Completo o Razón Social</label>
+		<input class="usa-input width-full" id="nombre" name="nombre" type="text" required placeholder="Ej: Abg. Carlos Mendoza o Tu Nombre" />
+
+		<label class="usa-label font-sans-xs text-bold margin-top-2" for="email">Correo Electrónico</label>
+		<input class="usa-input width-full" id="email" name="email" type="email" required placeholder="tu-correo@ejemplo.com" />
+
+		<label class="usa-label font-sans-xs text-bold margin-top-2" for="telefono">Teléfono / WhatsApp</label>
+		<input class="usa-input width-full" id="telefono" name="telefono" type="tel" placeholder="+57 316 3931945" />
+
+		<label class="usa-label font-sans-xs text-bold margin-top-2" for="servicio">¿Qué tipo de problema necesitas resolver?</label>
+		<select class="usa-select width-full" id="servicio" name="servicio">
+			<option value="Peritaje Judicial de Informática Forense">Peritaje Judicial para Juicio (Pruebas digitales)</option>
+			<option value="Peritaje de Dispositivo Móvil (WhatsApp, Audios, etc.)">Certificación de WhatsApp, Teléfono o Mensajes</option>
+			<option value="Reparación / Extracción de Disco o Servidor">Recuperación de Archivos en Disco o Memoria dañada</option>
+			<option value="Auditoría de Contratos Digitales o Correos">Verificación de Contrato PDF, Firma o Correo</option>
+			<option value="Otra consulta pericial">Otra consulta o asesoría técnica</option>
+		</select>
+
+		<label class="usa-label font-sans-xs text-bold margin-top-2" for="mensaje">Detalles de la situación</label>
+		<textarea class="usa-textarea width-full" id="mensaje" name="mensaje" rows="4" required placeholder="Describe brevemente qué ocurrió, qué archivos necesitas o si tienes una fecha límite de tribunal..."></textarea>
+
+		<div class="display-flex flex-wrap gap-2 margin-top-3">
+			<button class="usa-button usa-button--primary width-full tablet:width-auto text-center" type="button" id="btnWhatsapp">
+				Enviar por WhatsApp &rarr;
+			</button>
+			<button class="usa-button usa-button--outline width-full tablet:width-auto text-center" type="button" id="btnEmail">
+				Enviar por Correo &rarr;
+			</button>
+		</div>
+	</form>
+</div>
+
+<script>
+	(function () {
+		const btnWhatsapp = document.getElementById('btnWhatsapp');
+		const btnEmail = document.getElementById('btnEmail');
+		const alertBox = document.getElementById('contactFormAlert');
+		const alertText = document.getElementById('contactFormAlertText');
+
+		function showAlert(msg: string) {
+			if (alertBox && alertText) {
+				alertText.textContent = msg;
+				alertBox.style.display = 'block';
+				alertBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+			}
+		}
+
+		function hideAlert() {
+			if (alertBox) alertBox.style.display = 'none';
+		}
+
+		function getFormData() {
+			hideAlert();
+			const nombre = (document.getElementById('nombre') as HTMLInputElement)?.value.trim();
+			const email = (document.getElementById('email') as HTMLInputElement)?.value.trim();
+			const telefono = (document.getElementById('telefono') as HTMLInputElement)?.value.trim();
+			const servicio = (document.getElementById('servicio') as HTMLSelectElement)?.value;
+			const mensaje = (document.getElementById('mensaje') as HTMLTextAreaElement)?.value.trim();
+
+			if (!nombre || !email || !mensaje) {
+				showAlert('Por favor completa al menos Nombre, Correo Electrónico y el Mensaje.');
+				return null;
+			}
+
+			return { nombre, email, telefono, servicio, mensaje };
+		}
+
+		btnWhatsapp?.addEventListener('click', () => {
+			const data = getFormData();
+			if (!data) return;
+
+			const text =
+				`*Solicitud de Peritaje en sha256.us*\n\n` +
+				`*Nombre:* ${data.nombre}\n` +
+				`*Correo:* ${data.email}\n` +
+				`*Teléfono:* ${data.telefono || 'No indicado'}\n` +
+				`*Servicio Requerido:* ${data.servicio}\n\n` +
+				`*Detalles del caso:*\n${data.mensaje}`;
+
+			const waUrl = `https://wa.me/573163931945?text=${encodeURIComponent(text)}`;
+			window.open(waUrl, '_blank');
+		});
+
+		btnEmail?.addEventListener('click', () => {
+			const data = getFormData();
+			if (!data) return;
+
+			const subject = encodeURIComponent(`[Peritaje sha256.us] ${data.servicio} - ${data.nombre}`);
+			const body = encodeURIComponent(
+				`Nombre: ${data.nombre}\n` +
+				`Correo: ${data.email}\n` +
+				`Teléfono: ${data.telefono || 'No indicado'}\n` +
+				`Servicio: ${data.servicio}\n\n` +
+				`Detalles del caso:\n${data.mensaje}`
+			);
+
+			window.location.href = `mailto:soporte@sha256.us?subject=${subject}&body=${body}`;
+		});
+	})();
+</script>

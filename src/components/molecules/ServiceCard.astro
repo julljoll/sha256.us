@@ -1,0 +1,161 @@
+---
+export interface Props {
+  service: {
+    id: string;
+    tag: string;
+    title: string;
+    sub: string;
+    desc: string;
+    simpleDesc: string;
+    cases: string[];
+    href: string;
+  };
+  index?: number;
+}
+
+const { service, index = 0 } = Astro.props;
+
+const iconClasses = [
+  'sha-card__icon--blue',
+  'sha-card__icon--teal',
+  'sha-card__icon--red',
+  'sha-card__icon--blue',
+];
+const iconClass = iconClasses[index % iconClasses.length];
+---
+
+<div class="sha-card">
+  <div class="display-flex flex-align-center gap-1">
+    <div class={`sha-card__icon ${iconClass}`}>
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-1 6h2v6h-2V7zm0 8h2v2h-2v-2z"/>
+      </svg>
+    </div>
+    <div>
+      <span class="font-sans-3xs text-bold text-primary display-block">{service.tag}</span>
+      <h3 class="sha-card__title">{service.title}</h3>
+    </div>
+  </div>
+
+  <div class="sha-card__body">
+    <!-- Explicación sencilla para no técnicos -->
+    <div class="sha-plain-summary margin-y-1">
+      <span class="sha-plain-summary__label">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
+        </svg>
+        En palabras sencillas:
+      </span>
+      <p class="sha-plain-summary__text">{service.simpleDesc}</p>
+    </div>
+
+    <!-- Casos frecuentes escaneables -->
+    <span class="font-sans-3xs text-bold text-base-dark text-uppercase letter-spacing-1 margin-top-1 display-block">
+      Casos frecuentes que resolvemos:
+    </span>
+    <ul class="sha-check-list margin-top-05 margin-bottom-2">
+      {service.cases.map((c) => (
+        <li>{c}</li>
+      ))}
+    </ul>
+
+    <a href={service.href} class="usa-button usa-button--outline width-full text-center margin-top-auto font-sans-xs">
+      Ver detalles técnicos y solicitar &rarr;
+    </a>
+  </div>
+</div>
+
+<style>
+  .sha-card {
+    background: #ffffff;
+    border: 1px solid #dfe1e2;
+    border-radius: 8px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .sha-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.09);
+  }
+  .sha-card__icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .sha-card__icon--blue {
+    background: #e7f6f8;
+    color: #005ea2;
+  }
+  .sha-card__icon--teal {
+    background: #e6f7f6;
+    color: #008779;
+  }
+  .sha-card__icon--red {
+    background: #fbf0f0;
+    color: #d83933;
+  }
+  .sha-card__title {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #1a2b4b;
+    margin: 0.15rem 0 0 0;
+    line-height: 1.3;
+  }
+  .sha-card__body {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    margin-top: 1rem;
+  }
+  .sha-plain-summary {
+    background-color: #f8fafc;
+    border-left: 3px solid #005ea2;
+    border-radius: 4px;
+    padding: 0.65rem 0.85rem;
+  }
+  .sha-plain-summary__label {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: #005ea2;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.25rem;
+  }
+  .sha-plain-summary__text {
+    font-size: 0.84rem;
+    color: #1a2b4b;
+    line-height: 1.45;
+    margin: 0;
+  }
+  .sha-check-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .sha-check-list li {
+    font-size: 0.82rem;
+    color: #565c65;
+    padding-left: 1.35rem;
+    position: relative;
+    margin-bottom: 0.4rem;
+    line-height: 1.4;
+  }
+  .sha-check-list li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: #008779;
+    font-weight: 700;
+    font-size: 0.85rem;
+  }
+</style>

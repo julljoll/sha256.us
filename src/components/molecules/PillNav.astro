@@ -1,0 +1,57 @@
+---
+export interface PillItem {
+  href: string;
+  label: string;
+  icon?: string;
+}
+
+export interface Props {
+  title?: string;
+  items: PillItem[];
+  class?: string;
+}
+
+const { title = 'Salta directamente a lo que necesitas:', items, class: className = '' } = Astro.props;
+---
+
+<div class={className}>
+  {title && (
+    <span class="font-sans-3xs text-bold text-base-dark text-uppercase letter-spacing-1 display-block margin-bottom-1">
+      {title}
+    </span>
+  )}
+  <div class="sha-quick-nav">
+    {items.map((item) => (
+      <a href={item.href} class="sha-pill-link">
+        {item.icon ? `${item.icon} ${item.label}` : item.label}
+      </a>
+    ))}
+  </div>
+</div>
+
+<style>
+  .sha-quick-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .sha-pill-link {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.35rem 0.75rem;
+    background-color: #f0f7fc;
+    color: #005ea2;
+    border: 1px solid #b8daed;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+  .sha-pill-link:hover {
+    background-color: #005ea2;
+    color: #ffffff;
+    border-color: #005ea2;
+    transform: translateY(-1px);
+  }
+</style>

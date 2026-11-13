@@ -1,0 +1,27 @@
+---
+import PillarCard from '../molecules/PillarCard.astro';
+---
+
+<div class="grid-row grid-gap margin-top-2">
+  <div class="tablet:grid-col-4 margin-bottom-2 tablet:margin-bottom-0">
+    <PillarCard
+      number="1"
+      title="Evidencia Inalterable"
+      description="Cálculo matemático con el algoritmo SHA-256 para certificar que ningún archivo o bit fue manipulado."
+    />
+  </div>
+  <div class="tablet:grid-col-4 margin-bottom-2 tablet:margin-bottom-0">
+    <PillarCard
+      number="2"
+      title="Validez ante Tribunales"
+      description="Planillas oficiales de cadena de custodia (PRCC / MUCC-2017) y actas de entrevista para que el juez admita la prueba."
+    />
+  </div>
+  <div class="tablet:grid-col-4">
+    <PillarCard
+      number="3"
+      title="Conclusiones Claras"
+      description="Traducimos la complejidad informática y telemática a conclusiones certeras y comprensibles para jueces y litigantes."
+    />
+  </div>
+</div>

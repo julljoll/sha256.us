@@ -1,0 +1,71 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import BlogCard from '../BlogCard.astro';
+import Badge from '../atoms/Badge.astro';
+
+export interface Props {
+  posts: CollectionEntry<'blog'>[];
+}
+
+const { posts } = Astro.props;
+---
+
+<section class="sha-section sha-section--light">
+  <div class="sha-container">
+    <div class="sha-blog-header">
+      <div>
+        <Badge variant="secondary">DIVULGACIÓN TÉCNICA</Badge>
+        <h2 class="sha-section__title margin-top-1 margin-bottom-0">Noticias & Casos de Investigación</h2>
+      </div>
+      <a href="/blog" class="usa-button usa-button--outline sha-btn-ghost">Ver todo el Blog</a>
+    </div>
+
+    <div class="sha-blog-grid">
+      {posts.map((post) => (
+        <BlogCard post={post} HeadingTag="h3" />
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .sha-section {
+    padding: 4.5rem 0;
+  }
+  @media (max-width: 640px) {
+    .sha-section {
+      padding: 2.75rem 0;
+    }
+  }
+  .sha-section--light {
+    background-color: #f0f2f5;
+  }
+  .sha-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.25rem;
+  }
+  .sha-section__title {
+    font-size: clamp(1.35rem, 2.5vw, 1.9rem);
+    font-weight: 700;
+    color: #1a2b4b;
+    line-height: 1.25;
+  }
+  .sha-blog-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .sha-btn-ghost {
+    border-color: #005ea2;
+    color: #005ea2;
+  }
+  .sha-blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+</style>

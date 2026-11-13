@@ -1,0 +1,48 @@
+---
+import SectionHeader from '../atoms/SectionHeader.astro';
+import StandardCard from '../molecules/StandardCard.astro';
+import { STANDARDS } from '../../consts';
+---
+
+<section class="sha-section bg-white">
+  <div class="sha-container">
+    <SectionHeader
+      tag="MARCO REGULATORIO"
+      tagVariant="primary"
+      title="Normas Técnicas y Protocolos Oficiales"
+      sub="La validez jurídica de una prueba depende del método. Aplicamos los estándares internacionales más rigurosos."
+    />
+
+    <div class="sha-standards-grid">
+      {STANDARDS.map((std) => (
+        <StandardCard
+          tag={std.tag}
+          code={std.code}
+          title={std.title}
+          desc={std.desc}
+        />
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .sha-section {
+    padding: 4.5rem 0;
+  }
+  @media (max-width: 640px) {
+    .sha-section {
+      padding: 2.75rem 0;
+    }
+  }
+  .sha-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.25rem;
+  }
+  .sha-standards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.25rem;
+  }
+</style>

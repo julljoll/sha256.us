@@ -1,0 +1,25 @@
+---
+import { CONTACT } from '../../consts';
+---
+
+<div class="bg-primary-darker text-white padding-4 tablet:padding-6 radius-lg shadow-2 margin-top-6">
+  <div class="grid-row grid-gap flex-align-center">
+    <div class="tablet:grid-col-8">
+      <span class="usa-tag bg-secondary text-primary-darkest font-sans-3xs text-bold margin-bottom-1">ATENCIÓN PERICIAL</span>
+      <h3 class="font-sans-xl text-bold text-white margin-top-1 margin-bottom-1">
+        ¿Requieres asistencia pericial o evaluación preliminar de evidencia?
+      </h3>
+      <p class="font-sans-xs text-base-lightest line-height-sans-3 margin-0">
+        Coordinamos la recepción técnica en laboratorio, cadena de custodia oficial o peritaje judicial para procesos contenciosos.
+      </p>
+    </div>
+    <div class="tablet:grid-col-4 display-flex flex-column gap-1 margin-top-3 tablet:margin-top-0">
+      <a href="/contacto" class="usa-button usa-button--secondary font-sans-xs width-full text-center">
+        Contactar al Gabinete Forense &rarr;
+      </a>
+      <a href={CONTACT.whatsapp} target="_blank" rel="noopener noreferrer" class="usa-button usa-button--outline text-white border-white font-sans-xs width-full text-center">
+        Escribir a WhatsApp ({CONTACT.phone.display})
+      </a>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,67 @@
+---
+import Badge from '../atoms/Badge.astro';
+
+export interface Props {
+  stepNumber: string;
+  badgeTag: string;
+  badgeVariant?: 'primary' | 'secondary' | 'accent' | 'dark';
+  title: string;
+  description: string;
+}
+
+const {
+  stepNumber,
+  badgeTag,
+  badgeVariant = 'primary',
+  title,
+  description,
+} = Astro.props;
+---
+
+<div class="sha-step">
+  <div class="margin-bottom-1">
+    <Badge variant={badgeVariant}>{badgeTag}</Badge>
+  </div>
+  <div class="sha-step__num">{stepNumber}</div>
+  <h3 class="sha-step__title">{title}</h3>
+  <p class="sha-step__text">{description}</p>
+</div>
+
+<style>
+  .sha-step {
+    background: #ffffff;
+    border: 1px solid #dfe1e2;
+    border-radius: 8px;
+    padding: 1.5rem 1.25rem;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .sha-step:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  }
+  .sha-step__num {
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: #e1e7ee;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+    font-family: monospace;
+  }
+  .sha-step__title {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #1a2b4b;
+    margin: 0 0 0.5rem 0;
+    line-height: 1.3;
+  }
+  .sha-step__text {
+    font-size: 0.85rem;
+    color: #565c65;
+    line-height: 1.5;
+    margin: 0;
+  }
+</style>

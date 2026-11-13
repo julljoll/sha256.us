@@ -1,0 +1,23 @@
+---
+export interface Props {
+  variant?: 'primary' | 'secondary' | 'light' | 'accent' | 'dark' | 'outline';
+  class?: string;
+}
+
+const { variant = 'primary', class: className = '' } = Astro.props;
+
+const variantClasses: Record<string, string> = {
+  primary: 'bg-primary text-white',
+  secondary: 'bg-secondary text-primary-darkest font-bold',
+  light: 'bg-primary-lighter text-primary-darker font-bold',
+  accent: 'bg-secondary-dark text-white',
+  dark: 'bg-primary-dark text-white',
+  outline: 'bg-transparent text-primary border-1px border-primary font-bold',
+};
+
+const badgeClass = variantClasses[variant] || variantClasses.primary;
+---
+
+<span class={`usa-tag font-sans-3xs ${badgeClass} ${className}`.trim()}>
+  <slot />
+</span>

@@ -1,0 +1,52 @@
+---
+import Badge from './Badge.astro';
+
+export interface Props {
+  tag?: string;
+  tagVariant?: 'primary' | 'secondary' | 'light' | 'accent' | 'dark';
+  title: string;
+  sub?: string;
+  align?: 'center' | 'left';
+  class?: string;
+}
+
+const {
+  tag,
+  tagVariant = 'primary',
+  title,
+  sub,
+  align = 'center',
+  class: className = '',
+} = Astro.props;
+
+const alignClass = align === 'center' ? 'text-center' : 'text-left';
+---
+
+<div class={`sha-section__header ${alignClass} ${className}`.trim()}>
+  {tag && (
+    <div class="margin-bottom-1">
+      <Badge variant={tagVariant}>{tag}</Badge>
+    </div>
+  )}
+  <h2 class="sha-section__title margin-top-05 margin-bottom-1">{title}</h2>
+  {sub && <p class="sha-section__sub margin-x-auto">{sub}</p>}
+</div>
+
+<style>
+  .sha-section__header {
+    margin-bottom: 2.25rem;
+  }
+  .sha-section__title {
+    font-size: clamp(1.35rem, 2.5vw, 1.9rem);
+    font-weight: 700;
+    color: #1a2b4b;
+    line-height: 1.25;
+  }
+  .sha-section__sub {
+    font-size: 0.95rem;
+    color: #565c65;
+    max-width: 640px;
+    line-height: 1.5;
+    margin-top: 0.5rem;
+  }
+</style>

@@ -1,0 +1,69 @@
+---
+import Badge from '../../atoms/Badge.astro';
+---
+
+<section id="documentos" class="margin-bottom-6 tablet:margin-bottom-8 bg-white padding-3 tablet:padding-6 radius-lg shadow-1 border-1px border-base-lighter">
+  <div class="grid-row grid-gap flex-align-center">
+    <div class="tablet:grid-col-8">
+      <Badge variant="accent" class="margin-bottom-1">AUDITORÍA DOCUMENTAL</Badge>
+      <h2 class="font-sans-xl text-bold text-primary-darker margin-top-1 margin-bottom-2">
+        Verificación de Contratos Digitales, Metadatos y Firmas Electrónicas
+      </h2>
+
+      <!-- Resumen claro para no técnicos -->
+      <div class="sha-plain-summary margin-bottom-3">
+        <span class="sha-plain-summary__label">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
+          </svg>
+          ¿Para qué sirve este servicio?
+        </span>
+        <p class="sha-plain-summary__text">
+          Si sospechas que un contrato en PDF fue alterado, que una firma electrónica no corresponde al autor real o que un correo electrónico con facturas o transferencias fue suplantado para una estafa.
+        </p>
+      </div>
+
+      <p class="font-sans-sm text-base-dark line-height-sans-4 margin-bottom-2">
+        Determinamos la autenticidad, autoría y cronología de documentos digitales ante sospechas de alteración o repudio:
+      </p>
+      <ul class="font-sans-sm text-base-dark line-height-sans-4 margin-bottom-3 padding-left-3">
+        <li><strong>Análisis de firmas electrónicas:</strong> Validación de certificados digitales, autoridades certificadoras y sellos de tiempo.</li>
+        <li><strong>Auditoría de metadatos:</strong> Trazabilidad del software de creación, historial de modificaciones y autoría original de PDFs y ofimática.</li>
+        <li><strong>Cabeceras de correo electrónico:</strong> Trazabilidad de servidores remitentes, verificación SPF, DKIM y DMARC contra fraudes de suplantación.</li>
+      </ul>
+    </div>
+    <div class="tablet:grid-col-4 margin-top-3 tablet:margin-top-0 display-flex flex-column flex-center text-center">
+      <div class="bg-accent-cool-lighter padding-4 radius-lg width-full border-1px border-accent-cool-light">
+        <h3 class="font-sans-md text-bold text-primary-darker margin-top-0 margin-bottom-1">Peritaje Documental</h3>
+        <p class="font-sans-xs text-base-dark margin-bottom-3">Verificación pericial para controversias comerciales o arbitrajes.</p>
+        <a href="/contacto" class="usa-button usa-button--secondary width-full">Auditar Documento</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .sha-plain-summary {
+    background-color: #f8fafc;
+    border-left: 3px solid #005ea2;
+    border-radius: 4px;
+    padding: 0.75rem 1rem;
+  }
+  .sha-plain-summary__label {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #005ea2;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.25rem;
+  }
+  .sha-plain-summary__text {
+    font-size: 0.88rem;
+    color: #1a2b4b;
+    line-height: 1.5;
+    margin: 0;
+  }
+</style>

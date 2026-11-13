@@ -1,0 +1,55 @@
+---
+export interface Props {
+  icon?: 'court' | 'hash' | 'chain' | 'shield';
+  text: string;
+}
+
+const { icon = 'shield', text } = Astro.props;
+---
+
+<div class="sha-trust-item">
+  {icon === 'court' && (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-7 9h-2V5h2v6zm0 4h-2v-2h2v2z"/>
+    </svg>
+  )}
+  {icon === 'hash' && (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/>
+    </svg>
+  )}
+  {icon === 'chain' && (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
+    </svg>
+  )}
+  {icon === 'shield' && (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/>
+    </svg>
+  )}
+  <span>{text}</span>
+</div>
+
+<style>
+  .sha-trust-item {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.92);
+    white-space: nowrap;
+  }
+  .sha-trust-item svg {
+    color: #69b4e9;
+    flex-shrink: 0;
+  }
+  @media (max-width: 640px) {
+    .sha-trust-item {
+      font-size: 0.72rem;
+      white-space: normal;
+      line-height: 1.3;
+    }
+  }
+</style>

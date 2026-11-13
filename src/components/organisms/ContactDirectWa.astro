@@ -1,0 +1,30 @@
+---
+import { CONTACT } from '../../consts';
+import Badge from '../atoms/Badge.astro';
+import SocialIcon from '../atoms/SocialIcon.astro';
+---
+
+<div class="bg-primary-lighter border-1px border-primary-light radius-lg padding-3 tablet:padding-4 margin-bottom-5 shadow-1">
+  <div class="display-flex flex-wrap flex-align-center flex-justify-between gap-2">
+    <div class="flex-1 minw-mobile">
+      <Badge variant="primary" class="margin-bottom-05">ATENCIÓN DIRECTA</Badge>
+      <h2 class="font-sans-md text-bold text-primary-darker margin-y-05">
+        ¿Prefieres atención inmediata sin llenar formularios?
+      </h2>
+      <p class="font-sans-xs text-base-dark margin-0">
+        Escribe directamente por WhatsApp a nuestro equipo de guardia pericial para coordinar la recepción de tu evidencia o evaluar la urgencia de tu caso.
+      </p>
+    </div>
+    <div class="width-full tablet:width-auto">
+      <a
+        href={CONTACT.whatsapp}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="usa-button usa-button--secondary width-full tablet:width-auto text-center display-inline-flex flex-align-center flex-justify-center font-sans-xs"
+      >
+        <SocialIcon network="whatsapp" size={18} class="margin-right-1" />
+        Escribir a WhatsApp ({CONTACT.phone.display}) &rarr;
+      </a>
+    </div>
+  </div>
+</div>
