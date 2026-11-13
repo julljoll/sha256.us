@@ -1,11 +1,11 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { COMPANY, CONTACT, FOUNDER, SITE_TITLE } from '../consts';
+import { COMPANY, CONTACT, SITE_TITLE } from '../consts';
 ---
 
 <BaseLayout
 	title={`Contacto y Ubicación | ${SITE_TITLE}`}
-	description={`Canales de atención pericial de ${COMPANY.name}. Dirección pericial a cargo de ${FOUNDER.name} (${FOUNDER.handle}). Sede principal en Quíbor, Lara, Venezuela.`}
+	description={`Canales de atención pericial de ${COMPANY.name}. Equipo forense multidisciplinario en Quíbor, Lara, Venezuela. Peritajes judiciales, extracciones móviles y cadena de custodia oficial.`}
 	mainClass="padding-y-5 tablet:padding-y-6"
 >
 	<div class="grid-container maxw-desktop margin-x-auto padding-x-2">
@@ -29,7 +29,7 @@ import { COMPANY, CONTACT, FOUNDER, SITE_TITLE } from '../consts';
 						¿Prefieres atención inmediata sin llenar formularios?
 					</h2>
 					<p class="font-sans-xs text-base-dark margin-0">
-						Escribe directamente por WhatsApp al perito principal para coordinar la recepción de tu evidencia o evaluar la urgencia de tu caso.
+						Escribe directamente por WhatsApp a nuestro equipo de guardia pericial para coordinar la recepción de tu evidencia o evaluar la urgencia de tu caso.
 					</p>
 				</div>
 				<div class="width-full tablet:width-auto">
@@ -109,15 +109,18 @@ import { COMPANY, CONTACT, FOUNDER, SITE_TITLE } from '../consts';
 						Información Oficial
 					</h2>
 
-					<!-- Respaldo del Especialista Líder -->
+					<!-- Respaldo del Gabinete Forense -->
 					<div class="bg-primary-lighter padding-3 radius-md border-left-05 border-primary margin-bottom-3">
-						<span class="font-sans-3xs text-uppercase text-bold text-primary display-block margin-bottom-05">Dirección Técnica</span>
+						<span class="font-sans-3xs text-uppercase text-bold text-primary display-block margin-bottom-05">Gabinete Pericial Especializado</span>
 						<p class="font-sans-xs text-primary-darker text-bold margin-0">
-							{FOUNDER.name} — <a href={FOUNDER.url} target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">{FOUNDER.handle}</a>
+							Equipo Forense sha256.us
 						</p>
-						<p class="font-sans-3xs text-base-dark margin-top-05 margin-bottom-0">
-							{FOUNDER.role}
+						<p class="font-sans-3xs text-base-dark margin-top-05 margin-bottom-1">
+							Recepción técnica, entrevistas preliminares, análisis forense de datos y dictámenes judiciales.
 						</p>
+						<a href="/about#equipo" class="font-sans-3xs text-primary text-bold hover:underline">
+							Conocer integrantes del equipo pericial &rarr;
+						</a>
 					</div>
 
 					<div class="margin-bottom-3">
@@ -156,12 +159,10 @@ import { COMPANY, CONTACT, FOUNDER, SITE_TITLE } from '../consts';
 						<span class="font-sans-3xs text-uppercase text-bold text-base display-block margin-bottom-1">Canales Profesionales</span>
 						<div class="display-flex flex-wrap gap-1">
 							<a
-								href={FOUNDER.url}
-								target="_blank"
-								rel="noopener noreferrer"
+								href="/about#equipo"
 								class="usa-button usa-button--outline font-sans-3xs padding-y-1 padding-x-2 margin-0"
 							>
-								{FOUNDER.handle}
+								Equipo Pericial
 							</a>
 							<a
 								href={CONTACT.social.linkedin}

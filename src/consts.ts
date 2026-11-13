@@ -13,21 +13,82 @@ export const COMPANY = {
 	foundedLocation: 'Quíbor, Estado Lara, Venezuela',
 };
 
+export interface TeamMember {
+	id: string;
+	name: string;
+	role: string;
+	titleTag: string;
+	phases: string;
+	summary: string;
+	responsibilities: string[];
+	standards: string[];
+	social: {
+		web?: string;
+		linkedin?: string;
+		github?: string;
+	};
+}
+
+export const TEAM_MEMBERS: TeamMember[] = [
+	{
+		id: 'jull',
+		name: 'Jull',
+		role: 'Perito Forense Digital & Análisis Jurídico de Datos',
+		titleTag: 'Fases F3–F5: Análisis & Dictamen Judicial',
+		phases: 'ISO/IEC 27042 & COPP Art. 187',
+		summary:
+			'Especialista en análisis forense avanzado de datos, reconstrucción temporal de eventos probatorios, correlación de hipótesis y emisión del Dictamen Pericial Oficial con plena validez procesal y defensa en estrados judiciales.',
+		responsibilities: [
+			'Procesamiento y análisis forense de datos digitales bajo estándares internacionales (ISO/IEC 27042)',
+			'Elaboración, suscripción y defensa del Dictamen Pericial Oficial con valor probatorio pleno (COPP Art. 187)',
+			'Verificación matemática de integridad criptográfica e inalterabilidad (Génesis Hash SHA-256)',
+			'Auditoría técnica de contratos electrónicos, metadatos ofimáticos y firmas digitales',
+			'Comparecencia pericial y ratificación oral en audiencias y salas de juicio',
+		],
+		standards: ['ISO/IEC 27042', 'COPP Art. 187', 'Génesis SHA-256', 'NIST SP 800-86'],
+		social: {
+			web: 'https://jull.sha256.us',
+			linkedin: 'https://www.linkedin.com/in/julljoll/',
+			github: 'https://github.com/julljoll',
+		},
+	},
+	{
+		id: 'jhonatan-freitez',
+		name: 'Jhonatan Freitez',
+		role: 'Especialista en Entrevistas Forenses, Extracciones Lógicas & Cadena de Custodia',
+		titleTag: 'Fases F0–F2: Recepción & Adquisición',
+		phases: 'MUCC-2017 & ISO/IEC 27037',
+		summary:
+			'Especialista en recepción técnica y entrevistas preliminares a consignantes y víctimas, formalización de actas de consentimiento, administración de planillas de cadena de custodia en folio (PRCC) y extracciones lógicas y físicas de telefonía móvil.',
+		responsibilities: [
+			'Entrevistas forenses preliminares, recepción técnica y actas de consentimiento informado con consignantes',
+			'Levantamiento protocolar de Planillas de Registro de Cadena de Custodia (PRCC en folio y MUCC-2017)',
+			'Extracciones lógicas y forenses en smartphones (Android, iOS, WhatsApp, Telegram, bases de datos SQLite)',
+			'Adquisición de imágenes forenses bit a bit con bloqueadores de hardware (Write-Blockers ISO/IEC 27037)',
+			'Embalaje en jaula de Faraday, control antiestático y registro dactiloscópico de evidencia consignada',
+		],
+		standards: ['MUCC-2017', 'ISO/IEC 27037', 'Write-Blockers', 'NIST SP 800-101'],
+		social: {
+			linkedin: 'https://www.linkedin.com/in/jhonatan-freitez-86423378/',
+		},
+	},
+];
+
 export const FOUNDER = {
 	name: 'Jull',
 	handle: 'jull.sha256.us',
-	role: 'Fundador & Perito Principal en Informática Forense Digital',
+	role: 'Perito Forense Digital & Análisis Jurídico de Datos',
 	url: 'https://jull.sha256.us',
 	linkedin: 'https://www.linkedin.com/in/julljoll/',
 	github: 'https://github.com/julljoll',
 	summary:
-		'Especialista en informática forense, respuesta a incidentes, extracción y preservación de evidencia digital, cadena de custodia criptográfica (SHA-256) y auditoría técnica de sistemas para litigios judiciales y corporativos.',
+		'Especialista en análisis de datos forenses y jurídicos, elaboración y defensa de dictámenes periciales judiciales, preservación de cadena de custodia criptográfica (SHA-256) y auditoría técnica de sistemas.',
 	specialties: [
-		'Informática Forense y Peritaje Judicial (ISO/IEC 27037 & 27042)',
-		'Adquisición y Análisis Forense de Dispositivos Móviles y Mensajería (WhatsApp, Telegram)',
-		'Recuperación Forense en Unidades de Almacenamiento (HDD, SSD, NVMe, RAID)',
+		'Análisis Forense de Datos y Peritaje Judicial (ISO/IEC 27042 & COPP Art. 187)',
+		'Dictamen Pericial Oficial con Validez Probatoria en Juicio',
 		'Auditoría de Contratos Digitales, Firmas Electrónicas y Metadatos',
-		'Preservación de Cadena de Custodia Criptográfica (SHA-256 / MUCC-2017)',
+		'Verificación Matemática Criptográfica (Génesis Hash SHA-256)',
+		'Defensa y Comparecencia Pericial en Tribunales',
 	],
 };
 
@@ -42,7 +103,6 @@ export const CONTACT = {
 	address:
 		'Avenida 6 con Calle 7, Edificio Mercantil La Ceiba, Primer Piso, Oficina N° 8, Quíbor, Estado Lara, Venezuela.',
 	social: {
-		founderWeb: 'https://jull.sha256.us',
 		linkedin: 'https://www.linkedin.com/in/julljoll/',
 		twitter: 'https://x.com/sha256us',
 		instagram: 'https://www.instagram.com/sha256.us',

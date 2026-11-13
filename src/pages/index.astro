@@ -3,7 +3,7 @@ import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import HeroCarousel from '../components/HeroCarousel.astro';
 import BlogCard from '../components/BlogCard.astro';
-import { CORE_SERVICES, FOUNDER, SITE_DESCRIPTION, SITE_TITLE, STANDARDS } from '../consts';
+import { CORE_SERVICES, SITE_DESCRIPTION, SITE_TITLE, STANDARDS, TEAM_MEMBERS } from '../consts';
 
 const latestPosts = (await getCollection('blog', ({ data }) => !data.draft))
 	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
@@ -128,42 +128,53 @@ const latestPosts = (await getCollection('blog', ({ data }) => !data.draft))
 		</div>
 	</section>
 
-	<!-- ======= FOUNDER & SPECIALIST BACKING SECTION ======= -->
+	<!-- ======= EQUIPO PERICIAL & RESPALDO INSTITUCIONAL ======= -->
 	<section class="sha-section bg-base-lightest border-top-1px border-bottom-1px border-base-lighter">
 		<div class="sha-container">
 			<div class="bg-white padding-4 tablet:padding-6 radius-lg shadow-2 border-left-1 border-primary">
 				<div class="grid-row grid-gap flex-align-center">
-					<div class="tablet:grid-col-8">
-						<span class="usa-tag bg-primary text-white margin-bottom-1">RESPALDO PROFESIONAL</span>
+					<div class="tablet:grid-col-7">
+						<span class="usa-tag bg-primary text-white margin-bottom-1">RESPALDO INSTITUCIONAL Y EQUIPO PERICIAL</span>
 						<h2 class="font-sans-xl text-bold text-primary-darker margin-top-1 margin-bottom-2">
-							Dirección Técnica Especializada: {FOUNDER.name} (<a href={FOUNDER.url} target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">{FOUNDER.handle}</a>)
+							Gabinete Multidisciplinario en Informática Forense y Derecho Digital
 						</h2>
 						<p class="font-sans-sm text-base-dark line-height-sans-4 margin-bottom-2">
-							Cada peritaje, análisis de evidencias digitales y dictamen emitido por <strong>sha256.us</strong> cuenta con la dirección y firma del perito informático <strong>{FOUNDER.name} ({FOUNDER.handle})</strong>, garantizando estricta validez procesal y apego a normas científicas internacionales.
+							En <strong>sha256.us</strong> cada investigación pericial es ejecutada bajo un protocolo integral de laboratorio que articula dos áreas operativas fundamentales: la <strong>recepción formal, entrevistas forenses y cadena de custodia oficial</strong> en la fase inicial, junto al <strong>análisis forense profundo de datos y la emisión del dictamen pericial con validez judicial</strong>.
 						</p>
-						<ul class="font-sans-xs text-base-dark line-height-sans-4 margin-bottom-3 padding-left-3">
-							{FOUNDER.specialties.map((spec) => (
-								<li>{spec}</li>
-							))}
-						</ul>
+						<div class="grid-row grid-gap margin-bottom-3">
+							<div class="mobile:grid-col-6 margin-bottom-2 mobile:margin-bottom-0">
+								<div class="bg-base-lightest padding-2 radius-md border-left-05 border-secondary height-full">
+									<strong class="font-sans-3xs text-uppercase text-secondary-dark display-block">Recepción & Custodia</strong>
+									<span class="font-sans-2xs text-bold text-ink display-block">Jhonatan Freitez</span>
+									<span class="font-sans-3xs text-base-dark">Entrevistas, actas PRCC en folio, extracciones lógicas móviles y bloqueadores de hardware (ISO 27037).</span>
+								</div>
+							</div>
+							<div class="mobile:grid-col-6">
+								<div class="bg-base-lightest padding-2 radius-md border-left-05 border-primary height-full">
+									<strong class="font-sans-3xs text-uppercase text-primary display-block">Análisis & Dictamen</strong>
+									<span class="font-sans-2xs text-bold text-ink display-block">Jull</span>
+									<span class="font-sans-3xs text-base-dark">Análisis forense de datos, validación SHA-256, dictamen judicial oficial y defensa en juicio (ISO 27042).</span>
+								</div>
+							</div>
+						</div>
 						<div class="display-flex flex-wrap gap-2">
-							<a href="/about" class="usa-button usa-button--primary">Conocer trayectoria y laboratorio</a>
-							<a href={FOUNDER.url} target="_blank" rel="noopener noreferrer" class="usa-button usa-button--outline">Visitar {FOUNDER.handle} &rarr;</a>
+							<a href="/about#equipo" class="usa-button usa-button--primary">Conocer al Equipo Pericial &rarr;</a>
+							<a href="/servicios" class="usa-button usa-button--outline">Ver Servicios Forenses</a>
 						</div>
 					</div>
-					<div class="tablet:grid-col-4 margin-top-3 tablet:margin-top-0">
-						<div class="bg-primary-darker text-white padding-4 radius-lg text-center shadow-1">
-							<h3 class="font-sans-md text-bold text-white margin-top-0 margin-bottom-1">{FOUNDER.name}</h3>
-							<p class="font-sans-3xs text-secondary-light text-uppercase text-bold margin-bottom-2">{FOUNDER.role}</p>
+					<div class="tablet:grid-col-5 margin-top-3 tablet:margin-top-0">
+						<div class="bg-primary-darker text-white padding-4 radius-lg shadow-1">
+							<span class="usa-tag bg-secondary text-primary-darkest font-sans-3xs text-bold margin-bottom-2">LABORATORIO sha256.us</span>
+							<h3 class="font-sans-md text-bold text-white margin-top-0 margin-bottom-1">Protocolo Pericial F0 - F5</h3>
 							<p class="font-sans-3xs text-base-lightest line-height-sans-3 margin-bottom-3">
-								Garantía de inalterabilidad matemática con SHA-256 y validez procesal en sede judicial.
+								Metodología rigurosa alineada con el ciclo forense: desde la entrevista preliminar y el acta de recepción con firma del consignante, hasta el cálculo del Génesis Hash SHA-256 y la ratificación del dictamen en estrados judiciales.
 							</p>
 							<div class="display-flex flex-column gap-1">
-								<a href={FOUNDER.url} target="_blank" rel="noopener noreferrer" class="usa-button usa-button--secondary font-sans-3xs width-full">
-									Perfil {FOUNDER.handle}
+								<a href="/about#equipo" class="usa-button usa-button--secondary font-sans-3xs width-full text-center">
+									Ver Perfiles y Competencias Técnicas
 								</a>
-								<a href={FOUNDER.linkedin} target="_blank" rel="noopener noreferrer" class="usa-button usa-button--outline text-white border-white font-sans-3xs width-full">
-									LinkedIn Pericial
+								<a href="/contacto" class="usa-button usa-button--outline text-white border-white font-sans-3xs width-full text-center">
+									Consignar Caso al Gabinete Forense
 								</a>
 							</div>
 						</div>

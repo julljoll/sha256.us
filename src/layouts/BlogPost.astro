@@ -18,7 +18,7 @@ const { title, description, pubDate, updatedDate, heroImage, author, category, t
 	type="article"
 	pubDate={pubDate}
 	updatedDate={updatedDate}
-	author={author || `${FOUNDER.name} (${FOUNDER.handle})`}
+	author={author || 'Equipo Pericial sha256.us'}
 	section={category || 'Informática Forense'}
 	tags={tags || []}
 	mainClass="padding-y-4 tablet:padding-y-6"
@@ -63,7 +63,7 @@ const { title, description, pubDate, updatedDate, heroImage, author, category, t
 						(Actualizado: <FormattedDate date={updatedDate} />)
 					</span>
 				)}
-				<span class="text-base-dark">&bull; Por {author || `${FOUNDER.name} (${FOUNDER.handle})`}</span>
+				<span class="text-base-dark">&bull; Por {author || 'Equipo Pericial sha256.us'}</span>
 			</div>
 		</header>
 
@@ -88,18 +88,18 @@ const { title, description, pubDate, updatedDate, heroImage, author, category, t
 				<div class="tablet:grid-col-8">
 					<span class="font-sans-3xs text-bold text-primary text-uppercase">AUTORIDAD Y PERITAJE FORENSE</span>
 					<h3 class="font-sans-md text-bold text-primary-darker margin-top-0 margin-bottom-1">
-						{COMPANY.name} &bull; Dirección Técnica: {FOUNDER.name} (<a href={FOUNDER.url} target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">{FOUNDER.handle}</a>)
+						{COMPANY.name} &bull; Gabinete Forense Multidisciplinario
 					</h3>
 					<p class="font-sans-xs text-base-dark line-height-sans-3 margin-0">
-						Gabinete pericial especializado en auditoría de dispositivos digitales, análisis forense de telefonía móvil y WhatsApp, recuperación en unidades de almacenamiento masivo y elaboración de dictámenes con estricta cadena de custodia conforme a <strong>ISO/IEC 27037</strong>, <strong>ISO/IEC 27042</strong>, <strong>NIST SP 800</strong> y <strong>MUCC-2017</strong>.
+						Equipo pericial especializado en auditoría de dispositivos digitales, entrevistas preliminares, análisis forense de telefonía móvil y WhatsApp, recuperación en unidades de almacenamiento masivo y elaboración de dictámenes con estricta cadena de custodia conforme a <strong>ISO/IEC 27037</strong>, <strong>ISO/IEC 27042</strong>, <strong>NIST SP 800</strong> y <strong>MUCC-2017</strong>.
 					</p>
 				</div>
 				<div class="tablet:grid-col-4 display-flex flex-column gap-1 margin-top-3 tablet:margin-top-0">
 					<a href="/contacto" class="usa-button usa-button--primary font-sans-xs width-full text-center">
 						Solicitar Dictamen Pericial
 					</a>
-					<a href={FOUNDER.url} target="_blank" rel="noopener noreferrer" class="usa-button usa-button--outline font-sans-xs width-full text-center">
-						Ver Perfil en {FOUNDER.handle} &rarr;
+					<a href="/about#equipo" class="usa-button usa-button--outline font-sans-xs width-full text-center">
+						Conocer al Equipo Pericial &rarr;
 					</a>
 				</div>
 			</div>
