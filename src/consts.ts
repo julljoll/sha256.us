@@ -1,7 +1,7 @@
 // Configuración global corporativa de sha256.us y perfil profesional jull.sha256.us
-export const SITE_TITLE = 'sha256.us | Empresa de Informática Forense y Peritaje Digital';
+export const SITE_TITLE = 'Laboratorio de Informática Forense en Venezuela | Peritaje Digital Judicial — sha256.us';
 export const SITE_DESCRIPTION =
-	'Laboratorio corporativo de informática forense, auditoría de dispositivos digitales, recuperación de datos y consolidación de evidencia digital con validez judicial bajo normas ISO/IEC 27037, ISO/IEC 27042, NIST SP 800 y MUCC-2017.';
+	'Laboratorio de informática forense y peritaje digital judicial en Venezuela. Extracción certificada de datos, peritajes para juicios, perito informático en Lara y custodia oficial bajo ISO/IEC 27037 y MUCC-2017.';
 export const SITE_URL = 'https://sha256.us';
 
 export const COMPANY = {

@@ -51,7 +51,7 @@ const schemaOrg = {
 	'@context': 'https://schema.org',
 	'@graph': [
 		{
-			'@type': ['Organization', 'ProfessionalService'],
+			'@type': ['LocalBusiness', 'ProfessionalService', 'Organization'],
 			'@id': `${SITE_URL}/#organization`,
 			name: COMPANY.name,
 			legalName: COMPANY.legalBrand,
@@ -63,16 +63,38 @@ const schemaOrg = {
 				height: 100,
 			},
 			image: `${SITE_URL}/og-default.jpg`,
-			description: SITE_DESCRIPTION,
+			description: description,
 			email: CONTACT.email,
 			telephone: CONTACT.phone.display,
+			priceRange: '$$',
+			currenciesAccepted: 'USD, VED',
 			address: {
 				'@type': 'PostalAddress',
 				streetAddress: 'Avenida 6 con Calle 7, Edificio Mercantil La Ceiba, Primer Piso, Oficina N° 8',
 				addressLocality: 'Quíbor',
 				addressRegion: 'Lara',
+				postalCode: '3061',
 				addressCountry: 'VE',
 			},
+			geo: {
+				'@type': 'GeoCoordinates',
+				latitude: 9.9287,
+				longitude: -69.6201,
+			},
+			areaServed: [
+				{ '@type': 'Country', name: 'Venezuela' },
+				{ '@type': 'State', name: 'Lara' },
+				{ '@type': 'City', name: 'Quíbor' },
+				{ '@type': 'City', name: 'Barquisimeto' },
+			],
+			openingHoursSpecification: [
+				{
+					'@type': 'OpeningHoursSpecification',
+					dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+					opens: '08:00',
+					closes: '17:00',
+				},
+			],
 			member: [
 				{
 					'@type': 'Person',
@@ -180,13 +202,18 @@ const schemaOrg = {
 <meta name="description" content={description} />
 <meta
 	name="keywords"
-	content="informática forense, peritaje informático, evidencia digital, cadena de custodia, sha256.us, jull, jhonatan freitez, análisis forense digital, perito informático venezuela, ISO 27037, ISO 27042, NIST, MUCC-2017"
+	content="laboratorio de informática forense en venezuela, peritaje digital judicial, perito informático en lara, peritaje informático venezuela, extracción forense whatsapp, peritajes judiciales, evidencia digital, cadena de custodia, sha256.us, jull, jhonatan freitez, ISO 27037, ISO 27042, NIST, MUCC-2017"
 />
 <meta name="author" content={`Equipo Forense sha256.us`} />
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
 <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
 <meta name="geo.region" content="VE-K" />
 <meta name="geo.placename" content="Quíbor, Estado Lara, Venezuela" />
+<meta name="geo.position" content="9.9287;-69.6201" />
+<meta name="ICBM" content="9.9287, -69.6201" />
+{import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION && (
+	<meta name="google-site-verification" content={import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION} />
+)}
 
 <!-- Open Graph / Facebook / WhatsApp / LinkedIn / Telegram -->
 <meta property="og:type" content={type} />
