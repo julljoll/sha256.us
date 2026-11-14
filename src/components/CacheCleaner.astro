@@ -91,8 +91,12 @@
 
 	@media (max-width: 640px) {
 		.sha-cache-widget {
-			bottom: 4.5rem;
+			bottom: 1rem;
 			right: 0.75rem;
+			transition: bottom 0.25s ease;
+		}
+		:global(body.has-cookie-banner) .sha-cache-widget {
+			bottom: 6.75rem;
 		}
 		.sha-cache-btn__text {
 			display: none;
