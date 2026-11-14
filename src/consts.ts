@@ -96,9 +96,11 @@ export const CONTACT = {
 	phone: {
 		display: '+57 316 3931945',
 		link: 'tel:+573163931945',
-		whatsapp: 'https://wa.me/573163931945',
+		whatsapp:
+			'https://api.whatsapp.com/send?phone=573163931945&text=Hola%2C%20solicito%20asistencia%20pericial%20desde%20sha256.us',
 	},
-	whatsapp: 'https://wa.me/573163931945',
+	whatsapp:
+		'https://api.whatsapp.com/send?phone=573163931945&text=Hola%2C%20solicito%20asistencia%20pericial%20desde%20sha256.us',
 	email: 'soporte@sha256.us',
 	address:
 		'Avenida 6 con Calle 7, Edificio Mercantil La Ceiba, Primer Piso, Oficina N° 8, Quíbor, Estado Lara, Venezuela.',
@@ -106,7 +108,8 @@ export const CONTACT = {
 		linkedin: 'https://www.linkedin.com/in/julljoll/',
 		twitter: 'https://x.com/sha256us',
 		instagram: 'https://www.instagram.com/sha256.us',
-		whatsapp: 'https://wa.me/573163931945',
+		whatsapp:
+			'https://api.whatsapp.com/send?phone=573163931945&text=Hola%2C%20solicito%20asistencia%20pericial%20desde%20sha256.us',
 	},
 };
 
