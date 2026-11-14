@@ -22,14 +22,13 @@ const iconClasses = [
   'sha-card__icon--blue',
 ];
 const iconClass = iconClasses[index % iconClasses.length];
+import Icon from '../atoms/Icon.astro';
 ---
 
 <div class="sha-card">
   <div class="display-flex flex-align-center gap-1">
     <div class={`sha-card__icon ${iconClass}`}>
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-1 6h2v6h-2V7zm0 8h2v2h-2v-2z"/>
-      </svg>
+      <Icon name="security" size={24} />
     </div>
     <div>
       <span class="font-sans-3xs text-bold text-primary display-block">{service.tag}</span>
@@ -41,9 +40,7 @@ const iconClass = iconClasses[index % iconClasses.length];
     <!-- Explicación sencilla para no técnicos -->
     <div class="sha-plain-summary margin-y-1">
       <span class="sha-plain-summary__label">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
-        </svg>
+        <Icon name="check" size={14} class="margin-right-05" />
         En palabras sencillas:
       </span>
       <p class="sha-plain-summary__text">{service.simpleDesc}</p>

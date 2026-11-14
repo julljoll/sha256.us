@@ -2,6 +2,7 @@
 import type { TeamMember } from '../../consts';
 import Badge from '../atoms/Badge.astro';
 import SocialIcon from '../atoms/SocialIcon.astro';
+import Icon from '../atoms/Icon.astro';
 
 export interface Props {
   member: TeamMember;
@@ -40,9 +41,7 @@ const { member } = Astro.props;
     <ul class="list-style-none padding-0 margin-0 font-sans-3xs text-base-dark line-height-sans-3">
       {member.responsibilities.map((resp) => (
         <li class="display-flex flex-align-start margin-y-1">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="#005ea2" aria-hidden="true" class="margin-right-1 flex-shrink-0" style="margin-top:2px">
-            <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
-          </svg>
+          <Icon name="check" size={14} fill="#005ea2" class="margin-right-1 flex-shrink-0" style="margin-top:2px" />
           <span>{resp}</span>
         </li>
       ))}

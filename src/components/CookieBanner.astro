@@ -1,14 +1,13 @@
 ---
 // CookieBanner.astro - Banner de cookies conforme a RGPD / ePrivacy y normativa de protección de datos
+import Icon from './atoms/Icon.astro';
 ---
 
 <div id="cookieBanner" class="sha-cookie-banner" role="dialog" aria-live="polite" aria-label="Consentimiento de cookies" style="display: none;">
 	<div class="sha-cookie-banner__inner">
 		<div class="sha-cookie-banner__content">
 			<div class="sha-cookie-banner__icon" aria-hidden="true">
-				<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-					<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10c0-.64-.06-1.27-.18-1.87-.24-1.2-.84-2.26-1.7-3.08-.85-.82-1.92-1.38-3.12-1.55C8.4 4.3 7.6 3.32 7.6 2.2c0-.07.01-.13.01-.2C10.42 2.01 11.22 2 12 2zm-1.5 6.5c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5-1.5-.67-1.5-1.5.67-1.5 1.5-1.5zm-3 4c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5-1.5-.67-1.5-1.5.67-1.5 1.5-1.5zm6 3c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5-1.5-.67-1.5-1.5.67-1.5 1.5-1.5zm2-6c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5-1.5-.67-1.5-1.5.67-1.5 1.5-1.5z"/>
-				</svg>
+				<Icon name="cookie" size={20} />
 			</div>
 			<div class="sha-cookie-banner__text">
 				<p class="sha-cookie-banner__p">

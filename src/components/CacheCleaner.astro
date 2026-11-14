@@ -1,5 +1,6 @@
 ---
 // CacheCleaner.astro - Botón para purgar caché local (Service Workers, CacheStorage, localStorage y recarga forzada)
+import Icon from './atoms/Icon.astro';
 ---
 
 <div class="sha-cache-widget">
@@ -10,18 +11,16 @@
 		title="Limpiar caché local y recargar la última versión del portal"
 		aria-label="Limpiar caché y recargar"
 	>
-		<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" id="cacheIcon">
-			<path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"></path>
-		</svg>
+		<span id="cacheIcon" class="display-inline-flex flex-align-center">
+			<Icon name="autorenew" size={15} />
+		</span>
 		<span class="sha-cache-btn__text">Limpiar Caché</span>
 	</button>
 </div>
 
 <!-- Notificación Toast -->
 <div id="cacheToast" class="sha-cache-toast" style="display: none;" role="status" aria-live="polite">
-	<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="margin-right-05">
-		<path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
-	</svg>
+	<Icon name="check" size={16} class="margin-right-05" />
 	<span>Caché purgada. Recargando versión fresca...</span>
 </div>
 

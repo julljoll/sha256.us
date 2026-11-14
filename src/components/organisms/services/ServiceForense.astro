@@ -1,5 +1,6 @@
 ---
 import Badge from '../../atoms/Badge.astro';
+import Icon from '../../atoms/Icon.astro';
 ---
 
 <section id="forense" class="margin-bottom-6 tablet:margin-bottom-8 bg-white padding-3 tablet:padding-6 radius-lg shadow-1 border-1px border-base-lighter">
@@ -13,9 +14,7 @@ import Badge from '../../atoms/Badge.astro';
       <!-- Resumen claro para no técnicos -->
       <div class="sha-plain-summary margin-bottom-3">
         <span class="sha-plain-summary__label">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
-          </svg>
+          <Icon name="check" size={14} class="margin-right-05" />
           ¿Para qué sirve este servicio?
         </span>
         <p class="sha-plain-summary__text">
