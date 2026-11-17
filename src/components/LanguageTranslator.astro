@@ -1,0 +1,429 @@
+---
+// LanguageTranslator.astro - Motor Bilingüe Instantáneo (Español <-> English) con Persistencia
+// Traduce de forma inmediata y reversible (lossless) todos los componentes Atomic Design de sha256.us
+---
+
+<script is:inline>
+(function () {
+  const STORAGE_KEY = 'sha256_lang';
+
+  // Diccionario Bilingüe Forense y Legal (ES -> EN)
+  const ES_TO_EN = {
+    // --- NAVEGACIÓN Y HEADER USWDS ---
+    'Saltar al contenido principal': 'Skip to main content',
+    'Portal oficial del Laboratorio de Informática Forense': 'Official Portal of the Digital Forensics Laboratory',
+    'Así es como usted puede verificarlo': "Here's how you know",
+    'Iniciar Sesión': 'Sign In',
+    'Iniciar Sesión (forense.sha256.us)': 'Sign In (forense.sha256.us)',
+    'Solicitar Peritaje': 'Request Forensics',
+    'Solicitar Peritaje Forense': 'Request Digital Forensics',
+    'Hablar por WhatsApp': 'Chat on WhatsApp',
+    'Menú': 'Menu',
+    'Inicio': 'Home',
+    'Servicios Forenses': 'Forensic Services',
+    'Marco Legal & Proceso': 'Legal Framework & Process',
+    'Marco Legal & Proceso Forense (F0–F5)': 'Legal Framework & Forensic Process (F0–F5)',
+    'Blog & Casos': 'Blog & Cases',
+    'Sobre Nosotros': 'About Us',
+    'Contacto': 'Contact',
+    'Contacto y Recepción': 'Contact & Evidence Intake',
+    '13 Planillas en Folio': '13 Folio Forms',
+    'Equipo Pericial': 'Forensic Team',
+    'Laboratorio de Informática Forense & Peritaje Judicial': 'Digital Forensics & Judicial Expert Witness Lab',
+    'Validez Pericial y Rigor Científico Auditado': 'Audited Scientific Rigor & Evidentiary Validity',
+    'Los portales forenses seguros utilizan HTTPS y Hash SHA-256': 'Secure forensic portals use HTTPS and SHA-256 Hashing',
+
+    // --- CARRUSEL HERO (5 SLIDES) ---
+    'LABORATORIO PERICIAL FORENSE · CICLO F0–F5': 'FORENSIC EXPERT LABORATORY · F0–F5 CYCLE',
+    'Laboratorio de Informática Forense en Venezuela & Peritaje Judicial': 'Digital Forensics Laboratory in Venezuela & Judicial Expert Witness',
+    'Ejecutamos el Ciclo Pericial ISO de 6 Fases (F0 a F5) y 13 Planillas Oficiales en Folio con cadena de custodia MUCC-2017 y COPP Art. 187.': 'We execute the 6-Phase ISO Forensic Cycle (F0 to F5) and 13 Official Folio Forms with MUCC-2017 and COPP Art. 187 chain of custody.',
+    'Nuestros Servicios': 'Our Services',
+    'LMDFE G.O. 37.148 · SUSCERTE PKI': 'LMDFE O.G. 37.148 · SUSCERTE PKI',
+    'Análisis y Peritaje de Documentos Electrónicos y Firmas Digitales': 'Forensic Analysis of Electronic Documents & Digital Signatures',
+    'Verificación forense de contratos digitales, firmas electrónicas y metadatos con equivalencia funcional plena (LMDFE Arts. 4, 7 y 16).': 'Forensic verification of digital contracts, electronic signatures, and metadata with full legal equivalence (LMDFE Arts. 4, 7 & 16).',
+    'Ver Servicios Documentales': 'Document Forensics',
+    'Compendio Legal': 'Legal Compendium',
+    'Cumplimiento Normativo ISO/IEC 27037, 27042, NIST y MUCC-2017': 'Regulatory Compliance: ISO/IEC 27037, 27042, NIST & MUCC-2017',
+    'Trazabilidad criptográfica SHA-256 auditada, bloqueo físico de escritura (Write-Blockers) y admisibilidad probatoria ante tribunales.': 'Audited SHA-256 cryptographic traceability, hardware Write-Blockers, and full evidentiary admissibility in court.',
+    'Ciclo Pericial F0–F5': 'F0–F5 Forensic Cycle',
+    'ANÁLISIS DE DATOS JURÍDICOS · COPP ARTS. 223–225': 'LEGAL DATA ANALYSIS · COPP ARTS. 223–225',
+    'Extracción Forense de WhatsApp, Notas de Voz y Bases SQLite': 'Forensic Extraction of WhatsApp, Voice Notes & SQLite Databases',
+    'Adquisición lógica (NIST SP 800-101), análisis espectral acústico FFT/Opus 48 kHz y certificación de mensajes en teléfonos móviles.': 'Logical acquisition (NIST SP 800-101), FFT/Opus 48 kHz acoustic spectral analysis, and mobile message certification.',
+    'Forense Móvil': 'Mobile Forensics',
+    '13 Planillas Folio': '13 Folio Forms',
+    'LABORATORIO FORENSE DIGITAL · CENIF G.O. 39.847': 'DIGITAL FORENSICS LAB · CENIF O.G. 39.847',
+    'Tecnología de Punta para la Verdad Científica y Procesal': 'Cutting-Edge Technology for Scientific & Procedural Truth',
+    'Gabinete pericial multidisciplinario acreditado para la preservación, análisis e interpretación de evidencia informática.': 'Accredited multidisciplinary forensic practice for the preservation, analysis, and interpretation of digital evidence.',
+    'Conocer sha256.us': 'About sha256.us',
+    'Solicitar Recepción': 'Request Evidence Intake',
+
+    // --- TRUST BAR ---
+    'Admisibilidad Judicial (COPP Art. 187 & LMDFE)': 'Judicial Admissibility (COPP Art. 187 & LMDFE)',
+    'Sellado Génesis SHA-256 (FIPS 180-4)': 'Genesis SHA-256 Sealing (FIPS 180-4)',
+    'Cadena de Custodia Oficial (MUCC-2017 & PRCC)': 'Official Chain of Custody (MUCC-2017 & PRCC)',
+    'Ciclo ISO F0–F5 (ISO/IEC 27037 · 27042 · NIST)': 'ISO F0–F5 Cycle (ISO/IEC 27037 · 27042 · NIST)',
+
+    // --- SERVICIOS HOME (CORE_SERVICES & ServiceCard) ---
+    '¿EN QUÉ PODEMOS AYUDARTE?': 'HOW CAN WE HELP YOU?',
+    'Servicios de Informática Forense y Peritaje': 'Digital Forensics & Expert Witness Services',
+    'Soluciones claras para abogados, empresas y particulares que necesitan demostrar la verdad técnica ante un juez o resolver un incidente digital.': 'Clear scientific solutions for attorneys, corporations, and individuals who need to prove technical truth in court or resolve a digital incident.',
+    'Alcance pericial directo:': 'Direct forensic scope:',
+    'Casos frecuentes que resolvemos:': 'Frequent cases we solve:',
+    'Ver detalles técnicos y solicitar →': 'View technical details & request →',
+    'Ver detalles técnicos y solicitar': 'View technical details & request',
+    'SERVICIO PRINCIPAL · F0–F5': 'CORE SERVICE · F0–F5',
+    'Informática Forense y Peritajes Judiciales': 'Digital Forensics & Judicial Expert Witness Reports',
+    'Dictámenes Periciales con Validez Procesal (COPP Arts. 187 y 223–225)': 'Court-Admissible Forensic Reports (COPP Arts. 187 & 223–225)',
+    'Validamos y certificamos pruebas digitales con las 13 planillas oficiales en Folio para que un juez o tribunal las admita legalmente en tu juicio o demanda.': 'We validate and certify digital evidence using the 13 official Folio forms so a judge or court legally admits them in your lawsuit or trial.',
+    'Pruebas digitales certificadas bajo COPP Art. 187 y LMDFE Arts. 4 y 7': 'Digital evidence certified under COPP Art. 187 and LMDFE Arts. 4 & 7',
+    'Cadena de custodia PRCC (MUCC-2017 G.O. 41.247) y Hash Génesis SHA-256': 'PRCC Chain of Custody (MUCC-2017 O.G. 41.247) and Genesis SHA-256 Hash',
+    'Dictamen firmado por gabinete pericial con comparecencia en tribunales': 'Expert report signed by accredited forensic specialists with court testimony',
+    'FORENSE MÓVIL · NIST 800-101': 'MOBILE FORENSICS · NIST 800-101',
+    'Extracción y Certificación de Dispositivos Móviles': 'Mobile Device Extraction & Certification',
+    'Smartphones, WhatsApp, Notas de Voz (Opus/FFT) y Bases SQLite': 'Smartphones, WhatsApp, Voice Notes (Opus/FFT) & SQLite Databases',
+    'Extraemos y certificamos conversaciones de WhatsApp, notas de voz, fotos y mensajes borrados de teléfonos celulares con validez legal plena.': 'We extract and certify WhatsApp chats, voice notes, photos, and deleted messages from smartphones with full legal validity.',
+    'Extracción de bases de datos SQLite (msgstore.db) de WhatsApp y Telegram': 'SQLite database extraction (msgstore.db) from WhatsApp and Telegram',
+    'Peritaje acústico espectral FFT de notas de voz y metadatos EXIF/ELA de fotos': 'FFT spectral acoustic analysis of voice notes and EXIF/ELA photo metadata',
+    'Certificación bajo LMDFE G.O. 37.148, ISO/IEC 27037, ISO/IEC 27042 y NIST SP 800-101': 'Certification under LMDFE O.G. 37.148, ISO/IEC 27037, ISO/IEC 27042 & NIST SP 800-101',
+    'LABORATORIO DE DATOS · ISO 27037': 'DATA LABORATORY · ISO 27037',
+    'Recuperación y Análisis Forense de Almacenamiento': 'Storage Media Recovery & Forensic Analysis',
+    'Discos HDD, SSD, NVMe, Memorias Flash, Servidores y RAID': 'HDD, SSD, NVMe Drives, Flash Memory, Servers & RAID Arrays',
+    'Recuperamos y clonamos archivos críticos de discos duros, memorias USB, computadoras o servidores dañados o intervenidos sin alterar el original.': 'We recover and clone critical files from damaged or compromised hard drives, USB drives, computers, or servers without altering original media.',
+    'Clonado bit a bit con Write-Blockers (ISO/IEC 27037 y ACPO Principio 1)': 'Bit-stream cloning with hardware Write-Blockers (ISO/IEC 27037 & ACPO Principle 1)',
+    'Investigación de acceso indebido o sabotaje de sistemas (LEDI Arts. 6 y 7)': 'Investigation of unauthorized access or system sabotage (LEDI Arts. 6 & 7)',
+    'Sanitización criptográfica (Crypto-Erase NIST SP 800-88) de copias temporales': 'Cryptographic sanitization (NIST SP 800-88 Crypto-Erase) of temporary working copies',
+    'AUDITORÍA DOCUMENTAL · LMDFE': 'DOCUMENT AUDIT · LMDFE',
+    'Peritaje de Contratos, Correos y Documentos Electrónicos': 'Forensic Examination of Contracts, Emails & Electronic Documents',
+    'Autenticidad PDF, Firmas Electrónicas (SUSCERTE PKI) y Cabeceras MIME': 'PDF Authenticity, Electronic Signatures (SUSCERTE PKI) & MIME Headers',
+    'Demostramos científicamente si un contrato PDF, firma electrónica, captura o correo electrónico es auténtico o fue falsificado o modificado.': 'We scientifically prove whether a PDF contract, electronic signature, screenshot, or email is authentic or was forged or altered.',
+    'Validez jurídica y equivalencia funcional (LMDFE Arts. 4, 7, 8 y 16)': 'Legal validity and functional equivalence (LMDFE Arts. 4, 7, 8 & 16)',
+    'Auditoría de certificados digitales y sellos de tiempo (Normativa SUSCERTE)': 'Audit of digital certificates and timestamps (SUSCERTE PKI Regulations)',
+    'Trazabilidad de cabeceras de correo (SPF, DKIM, DMARC) ante estafas o repudio': 'Email header traceability (SPF, DKIM, DMARC) against spoofing or repudiation',
+
+    // --- CICLO PERICIAL ISO F0-F5 (ProcessSteps & ProcessStepCard) ---
+    'CICLO PERICIAL ISO DE 6 FASES (F0 A F5)': '6-PHASE ISO FORENSIC CYCLE (F0 TO F5)',
+    'Flujo de Trabajo Forense y Cadena de Custodia Auditada': 'Forensic Workflow & Audited Chain of Custody',
+    'Procedimiento científico sincronizado con el sistema oficial forense.sha256.us bajo ISO/IEC 27037, ISO/IEC 27042, NIST SP 800-86, MUCC-2017 y el Artículo 187 del COPP.': 'Scientific procedure synchronized with the official forense.sha256.us platform under ISO/IEC 27037, ISO/IEC 27042, NIST SP 800-86, MUCC-2017, and COPP Article 187.',
+    'Garantía de Trazabilidad e Inalterabilidad Criptográfica (F0 → F5)': 'Cryptographic Traceability & Immutability Guarantee (F0 → F5)',
+    'Ver Flujo Interactivo en forense.sha256.us/flujo': 'View Interactive Workflow at forense.sha256.us/flujo',
+    'Explorar las 13 Planillas Oficiales en Folio →': 'Explore the 13 Official Folio Forms →',
+    'Instrumentos en Folio (216×330 mm):': 'Folio Instruments (216×330 mm):',
+    'Responsable:': 'Lead Specialist:',
+    'FASE F0 · APERTURA': 'PHASE F0 · INTAKE',
+    'Apertura, Legitimación y Consentimiento': 'Case Intake, Legitimation & Informed Consent',
+    'Legitimamos el encargo pericial antes de intervenir cualquier evidencia: identificamos al consignante, obtenemos el consentimiento informado (Hábeas Data), realizamos la entrevista técnico-pericial preliminar y delimitamos el alcance jurídico.': 'We legitimize the forensic engagement prior to touching any evidence: we verify the submitter, obtain informed consent (Habeas Data), conduct the preliminary technical interview, and define the legal scope.',
+    'Verificación de identidad y titularidad o facultad legal sobre el equipo consignado': 'Identity verification and ownership or legal authority over the submitted device',
+    'Suscripción de autorización expresa de extracción bajo garantía constitucional (CRBV Art. 28)': 'Execution of express extraction authorization under constitutional guarantee (CRBV Art. 28)',
+    'Registro cronológico de hechos y puntos controvertidos en entrevista técnico-pericial': 'Chronological record of facts and disputed points in the technical-forensic interview',
+    'FASE F1 · RECOLECCIÓN': 'PHASE F1 · COLLECTION',
+    'Identificación, Fijación y Cadena de Custodia (PRCC)': 'Identification, Photographic Fixation & Chain of Custody (PRCC)',
+    'Documentamos el estado físico e identificadores únicos del dispositivo (marca, modelo, serial, IMEI/MAC), realizamos fijación fotográfica de 6 ángulos, aplicamos aislamiento electromagnético (bolsa Faraday) y abrimos la Planilla PRCC numerada.': 'We document physical state and unique device identifiers (make, model, serial, IMEI/MAC), perform 6-angle photographic fixation, apply Faraday bag RF isolation, and open the numbered PRCC Chain of Custody form.',
+    'Aislamiento de red inmediato (Modo Avión / Bolsa de Faraday) contra borrado remoto': 'Immediate RF network isolation (Airplane Mode / Faraday Bag) against remote wiping',
+    'Embalaje antiestático con precinto de seguridad numerado e inviolable': 'Anti-static packaging with tamper-evident numbered security seal',
+    'Apertura de la Planilla de Registro de Cadena de Custodia (PRCC) con huellas dactilares': 'Opening of the Chain of Custody Registration Form (PRCC) with bilateral fingerprints',
+    'FASE F2 · ADQUISICIÓN': 'PHASE F2 · ACQUISITION',
+    'Desprecintado, Adquisición Lógica y Hash Génesis SHA-256': 'Unsealing, Logical/Bit-Stream Acquisition & Genesis SHA-256 Hash',
+    'En ambiente controlado de laboratorio verificamos la integridad del precinto, conectamos bloqueadores de escritura (Write-Blockers) o extracción lógica (SQLite/ADB), y calculamos el Hash Génesis SHA-256 tanto en origen como en destino (verificación MATCH).': 'In a controlled lab environment we verify seal integrity, engage hardware Write-Blockers or logical extraction (SQLite/ADB), and compute the Genesis SHA-256 Hash on both source and destination (MATCH verification).',
+    'Bloqueo de escritura por hardware/software que impide alterar un solo bit del original': 'Hardware/software write-blocking preventing any modification to original bits',
+    'Generación del resumen criptográfico SHA-256 (FIPS 180-4) de 256 bits en origen y copia': '256-bit SHA-256 (FIPS 180-4) cryptographic hash calculation on source and working copy',
+    'Resguardo inmediato del dispositivo original en bóveda o devolución bajo acta': 'Immediate vault storage of original media or formal return under signed record',
+    'FASE F3 · ANÁLISIS': 'PHASE F3 · ANALYSIS',
+    'Análisis Forense e Interpretación Científica': 'Forensic Examination & Scientific Interpretation',
+    'Ejecutamos el examen pericial exclusivamente sobre la copia de trabajo verificada: correlacionamos tablas SQLite (msgstore.db / wa.db), auditamos cabeceras MIME/DKIM, metadatos EXIF/ELA y espectrogramas acústicos FFT/Opus 48 kHz en notas de voz.': 'We conduct the forensic examination exclusively on the verified working copy: correlating SQLite tables (msgstore.db / wa.db), auditing MIME/DKIM headers, EXIF/ELA metadata, and 48 kHz FFT/Opus acoustic spectrograms.',
+    'Prohibición absoluta de analizar sobre el medio original (ACPO Principio 1 y 2)': 'Strict prohibition against analyzing original media directly (ACPO Principles 1 & 2)',
+    'Trazabilidad reproducible: un tercer perito independiente obtiene idéntico resultado': 'Reproducible audit trail: an independent third-party expert obtains identical results',
+    'Contraste entre interfaz gráfica de usuario (UX) y registros crudos en base de datos SQLite': 'Cross-verification between user interface (UX) display and raw SQLite database records',
+    'FASE F4 · DICTAMEN': 'PHASE F4 · EXPERT REPORT',
+    'Emisión del Dictamen Pericial Oficial': 'Issuance of the Official Forensic Expert Report',
+    'Consolidamos los hallazgos científicos en el Dictamen Pericial Oficial motivado, estructurado con metodología, herramientas empleadas, cadena de custodia, tablas de hashes SHA-256 y conclusiones categóricas listas para su ratificación oral en juicio.': 'We consolidate scientific findings into the Official Forensic Expert Report, detailing methodology, tools, chain of custody, SHA-256 hash tables, and categorical conclusions ready for oral ratification at trial.',
+    'Cumplimiento estricto de los requisitos del Dictamen Pericial del Art. 225 del COPP': 'Strict compliance with Expert Report requirements under COPP Article 225',
+    'Equivalencia funcional y eficacia probatoria conforme a la LMDFE (G.O. 37.148)': 'Functional equivalence and evidentiary efficacy pursuant to LMDFE (O.G. 37.148)',
+    'Doble firma pericial colegiada (Perito Forense Líder y Especialista Coadyuvante)': 'Collegiate dual expert signature (Lead Forensic Expert & Co-Specialist)',
+    'FASE F5 · DISPOSICIÓN': 'PHASE F5 · FINAL DISPOSITION',
+    'Entrega, Sanitización Criptográfica y Auditoría': 'Formal Delivery, Cryptographic Sanitization & Audit Closure',
+    'Realizamos la entrega formal del Dictamen Pericial y la devolución definitiva del dispositivo al titular cerrando la PRCC, aplicamos sanitización irreversible (Crypto-Erase) de copias temporales de trabajo y emitimos el certificado de auditoría SHA-256.': 'We perform formal delivery of the Expert Report and final return of the device closing the PRCC, execute irreversible Crypto-Erase sanitization of temporary lab copies, and issue the SHA-256 audit certificate.',
+    'Cierre formal del eslabón de disposición final en la Planilla PRCC (MUCC-2017)': 'Formal closure of the final disposition link in the PRCC Chain of Custody form (MUCC-2017)',
+    'Borrado seguro NIST SP 800-88 (Purge / Crypto-Erase) con verificación post-borrado': 'NIST SP 800-88 secure sanitization (Purge / Crypto-Erase) with post-erasure verification',
+    'Sellado criptográfico de la cadena de auditoría inmutable del expediente': 'Cryptographic sealing of the immutable case file audit chain',
+
+    // --- 13 PLANILLAS OFICIALES EN FOLIO ---
+    'INSTRUMENTOS PERICIALES EN FORMATO FOLIO (216mm × 330mm)': 'FORENSIC INSTRUMENTS IN FOLIO FORMAT (216mm × 330mm)',
+    'Catálogo Oficial de 13 Planillas Forenses y Cadena de Custodia': 'Official Catalog of 13 Forensic Forms & Chain of Custody',
+    'Cada fase del ciclo pericial (F0 a F5) se documenta en papel tamaño Folio/Oficio con doble firma pericial, control dactiloscópico bilateral y código de verificación criptográfica SHA-256.': 'Each phase of the forensic cycle (F0 to F5) is documented on legal Folio paper (216×330 mm) with dual expert signatures, bilateral thumbprints, and SHA-256 cryptographic verification.',
+    'Acta de Consentimiento Informado y Autorización': 'Informed Consent & Extraction Authorization Record',
+    'Autorización expresa del titular o consignante para la extracción y análisis forense de datos contenidos en dispositivos móviles o medios de almacenamiento.': 'Express authorization by the owner or submitter for forensic extraction and analysis of data stored on mobile devices or storage media.',
+    'Acta de Entrevista Técnico-Pericial al Consignante': 'Technical-Forensic Submitter Interview Record',
+    'Cuestionario estructurado de recepción de testimonio técnico, contexto de los hechos, cuentas vinculadas y delimitación de los puntos periciales.': 'Structured intake record of technical testimony, factual context, linked accounts, and scope of forensic questions.',
+    'Acta de Obtención por Consignación y Preservación': 'Evidence Consignment & Preservation Record',
+    'Registro del estado físico del equipo, fijación fotográfica 360°, aislamiento de red (Modo Avión / Bolsa Faraday) y precintado inicial.': 'Record of physical device condition, 360° photographic fixation, RF network isolation (Airplane Mode / Faraday Bag), and initial security sealing.',
+    'Planilla de Registro de Cadena de Custodia (PRCC)': 'Chain of Custody Registration Form (PRCC)',
+    'Instrumento oficial auditable de trazabilidad física y digital de la evidencia desde su consignación hasta su disposición judicial o devolución.': 'Official auditable instrument tracking physical and digital custody of evidence from intake through judicial disposition or return.',
+    'Acta de Desprecintado y Adquisición Lógica': 'Unsealing & Logical/Bit-Stream Acquisition Record',
+    'Apertura de precinto en laboratorio, bloqueo de escritura (Write-Blocker), extracción de base de datos (msgstore.db / PST) y cálculo de Hash Génesis SHA-256.': 'Controlled lab seal opening, hardware Write-Blocker engagement, database extraction (msgstore.db / PST), and Genesis SHA-256 Hash calculation.',
+    'Planilla de Análisis Forense de Audio (Notas de Voz)': 'Forensic Audio Analysis Worksheet (Voice Notes)',
+    'Hoja de trabajo técnica para examen de codificación Opus/OGG 48 kHz, análisis espectral FFT, continuidad acústica y transcripción literal.': 'Technical worksheet for 48 kHz Opus/OGG codec examination, FFT spectral analysis, acoustic continuity, and verbatim transcription.',
+    'Planilla de Evaluación de Interfaz UX y Software': 'UX Interface & Software Database Cross-Evaluation Form',
+    'Contraste técnico entre la presentación visual en pantalla (WhatsApp/Cliente de Correo) y los registros reales almacenados en motor SQLite.': 'Technical comparison between on-screen visual display (WhatsApp/Email Client) and raw underlying records stored in the SQLite engine.',
+    'Dictamen Pericial Oficial de Informática Forense': 'Official Digital Forensics Expert Witness Report',
+    'Informe pericial integral con exposición de motivo, metodología científica, relación de evidencias, verificación SHA-256 y conclusiones periciales.': 'Comprehensive expert witness report containing scope, scientific methodology, evidence inventory, SHA-256 verification, and forensic conclusions.',
+    'Dictamen Especializado en Evidencia Fotográfica (EXIF/ELA)': 'Specialized Photographic Evidence Report (EXIF/ELA)',
+    'Certificación de autenticidad de imágenes digitales mediante auditoría de cabeceras EXIF, cuantización JPEG, Error Level Analysis (ELA) y geolocalización.': 'Digital image authenticity certification via EXIF header audit, JPEG quantization tables, Error Level Analysis (ELA), and GPS geolocation.',
+    'Dictamen Especializado de Notas de Voz y Audio': 'Specialized Voice Note & Audio Forensics Report',
+    'Dictamen pericial dedicado a la autenticidad, ausencia de edición o empalme (splicing) y correlación en base de datos de notas de voz.': 'Dedicated expert report certifying authenticity, absence of splicing/editing, and SQLite database correlation of voice notes.',
+    'Acta de Disposición Final y Devolución al Titular': 'Final Disposition & Device Return Record',
+    'Constancia formal de reintegro físico del dispositivo original en idénticas condiciones operativas y cierre del registro PRCC.': 'Formal record of physical return of the original device in identical operating condition and closure of the PRCC custody log.',
+    'Acta de Sanitización de Copias Lógicas Temporales': 'Temporary Working Copy Sanitization Record (Crypto-Erase)',
+    'Certificación de borrado criptográfico seguro (Crypto-Erase / Purge) de las copias de trabajo temporales del servidor forense.': 'Certification of secure cryptographic erasure (NIST SP 800-88 Crypto-Erase / Purge) of temporary working copies from the forensic server.',
+    'Acta de Auditoría y Trazabilidad Criptográfica': 'Cryptographic Audit & Traceability Closure Certificate',
+    'Certificado de cierre del expediente que consolida la cadena de hashes SHA-256 de todas las actas y evidencias generadas de F0 a F5.': 'Case closure certificate consolidating the SHA-256 hash chain across all records and digital evidence generated from F0 through F5.',
+    'Ver Instrumento en Sistema Forense': 'Open Instrument in Forensic System',
+    'Acceder al Generador de Planillas en forense.sha256.us/planillas': 'Access Form Generator at forense.sha256.us/planillas',
+    'Protocolo de Cadena de Custodia (PRCC)': 'Chain of Custody Protocol (PRCC)',
+
+    // --- 4 GARANTÍAS DE ADMISIBILIDAD ---
+    'Bloqueo Físico y Lógico de Escritura (Write-Blockers)': 'Hardware & Logical Write-Blocking (Write-Blockers)',
+    'Ninguna acción ejecutada por el laboratorio modifica los datos contenidos en el dispositivo original. Toda lectura se realiza mediante bloqueo de comandos de escritura.': 'No action performed by the laboratory alters data on the original device. All reads are performed through hardware/software write-blocking.',
+    'Sellado Criptográfico Génesis SHA-256': 'Genesis SHA-256 Cryptographic Sealing',
+    'Cálculo instantáneo de huella digital matemática de 256 bits (64 caracteres hexadecimales) al momento de la adquisición para demostrar mismidad e inalterabilidad absoluta.': 'Instantaneous calculation of a 256-bit mathematical fingerprint (64 hex characters) upon acquisition to prove strict evidentiary identity and immutability.',
+    'Aislamiento Electromagnético (Bolsa de Faraday)': 'Electromagnetic RF Isolation (Faraday Bag)',
+    'Protección de smartphones y tablets contra señales celulares, Wi-Fi o Bluetooth para impedir comandos de borrado remoto (Remote Wipe) o alteración de estados.': 'Shielding of smartphones and tablets against cellular, Wi-Fi, or Bluetooth signals to prevent Remote Wipe commands or state alteration.',
+    'Planilla PRCC Numerada y Dactiloscopía Bilateral': 'Numbered PRCC Custody Form & Bilateral Thumbprints',
+    'Registro continuo sin espacios en blanco ni enmiendas de cada funcionario o perito que interviene, respaldado en formato Folio (216mm × 330mm) con impresión dactilar.': 'Continuous registration without blanks or alterations of every custodian or expert handling the evidence, printed on Folio paper (216×330 mm) with thumbprints.',
+
+    // --- PIRÁMIDE LEGAL Y COMPENDIO (/normativa) ---
+    'JERARQUÍA CONSTITUCIONAL Y SUPLETORIEDAD CIENTÍFICA': 'CONSTITUTIONAL HIERARCHY & SCIENTIFIC SUPPLEMENTARITY',
+    'Pirámide de Aplicación Normativa y Supletoriedad (COPP Art. 225)': 'Normative Application & Supplementarity Pyramid (COPP Art. 225)',
+    'Estructura jerárquica que articula las garantías constitucionales (CRBV), el régimen probatorio procesal (COPP y CPC), las leyes especiales de informática (LMDFE y LEDI) y los estándares técnicos internacionales (ISO/IEC y NIST).': 'Hierarchical framework articulating constitutional guarantees (CRBV), procedural evidence rules (COPP & CPC), special IT laws (LMDFE & LEDI), and international technical standards (ISO/IEC & NIST).',
+    'REPOSITORIO RAÍZ /Informatica/ · HASH SHA-256 VERIFICADO': 'ROOT REPOSITORY /Informatica/ · VERIFIED SHA-256 HASH',
+    'Compendio de Leyes Informáticas y Estándares Forenses': 'Compendium of Cyber Laws & Digital Forensic Standards',
+    'Base documental íntegra procesada en el directorio raíz /Informatica/ que sustenta cada dictamen pericial de sha256.us y el sistema de cumplimiento forense.sha256.us.': 'Complete documentary corpus in the root /Informatica/ directory substantiating every expert report issued by sha256.us and the forense.sha256.us compliance platform.',
+    'Todas (24)': 'All (24)',
+    'Leyes Nacionales': 'National IT Laws',
+    'Códigos y Leyes Orgánicas': 'Codes & Organic Laws',
+    'Estándares ISO/IEC': 'ISO/IEC Standards',
+    'Guías NIST / IETF / ACPO': 'NIST / IETF / ACPO Guides',
+    'Manuales y Doctrina Forense': 'Forensic Manuals & Doctrine',
+
+    // --- STANDARDS SECTION HOME ---
+    'SUSTENTO LEGAL Y CIENTÍFICO (/Informatica/)': 'LEGAL & SCIENTIFIC BACKING (/Informatica/)',
+    'Leyes Informáticas y Normas Técnicas Oficiales': 'Cyber Laws & Official Technical Standards',
+    'La admisibilidad jurídica de la evidencia digital depende del rigor normativo. Todas nuestras actuaciones están sustentadas en 28 instrumentos legales y técnicos verificados con Hash SHA-256.': 'The legal admissibility of digital evidence depends on normative rigor. All our forensic actions are backed by 28 legal and technical instruments verified with SHA-256 hashes.',
+    'Ver Marco Legal y 13 Planillas Folio →': 'View Legal Framework & 13 Folio Forms →',
+    'Portal Forense': 'Forensic Portal',
+
+    // --- EQUIPO PERICIAL (TeamBacking & TeamSection) ---
+    'RESPALDO INSTITUCIONAL Y EQUIPO PERICIAL': 'INSTITUTIONAL BACKING & FORENSIC TEAM',
+    'Gabinete Multidisciplinario en Informática Forense y Derecho Digital': 'Multidisciplinary Practice in Digital Forensics & Cyber Law',
+    'Conocer al Equipo Pericial →': 'Meet the Forensic Team →',
+    'Ver Servicios Forenses': 'View Forensic Services',
+    'Protocolo Pericial F0 - F5': 'Forensic Protocol F0 - F5',
+    'Ver Perfiles y Competencias Técnicas': 'View Profiles & Technical Competencies',
+    'Consignar Caso al Gabinete Forense': 'Submit a Case to the Forensic Practice',
+    'RESPALDO PROFESIONAL': 'PROFESSIONAL BACKING',
+    'Equipo Forense y Pericial Multidisciplinario': 'Multidisciplinary Forensic & Expert Witness Team',
+    'Áreas de Especialidad y Protocolos:': 'Areas of Expertise & Protocols:',
+    'Perfil Web': 'Web Profile',
+    'Consignar Caso →': 'Submit Case →',
+
+    // --- SOBRE NOSOTROS (About) ---
+    'PERFIL INSTITUCIONAL': 'INSTITUTIONAL PROFILE',
+    'Laboratorio de Informática Forense y Gabinete Pericial en Venezuela': 'Digital Forensics Laboratory & Expert Witness Practice in Venezuela',
+    'Evidencia Inalterable': 'Immutable Evidence',
+    'Validez ante Tribunales': 'Court Admissibility',
+    'Conclusiones Claras': 'Clear Conclusions',
+    'Nuestra Misión Institucional': 'Our Institutional Mission',
+    'Instalaciones de Laboratorio y Cadena de Custodia': 'Laboratory Facilities & Chain of Custody',
+    'Acreditaciones Técnicas': 'Technical Accreditations',
+    'Marco Legal & 13 Planillas Folio': 'Legal Framework & 13 Folio Forms',
+    'Ver Servicios Técnicos': 'View Technical Services',
+
+    // --- CONTACTO ---
+    'CANALES OFICIALES DE ATENCIÓN': 'OFFICIAL INTAKE CHANNELS',
+    'ATENCIÓN DIRECTA': 'DIRECT ASSISTANCE',
+    '¿Prefieres atención inmediata sin llenar formularios?': 'Prefer immediate assistance without filling out forms?',
+    'Envíanos los datos de tu caso': 'Send Us Your Case Details',
+    'Completa el siguiente formulario para canalizar tu solicitud por WhatsApp o Correo Institucional:': 'Complete the form below to route your request via WhatsApp or Institutional Email:',
+    'Nombre Completo o Razón Social': 'Full Name or Organization',
+    'Correo Electrónico': 'Email Address',
+    'Teléfono / WhatsApp': 'Phone / WhatsApp',
+    '¿Qué tipo de problema necesitas resolver?': 'What type of forensic service do you need?',
+    'Peritaje Judicial para Juicio (Pruebas digitales)': 'Judicial Expert Witness Report for Trial (Digital Evidence)',
+    'Certificación de WhatsApp, Teléfono o Mensajes': 'WhatsApp, Smartphone or Message Certification',
+    'Recuperación de Archivos en Disco o Memoria dañada': 'File Recovery from Damaged Drive or Flash Media',
+    'Verificación de Contrato PDF, Firma o Correo': 'PDF Contract, Electronic Signature or Email Audit',
+    'Otra consulta o asesoría técnica': 'Other Forensic Inquiry or Technical Advisory',
+    'Detalles de la situación': 'Case Details',
+    'Enviar por WhatsApp →': 'Send via WhatsApp →',
+    'Enviar por Correo →': 'Send via Email →',
+    'Información Oficial': 'Official Information',
+    'Gabinete Pericial Especializado': 'Specialized Forensic Practice',
+    'Sede Principal': 'Main Laboratory Office',
+    'Canales Profesionales': 'Professional Channels',
+
+    // --- BLOG & CTA & COOKIES & FOOTER ---
+    'DIVULGACIÓN TÉCNICA': 'TECHNICAL PUBLICATIONS',
+    'Noticias & Casos de Investigación': 'News & Forensic Research Cases',
+    'Ver todo el Blog': 'View All Articles',
+    'Blog & Publicaciones Técnicas Periciales': 'Blog & Technical Forensic Publications',
+    '¿Tienes un caso y necesitas asesoría profesional?': 'Have a case and need professional forensic advisory?',
+    'Escríbenos para una evaluación preliminar confidencial sobre la viabilidad técnica de tu evidencia digital.': 'Contact us for a confidential preliminary evaluation of the technical viability of your digital evidence.',
+    'Contactar sha256.us': 'Contact sha256.us',
+    '¿Necesitas sustentar una prueba digital con validez procesal plena?': 'Need to substantiate digital evidence with full procedural validity?',
+    'Nuestro gabinete pericial aplica el Ciclo ISO F0–F5 y emite las Planillas Oficiales en Folio listas para su consignación ante tribunales.': 'Our forensic practice executes the ISO F0–F5 Cycle and issues Official Folio Forms ready for court submission.',
+    'Volver al inicio de la página': 'Return to top',
+    'Secciones Oficiales': 'Official Sections',
+    'Normativa y Leyes (/Informatica/)': 'Laws & Standards (/Informatica/)',
+    'Sede y Guardia Pericial': 'Headquarters & Forensic On-Call',
+    'Portal Forense (forense.sha256.us)': 'Forensic Portal (forense.sha256.us)',
+    'Aceptar': 'Accept',
+    'Solo Necesarias': 'Essential Only'
+  };
+
+  // Atributos de placeholders a traducir
+  const PLACEHOLDER_ES_TO_EN = {
+    'Ej: Abg. Carlos Mendoza o Tu Nombre': 'E.g.: Atty. Carlos Mendoza or Your Name',
+    'tu-correo@ejemplo.com': 'your-email@example.com',
+    'Describe brevemente qué ocurrió, qué archivos necesitas o si tienes una fecha límite de tribunal...': 'Briefly describe what happened, what files or messages need certification, or any upcoming court deadline...'
+  };
+
+  // Almacenamiento en memoria de los nodos originales para reversión exacta a Español
+  const trackedNodes = [];
+  const trackedPlaceholders = [];
+  let isInitialized = false;
+
+  function initTracking() {
+    if (isInitialized) return;
+    isInitialized = true;
+
+    const walker = document.createTreeWalker(
+      document.body,
+      NodeFilter.SHOW_TEXT,
+      {
+        acceptNode(node) {
+          const parent = node.parentElement;
+          if (!parent) return NodeFilter.FILTER_REJECT;
+          const tag = parent.tagName;
+          if (tag === 'SCRIPT' || tag === 'STYLE' || tag === 'CODE' || tag === 'NOSCRIPT') {
+            return NodeFilter.FILTER_REJECT;
+          }
+          if (parent.hasAttribute('data-lang-indicator') || parent.hasAttribute('data-set-lang')) {
+            return NodeFilter.FILTER_REJECT;
+          }
+          const raw = node.nodeValue || '';
+          const trimmed = raw.trim().replace(/\s+/g, ' ');
+          if (!trimmed) return NodeFilter.FILTER_REJECT;
+          if (ES_TO_EN[trimmed]) {
+            return NodeFilter.FILTER_ACCEPT;
+          }
+          return NodeFilter.FILTER_SKIP;
+        }
+      }
+    );
+
+    let currentNode = walker.nextNode();
+    while (currentNode) {
+      const raw = currentNode.nodeValue || '';
+      const trimmed = raw.trim().replace(/\s+/g, ' ');
+      const leading = raw.match(/^\s*/)?.[0] || '';
+      const trailing = raw.match(/\s*$/)?.[0] || '';
+      trackedNodes.push({
+        node: currentNode,
+        es: raw,
+        en: leading + ES_TO_EN[trimmed] + trailing
+      });
+      currentNode = walker.nextNode();
+    }
+
+    document.querySelectorAll('input[placeholder], textarea[placeholder]').forEach((el) => {
+      const orig = el.getAttribute('placeholder') || '';
+      if (PLACEHOLDER_ES_TO_EN[orig]) {
+        trackedPlaceholders.push({
+          el,
+          es: orig,
+          en: PLACEHOLDER_ES_TO_EN[orig]
+        });
+      }
+    });
+  }
+
+  function updateButtonsUI(lang) {
+    document.documentElement.setAttribute('lang', lang);
+
+    // 1. Indicadores dentro de botones toggle (ES / EN)
+    document.querySelectorAll('[data-lang-indicator]').forEach((el) => {
+      const ind = el.getAttribute('data-lang-indicator');
+      if (ind === lang) {
+        el.classList.add('is-active');
+      } else {
+        el.classList.remove('is-active');
+      }
+    });
+
+    // 2. Botones directos [data-set-lang]
+    document.querySelectorAll('[data-set-lang]').forEach((btn) => {
+      const btnLang = btn.getAttribute('data-set-lang');
+      const active = btnLang === lang;
+      btn.classList.toggle('is-active', active);
+      btn.setAttribute('aria-pressed', active ? 'true' : 'false');
+    });
+  }
+
+  function applyLanguage(lang) {
+    const normalized = lang === 'en' ? 'en' : 'es';
+    localStorage.setItem(STORAGE_KEY, normalized);
+    initTracking();
+
+    trackedNodes.forEach((item) => {
+      item.node.nodeValue = normalized === 'en' ? item.en : item.es;
+    });
+
+    trackedPlaceholders.forEach((item) => {
+      item.el.setAttribute('placeholder', normalized === 'en' ? item.en : item.es);
+    });
+
+    updateButtonsUI(normalized);
+  }
+
+  function getInitialLanguage() {
+    const params = new URLSearchParams(window.location.search);
+    const urlLang = params.get('lang');
+    if (urlLang === 'en' || urlLang === 'es') {
+      return urlLang;
+    }
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved === 'en' || saved === 'es') {
+      return saved;
+    }
+    return 'es';
+  }
+
+  function bindEvents() {
+    // Botones que alternan entre ES y EN al hacer clic
+    document.querySelectorAll('[data-lang-toggle]').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const current = localStorage.getItem(STORAGE_KEY) === 'en' ? 'en' : 'es';
+        const next = current === 'es' ? 'en' : 'es';
+        applyLanguage(next);
+      });
+    });
+
+    // Botones que fijan directamente ES o EN
+    document.querySelectorAll('[data-set-lang]').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const target = btn.getAttribute('data-set-lang') === 'en' ? 'en' : 'es';
+        applyLanguage(target);
+      });
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+      bindEvents();
+      applyLanguage(getInitialLanguage());
+    });
+  } else {
+    bindEvents();
+    applyLanguage(getInitialLanguage());
+  }
+})();
+</script>

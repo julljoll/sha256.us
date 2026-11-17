@@ -2,6 +2,7 @@
 import HeaderLink from './HeaderLink.astro';
 import { CONTACT, NAV_ITEMS as navItems } from '../consts';
 import Icon from './atoms/Icon.astro';
+import LanguageSwitcher from './molecules/LanguageSwitcher.astro';
 ---
 
 <!-- USWDS Official Government-Style Banner with Expandable Verification Drawer -->
@@ -35,7 +36,10 @@ import Icon from './atoms/Icon.astro';
           </button>
         </div>
 
-        <div class="grid-col-auto margin-left-auto display-flex flex-align-center gap-105">
+        <div class="grid-col-auto margin-left-auto display-flex flex-align-center gap-1">
+          <!-- Selector de Idioma USWDS (ES | EN) -->
+          <LanguageSwitcher variant="banner" />
+
           <a
             href="https://forense.sha256.us/"
             target="_blank"
@@ -119,6 +123,9 @@ import Icon from './atoms/Icon.astro';
 
       <!-- Top-right actions -->
       <div class="sha-header__actions">
+        <!-- Botón Selector de Idioma ES / EN en barra principal -->
+        <LanguageSwitcher variant="header" />
+
         <!-- Direct Iniciar Sesión CTA to https://forense.sha256.us/ (Visible en Desktop >= 900px) -->
         <a
           href="https://forense.sha256.us/"
@@ -185,6 +192,7 @@ import Icon from './atoms/Icon.astro';
 
       <!-- Mobile drawer quick actions -->
       <div class="sha-nav__mobile-actions display-flex tablet:display-none flex-column gap-1 padding-2 bg-base-lightest border-top-1px border-base-lighter">
+        <LanguageSwitcher variant="mobile" />
         <a
           href="https://forense.sha256.us/"
           target="_blank"
