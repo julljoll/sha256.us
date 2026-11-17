@@ -32,18 +32,16 @@ const { tag, code, title, desc, hash } = Astro.props;
     background: #ffffff;
     border: 1px solid #dfe1e2;
     border-left: 4px solid #005ea2;
-    border-radius: 8px;
+    border-radius: 4px;
     padding: 1.35rem;
     position: relative;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
-    transition: transform 0.2s, box-shadow 0.2s;
+    transition: border-color 0.15s ease;
     display: flex;
     flex-direction: column;
     height: 100%;
   }
   .sha-standard:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    border-color: #005ea2;
   }
   .sha-standard__header {
     display: flex;

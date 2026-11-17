@@ -9,26 +9,28 @@ const { variant = 'header' } = Astro.props;
 ---
 
 {variant === 'banner' && (
-  <div class="sha-lang-banner" role="group" aria-label="Selector de idioma / Language selector">
+  <div class="sha-lang-banner" role="group" aria-label="Selector de idioma: Español - Inglés">
     <Icon name="language" size={13} class="sha-lang-banner__icon" />
     <button
       type="button"
       class="sha-lang-banner__btn is-active"
       data-set-lang="es"
+      data-lang-ui="true"
       aria-pressed="true"
-      title="Cambiar a Español"
+      title="Seleccionar idioma Español (por defecto)"
     >
-      ES
+      Español
     </button>
-    <span class="sha-lang-banner__sep" aria-hidden="true">|</span>
+    <span class="sha-lang-banner__sep" aria-hidden="true">-</span>
     <button
       type="button"
       class="sha-lang-banner__btn"
       data-set-lang="en"
+      data-lang-ui="true"
       aria-pressed="false"
-      title="Switch to English"
+      title="Select English language"
     >
-      EN
+      Inglés
     </button>
   </div>
 )}
@@ -38,53 +40,55 @@ const { variant = 'header' } = Astro.props;
     type="button"
     class="sha-lang-toggle"
     data-lang-toggle
-    aria-label="Cambiar idioma entre Español e Inglés / Switch language between Spanish and English"
-    title="Cambiar idioma (Español / English)"
+    data-lang-ui="true"
+    aria-label="Cambiar idioma entre Español e Inglés"
+    title="Alternar idioma: Español - Inglés"
   >
     <Icon name="language" size={16} class="sha-lang-toggle__icon" />
-    <span class="sha-lang-toggle__pill is-active" data-lang-indicator="es">ES</span>
-    <span class="sha-lang-toggle__divider" aria-hidden="true">/</span>
-    <span class="sha-lang-toggle__pill" data-lang-indicator="en">EN</span>
+    <span class="sha-lang-toggle__opt is-active" data-lang-indicator="es" data-lang-ui="true">Español</span>
+    <span class="sha-lang-toggle__hyphen" aria-hidden="true" data-lang-ui="true">-</span>
+    <span class="sha-lang-toggle__opt" data-lang-indicator="en" data-lang-ui="true">Inglés</span>
   </button>
 )}
 
 {variant === 'mobile' && (
-  <div class="sha-lang-mobile" role="group" aria-label="Selector de idioma / Language selector">
-    <div class="sha-lang-mobile__label">
-      <Icon name="language" size={16} fill="#005ea2" />
-      <span>Idioma / Language:</span>
-    </div>
+  <div class="sha-lang-mobile" role="group" aria-label="Selector de idioma: Español - Inglés">
     <div class="sha-lang-mobile__btns">
       <button
         type="button"
         class="sha-lang-mobile__btn is-active"
         data-set-lang="es"
+        data-lang-ui="true"
         aria-pressed="true"
       >
-        Español (ES)
+        <Icon name="language" size={15} />
+        <span data-lang-ui="true">Español</span>
       </button>
+      <span class="sha-lang-mobile__sep" aria-hidden="true" data-lang-ui="true">-</span>
       <button
         type="button"
         class="sha-lang-mobile__btn"
         data-set-lang="en"
+        data-lang-ui="true"
         aria-pressed="false"
       >
-        English (EN)
+        <Icon name="language" size={15} />
+        <span data-lang-ui="true">Inglés</span>
       </button>
     </div>
   </div>
 )}
 
 <style>
-  /* 1. Banner Variant */
+  /* 1. Variante Banner Oficial USWDS (.usa-banner) */
   .sha-lang-banner {
     display: inline-flex;
     align-items: center;
     gap: 0.25rem;
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.28);
-    border-radius: 4px;
-    padding: 0.15rem 0.45rem;
+    background: #162e51;
+    border: 1px solid #73b3e7;
+    border-radius: 0.25rem;
+    padding: 0.15rem 0.5rem;
     color: #ffffff;
   }
   .sha-lang-banner__icon {
@@ -94,116 +98,117 @@ const { variant = 'header' } = Astro.props;
   .sha-lang-banner__btn {
     background: transparent;
     border: none;
-    color: rgba(255, 255, 255, 0.72);
-    font-size: 0.68rem;
-    font-weight: 700;
-    padding: 0.05rem 0.2rem;
+    color: #dfe1e2;
+    font-size: 0.72rem;
+    font-weight: 600;
+    padding: 0.1rem 0.3rem;
     cursor: pointer;
-    border-radius: 2px;
-    transition: all 0.15s ease;
+    border-radius: 0.15rem;
     line-height: 1.2;
   }
   .sha-lang-banner__btn:hover {
     color: #ffffff;
+    text-decoration: underline;
   }
   .sha-lang-banner__btn.is-active {
     background: #005ea2;
     color: #ffffff;
-    font-weight: 800;
+    font-weight: 700;
   }
   .sha-lang-banner__sep {
-    font-size: 0.65rem;
-    color: rgba(255, 255, 255, 0.35);
+    font-size: 0.72rem;
+    color: #73b3e7;
+    font-weight: 700;
   }
 
-  /* 2. Header Variant (Desktop & Tablet/Mobile Top Row) */
+  /* 2. Variante Encabezado Principal USWDS (.usa-header) */
   .sha-lang-toggle {
     display: inline-flex;
     align-items: center;
-    gap: 0.25rem;
-    background: #f0f4f8;
-    border: 1.5px solid #005ea2;
+    gap: 0.3rem;
+    background: #ffffff;
+    border: 2px solid #005ea2;
     color: #162e51;
-    border-radius: 4px;
-    padding: 0.38rem 0.6rem;
-    font-size: 0.75rem;
+    border-radius: 0.25rem;
+    padding: 0.4rem 0.65rem;
+    font-size: 0.78rem;
     font-weight: 700;
     cursor: pointer;
-    min-height: 40px;
-    transition: all 0.18s ease;
+    min-height: 2.5rem; /* 40px+ */
     touch-action: manipulation;
     white-space: nowrap;
   }
   .sha-lang-toggle:hover {
-    background: #e1effa;
+    background: #f0f4f8;
     border-color: #162e51;
   }
   .sha-lang-toggle__icon {
     color: #005ea2;
     flex-shrink: 0;
   }
-  .sha-lang-toggle__pill {
-    padding: 0.12rem 0.35rem;
-    border-radius: 3px;
+  .sha-lang-toggle__opt {
+    padding: 0.15rem 0.4rem;
+    border-radius: 0.15rem;
     color: #565c65;
     font-weight: 700;
-    transition: all 0.15s ease;
   }
-  .sha-lang-toggle__pill.is-active {
+  .sha-lang-toggle__opt.is-active {
     background: #005ea2;
     color: #ffffff;
+  }
+  .sha-lang-toggle__hyphen {
+    color: #162e51;
     font-weight: 800;
   }
-  .sha-lang-toggle__divider {
-    color: #a9aeb1;
-    font-weight: 400;
-  }
 
-  @media (max-width: 480px) {
+  @media (max-width: 639px) {
     .sha-lang-toggle {
-      padding: 0.32rem 0.45rem;
-      min-height: 38px;
-      font-size: 0.7rem;
+      padding: 0.35rem 0.5rem;
+      font-size: 0.72rem;
+      min-height: 2.4rem;
+    }
+    .sha-lang-toggle__opt {
+      padding: 0.12rem 0.3rem;
     }
   }
 
-  /* 3. Mobile Drawer Variant */
+  /* 3. Variante Menú Móvil USWDS */
   .sha-lang-mobile {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 0.5rem;
     background: #ffffff;
     border: 1px solid #c9cdd1;
-    border-radius: 6px;
-    padding: 0.55rem 0.75rem;
-  }
-  .sha-lang-mobile__label {
-    display: flex;
-    align-items: center;
-    gap: 0.35rem;
-    font-size: 0.78rem;
-    font-weight: 700;
-    color: #162e51;
+    border-radius: 0.25rem;
+    padding: 0.5rem;
   }
   .sha-lang-mobile__btns {
     display: flex;
-    gap: 0.35rem;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
   }
   .sha-lang-mobile__btn {
-    background: #f0f4f8;
-    border: 1px solid #c9cdd1;
-    color: #162e51;
-    font-size: 0.75rem;
+    flex: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
+    background: #f0f0f0;
+    border: 1px solid #a9aeb1;
+    color: #1b1b1b;
+    font-size: 0.85rem;
     font-weight: 700;
-    padding: 0.35rem 0.65rem;
-    border-radius: 4px;
+    padding: 0.6rem 0.75rem;
+    border-radius: 0.25rem;
+    min-height: 2.75rem; /* 44px touch target */
     cursor: pointer;
-    transition: all 0.15s ease;
   }
   .sha-lang-mobile__btn.is-active {
     background: #005ea2;
     border-color: #005ea2;
     color: #ffffff;
+  }
+  .sha-lang-mobile__sep {
+    font-weight: 800;
+    color: #162e51;
+    font-size: 1rem;
   }
 </style>

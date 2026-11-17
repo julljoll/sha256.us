@@ -123,8 +123,10 @@ import LanguageSwitcher from './molecules/LanguageSwitcher.astro';
 
       <!-- Top-right actions -->
       <div class="sha-header__actions">
-        <!-- Botón Selector de Idioma ES / EN en barra principal -->
-        <LanguageSwitcher variant="header" />
+        <!-- Botón Selector de Idioma Español - Inglés en barra principal (Visible en Tablet/Desktop >= 640px) -->
+        <div class="display-none tablet:display-inline-flex">
+          <LanguageSwitcher variant="header" />
+        </div>
 
         <!-- Direct Iniciar Sesión CTA to https://forense.sha256.us/ (Visible en Desktop >= 900px) -->
         <a
@@ -356,8 +358,6 @@ import LanguageSwitcher from './molecules/LanguageSwitcher.astro';
     background-color: #005ea2;
     border-color: #005ea2;
     color: #ffffff !important;
-    transform: translateY(-1px);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   }
 
   /* ====== MAIN USWDS HEADER ====== */
@@ -448,7 +448,7 @@ import LanguageSwitcher from './molecules/LanguageSwitcher.astro';
     font-weight: 700;
     text-decoration: none !important;
     border-radius: 4px;
-    transition: all 0.2s ease;
+    transition: background-color 0.15s ease, color 0.15s ease;
     min-height: 40px;
   }
   @media (min-width: 900px) {
@@ -461,8 +461,6 @@ import LanguageSwitcher from './molecules/LanguageSwitcher.astro';
     border-color: #005ea2;
     color: #ffffff !important;
     text-decoration: none !important;
-    transform: translateY(-1px);
-    box-shadow: 0 2px 6px rgba(0, 94, 162, 0.25);
   }
 
   /* Mobile WhatsApp Direct Pill */

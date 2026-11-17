@@ -2,10 +2,10 @@
 
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
-import tailwindcss from '@tailwindcss/vite';
 import { defineConfig } from 'astro/config';
 
 // https://astro.build/config
+// Sistema de Diseño Exclusivo: U.S. Web Design System (USWDS 3.14) — Sin Tailwind CSS
 export default defineConfig({
 	site: 'https://sha256.us',
 	integrations: [
@@ -37,7 +37,4 @@ export default defineConfig({
 			},
 		}),
 	],
-	vite: {
-		plugins: [tailwindcss()],
-	},
 });
