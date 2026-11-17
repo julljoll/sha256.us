@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { COMPANY, SITE_TITLE } from '../consts';
+import { COMPANY } from '../consts';
+import Breadcrumb from '../components/molecules/Breadcrumb.astro';
 import AboutPillars from '../components/organisms/AboutPillars.astro';
 import AboutMission from '../components/organisms/AboutMission.astro';
 import StandardsSidebar from '../components/organisms/StandardsSidebar.astro';
@@ -11,12 +12,14 @@ import AboutContactCta from '../components/organisms/AboutContactCta.astro';
 <BaseLayout
 	title={`Laboratorio Forense y Peritos Digitales en Venezuela | ${COMPANY.name}`}
 	description={`Conoce a ${COMPANY.name}, laboratorio de informática forense y gabinete pericial en Quíbor, Lara, Venezuela. Peritajes judiciales, cadena de custodia y análisis de evidencia digital.`}
-	mainClass="padding-y-5 tablet:padding-y-6"
+	mainClass="padding-y-4 tablet:padding-y-6"
 >
 	<div class="grid-container maxw-desktop margin-x-auto padding-x-2">
+		<Breadcrumb items={[{ label: 'Sobre Nosotros' }]} />
+
 		<!-- Header de página -->
 		<div class="margin-bottom-4 border-bottom-2px border-base-lighter padding-bottom-3">
-			<span class="usa-tag bg-primary text-white margin-bottom-1 font-sans-3xs">CONÓCENOS</span>
+			<span class="usa-tag bg-primary text-white margin-bottom-1 font-sans-3xs">PERFIL INSTITUCIONAL</span>
 			<h1 class="font-sans-2xl tablet:font-sans-3xl text-bold text-primary-darker margin-top-1 margin-bottom-2">
 				Laboratorio de Informática Forense y Gabinete Pericial en Venezuela
 			</h1>

@@ -1,8 +1,10 @@
 ---
+import Icon, { type IconName } from '../atoms/Icon.astro';
+
 export interface PillItem {
   href: string;
   label: string;
-  icon?: string;
+  iconName?: IconName;
 }
 
 export interface Props {
@@ -11,7 +13,7 @@ export interface Props {
   class?: string;
 }
 
-const { title = 'Salta directamente a lo que necesitas:', items, class: className = '' } = Astro.props;
+const { title = 'Salta directamente a la división pericial requerida:', items, class: className = '' } = Astro.props;
 ---
 
 <div class={className}>
@@ -23,7 +25,10 @@ const { title = 'Salta directamente a lo que necesitas:', items, class: classNam
   <div class="sha-quick-nav">
     {items.map((item) => (
       <a href={item.href} class="sha-pill-link">
-        {item.icon ? `${item.icon} ${item.label}` : item.label}
+        {item.iconName && (
+          <Icon name={item.iconName} size={15} class="margin-right-05" />
+        )}
+        <span>{item.label}</span>
       </a>
     ))}
   </div>
@@ -38,13 +43,13 @@ const { title = 'Salta directamente a lo que necesitas:', items, class: classNam
   .sha-pill-link {
     display: inline-flex;
     align-items: center;
-    padding: 0.35rem 0.75rem;
+    padding: 0.4rem 0.85rem;
     background-color: #f0f7fc;
     color: #005ea2;
     border: 1px solid #b8daed;
-    border-radius: 50px;
-    font-size: 0.75rem;
-    font-weight: 600;
+    border-radius: 4px;
+    font-size: 0.78rem;
+    font-weight: 700;
     text-decoration: none;
     transition: all 0.2s ease;
   }

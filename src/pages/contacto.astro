@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { COMPANY, SITE_TITLE } from '../consts';
+import { COMPANY } from '../consts';
+import Breadcrumb from '../components/molecules/Breadcrumb.astro';
 import ContactDirectWa from '../components/organisms/ContactDirectWa.astro';
 import ContactForm from '../components/organisms/ContactForm.astro';
 import ContactInfoSidebar from '../components/organisms/ContactInfoSidebar.astro';
@@ -9,12 +10,14 @@ import ContactInfoSidebar from '../components/organisms/ContactInfoSidebar.astro
 <BaseLayout
 	title={`Perito Informático en Lara y Venezuela | Contacto y Ubicación ${COMPANY.name}`}
 	description={`Canales de atención pericial y ubicación de ${COMPANY.name}. Laboratorio de informática forense en Quíbor, Estado Lara, Venezuela. Peritajes judiciales y recepción de evidencia.`}
-	mainClass="padding-y-5 tablet:padding-y-6"
+	mainClass="padding-y-4 tablet:padding-y-6"
 >
 	<div class="grid-container maxw-desktop margin-x-auto padding-x-2">
+		<Breadcrumb items={[{ label: 'Contacto y Recepción' }]} />
+
 		<!-- Header de página -->
 		<div class="margin-bottom-4 border-bottom-2px border-base-lighter padding-bottom-3">
-			<span class="usa-tag bg-primary text-white margin-bottom-1 font-sans-3xs">CANALES DE ATENCIÓN</span>
+			<span class="usa-tag bg-primary text-white margin-bottom-1 font-sans-3xs">CANALES OFICIALES DE ATENCIÓN</span>
 			<h1 class="font-sans-2xl tablet:font-sans-3xl text-bold text-primary-darker margin-top-1 margin-bottom-2">
 				Perito Informático en Lara y Venezuela — Laboratorio {COMPANY.name}
 			</h1>

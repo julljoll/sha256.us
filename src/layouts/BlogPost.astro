@@ -4,7 +4,8 @@ import type { CollectionEntry } from 'astro:content';
 import BaseLayout from './BaseLayout.astro';
 import FormattedDate from '../components/FormattedDate.astro';
 import ShareButtons from '../components/ShareButtons.astro';
-import { COMPANY, FOUNDER } from '../consts';
+import Breadcrumb from '../components/molecules/Breadcrumb.astro';
+import { COMPANY } from '../consts';
 
 type Props = CollectionEntry<'blog'>['data'];
 
@@ -24,16 +25,13 @@ const { title, description, pubDate, updatedDate, heroImage, author, category, t
 	mainClass="padding-y-4 tablet:padding-y-6"
 >
 	<article class="grid-container maxw-desktop margin-x-auto padding-x-2">
-		<!-- Migas de pan / Breadcrumbs para orientación visual -->
-		<nav class="margin-bottom-2" aria-label="Migas de pan">
-			<div class="display-flex flex-wrap flex-align-center gap-1 font-sans-3xs text-base">
-				<a href="/" class="text-primary hover:underline">Inicio</a>
-				<span aria-hidden="true">&rsaquo;</span>
-				<a href="/blog" class="text-primary hover:underline">Blog Forense</a>
-				<span aria-hidden="true">&rsaquo;</span>
-				<span class="text-base-dark text-bold">{category || 'Publicación'}</span>
-			</div>
-		</nav>
+		<!-- USWDS Breadcrumb -->
+		<Breadcrumb
+			items={[
+				{ label: 'Blog & Casos', href: '/blog' },
+				{ label: category || 'Publicación' },
+			]}
+		/>
 
 		<!-- Encabezado del artículo -->
 		<header class="margin-bottom-4 border-bottom-1px border-base-lighter padding-bottom-3">
