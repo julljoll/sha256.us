@@ -1,0 +1,168 @@
+---
+import SectionHeader from '../atoms/SectionHeader.astro';
+import Icon from '../atoms/Icon.astro';
+import LegalInstrumentCard from '../molecules/LegalInstrumentCard.astro';
+import { LEGAL_INSTRUMENTS, type LegalCategory } from '../../consts';
+
+const categories: ('Todas' | LegalCategory)[] = [
+  'Todas',
+  'Leyes Nacionales',
+  'Códigos y Leyes Orgánicas',
+  'Estándares ISO/IEC',
+  'Guías NIST / IETF / ACPO',
+  'Manuales y Doctrina Forense',
+];
+---
+
+<section id="compendio" class="sha-section sha-section--alt">
+  <div class="sha-container">
+    <SectionHeader
+      tag="REPOSITORIO RAÍZ /Informatica/ · HASH SHA-256 VERIFICADO"
+      tagVariant="secondary"
+      title="Compendio de Leyes Informáticas y Estándares Forenses"
+      sub="Base documental íntegra procesada en el directorio raíz /Informatica/ que sustenta cada dictamen pericial de sha256.us y el sistema de cumplimiento forense.sha256.us."
+    />
+
+    <!-- Filtros por categoría normativa -->
+    <div class="sha-law-filters" role="tablist" aria-label="Filtrar instrumentos normativos por categoría">
+      {categories.map((cat, idx) => (
+        <button
+          type="button"
+          role="tab"
+          class={`sha-law-filter-btn${idx === 0 ? ' is-active' : ''}`}
+          aria-selected={idx === 0 ? 'true' : 'false'}
+          data-filter-cat={cat}
+        >
+          {cat === 'Todas' ? `Todas (${LEGAL_INSTRUMENTS.length})` : cat}
+        </button>
+      ))}
+    </div>
+
+    <!-- Nota de verificación criptográfica -->
+    <div class="sha-law-banner margin-bottom-3">
+      <Icon name="lock" size={16} fill="#005ea2" />
+      <span>
+        Cada instrumento listado posee su resumen criptográfico <strong>SHA-256 (FIPS 180-4)</strong> calculado sobre el documento PDF original resguardado en la carpeta raíz <code>/Informatica/</code> del repositorio institucional.
+      </span>
+    </div>
+
+    <!-- Grid de instrumentos legales y técnicos -->
+    <div class="sha-laws-grid" id="legalInstrumentsGrid">
+      {LEGAL_INSTRUMENTS.map((instrument) => (
+        <div class="sha-laws-grid__item" data-item-cat={instrument.category}>
+          <LegalInstrumentCard instrument={instrument} />
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .sha-section {
+    padding: 4rem 0;
+  }
+  @media (max-width: 640px) {
+    .sha-section {
+      padding: 2.5rem 0;
+    }
+  }
+  .sha-section--alt {
+    background: #f8fafc;
+    border-top: 1px solid #dfe1e2;
+    border-bottom: 1px solid #dfe1e2;
+  }
+  .sha-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.25rem;
+  }
+  .sha-law-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+  }
+  .sha-law-filter-btn {
+    background: #ffffff;
+    border: 1.5px solid #c9cdd1;
+    color: #162e51;
+    font-size: 0.78rem;
+    font-weight: 700;
+    padding: 0.5rem 0.95rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+  .sha-law-filter-btn:hover {
+    border-color: #005ea2;
+    color: #005ea2;
+    background: #eff6fb;
+  }
+  .sha-law-filter-btn.is-active {
+    background: #005ea2;
+    border-color: #005ea2;
+    color: #ffffff;
+  }
+  .sha-law-banner {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: #eff6fb;
+    border: 1px solid #cfe8ff;
+    border-radius: 6px;
+    padding: 0.7rem 1rem;
+    font-size: 0.78rem;
+    color: #162e51;
+  }
+  .sha-law-banner code {
+    background: #ffffff;
+    padding: 0.1rem 0.35rem;
+    border-radius: 3px;
+    border: 1px solid #cfe8ff;
+    font-weight: 700;
+  }
+  .sha-laws-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 1.25rem;
+  }
+  @media (max-width: 640px) {
+    .sha-laws-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  .sha-laws-grid__item[hidden] {
+    display: none !important;
+  }
+</style>
+
+<script>
+  (function () {
+    const buttons = document.querySelectorAll('.sha-law-filter-btn');
+    const items = document.querySelectorAll('.sha-laws-grid__item');
+    if (!buttons.length || !items.length) return;
+
+    buttons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const selectedCat = btn.getAttribute('data-filter-cat') || 'Todas';
+
+        buttons.forEach((b) => {
+          b.classList.remove('is-active');
+          b.setAttribute('aria-selected', 'false');
+        });
+        btn.classList.add('is-active');
+        btn.setAttribute('aria-selected', 'true');
+
+        items.forEach((item) => {
+          const itemCat = item.getAttribute('data-item-cat');
+          if (selectedCat === 'Todas' || itemCat === selectedCat) {
+            item.removeAttribute('hidden');
+          } else {
+            item.setAttribute('hidden', '');
+          }
+        });
+      });
+    });
+  })();
+</script>

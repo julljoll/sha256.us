@@ -1,0 +1,130 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { COMPANY, FORENSE_PORTAL_URL, LEGAL_INSTRUMENTS, FOLIO_FORMS_CATALOG, ISO_FORENSIC_PHASES } from '../consts';
+import Breadcrumb from '../components/molecules/Breadcrumb.astro';
+import PillNav, { type PillItem } from '../components/molecules/PillNav.astro';
+import Icon from '../components/atoms/Icon.astro';
+import LegalPyramidSection from '../components/organisms/LegalPyramidSection.astro';
+import LegalCompendiumSection from '../components/organisms/LegalCompendiumSection.astro';
+import ProcessSteps from '../components/organisms/ProcessSteps.astro';
+import FolioFormsSection from '../components/organisms/FolioFormsSection.astro';
+import CtaBanner from '../components/organisms/CtaBanner.astro';
+
+const normativaPills: PillItem[] = [
+	{ href: '#piramide-legal', label: 'Pirámide COPP Art. 225', iconName: 'account_balance' },
+	{ href: '#compendio', label: `Leyes e ISO (${LEGAL_INSTRUMENTS.length})`, iconName: 'gavel' },
+	{ href: '#ciclo-f0-f5', label: `Ciclo ISO (${ISO_FORENSIC_PHASES.length} Fases)`, iconName: 'verified_user' },
+	{ href: '#planillas-folio', label: `Planillas Folio (${FOLIO_FORMS_CATALOG.length})`, iconName: 'description' },
+];
+---
+
+<BaseLayout
+	title={`Marco Legal, Leyes Informáticas y Ciclo Pericial ISO F0–F5 | ${COMPANY.name}`}
+	description={`Sustento jurídico y técnico del laboratorio sha256.us y forense.sha256.us: Pirámide de Aplicación (COPP Art. 225), LMDFE, LEDI, MUCC-2017, ISO/IEC 27037, ISO/IEC 27042, NIST SP 800 y 13 Planillas Oficiales en Folio.`}
+	mainClass="padding-top-4 tablet:padding-top-6"
+>
+	<div class="grid-container maxw-desktop margin-x-auto padding-x-2">
+		<Breadcrumb items={[{ label: 'Marco Legal & Proceso Forense (F0–F5)' }]} />
+
+		<!-- Header Institucional de la Página -->
+		<div class="margin-bottom-4 border-bottom-2px border-base-lighter padding-bottom-3">
+			<span class="usa-tag bg-primary text-white margin-bottom-1 font-sans-3xs">
+				FORENSIC CHIEF COMPLIANCE OFFICER · SUSTENTO NORMATIVO /Informatica/
+			</span>
+			<h1 class="font-sans-2xl tablet:font-sans-3xl text-bold text-primary-darker margin-top-1 margin-bottom-2">
+				Marco Legal de Leyes Informáticas, Ciclo Pericial ISO (F0–F5) y Planillas en Folio
+			</h1>
+			<p class="font-sans-md text-base-dark line-height-sans-4 maxw-tablet margin-bottom-3">
+				Toda actuación técnica del laboratorio <strong>{COMPANY.name}</strong> y de nuestra plataforma operativa <a href={FORENSE_PORTAL_URL} target="_blank" rel="noopener noreferrer" class="text-primary text-bold">forense.sha256.us</a> se encuentra respaldada por el compendio de leyes informáticas venezolanas y estándares internacionales resguardados con verificación criptográfica <strong>SHA-256</strong> en nuestro repositorio normativo.
+			</p>
+
+			<!-- KPIs de Cumplimiento Forense (Sincronizados con forense.sha256.us/dashboard) -->
+			<div class="sha-kpi-bar margin-bottom-3">
+				<div class="sha-kpi-item">
+					<span class="sha-kpi-item__val">6 Fases</span>
+					<span class="sha-kpi-item__lbl">Ciclo ISO (F0 a F5)</span>
+				</div>
+				<div class="sha-kpi-item">
+					<span class="sha-kpi-item__val">13 Actas</span>
+					<span class="sha-kpi-item__lbl">Formato Folio (216×330 mm)</span>
+				</div>
+				<div class="sha-kpi-item">
+					<span class="sha-kpi-item__val">28 Normas</span>
+					<span class="sha-kpi-item__lbl">Carpeta /Informatica/ SHA-256</span>
+				</div>
+				<div class="sha-kpi-item">
+					<span class="sha-kpi-item__val">Art. 187</span>
+					<span class="sha-kpi-item__lbl">COPP &amp; MUCC-2017 (PRCC)</span>
+				</div>
+			</div>
+
+			<!-- Barra de Salto Rápido con Iconos Oficiales USWDS -->
+			<PillNav items={normativaPills} />
+		</div>
+	</div>
+
+	<!-- 1. Pirámide de Aplicación y Supletoriedad (COPP Art. 225) -->
+	<LegalPyramidSection />
+
+	<!-- 2. Compendio de Leyes Informáticas y Estándares (/Informatica/) -->
+	<LegalCompendiumSection />
+
+	<!-- 3. Ciclo Pericial ISO de 6 Fases (F0 a F5) -->
+	<ProcessSteps detailed={true} id="ciclo-f0-f5" />
+
+	<!-- 4. Catálogo Oficial de 13 Planillas en Folio y Garantías de Admisibilidad -->
+	<FolioFormsSection id="planillas-folio" />
+
+	<!-- 5. CTA Final -->
+	<CtaBanner
+		title="¿Necesitas sustentar una prueba digital con validez procesal plena?"
+		sub="Nuestro gabinete pericial aplica el Ciclo ISO F0–F5 y emite las Planillas Oficiales en Folio listas para su consignación ante tribunales."
+		buttonText="Solicitar Peritaje Forense"
+		buttonHref="/contacto"
+	/>
+</BaseLayout>
+
+<style>
+	.sha-kpi-bar {
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		gap: 0.85rem;
+		background: #162e51;
+		padding: 1.15rem 1.25rem;
+		border-radius: 8px;
+		border-left: 5px solid #005ea2;
+		color: #ffffff;
+	}
+	@media (max-width: 767px) {
+		.sha-kpi-bar {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+	.sha-kpi-item {
+		display: flex;
+		flex-direction: column;
+		border-right: 1px solid rgba(255, 255, 255, 0.15);
+		padding-right: 0.75rem;
+	}
+	.sha-kpi-item:last-child {
+		border-right: none;
+	}
+	@media (max-width: 767px) {
+		.sha-kpi-item:nth-child(2) {
+			border-right: none;
+		}
+	}
+	.sha-kpi-item__val {
+		font-size: 1.35rem;
+		font-weight: 800;
+		color: #73b3e7;
+		line-height: 1.15;
+		font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+	}
+	.sha-kpi-item__lbl {
+		font-size: 0.73rem;
+		color: #f0f4f8;
+		font-weight: 600;
+		margin-top: 0.15rem;
+	}
+</style>

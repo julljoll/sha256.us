@@ -1,0 +1,111 @@
+---
+import Icon from '../atoms/Icon.astro';
+import type { LegalPyramidTier } from '../../consts';
+
+export interface Props {
+  tierItem: LegalPyramidTier;
+  index: number;
+}
+
+const { tierItem, index } = Astro.props;
+---
+
+<div class="sha-pyramid-tier">
+  <div class="sha-pyramid-tier__num" aria-hidden="true">0{index + 1}</div>
+  <div class="sha-pyramid-tier__body">
+    <div class="sha-pyramid-tier__header">
+      <span class="sha-pyramid-tier__badge">{tierItem.tier}</span>
+      <span class="sha-pyramid-tier__articles">
+        <Icon name="gavel" size={12} />
+        {tierItem.articles}
+      </span>
+    </div>
+    <h3 class="sha-pyramid-tier__title">{tierItem.levelName}</h3>
+    <div class="sha-pyramid-tier__sub">{tierItem.normTitle}</div>
+    <p class="sha-pyramid-tier__desc">{tierItem.application}</p>
+  </div>
+</div>
+
+<style>
+  .sha-pyramid-tier {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.15rem;
+    background: #ffffff;
+    border: 1px solid #dfe1e2;
+    border-left: 5px solid #005ea2;
+    border-radius: 8px;
+    padding: 1.25rem 1.4rem;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+  }
+  @media (max-width: 640px) {
+    .sha-pyramid-tier {
+      flex-direction: column;
+      gap: 0.6rem;
+      padding: 1rem 1.1rem;
+    }
+  }
+  .sha-pyramid-tier__num {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 1.65rem;
+    font-weight: 800;
+    color: #005ea2;
+    background: #eff6fb;
+    border: 1px solid #cfe8ff;
+    width: 48px;
+    height: 48px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .sha-pyramid-tier__body {
+    flex: 1;
+  }
+  .sha-pyramid-tier__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.35rem;
+  }
+  .sha-pyramid-tier__badge {
+    font-size: 0.68rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #d83933;
+  }
+  .sha-pyramid-tier__articles {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: #005ea2;
+    background: #f0f4f8;
+    padding: 0.15rem 0.5rem;
+    border-radius: 4px;
+  }
+  .sha-pyramid-tier__title {
+    font-size: 1rem;
+    font-weight: 800;
+    color: #162e51;
+    margin: 0 0 0.2rem 0;
+    line-height: 1.3;
+  }
+  .sha-pyramid-tier__sub {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: #3d4551;
+    margin-bottom: 0.4rem;
+  }
+  .sha-pyramid-tier__desc {
+    font-size: 0.83rem;
+    color: #565c65;
+    line-height: 1.5;
+    margin: 0;
+  }
+</style>

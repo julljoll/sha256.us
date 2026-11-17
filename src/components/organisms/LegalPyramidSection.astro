@@ -1,0 +1,43 @@
+---
+import SectionHeader from '../atoms/SectionHeader.astro';
+import LegalPyramidCard from '../molecules/LegalPyramidCard.astro';
+import { LEGAL_PYRAMID } from '../../consts';
+---
+
+<section id="piramide-legal" class="sha-section bg-white">
+  <div class="sha-container">
+    <SectionHeader
+      tag="JERARQUÍA CONSTITUCIONAL Y SUPLETORIEDAD CIENTÍFICA"
+      tagVariant="primary"
+      title="Pirámide de Aplicación Normativa y Supletoriedad (COPP Art. 225)"
+      sub="Estructura jerárquica que articula las garantías constitucionales (CRBV), el régimen probatorio procesal (COPP y CPC), las leyes especiales de informática (LMDFE y LEDI) y los estándares técnicos internacionales (ISO/IEC y NIST)."
+    />
+
+    <div class="sha-pyramid-list">
+      {LEGAL_PYRAMID.map((tierItem, index) => (
+        <LegalPyramidCard tierItem={tierItem} index={index} />
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .sha-section {
+    padding: 3.5rem 0;
+  }
+  @media (max-width: 640px) {
+    .sha-section {
+      padding: 2.25rem 0;
+    }
+  }
+  .sha-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.25rem;
+  }
+  .sha-pyramid-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+</style>

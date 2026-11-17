@@ -1,54 +1,7 @@
 ---
 // HeroCarousel.astro
 import Icon from './atoms/Icon.astro';
-// 5 slides: Digital Forensics | Digital Contracts | Compliance Officer | Legal Data Analysis | Cybersecurity Lab
-const slides = [
-  {
-    id: 1,
-    img: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=1400&q=80",
-    tag: "LABORATORIO PERICIAL FORENSE",
-    title: "Laboratorio de Informática Forense en Venezuela & Peritaje Judicial",
-    desc: "Recuperamos, extraemos y certificamos evidencias digitales con cadena de custodia inviolable para juicios y tribunales.",
-    cta1: { label: "Nuestros Servicios", href: "/servicios" },
-    cta2: { label: "Solicitar Peritaje", href: "/contacto" },
-  },
-  {
-    id: 2,
-    img: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1400&q=80",
-    tag: "CONTRATOS DIGITALES",
-    title: "Análisis y Peritaje de Documentos Electrónicos",
-    desc: "Verificación forense de contratos digitales, firmas electrónicas y metadatos de documentos con validez procesal ante tribunales.",
-    cta1: { label: "Conocer el Proceso", href: "/servicios" },
-    cta2: { label: "Contáctanos", href: "/contacto" },
-  },
-  {
-    id: 3,
-    img: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=1400&q=80",
-    tag: "COMPLIANCE OFFICER",
-    title: "Soporte Técnico para Cumplimiento Normativo",
-    desc: "Asesoramos a oficiales de cumplimiento con evidencias digitales bajo ISO/IEC 27037, ISO/IEC 27042, NIST SP 800 y MUCC-2017.",
-    cta1: { label: "Ver Estándares", href: "/about" },
-    cta2: { label: "Solicitar Asesoría", href: "/contacto" },
-  },
-  {
-    id: 4,
-    img: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1400&q=80",
-    tag: "ANÁLISIS DE DATOS JURÍDICOS",
-    title: "Validación Pericial de Datos e Información Legal",
-    desc: "Aplicamos metodologías avanzadas para el análisis técnico-jurídico de registros, metadatos y trazas digitales en controversias corporativas.",
-    cta1: { label: "Cómo Trabajamos", href: "/servicios" },
-    cta2: { label: "Blog Técnico", href: "/blog" },
-  },
-  {
-    id: 5,
-    img: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1400&q=80",
-    tag: "LABORATORIO FORENSE DIGITAL",
-    title: "Tecnología de Punta para la Verdad Digital",
-    desc: "Equipamiento especializado y protocolos de nivel internacional para la adquisición, preservación y análisis de medios digitales.",
-    cta1: { label: "Conocer sha256.us", href: "/about" },
-    cta2: { label: "Solicitar Recepción", href: "/contacto" },
-  },
-];
+import { HERO_SLIDES as slides } from '../consts';
 ---
 
 <div class="sha-carousel" id="heroCarousel" role="region" aria-label="Presentación del laboratorio sha256.us" aria-roledescription="carrusel">

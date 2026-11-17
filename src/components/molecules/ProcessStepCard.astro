@@ -1,5 +1,6 @@
 ---
 import Badge from '../atoms/Badge.astro';
+import Icon from '../atoms/Icon.astro';
 
 export interface Props {
   stepNumber: string;
@@ -7,6 +8,10 @@ export interface Props {
   badgeVariant?: 'primary' | 'secondary' | 'accent' | 'dark';
   title: string;
   description: string;
+  norms?: string;
+  responsible?: string;
+  controls?: string[];
+  planillas?: string[];
 }
 
 const {
@@ -15,53 +20,183 @@ const {
   badgeVariant = 'primary',
   title,
   description,
+  norms,
+  responsible,
+  controls = [],
+  planillas = [],
 } = Astro.props;
 ---
 
-<div class="sha-step">
-  <div class="margin-bottom-1">
+<article class="sha-step">
+  <div class="sha-step__top">
     <Badge variant={badgeVariant}>{badgeTag}</Badge>
+    <span class="sha-step__num" aria-hidden="true">{stepNumber}</span>
   </div>
-  <div class="sha-step__num">{stepNumber}</div>
+
   <h3 class="sha-step__title">{title}</h3>
+
+  {norms && (
+    <div class="sha-step__norms">
+      <Icon name="gavel" size={13} class="sha-step__norms-icon" />
+      <span>{norms}</span>
+    </div>
+  )}
+
   <p class="sha-step__text">{description}</p>
-</div>
+
+  {controls.length > 0 && (
+    <ul class="sha-step__controls">
+      {controls.map((c) => (
+        <li>
+          <Icon name="check_circle" size={13} fill="#00a91c" class="sha-step__check" />
+          <span>{c}</span>
+        </li>
+      ))}
+    </ul>
+  )}
+
+  {planillas.length > 0 && (
+    <div class="sha-step__planillas">
+      <span class="sha-step__planillas-label">
+        <Icon name="description" size={12} />
+        Instrumentos en Folio (216×330 mm):
+      </span>
+      <div class="sha-step__planillas-tags">
+        {planillas.map((p) => (
+          <span class="sha-step__planilla-pill">{p}</span>
+        ))}
+      </div>
+    </div>
+  )}
+
+  {responsible && (
+    <div class="sha-step__footer">
+      <Icon name="verified_user" size={13} fill="#005ea2" />
+      <span><strong>Responsable:</strong> {responsible}</span>
+    </div>
+  )}
+</article>
 
 <style>
   .sha-step {
     background: #ffffff;
     border: 1px solid #dfe1e2;
+    border-top: 4px solid #005ea2;
     border-radius: 8px;
-    padding: 1.5rem 1.25rem;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+    padding: 1.4rem 1.35rem;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
     display: flex;
     flex-direction: column;
     position: relative;
     transition: transform 0.2s, box-shadow 0.2s;
+    height: 100%;
   }
   .sha-step:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.09);
+  }
+  .sha-step__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.65rem;
   }
   .sha-step__num {
-    font-size: 1.75rem;
+    font-size: 1.65rem;
     font-weight: 800;
-    color: #e1e7ee;
+    color: #d9e8f6;
     line-height: 1;
-    margin-bottom: 0.5rem;
-    font-family: monospace;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
   }
   .sha-step__title {
     font-size: 1.05rem;
-    font-weight: 700;
-    color: #1a2b4b;
-    margin: 0 0 0.5rem 0;
+    font-weight: 800;
+    color: #162e51;
+    margin: 0 0 0.45rem 0;
     line-height: 1.3;
   }
+  .sha-step__norms {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: #005ea2;
+    background: #eff6fb;
+    border: 1px solid #cfe8ff;
+    border-radius: 4px;
+    padding: 0.25rem 0.5rem;
+    margin-bottom: 0.65rem;
+    line-height: 1.3;
+  }
+  .sha-step__norms-icon {
+    flex-shrink: 0;
+  }
   .sha-step__text {
-    font-size: 0.85rem;
-    color: #565c65;
+    font-size: 0.84rem;
+    color: #3d4551;
     line-height: 1.5;
-    margin: 0;
+    margin: 0 0 0.85rem 0;
+  }
+  .sha-step__controls {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 0.9rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+  .sha-step__controls li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.4rem;
+    font-size: 0.77rem;
+    color: #565c65;
+    line-height: 1.4;
+  }
+  .sha-step__check {
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .sha-step__planillas {
+    margin-top: auto;
+    padding-top: 0.75rem;
+    border-top: 1px dashed #dfe1e2;
+  }
+  .sha-step__planillas-label {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: #565c65;
+    margin-bottom: 0.4rem;
+  }
+  .sha-step__planillas-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+  }
+  .sha-step__planilla-pill {
+    font-size: 0.7rem;
+    font-weight: 600;
+    background: #f0f4f8;
+    color: #162e51;
+    border: 1px solid #c9cdd1;
+    border-radius: 4px;
+    padding: 0.2rem 0.45rem;
+    line-height: 1.25;
+  }
+  .sha-step__footer {
+    margin-top: 0.65rem;
+    padding-top: 0.55rem;
+    border-top: 1px solid #f0f2f5;
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.73rem;
+    color: #3d4551;
   }
 </style>

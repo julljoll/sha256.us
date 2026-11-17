@@ -1,13 +1,13 @@
 ---
 import TrustItem from '../molecules/TrustItem.astro';
+import { TRUST_ITEMS } from '../../consts';
 ---
 
 <section class="sha-trustbar" aria-label="Garantías institucionales y estándares técnicos">
   <div class="sha-trustbar__inner">
-    <TrustItem icon="court" text="Validez en Juicios y Tribunales" />
-    <TrustItem icon="hash" text="Prueba Intacta (Hash SHA-256)" />
-    <TrustItem icon="chain" text="Cadena de Custodia MUCC-2017" />
-    <TrustItem icon="shield" text="Estándares ISO/IEC & NIST" />
+    {TRUST_ITEMS.map((item) => (
+      <TrustItem icon={item.icon} text={item.text} />
+    ))}
   </div>
 </section>
 
