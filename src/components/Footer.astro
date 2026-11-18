@@ -1,358 +1,163 @@
 ---
-import { CONTACT } from '../consts';
-import Icon from './atoms/Icon.astro';
-const today = new Date();
+// USWDS: Footer & Identifier | https://designsystem.digital.gov/components/footer/ & https://designsystem.digital.gov/components/identifier/
+import { COMPANY, CONTACT } from '../consts';
 ---
 
-<!-- USWDS Official Footer (Big Footer + Agency Identifier) -->
-<footer class="usa-footer usa-footer--big sha-footer margin-top-auto">
-	<!-- USWDS Return to top bar -->
-	<div class="sha-footer__return-bar">
-		<div class="grid-container maxw-desktop margin-x-auto padding-x-2 display-flex flex-justify-between flex-align-center">
-			<a href="#main-content" class="sha-footer__return-link">
-				<Icon name="arrow_upward" size={14} class="margin-right-05" />
-				<span>Volver al inicio de la página</span>
-			</a>
-			<span class="font-sans-3xs text-base-dark display-none tablet:display-inline">
-				Protocolos Certificados: <strong>ISO/IEC 27037 &bull; ISO/IEC 27042 &bull; NIST SP 800-86 &bull; MUCC-2017</strong>
-			</span>
-		</div>
-	</div>
-
-	<!-- Primary Footer Content -->
-	<div class="sha-footer__primary bg-base-darkest text-white border-top-05 border-primary">
-		<div class="grid-container maxw-desktop margin-x-auto padding-x-2 padding-y-5">
-			<div class="grid-row grid-gap">
-				<!-- Columna 1: Identidad Institucional con Logo Oficial -->
-				<div class="tablet:grid-col-4 margin-bottom-4 tablet:margin-bottom-0">
-					<a href="/" class="sha-footer__brand margin-bottom-2">
-						<img
-							src="/logo.png?v=202611"
-							alt="Emblema oficial sha256.us"
-							width="48"
-							height="48"
-							class="sha-footer__logo-img"
-							loading="lazy"
-							decoding="async"
-						/>
-						<div class="sha-footer__brand-text">
-							<span class="sha-footer__brand-name">sha256.us</span>
-							<span class="sha-footer__brand-sub">Laboratorio Forense Digital</span>
-						</div>
-					</a>
-					<p class="font-sans-xs text-base-light line-height-sans-4 margin-y-105">
-						Auditoría científica de dispositivos digitales y análisis pericial de evidencias informáticas. Garantizamos integridad criptográfica inalterable (SHA-256) y estricta validez jurídica en cada dictamen.
-					</p>
-					<p class="font-sans-3xs text-base-light line-height-sans-3 margin-y-1">
-						Gabinete Pericial Multidisciplinario &bull; <a href="/about#equipo" class="text-white text-bold hover:underline">Conocer al equipo acreditado &rarr;</a>
-					</p>
-					<div class="display-flex flex-wrap gap-05 margin-top-105">
-						<span class="usa-tag bg-primary font-sans-3xs text-white">USWDS 3.14</span>
-						<span class="usa-tag bg-secondary-dark font-sans-3xs text-white">MUCC-2017</span>
-						<span class="usa-tag bg-base-dark font-sans-3xs text-white">ISO/IEC &amp; NIST</span>
-					</div>
-				</div>
-
-				<!-- Columna 2: Navegación Institucional -->
-				<div class="mobile:grid-col-6 tablet:grid-col-2 margin-bottom-3 tablet:margin-bottom-0">
-					<h4 class="font-sans-xs text-bold text-white text-uppercase letter-spacing-1 margin-top-0 margin-bottom-105">
-						Secciones Oficiales
-					</h4>
-					<ul class="list-style-none padding-0 margin-0 font-sans-xs">
-						<li class="margin-y-1"><a href="/" class="text-base-lighter hover:text-white text-no-underline">Inicio</a></li>
-						<li class="margin-y-1"><a href="/servicios" class="text-base-lighter hover:text-white text-no-underline">Servicios Forenses</a></li>
-						<li class="margin-y-1"><a href="/normativa" class="text-base-lighter hover:text-white text-no-underline">Marco Legal &amp; Proceso</a></li>
-						<li class="margin-y-1"><a href="/normativa#planillas-folio" class="text-base-lighter hover:text-white text-no-underline">13 Planillas en Folio</a></li>
-						<li class="margin-y-1"><a href="/blog" class="text-base-lighter hover:text-white text-no-underline">Blog &amp; Casos</a></li>
-						<li class="margin-y-1"><a href="/about" class="text-base-lighter hover:text-white text-no-underline">Sobre Nosotros</a></li>
-						<li class="margin-y-1"><a href="/contacto" class="text-base-lighter hover:text-white text-no-underline">Contacto y Recepción</a></li>
-					</ul>
-				</div>
-
-				<!-- Columna 3: Marco Regulatorio y Normativa -->
-				<div class="mobile:grid-col-6 tablet:grid-col-3 margin-bottom-3 tablet:margin-bottom-0">
-					<h4 class="font-sans-xs text-bold text-white text-uppercase letter-spacing-1 margin-top-0 margin-bottom-105">
-						Normativa y Leyes (/Informatica/)
-					</h4>
-					<ul class="list-style-none padding-0 margin-0 font-sans-3xs text-base-light">
-						<li class="margin-y-1"><strong class="text-white">COPP Arts. 187 y 223–225:</strong> Custodia y Dictamen Pericial</li>
-						<li class="margin-y-1"><strong class="text-white">LMDFE (G.O. 37.148):</strong> Mensajes de Datos y Firmas</li>
-						<li class="margin-y-1"><strong class="text-white">LEDI (G.O. 37.313):</strong> Ley contra Delitos Informáticos</li>
-						<li class="margin-y-1"><strong class="text-white">MUCC-2017 (G.O. 41.247):</strong> Planilla PRCC Oficial</li>
-						<li class="margin-y-1"><strong class="text-white">ISO/IEC 27037 &amp; 27042:</strong> Adquisición y Análisis Forense</li>
-						<li class="margin-y-1"><strong class="text-white">NIST SP 800-86 &amp; 800-101:</strong> Incidentes y Móviles</li>
-					</ul>
-				</div>
-
-				<!-- Columna 4: Sede Oficial y Contacto Directo -->
-				<div class="tablet:grid-col-3">
-					<h4 class="font-sans-xs text-bold text-white text-uppercase letter-spacing-1 margin-top-0 margin-bottom-105">
-						Sede y Guardia Pericial
-					</h4>
-					<p class="font-sans-3xs text-base-light line-height-sans-3 margin-y-1 display-flex flex-align-start">
-						<Icon name="location_on" size={15} fill="#73b3e7" class="margin-right-05 flex-shrink-0" style="margin-top:2px" />
-						<span><strong class="text-white">Sede Principal:</strong> {CONTACT.address}</span>
-					</p>
-					<p class="font-sans-3xs text-base-light line-height-sans-3 margin-y-1 display-flex flex-align-center">
-						<Icon name="whatsapp" size={15} fill="#25D366" class="margin-right-05 flex-shrink-0" />
-						<span>
-							<strong class="text-white">WhatsApp:</strong>
-							<a
-								href={CONTACT.whatsapp}
-								target="_blank"
-								rel="noopener noreferrer"
-								class="text-white text-bold text-no-underline hover:underline margin-left-05"
-								title="Enviar mensaje por WhatsApp"
-							>
-								{CONTACT.phone.display}
-							</a>
-						</span>
-					</p>
-					<p class="font-sans-3xs text-base-light line-height-sans-3 margin-y-1 display-flex flex-align-center">
-						<Icon name="mail" size={15} fill="#73b3e7" class="margin-right-05 flex-shrink-0" />
-						<span>
-							<strong class="text-white">Correo:</strong>
-							<a href={`mailto:${CONTACT.email}`} class="text-white hover:underline margin-left-05">{CONTACT.email}</a>
-						</span>
-					</p>
-
-					<!-- Botón rápido al Sistema Forense -->
-					<div class="margin-top-2">
-						<a
-							href="https://forense.sha256.us/"
-							target="_blank"
-							rel="noopener noreferrer"
-							class="sha-footer__portal-btn"
-						>
-							<Icon name="lock" size={13} class="margin-right-05" />
-							<span>Portal Forense (forense.sha256.us)</span>
-							<Icon name="launch" size={11} class="margin-left-05" />
-						</a>
-					</div>
-
-					<!-- Redes Oficiales -->
-					<div class="display-flex flex-wrap flex-align-center gap-1 margin-top-2">
-						<a
-							href={CONTACT.social.whatsapp}
-							target="_blank"
-							rel="noopener noreferrer"
-							class="sha-social-btn sha-social-btn--wa"
-							aria-label="WhatsApp"
-							title={`WhatsApp: ${CONTACT.phone.display}`}
-						>
-							<Icon name="whatsapp" size={18} fill="#25D366" />
-						</a>
-						<a
-							href={CONTACT.social.linkedin}
-							target="_blank"
-							rel="noopener noreferrer"
-							class="sha-social-btn sha-social-btn--in"
-							aria-label="LinkedIn"
-							title="LinkedIn: sha256.us"
-						>
-							<Icon name="linkedin" size={17} />
-						</a>
-						<a
-							href={CONTACT.social.twitter}
-							target="_blank"
-							rel="noopener noreferrer"
-							class="sha-social-btn sha-social-btn--x"
-							aria-label="X (Twitter)"
-							title="X (Twitter): @sha256us"
-						>
-							<Icon name="x" size={16} />
-						</a>
-						<a
-							href={CONTACT.social.instagram}
-							target="_blank"
-							rel="noopener noreferrer"
-							class="sha-social-btn sha-social-btn--ig"
-							aria-label="Instagram"
-							title="Instagram: @sha256.us"
-						>
-							<Icon name="instagram" size={18} />
-						</a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<!-- USWDS Official Agency Identifier (usa-identifier) -->
-	<div class="usa-identifier sha-identifier">
-		<section class="usa-identifier__section usa-identifier__section--masthead" aria-label="Identificador oficial del laboratorio">
-			<div class="usa-identifier__container grid-container maxw-desktop margin-x-auto padding-x-2">
-				<div class="usa-identifier__logos">
-					<a href="/" class="usa-identifier__logo">
-						<img
-							class="usa-identifier__logo-img"
-							src="/logo.png?v=202611"
-							alt="Emblema oficial de sha256.us"
-							width="40"
-							height="40"
-							loading="lazy"
-						/>
-					</a>
-				</div>
-				<section class="usa-identifier__identity" aria-label="Descripción institucional">
-					<p class="usa-identifier__identity-domain">sha256.us</p>
-					<p class="usa-identifier__identity-disclaimer">
-						Un portal institucional oficial del <strong>Laboratorio de Informática Forense y Peritaje Digital Judicial sha256.us</strong>.
-					</p>
-				</section>
-			</div>
-		</section>
-
-		<nav class="usa-identifier__section usa-identifier__section--required-links" aria-label="Enlaces institucionales requeridos">
-			<div class="usa-identifier__container grid-container maxw-desktop margin-x-auto padding-x-2">
-				<ul class="usa-identifier__required-links-list">
-					<li class="usa-identifier__required-links-item">
-						<a href="/about" class="usa-identifier__required-link">Sobre sha256.us</a>
-					</li>
-					<li class="usa-identifier__required-links-item">
-						<a href="/about#equipo" class="usa-identifier__required-link">Gabinete Pericial Acreditado</a>
-					</li>
-					<li class="usa-identifier__required-links-item">
-						<a href="/servicios#forense" class="usa-identifier__required-link">Dictámenes Judiciales</a>
-					</li>
-					<li class="usa-identifier__required-links-item">
-						<a href="/servicios#moviles" class="usa-identifier__required-link">Extracción Forense Móvil</a>
-					</li>
-					<li class="usa-identifier__required-links-item">
-						<a href="https://forense.sha256.us/" target="_blank" rel="noopener noreferrer" class="usa-identifier__required-link">Sistema de Gestión Forense</a>
-					</li>
-					<li class="usa-identifier__required-links-item">
-						<a href="/blog" class="usa-identifier__required-link">Publicaciones Técnicas</a>
-					</li>
-					<li class="usa-identifier__required-links-item">
-						<a href="/sitemap-index.xml" class="usa-identifier__required-link">Mapa del Sitio (XML)</a>
-					</li>
-					<li class="usa-identifier__required-links-item">
-						<a href="/contacto" class="usa-identifier__required-link">Consignación de Evidencia</a>
-					</li>
-				</ul>
-			</div>
-		</nav>
-
-		<section class="usa-identifier__section usa-identifier__section--usagov" aria-label="Información de cumplimiento y diseño USWDS">
-			<div class="usa-identifier__container grid-container maxw-desktop margin-x-auto padding-x-2 display-flex flex-wrap flex-justify-between flex-align-center gap-1">
-				<div class="usa-identifier__usagov-description font-sans-3xs">
-					&copy; {today.getFullYear()} <strong>sha256.us</strong>. Todos los derechos reservados &bull; Quíbor, Estado Lara, Venezuela.
-				</div>
-				<div class="font-sans-3xs text-base-lighter">
-					Arquitectura y accesibilidad bajo el estándar federal <strong>U.S. Web Design System (USWDS 3.14)</strong>.
-				</div>
-			</div>
-		</section>
-	</div>
+<!-- USWDS: Footer | https://designsystem.digital.gov/components/footer/ -->
+<footer class="usa-footer">
+  <div class="grid-container usa-footer__return-to-top">
+    <a href="#">Volver al inicio de la página</a>
+  </div>
+  <div class="usa-footer__primary-section">
+    <nav class="usa-footer__nav" aria-label="Navegación del pie de página">
+      <ul class="grid-row grid-gap">
+        <li class="mobile-lg:grid-col-4 desktop:grid-col-auto usa-footer__primary-content">
+          <a class="usa-footer__primary-link" href="/">Inicio</a>
+        </li>
+        <li class="mobile-lg:grid-col-4 desktop:grid-col-auto usa-footer__primary-content">
+          <a class="usa-footer__primary-link" href="/servicios">Servicios Forenses</a>
+        </li>
+        <li class="mobile-lg:grid-col-4 desktop:grid-col-auto usa-footer__primary-content">
+          <a class="usa-footer__primary-link" href="/normativa">Marco Legal &amp; Proceso</a>
+        </li>
+        <li class="mobile-lg:grid-col-4 desktop:grid-col-auto usa-footer__primary-content">
+          <a class="usa-footer__primary-link" href="/normativa#planillas-folio">13 Planillas en Folio</a>
+        </li>
+        <li class="mobile-lg:grid-col-4 desktop:grid-col-auto usa-footer__primary-content">
+          <a class="usa-footer__primary-link" href="/blog">Blog &amp; Casos</a>
+        </li>
+        <li class="mobile-lg:grid-col-4 desktop:grid-col-auto usa-footer__primary-content">
+          <a class="usa-footer__primary-link" href="/about">Sobre Nosotros</a>
+        </li>
+        <li class="mobile-lg:grid-col-4 desktop:grid-col-auto usa-footer__primary-content">
+          <a class="usa-footer__primary-link" href="/contacto">Contacto y Recepción</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+  <div class="usa-footer__secondary-section">
+    <div class="grid-container">
+      <div class="grid-row grid-gap">
+        <div class="usa-footer__logo grid-row mobile-lg:grid-col-6 mobile-lg:grid-gap-2">
+          <div class="mobile-lg:grid-col-auto">
+            <img class="usa-footer__logo-img" src="/logo.png" alt="Logo oficial de sha256.us" />
+          </div>
+          <div class="mobile-lg:grid-col-auto">
+            <p class="usa-footer__logo-heading">{COMPANY.name} — Laboratorio Forense Digital</p>
+          </div>
+        </div>
+        <div class="usa-footer__contact-links mobile-lg:grid-col-6">
+          <div class="usa-footer__social-links grid-row grid-gap-1">
+            <div class="grid-col-auto">
+              <a class="usa-social-link" href={CONTACT.social.linkedin} target="_blank" rel="noopener noreferrer">
+                <img class="usa-social-link__icon" src="/assets/uswds/img/usa-icons/linkedin.svg" alt="LinkedIn" />
+              </a>
+            </div>
+            <div class="grid-col-auto">
+              <a class="usa-social-link" href={CONTACT.social.twitter} target="_blank" rel="noopener noreferrer">
+                <img class="usa-social-link__icon" src="/assets/uswds/img/usa-icons/x.svg" alt="X" />
+              </a>
+            </div>
+            <div class="grid-col-auto">
+              <a class="usa-social-link" href={CONTACT.social.instagram} target="_blank" rel="noopener noreferrer">
+                <img class="usa-social-link__icon" src="/assets/uswds/img/usa-icons/instagram.svg" alt="Instagram" />
+              </a>
+            </div>
+            <div class="grid-col-auto">
+              <a class="usa-social-link" href="/rss.xml">
+                <img class="usa-social-link__icon" src="/assets/uswds/img/usa-icons/rss_feed.svg" alt="RSS" />
+              </a>
+            </div>
+          </div>
+          <p class="usa-footer__contact-heading">Sede y Guardia Pericial</p>
+          <address class="usa-footer__address">
+            <div class="usa-footer__contact-info grid-row grid-gap">
+              <div class="grid-col-auto">
+                <a href={CONTACT.whatsapp} target="_blank" rel="noopener noreferrer">
+                  {CONTACT.phone.display}
+                </a>
+              </div>
+              <div class="grid-col-auto">
+                <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a>
+              </div>
+            </div>
+          </address>
+        </div>
+      </div>
+    </div>
+  </div>
 </footer>
 
-<style>
-	.sha-footer__return-bar {
-		background-color: #edf1f5;
-		border-top: 1px solid #c9cdd1;
-		padding: 0.65rem 0;
-	}
-	.sha-footer__return-link {
-		display: inline-flex;
-		align-items: center;
-		font-size: 0.78rem;
-		font-weight: 700;
-		color: #005ea2;
-		text-decoration: none;
-	}
-	.sha-footer__return-link:hover {
-		text-decoration: underline;
-		color: #162e51;
-	}
-
-	.sha-footer__brand {
-		display: inline-flex;
-		align-items: center;
-		gap: 0.75rem;
-		text-decoration: none;
-	}
-	.sha-footer__logo-img {
-		width: 48px;
-		height: 48px;
-		object-fit: contain;
-		flex-shrink: 0;
-	}
-	.sha-footer__brand-text {
-		display: flex;
-		flex-direction: column;
-		line-height: 1.2;
-	}
-	.sha-footer__brand-name {
-		font-size: 1.25rem;
-		font-weight: 800;
-		color: #ffffff;
-		letter-spacing: -0.01em;
-	}
-	.sha-footer__brand-sub {
-		font-size: 0.65rem;
-		font-weight: 700;
-		color: #73b3e7;
-		text-transform: uppercase;
-		letter-spacing: 0.06em;
-	}
-
-	.sha-footer__portal-btn {
-		display: inline-flex;
-		align-items: center;
-		padding: 0.45rem 0.75rem;
-		background-color: rgba(0, 94, 162, 0.35);
-		border: 1px solid #73b3e7;
-		border-radius: 4px;
-		color: #ffffff !important;
-		font-size: 0.74rem;
-		font-weight: 700;
-		text-decoration: none !important;
-		transition: all 0.2s ease;
-	}
-	.sha-footer__portal-btn:hover {
-		background-color: #005ea2;
-		border-color: #ffffff;
-	}
-
-	.sha-social-btn {
-		display: inline-flex;
-		align-items: center;
-		justify-content: center;
-		width: 38px;
-		height: 38px;
-		border-radius: 4px;
-		background-color: #243b5a;
-		border: 1px solid #4a678c;
-		color: #ffffff !important;
-		transition: background-color 0.15s ease, border-color 0.15s ease;
-		text-decoration: none;
-	}
-	.sha-social-btn:hover {
-		background-color: #005ea2;
-		border-color: #73b3e7;
-		color: #ffffff !important;
-	}
-
-	/* USWDS Identifier Overrides for clean integration */
-	.sha-identifier {
-		background-color: #112239 !important;
-		border-top: 1px solid rgba(255, 255, 255, 0.12);
-	}
-	.sha-identifier .usa-identifier__logo-img {
-		width: 40px;
-		height: 40px;
-		max-height: 40px;
-	}
-	.sha-identifier .usa-identifier__identity-domain {
-		color: #73b3e7 !important;
-		font-weight: 700;
-	}
-	.sha-identifier .usa-identifier__required-link {
-		color: #dfe1e2 !important;
-		font-size: 0.78rem;
-	}
-	.sha-identifier .usa-identifier__required-link:hover {
-		color: #ffffff !important;
-	}
-</style>
+<!-- USWDS: Identifier | https://designsystem.digital.gov/components/identifier/ -->
+<div class="usa-identifier">
+  <section
+    class="usa-identifier__section usa-identifier__section--masthead"
+    aria-label="Identificación institucional del laboratorio"
+  >
+    <div class="usa-identifier__container">
+      <div class="usa-identifier__logos">
+        <a href="/" class="usa-identifier__logo">
+          <img
+            class="usa-identifier__logo-img"
+            src="/logo.png"
+            alt="Logo de sha256.us"
+            role="img"
+          />
+        </a>
+      </div>
+      <section
+        class="usa-identifier__identity"
+        aria-label="Entidad responsable"
+      >
+        <p class="usa-identifier__identity-domain">{COMPANY.name}</p>
+        <p class="usa-identifier__identity-disclaimer">
+          Un portal institucional oficial del <a href="/about">Laboratorio de Informática Forense y Peritaje Digital Judicial {COMPANY.name}</a>
+        </p>
+      </section>
+    </div>
+  </section>
+  <nav
+    class="usa-identifier__section usa-identifier__section--required-links"
+    aria-label="Enlaces institucionales requeridos"
+  >
+    <div class="usa-identifier__container">
+      <ul class="usa-identifier__required-links-list">
+        <li class="usa-identifier__required-links-item">
+          <a href="/about" class="usa-identifier__required-link usa-link">Sobre sha256.us</a>
+        </li>
+        <li class="usa-identifier__required-links-item">
+          <a href="/about#equipo" class="usa-identifier__required-link usa-link">Gabinete Pericial Acreditado</a>
+        </li>
+        <li class="usa-identifier__required-links-item">
+          <a href="/normativa" class="usa-identifier__required-link usa-link">Marco Legal &amp; Proceso (F0–F5)</a>
+        </li>
+        <li class="usa-identifier__required-links-item">
+          <a href="/normativa#planillas-folio" class="usa-identifier__required-link usa-link">13 Planillas en Folio</a>
+        </li>
+        <li class="usa-identifier__required-links-item">
+          <a href="/servicios#forense" class="usa-identifier__required-link usa-link">Dictámenes Judiciales</a>
+        </li>
+        <li class="usa-identifier__required-links-item">
+          <a href="/servicios#moviles" class="usa-identifier__required-link usa-link">Extracción Forense Móvil</a>
+        </li>
+        <li class="usa-identifier__required-links-item">
+          <a href="https://forense.sha256.us/" target="_blank" rel="noopener noreferrer" class="usa-identifier__required-link usa-link">Sistema de Gestión Forense</a>
+        </li>
+        <li class="usa-identifier__required-links-item">
+          <a href="/sitemap-index.xml" class="usa-identifier__required-link usa-link">Mapa del Sitio (XML)</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <section
+    class="usa-identifier__section usa-identifier__section--usagov"
+    aria-label="Información de contacto y sede"
+  >
+    <div class="usa-identifier__container">
+      <div class="usa-identifier__usagov-description">
+        ¿Requieres asistencia pericial o evaluación preliminar de evidencia?
+      </div>
+      <a href="/contacto" class="usa-link">Solicitar Peritaje Forense</a>
+    </div>
+  </section>
+</div>

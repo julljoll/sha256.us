@@ -16,28 +16,14 @@ const latestPosts = (await getCollection('blog', ({ data }) => !data.draft))
 	.slice(0, 3);
 ---
 
+<!-- USWDS: Landing page template | https://designsystem.digital.gov/templates/landing-page/ -->
 <BaseLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
-	<!-- ======= HERO CAROUSEL ======= -->
 	<HeroCarousel />
-
-	<!-- ======= TRUST BAR ======= -->
 	<TrustBar />
-
-	<!-- ======= SERVICES ======= -->
 	<HomeServices />
-
-	<!-- ======= PROCESS STEPS ======= -->
 	<ProcessSteps />
-
-	<!-- ======= EQUIPO PERICIAL & RESPALDO INSTITUCIONAL ======= -->
 	<TeamBacking />
-
-	<!-- ======= STANDARDS ======= -->
 	<StandardsSection />
-
-	<!-- ======= LATEST POSTS ======= -->
 	<LatestPosts posts={latestPosts} />
-
-	<!-- ======= CTA CONTACT BANNER ======= -->
 	<CtaBanner />
 </BaseLayout>

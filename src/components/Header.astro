@@ -1,97 +1,86 @@
 ---
-import HeaderLink from './HeaderLink.astro';
-import { CONTACT, NAV_ITEMS as navItems } from '../consts';
+// USWDS: Banner & Header | https://designsystem.digital.gov/components/banner/ & https://designsystem.digital.gov/components/header/
+import { COMPANY, CONTACT, NAV_ITEMS } from '../consts';
 import Icon from './atoms/Icon.astro';
 import LanguageSwitcher from './molecules/LanguageSwitcher.astro';
+
+const currentPath = Astro.url.pathname;
+
+function isActive(href: string) {
+  if (href === '/') return currentPath === '/';
+  return currentPath.startsWith(href);
+}
 ---
 
-<!-- USWDS Official Government-Style Banner with Expandable Verification Drawer -->
-<section class="usa-banner sha-gov-banner" aria-label="Portal oficial del Laboratorio de Informática Forense sha256.us">
+<!-- USWDS: Banner | https://designsystem.digital.gov/components/banner/ -->
+<section
+  class="usa-banner"
+  aria-label="Portal oficial del Laboratorio de Informática Forense"
+>
   <div class="usa-accordion">
-    <header class="usa-banner__header sha-banner__header">
-      <div class="usa-banner__inner sha-banner__inner">
-        <div class="grid-col-auto display-flex flex-align-center margin-right-1">
+    <header class="usa-banner__header">
+      <div class="usa-banner__inner">
+        <div class="grid-col-auto">
           <img
-            src="/favicon.png?v=202611"
-            alt=""
             aria-hidden="true"
-            width="16"
-            height="16"
-            class="sha-banner__flag"
+            class="usa-banner__header-flag"
+            src="/favicon-32x32.png"
+            alt=""
           />
         </div>
-        <div class="grid-col-fill tablet:grid-col-auto display-flex flex-wrap flex-align-center gap-1">
+        <div class="grid-col-fill tablet:grid-col-auto" aria-hidden="true">
           <p class="usa-banner__header-text">
-            Portal oficial del Laboratorio de Informática Forense <strong>sha256.us</strong>
+            Portal oficial del Laboratorio de Informática Forense <strong>{COMPANY.name}</strong>
           </p>
-          <button
-            type="button"
-            class="sha-banner__toggle"
-            aria-expanded="false"
-            aria-controls="gov-banner-default"
-            id="govBannerToggle"
-          >
-            <span class="sha-banner__toggle-text">Así es como usted puede verificarlo</span>
-            <Icon name="expand_more" size={14} class="sha-banner__chevron" />
-          </button>
+          <p class="usa-banner__header-action">Así es como usted puede verificarlo</p>
         </div>
-
-        <div class="grid-col-auto margin-left-auto display-flex flex-align-center gap-1">
-          <!-- Selector de Idioma USWDS (ES | EN) -->
-          <LanguageSwitcher variant="banner" />
-
-          <a
-            href="https://forense.sha256.us/"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="sha-banner__login"
-            title="Iniciar Sesión en el Portal Forense (se abre en nueva ventana)"
-          >
-            <Icon name="lock" size={12} class="margin-right-05" />
-            <strong>Iniciar Sesión</strong>
-            <Icon name="launch" size={10} class="margin-left-05" />
-          </a>
-
-          <a
-            href={CONTACT.whatsapp}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="sha-banner__contact display-none desktop:display-inline-flex"
-            title={`WhatsApp Oficial: ${CONTACT.phone.display}`}
-          >
-            <Icon name="whatsapp" size={13} fill="#25D366" class="margin-right-05" />
-            <span>{CONTACT.phone.display}</span>
-          </a>
-        </div>
+        <button
+          type="button"
+          class="usa-accordion__button usa-banner__button"
+          aria-expanded="false"
+          aria-controls="gov-banner-default"
+        >
+          <span class="usa-banner__button-text">Así es como usted puede verificarlo</span>
+        </button>
       </div>
     </header>
-
-    <!-- USWDS Expandable Verification Drawer -->
     <div
-      class="usa-banner__content sha-banner__content"
+      class="usa-banner__content usa-accordion__content"
       id="gov-banner-default"
       hidden
     >
       <div class="grid-row grid-gap-lg">
         <div class="usa-banner__guidance tablet:grid-col-6">
-          <div class="sha-banner__media-icon sha-banner__media-icon--blue">
-            <Icon name="account_balance" size={24} />
-          </div>
+          <img
+            class="usa-banner__icon usa-media-block__img"
+            src="/assets/uswds/img/icon-dot-gov.svg"
+            role="img"
+            alt=""
+            aria-hidden="true"
+          />
           <div class="usa-media-block__body">
-            <p class="sha-banner__guidance-text">
+            <p>
               <strong>Validez Pericial y Rigor Científico Auditado</strong><br />
-              Los dictámenes periciales de <strong>sha256.us</strong> se ejecutan bajo estándares internacionales <strong>ISO/IEC 27037</strong>, <strong>ISO/IEC 27042</strong>, <strong>NIST SP 800-86</strong> y la planilla oficial de <strong>Cadena de Custodia (MUCC-2017)</strong> para plena admisibilidad ante juzgados y tribunales.
+              Toda actuación técnica del laboratorio <strong>{COMPANY.name}</strong> y de nuestra plataforma operativa <strong>forense.sha256.us</strong> se ejecuta bajo estándares internacionales <strong>ISO/IEC 27037</strong>, <strong>ISO/IEC 27042</strong>, <strong>NIST SP 800</strong> y la planilla oficial de <strong>Cadena de Custodia (MUCC-2017)</strong> para plena admisibilidad ante juzgados y tribunales.
             </p>
           </div>
         </div>
-        <div class="usa-banner__guidance tablet:grid-col-6 margin-top-2 tablet:margin-top-0">
-          <div class="sha-banner__media-icon sha-banner__media-icon--green">
-            <Icon name="lock" size={24} />
-          </div>
+        <div class="usa-banner__guidance tablet:grid-col-6">
+          <img
+            class="usa-banner__icon usa-media-block__img"
+            src="/assets/uswds/img/icon-https.svg"
+            role="img"
+            alt=""
+            aria-hidden="true"
+          />
           <div class="usa-media-block__body">
-            <p class="sha-banner__guidance-text">
+            <p>
               <strong>Los portales forenses seguros utilizan HTTPS y Hash SHA-256</strong><br />
-              Un candado ( <Icon name="lock" size={13} class="display-inline vertical-align-middle" /> ) o <strong>https://</strong> garantiza que usted se ha conectado de forma cifrada al portal oficial y al sistema de gestión pericial <a href="https://forense.sha256.us/" target="_blank" rel="noopener noreferrer" class="text-white text-underline">forense.sha256.us</a>.
+              Un candado (
+              <span class="icon-lock">
+                <Icon name="lock" />
+              </span>
+              ) o <strong>https://</strong> garantiza que usted se ha conectado de forma cifrada al portal oficial y al sistema de gestión pericial <strong>forense.sha256.us</strong>.
             </p>
           </div>
         </div>
@@ -100,638 +89,63 @@ import LanguageSwitcher from './molecules/LanguageSwitcher.astro';
   </div>
 </section>
 
-<!-- Main USWDS Extended Header -->
-<header class="usa-header usa-header--extended sha-header" id="site-header">
-  <div class="sha-header__inner">
-    <!-- Logo & Agency Identity Row -->
-    <div class="sha-header__logo-row">
-      <div class="sha-header__logo-wrap">
-        <a href="/" title="sha256.us - Inicio" class="sha-header__logo-link">
-          <img
-            src="/logo.png?v=202611"
-            alt="Emblema oficial sha256.us"
-            width="48"
-            height="48"
-            class="sha-header__logo-img"
-          />
-          <span class="sha-header__logo-text">
-            <span class="sha-header__logo-name">sha256.us</span>
-            <span class="sha-header__logo-tagline">Laboratorio de Informática Forense &amp; Peritaje Judicial</span>
-          </span>
+<!-- USWDS: Header Extended | https://designsystem.digital.gov/components/header/ -->
+<header class="usa-header usa-header--extended">
+  <div class="usa-navbar">
+    <div class="usa-logo">
+      <em class="usa-logo__text">
+        <a href="/" title={COMPANY.name}>
+          {COMPANY.name} — Laboratorio de Informática Forense &amp; Peritaje Judicial
         </a>
-      </div>
-
-      <!-- Top-right actions -->
-      <div class="sha-header__actions">
-        <!-- Botón Selector de Idioma Español - Inglés en barra principal (Visible en Tablet/Desktop >= 640px) -->
-        <div class="display-none tablet:display-inline-flex">
-          <LanguageSwitcher variant="header" />
-        </div>
-
-        <!-- Direct Iniciar Sesión CTA to https://forense.sha256.us/ (Visible en Desktop >= 900px) -->
-        <a
-          href="https://forense.sha256.us/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="usa-button usa-button--outline sha-header__login"
-          title="Iniciar sesión en https://forense.sha256.us/ (se abre en nueva ventana)"
-        >
-          <Icon name="login" size={14} class="margin-right-05" />
-          <span>Iniciar Sesión</span>
-          <Icon name="launch" size={11} class="margin-left-05" />
-        </a>
-
-        <!-- Direct Desktop CTA (Visible en Desktop >= 900px) -->
-        <a href="/contacto" class="usa-button usa-button--primary sha-header__cta">
-          Solicitar Peritaje
-        </a>
-
-        <!-- Quick 1-Touch Mobile WhatsApp Pill (Visible en Móvil < 900px) -->
-        <a
-          href={CONTACT.whatsapp}
-          class="sha-header__mobile-wa"
-          id="headerMobileWa"
-          title="Atención directa por WhatsApp (+57 316 3931945)"
-          aria-label="Atención directa por WhatsApp (+57 316 3931945)"
-        >
-          <Icon name="whatsapp" size={18} fill="#25D366" />
-          <span>WhatsApp</span>
-        </a>
-
-        <!-- Mobile menu toggle button with 44px minimum touch target -->
-        <button
-          class="sha-header__menu-toggle"
-          id="mobileMenuToggle"
-          aria-controls="mobileNav"
-          aria-expanded="false"
-          aria-label="Abrir menú de navegación"
-        >
-          <span class="sha-hamburger" id="hamburgerIcon" aria-hidden="true">
-            <span></span><span></span><span></span>
-          </span>
-          <span class="sha-menu-text">Menú</span>
-        </button>
-      </div>
+      </em>
     </div>
-
-    <!-- Primary USWDS Navigation Row -->
-    <nav class="sha-header__nav" aria-label="Navegación principal" id="mobileNav">
-      <ul class="sha-nav__list">
-        {navItems.map((item) => (
-          <li class="sha-nav__item">
-            <HeaderLink href={item.href} class="sha-nav__link">{item.label}</HeaderLink>
+    <button type="button" class="usa-menu-btn">Menú</button>
+  </div>
+  <nav aria-label="Navegación principal" class="usa-nav">
+    <div class="usa-nav__inner">
+      <button type="button" class="usa-nav__close">
+        <img src="/assets/uswds/img/usa-icons/close.svg" role="img" alt="Cerrar" />
+      </button>
+      <ul class="usa-nav__primary usa-accordion">
+        {NAV_ITEMS.map((link) => (
+          <li class="usa-nav__primary-item">
+            <a
+              href={link.href}
+              class={`usa-nav__link${isActive(link.href) ? ' usa-current' : ''}`}
+            >
+              <span>{link.label}</span>
+            </a>
           </li>
         ))}
       </ul>
-
-      <!-- Nav secondary: Federal & Forensic Standards Badges (desktop) -->
-      <div class="sha-nav__badges display-none tablet:display-flex" aria-label="Normativas técnicas certificadas">
-        <span class="sha-badge" title="Norma internacional para identificación, recolección y preservación de evidencia digital">ISO/IEC 27037</span>
-        <span class="sha-badge" title="Norma internacional para análisis e interpretación de evidencia digital">ISO/IEC 27042</span>
-        <span class="sha-badge" title="National Institute of Standards and Technology SP 800-86">NIST SP 800</span>
-        <span class="sha-badge sha-badge--accent" title="Manual Único de Cadena de Custodia">MUCC-2017</span>
+      <div class="usa-nav__secondary">
+        <ul class="usa-nav__secondary-links">
+          <li class="usa-nav__secondary-item">
+            <a
+              href="https://forense.sha256.us/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Iniciar Sesión (forense.sha256.us)
+            </a>
+          </li>
+          <li class="usa-nav__secondary-item">
+            <a
+              href={CONTACT.whatsapp}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Hablar por WhatsApp
+            </a>
+          </li>
+          <li class="usa-nav__secondary-item">
+            <a href="/contacto">Solicitar Peritaje</a>
+          </li>
+        </ul>
+        <div class="margin-top-1">
+          <LanguageSwitcher variant="header" />
+        </div>
       </div>
-
-      <!-- Mobile drawer quick actions -->
-      <div class="sha-nav__mobile-actions display-flex tablet:display-none flex-column gap-1 padding-2 bg-base-lightest border-top-1px border-base-lighter">
-        <LanguageSwitcher variant="mobile" />
-        <a
-          href="https://forense.sha256.us/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="usa-button usa-button--secondary width-full text-center display-flex flex-align-center flex-justify-center"
-        >
-          <Icon name="login" size={16} class="margin-right-05" />
-          <span>Iniciar Sesión (forense.sha256.us)</span>
-          <Icon name="launch" size={13} class="margin-left-05" />
-        </a>
-        <a href="/contacto" class="usa-button usa-button--primary width-full text-center">
-          Solicitar Peritaje Forense
-        </a>
-        <a
-          href={CONTACT.whatsapp}
-          class="usa-button usa-button--outline width-full text-center text-primary-darker display-flex flex-align-center flex-justify-center"
-          title="Atención directa por WhatsApp (+57 316 3931945)"
-          aria-label="Atención directa por WhatsApp (+57 316 3931945)"
-        >
-          <Icon name="whatsapp" size={16} fill="#25D366" class="margin-right-05" />
-          Hablar por WhatsApp
-        </a>
-      </div>
-    </nav>
-  </div>
+    </div>
+  </nav>
 </header>
-
-<style>
-  /* ====== USWDS OFFICIAL BANNER ====== */
-  .sha-gov-banner {
-    background-color: #112239;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-  }
-  .sha-banner__header {
-    background-color: #112239;
-    color: rgba(255, 255, 255, 0.92);
-    padding: 0.35rem 0;
-    font-size: 0.75rem;
-  }
-  .sha-banner__inner {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 1.25rem;
-    gap: 0.35rem 0.6rem;
-  }
-  .sha-banner__flag {
-    width: 16px;
-    height: 16px;
-    border-radius: 50%;
-    flex-shrink: 0;
-  }
-  .usa-banner__header-text {
-    font-size: 0.74rem;
-    color: rgba(255, 255, 255, 0.92);
-    margin: 0;
-    line-height: 1.3;
-  }
-  .sha-banner__toggle {
-    background: transparent;
-    border: none;
-    color: #73b3e7;
-    font-size: 0.73rem;
-    font-weight: 600;
-    padding: 0.1rem 0.25rem;
-    cursor: pointer;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.2rem;
-    text-decoration: underline;
-    text-underline-offset: 2px;
-    transition: color 0.15s ease;
-  }
-  .sha-banner__toggle:hover,
-  .sha-banner__toggle:focus {
-    color: #ffffff;
-  }
-  .sha-banner__chevron {
-    transition: transform 0.2s ease;
-  }
-  .sha-banner__toggle[aria-expanded="true"] .sha-banner__chevron {
-    transform: rotate(180deg);
-  }
-  @media (max-width: 639px) {
-    .sha-banner__toggle-text {
-      display: none;
-    }
-    .sha-banner__toggle::before {
-      content: "Verificar";
-    }
-  }
-
-  .sha-banner__content {
-    background-color: #162e51;
-    color: #ffffff;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 1.25rem 1.25rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.15);
-  }
-  .usa-banner__guidance {
-    display: flex;
-    align-items: flex-start;
-    gap: 0.85rem;
-  }
-  .sha-banner__media-icon {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-  }
-  .sha-banner__media-icon--blue {
-    background-color: rgba(115, 179, 231, 0.18);
-    color: #73b3e7;
-    border: 1px solid rgba(115, 179, 231, 0.4);
-  }
-  .sha-banner__media-icon--green {
-    background-color: rgba(0, 169, 28, 0.18);
-    color: #70e17b;
-    border: 1px solid rgba(112, 225, 123, 0.4);
-  }
-  .sha-banner__guidance-text {
-    font-size: 0.8rem;
-    line-height: 1.5;
-    color: #f0f4f8;
-    margin: 0;
-  }
-
-  .sha-banner__contact {
-    font-size: 0.72rem;
-    color: rgba(255, 255, 255, 0.9);
-    text-decoration: none;
-    white-space: nowrap;
-    display: inline-flex;
-    align-items: center;
-    transition: color 0.2s;
-  }
-  .sha-banner__contact:hover {
-    color: #fff;
-  }
-
-  .sha-banner__login {
-    font-size: 0.72rem;
-    color: #ffffff !important;
-    background-color: rgba(255, 255, 255, 0.14);
-    border: 1px solid rgba(255, 255, 255, 0.35);
-    padding: 0.2rem 0.55rem;
-    border-radius: 4px;
-    text-decoration: none !important;
-    white-space: nowrap;
-    display: inline-flex;
-    align-items: center;
-    transition: all 0.2s ease;
-  }
-  .sha-banner__login:hover {
-    background-color: #005ea2;
-    border-color: #005ea2;
-    color: #ffffff !important;
-  }
-
-  /* ====== MAIN USWDS HEADER ====== */
-  .sha-header {
-    background: #fff;
-    border-bottom: 4px solid #005ea2;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    width: 100%;
-  }
-  .sha-header__inner {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 1.25rem;
-  }
-
-  /* Logo Row */
-  .sha-header__logo-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0.75rem 0;
-    border-bottom: 1px solid #dfe1e2;
-  }
-  .sha-header__logo-wrap {
-    display: flex;
-    align-items: center;
-  }
-  .sha-header__logo-link {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    text-decoration: none;
-  }
-  .sha-header__logo-img {
-    height: 46px;
-    width: 46px;
-    object-fit: contain;
-    flex-shrink: 0;
-  }
-  .sha-header__logo-text {
-    display: flex;
-    flex-direction: column;
-    line-height: 1.2;
-  }
-  .sha-header__logo-name {
-    font-size: 1.25rem;
-    font-weight: 800;
-    color: #162e51;
-    letter-spacing: -0.01em;
-  }
-  .sha-header__logo-tagline {
-    font-size: 0.65rem;
-    color: #565c65;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    font-weight: 700;
-  }
-
-  /* Top-right actions */
-  .sha-header__actions {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-  .sha-header__cta {
-    display: none;
-    font-size: 0.8rem;
-    padding: 0.55rem 1.15rem;
-    white-space: nowrap;
-  }
-  @media (min-width: 900px) {
-    .sha-header__cta {
-      display: inline-flex;
-    }
-  }
-
-  .sha-header__login {
-    display: none;
-    font-size: 0.8rem;
-    padding: 0.55rem 0.95rem;
-    white-space: nowrap;
-    border: 1.5px solid #005ea2;
-    color: #005ea2 !important;
-    background-color: #f0f7fc;
-    font-weight: 700;
-    text-decoration: none !important;
-    border-radius: 4px;
-    transition: background-color 0.15s ease, color 0.15s ease;
-    min-height: 40px;
-  }
-  @media (min-width: 900px) {
-    .sha-header__login {
-      display: inline-flex;
-    }
-  }
-  .sha-header__login:hover {
-    background-color: #005ea2;
-    border-color: #005ea2;
-    color: #ffffff !important;
-    text-decoration: none !important;
-  }
-
-  /* Mobile WhatsApp Direct Pill */
-  .sha-header__mobile-wa {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.35rem;
-    padding: 0.5rem 0.75rem;
-    background-color: #f0fdf4;
-    border: 1px solid #22c55e;
-    color: #15803d !important;
-    border-radius: 50px;
-    font-size: 0.78rem;
-    font-weight: 700;
-    text-decoration: none !important;
-    white-space: nowrap;
-    min-height: 42px;
-    touch-action: manipulation;
-    cursor: pointer;
-    -webkit-tap-highlight-color: rgba(34, 197, 94, 0.2);
-    position: relative;
-    z-index: 5;
-    transition: background-color 0.2s, transform 0.15s;
-  }
-  .sha-header__mobile-wa:hover,
-  .sha-header__mobile-wa:active {
-    background-color: #dcfce7;
-    color: #166534 !important;
-  }
-  .sha-header__mobile-wa svg,
-  .sha-header__mobile-wa span {
-    pointer-events: none;
-  }
-  @media (min-width: 900px) {
-    .sha-header__mobile-wa {
-      display: none;
-    }
-  }
-
-  /* ====== NAV ROW ====== */
-  .sha-header__nav {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  .sha-nav__list {
-    display: flex;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    gap: 0;
-  }
-  .sha-nav__item {
-    position: relative;
-  }
-
-  /* Nav Links (USWDS Extended Header Spec) */
-  :global(.sha-nav__link) {
-    display: block;
-    padding: 0.8rem 1rem;
-    font-size: 0.88rem;
-    font-weight: 700;
-    color: #162e51;
-    text-decoration: none;
-    border-bottom: 4px solid transparent;
-    transition: color 0.15s, border-color 0.15s, background-color 0.15s;
-    white-space: nowrap;
-  }
-  :global(.sha-nav__link:hover) {
-    color: #005ea2;
-    border-bottom-color: #005ea2;
-    background: rgba(0, 94, 162, 0.05);
-  }
-  :global(.sha-nav__link.active) {
-    color: #005ea2;
-    border-bottom-color: #005ea2;
-    font-weight: 800;
-    text-decoration: none !important;
-  }
-
-  /* Badges */
-  .sha-nav__badges {
-    display: flex;
-    gap: 0.35rem;
-    align-items: center;
-    padding: 0.45rem 0;
-  }
-  .sha-badge {
-    font-size: 0.62rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    padding: 0.2rem 0.5rem;
-    background: #edf1f5;
-    color: #162e51;
-    border: 1px solid #c9cdd1;
-    border-radius: 2px;
-    white-space: nowrap;
-  }
-  .sha-badge--accent {
-    background: #d83933;
-    border-color: #b50909;
-    color: #fff;
-  }
-
-  /* ====== MOBILE MENU TOGGLE ====== */
-  .sha-header__menu-toggle {
-    display: none;
-    background: #005ea2;
-    border: 1px solid #005ea2;
-    cursor: pointer;
-    padding: 0.45rem 0.7rem;
-    border-radius: 4px;
-    align-items: center;
-    justify-content: center;
-    gap: 0.4rem;
-    min-height: 42px;
-    min-width: 44px;
-    touch-action: manipulation;
-  }
-  .sha-menu-text {
-    font-size: 0.75rem;
-    font-weight: 700;
-    color: #ffffff;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-  }
-  .sha-hamburger {
-    display: flex;
-    flex-direction: column;
-    gap: 3.5px;
-    width: 16px;
-  }
-  .sha-hamburger span {
-    display: block;
-    height: 2px;
-    background: #ffffff;
-    border-radius: 1px;
-    transition: transform 0.25s, opacity 0.2s;
-  }
-
-  /* Mobile styles */
-  @media (max-width: 767px) {
-    .sha-header__menu-toggle {
-      display: flex;
-    }
-    .sha-header__logo-img {
-      height: 38px;
-      width: 38px;
-    }
-    .sha-header__logo-name {
-      font-size: 1.05rem;
-    }
-    .sha-header__logo-tagline {
-      font-size: 0.58rem;
-      max-width: 165px;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    .sha-header__nav {
-      display: none;
-      flex-direction: column;
-      align-items: stretch;
-      background: #fff;
-      border-top: 1px solid #dfe1e2;
-      padding: 0.25rem 0 0 0;
-    }
-    .sha-header__nav.is-open {
-      display: flex;
-    }
-    .sha-nav__list {
-      flex-direction: column;
-    }
-    :global(.sha-nav__link) {
-      padding: 0.9rem 1.25rem;
-      font-size: 0.95rem;
-      border-bottom: 1px solid #f0f2f5;
-      border-left: 4px solid transparent;
-    }
-    :global(.sha-nav__link.active) {
-      border-left-color: #005ea2;
-      border-bottom-color: #f0f2f5;
-      background: rgba(0, 94, 162, 0.05);
-    }
-    .sha-nav__badges {
-      display: none !important;
-    }
-  }
-</style>
-
-<script>
-  (function () {
-    // 1. USWDS Official Banner Accordion Toggle
-    const bannerToggle = document.getElementById('govBannerToggle');
-    const bannerContent = document.getElementById('gov-banner-default');
-    if (bannerToggle && bannerContent) {
-      bannerToggle.addEventListener('click', () => {
-        const isExpanded = bannerToggle.getAttribute('aria-expanded') === 'true';
-        bannerToggle.setAttribute('aria-expanded', isExpanded ? 'false' : 'true');
-        if (isExpanded) {
-          bannerContent.setAttribute('hidden', '');
-        } else {
-          bannerContent.removeAttribute('hidden');
-        }
-      });
-    }
-
-    // 2. Mobile Navigation Drawer
-    const toggle = document.getElementById('mobileMenuToggle');
-    const nav = document.getElementById('mobileNav');
-    const icon = document.getElementById('hamburgerIcon');
-
-    if (!toggle || !nav) return;
-
-    function closeNav() {
-      nav?.classList.remove('is-open');
-      toggle?.setAttribute('aria-expanded', 'false');
-      toggle?.setAttribute('aria-label', 'Abrir menú de navegación');
-      if (icon) {
-        const spans = icon.querySelectorAll('span');
-        spans.forEach((s: Element) => {
-          (s as HTMLElement).style.transform = '';
-          (s as HTMLElement).style.opacity = '';
-        });
-      }
-    }
-
-    toggle.addEventListener('click', () => {
-      const isOpen = nav.classList.toggle('is-open');
-      toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-      toggle.setAttribute('aria-label', isOpen ? 'Cerrar menú' : 'Abrir menú de navegación');
-      if (icon) {
-        const spans = icon.querySelectorAll('span');
-        if (isOpen) {
-          (spans[0] as HTMLElement).style.transform = 'translateY(5.5px) rotate(45deg)';
-          (spans[1] as HTMLElement).style.opacity = '0';
-          (spans[2] as HTMLElement).style.transform = 'translateY(-5.5px) rotate(-45deg)';
-        } else {
-          spans.forEach((s: Element) => {
-            (s as HTMLElement).style.transform = '';
-            (s as HTMLElement).style.opacity = '';
-          });
-        }
-      }
-    });
-
-    // Close on link click in mobile menu
-    nav.querySelectorAll('a').forEach((link) => {
-      link.addEventListener('click', closeNav);
-    });
-
-    // Mobile WhatsApp direct launch
-    const mobileWa = document.getElementById('headerMobileWa');
-    if (mobileWa) {
-      mobileWa.addEventListener('click', (e) => {
-        const url = mobileWa.getAttribute('href');
-        if (url) {
-          window.location.href = url;
-          e.preventDefault();
-        }
-      });
-    }
-
-    // Close on Escape key
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && nav.classList.contains('is-open')) {
-        closeNav();
-        toggle.focus();
-      }
-    });
-  })();
-</script>

@@ -1,208 +1,60 @@
 ---
+// USWDS: Summary Box & Button Group | https://designsystem.digital.gov/components/button-group/
 import { SITE_URL } from '../consts';
-import Icon from './atoms/Icon.astro';
 
 interface Props {
-	title: string;
-	description?: string;
+  title: string;
+  description?: string;
 }
 
-const { title, description = '' } = Astro.props;
+const { title } = Astro.props;
 
-// URL canónica del artículo actual
 const currentUrl = new URL(Astro.url.pathname, Astro.site || SITE_URL).toString();
 const encodedUrl = encodeURIComponent(currentUrl);
 const encodedTitle = encodeURIComponent(title);
 
 const shareLinks = {
-	whatsapp: `https://api.whatsapp.com/send?text=${encodeURIComponent(`${title}\n${currentUrl}`)}`,
-	twitter: `https://twitter.com/intent/tweet?text=${encodedTitle}&url=${encodedUrl}&via=sha256us`,
-	linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`,
-	facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`,
-	telegram: `https://t.me/share/url?url=${encodedUrl}&text=${encodedTitle}`,
-	email: `mailto:?subject=${encodedTitle}&body=${encodeURIComponent(`Te comparto este artículo de sha256.us:\n\n${title}\n${currentUrl}`)}`,
+  whatsapp: `https://api.whatsapp.com/send?text=${encodeURIComponent(`${title}\n${currentUrl}`)}`,
+  twitter: `https://twitter.com/intent/tweet?text=${encodedTitle}&url=${encodedUrl}&via=sha256us`,
+  linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`,
+  facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`,
+  telegram: `https://t.me/share/url?url=${encodedUrl}&text=${encodedTitle}`,
 };
 ---
 
-<div class="sha-share-box bg-white padding-3 radius-lg shadow-1 border-1px border-base-lighter margin-top-4">
-	<div class="display-flex flex-wrap flex-align-center flex-justify-between gap-2 margin-bottom-2">
-		<div class="display-flex flex-align-center gap-1">
-			<Icon name="share" size={20} class="text-primary" />
-			<span class="font-sans-xs text-bold text-primary-darker">Compartir este artículo:</span>
-		</div>
-		<span class="font-sans-3xs text-base">Difunde información técnica verificada</span>
-	</div>
-
-	<div class="sha-share-btn-group display-flex flex-wrap flex-align-center gap-1">
-		<!-- WhatsApp -->
-		<a
-			href={shareLinks.whatsapp}
-			target="_blank"
-			rel="noopener noreferrer"
-			class="sha-share-btn sha-share-btn--wa"
-			aria-label="Compartir en WhatsApp"
-			title="Compartir por WhatsApp"
-		>
-			<Icon name="whatsapp" size={18} fill="#25D366" />
-			<span>WhatsApp</span>
-		</a>
-
-		<!-- X (Twitter) -->
-		<a
-			href={shareLinks.twitter}
-			target="_blank"
-			rel="noopener noreferrer"
-			class="sha-share-btn sha-share-btn--x"
-			aria-label="Compartir en X (Twitter)"
-			title="Compartir en X"
-		>
-			<Icon name="x" size={15} />
-			<span>X (Twitter)</span>
-		</a>
-
-		<!-- LinkedIn -->
-		<a
-			href={shareLinks.linkedin}
-			target="_blank"
-			rel="noopener noreferrer"
-			class="sha-share-btn sha-share-btn--in"
-			aria-label="Compartir en LinkedIn"
-			title="Compartir en LinkedIn"
-		>
-			<Icon name="linkedin" size={15} />
-			<span>LinkedIn</span>
-		</a>
-
-		<!-- Facebook -->
-		<a
-			href={shareLinks.facebook}
-			target="_blank"
-			rel="noopener noreferrer"
-			class="sha-share-btn sha-share-btn--fb"
-			aria-label="Compartir en Facebook"
-			title="Compartir en Facebook"
-		>
-			<Icon name="facebook" size={16} />
-			<span>Facebook</span>
-		</a>
-
-		<!-- Telegram -->
-		<a
-			href={shareLinks.telegram}
-			target="_blank"
-			rel="noopener noreferrer"
-			class="sha-share-btn sha-share-btn--tg"
-			aria-label="Compartir en Telegram"
-			title="Compartir en Telegram"
-		>
-			<Icon name="send" size={15} />
-			<span>Telegram</span>
-		</a>
-
-		<!-- Botón de copiar enlace directo -->
-		<button
-			type="button"
-			class="sha-share-btn sha-share-btn--copy"
-			id="btnCopyShareUrl"
-			data-url={currentUrl}
-			aria-label="Copiar enlace"
-			title="Copiar enlace al portapapeles"
-		>
-			<Icon name="content_copy" size={15} />
-			<span id="copyShareText">Copiar Enlace</span>
-		</button>
-	</div>
+<!-- USWDS: Summary Box & Button Group | https://designsystem.digital.gov/components/summary-box/ -->
+<div class="usa-summary-box margin-top-4" role="region" aria-label="Compartir este artículo">
+  <div class="usa-summary-box__body">
+    <h3 class="usa-summary-box__heading">Compartir este artículo:</h3>
+    <div class="usa-summary-box__text">
+      <p class="margin-top-0 margin-bottom-2">Difunde información técnica verificada</p>
+      <ul class="usa-button-group">
+        <li class="usa-button-group__item">
+          <a href={shareLinks.whatsapp} target="_blank" rel="noopener noreferrer" class="usa-button">
+            WhatsApp
+          </a>
+        </li>
+        <li class="usa-button-group__item">
+          <a href={shareLinks.twitter} target="_blank" rel="noopener noreferrer" class="usa-button usa-button--outline">
+            X (Twitter)
+          </a>
+        </li>
+        <li class="usa-button-group__item">
+          <a href={shareLinks.linkedin} target="_blank" rel="noopener noreferrer" class="usa-button usa-button--outline">
+            LinkedIn
+          </a>
+        </li>
+        <li class="usa-button-group__item">
+          <a href={shareLinks.facebook} target="_blank" rel="noopener noreferrer" class="usa-button usa-button--outline">
+            Facebook
+          </a>
+        </li>
+        <li class="usa-button-group__item">
+          <a href={shareLinks.telegram} target="_blank" rel="noopener noreferrer" class="usa-button usa-button--outline">
+            Telegram
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
 </div>
-
-<style>
-	.sha-share-box {
-		border-left: 4px solid #005ea2;
-	}
-	.sha-share-btn {
-		display: inline-flex;
-		align-items: center;
-		gap: 0.4rem;
-		padding: 0.55rem 0.85rem;
-		border-radius: 4px;
-		font-size: 0.78rem;
-		font-weight: 700;
-		text-decoration: none !important;
-		color: #ffffff !important;
-		border: none;
-		cursor: pointer;
-		transition: opacity 0.15s ease;
-		line-height: 1;
-		touch-action: manipulation;
-		min-height: 40px;
-	}
-	.sha-share-btn:hover {
-		opacity: 0.9;
-	}
-	.sha-share-btn--wa {
-		background-color: #25d366;
-	}
-	.sha-share-btn--x {
-		background-color: #000000;
-	}
-	.sha-share-btn--in {
-		background-color: #0077b5;
-	}
-	.sha-share-btn--fb {
-		background-color: #1877f2;
-	}
-	.sha-share-btn--tg {
-		background-color: #229ed9;
-	}
-	.sha-share-btn--copy {
-		background-color: #565c65;
-		color: #ffffff;
-	}
-	.sha-share-btn--copy:hover {
-		background-color: #1b1b1b;
-	}
-
-	@media (max-width: 640px) {
-		.sha-share-btn-group {
-			display: grid !important;
-			grid-template-columns: repeat(2, 1fr) !important;
-			gap: 0.65rem !important;
-		}
-		.sha-share-btn {
-			justify-content: center !important;
-			min-height: 44px !important; /* 44px touch target */
-			font-size: 0.82rem !important;
-			width: 100% !important;
-			padding: 0.75rem 0.5rem !important;
-		}
-	}
-</style>
-
-<script>
-	(function () {
-		const btn = document.getElementById('btnCopyShareUrl');
-		const label = document.getElementById('copyShareText');
-		if (!btn || !label) return;
-
-		btn.addEventListener('click', async () => {
-			const url = btn.getAttribute('data-url') || window.location.href;
-			try {
-				if (navigator.clipboard) {
-					await navigator.clipboard.writeText(url);
-				} else {
-					const input = document.createElement('input');
-					input.value = url;
-					document.body.appendChild(input);
-					input.select();
-					document.execCommand('copy');
-					document.body.removeChild(input);
-				}
-				label.textContent = '¡Copiado!';
-				setTimeout(() => {
-					label.textContent = 'Copiar Enlace';
-				}, 2500);
-			} catch (e) {
-				prompt('Copia este enlace:', url);
-			}
-		});
-	})();
-</script>

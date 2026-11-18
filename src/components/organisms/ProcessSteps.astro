@@ -1,6 +1,6 @@
 ---
+// USWDS: Summary Box & Process List | https://designsystem.digital.gov/components/process-list/
 import SectionHeader from '../atoms/SectionHeader.astro';
-import Icon from '../atoms/Icon.astro';
 import ProcessStepCard from '../molecules/ProcessStepCard.astro';
 import { ISO_FORENSIC_PHASES, FORENSE_PORTAL_URL } from '../../consts';
 
@@ -12,8 +12,9 @@ export interface Props {
 const { detailed = true, id = 'ciclo-f0-f5' } = Astro.props;
 ---
 
-<section id={id} class="sha-section sha-section--light">
-  <div class="sha-container">
+<!-- USWDS: Process List | https://designsystem.digital.gov/components/process-list/ -->
+<section id={id} class="usa-section usa-section--light">
+  <div class="grid-container">
     <SectionHeader
       tag="CICLO PERICIAL ISO DE 6 FASES (F0 A F5)"
       tagVariant="secondary"
@@ -21,38 +22,38 @@ const { detailed = true, id = 'ciclo-f0-f5' } = Astro.props;
       sub="Procedimiento científico sincronizado con el sistema oficial forense.sha256.us bajo ISO/IEC 27037, ISO/IEC 27042, NIST SP 800-86, MUCC-2017 y el Artículo 187 del COPP."
     />
 
-    <!-- USWDS Summary Box: Regla de Oro del Flujo Forense -->
-    <div class="usa-summary-box sha-process-summary margin-bottom-4" role="region" aria-labelledby="summary-box-forense-flujo">
+    <!-- USWDS: Summary Box | https://designsystem.digital.gov/components/summary-box/ -->
+    <div class="usa-summary-box margin-bottom-4" role="region" aria-labelledby="summary-box-forense-flujo">
       <div class="usa-summary-box__body">
-        <h3 class="usa-summary-box__heading font-sans-md text-bold text-primary-darker display-flex flex-align-center gap-1" id="summary-box-forense-flujo">
-          <Icon name="verified_user" size={20} fill="#005ea2" />
-          <span>Garantía de Trazabilidad e Inalterabilidad Criptográfica (F0 &rarr; F5)</span>
+        <h3 class="usa-summary-box__heading" id="summary-box-forense-flujo">
+          Garantía de Trazabilidad e Inalterabilidad Criptográfica (F0 &rarr; F5)
         </h3>
-        <div class="usa-summary-box__text font-sans-xs text-base-dark line-height-sans-4">
-          <p class="margin-top-05 margin-bottom-1">
+        <div class="usa-summary-box__text">
+          <p>
             Ninguna fase del ciclo pericial puede iniciarse sin haber cerrado y firmado los controles obligatorios de la fase precedente en papel <strong>Folio (216 mm &times; 330 mm)</strong>. El dispositivo original jamás es analizado directamente: en la <strong>Fase F2</strong> se bloquea la escritura por hardware (<em>Write-Blocker</em>), se genera el <strong>Hash Génesis SHA-256</strong> y el equipo físico se resguarda o devuelve al titular mientras el laboratorio opera sobre la copia forense verificada.
           </p>
-          <div class="display-flex flex-wrap gap-105 margin-top-105">
-            <a
-              href={`${FORENSE_PORTAL_URL}/flujo`}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="sha-summary-link"
-            >
-              <Icon name="lock" size={13} />
-              <span>Ver Flujo Interactivo en forense.sha256.us/flujo</span>
-              <Icon name="launch" size={11} />
-            </a>
-            <a href="/normativa#planillas-folio" class="sha-summary-link sha-summary-link--secondary">
-              <Icon name="description" size={13} />
-              <span>Explorar las 13 Planillas Oficiales en Folio &rarr;</span>
-            </a>
-          </div>
+          <ul class="usa-button-group margin-top-2">
+            <li class="usa-button-group__item">
+              <a
+                href={`${FORENSE_PORTAL_URL}/flujo`}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="usa-button"
+              >
+                Ver Flujo Interactivo en forense.sha256.us/flujo
+              </a>
+            </li>
+            <li class="usa-button-group__item">
+              <a href="/normativa#planillas-folio" class="usa-button usa-button--outline">
+                Explorar las 13 Planillas Oficiales en Folio &rarr;
+              </a>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
 
-    <div class="sha-steps">
+    <ol class="usa-process-list">
       {ISO_FORENSIC_PHASES.map((phase) => (
         <ProcessStepCard
           stepNumber={phase.stepNumber}
@@ -63,73 +64,9 @@ const { detailed = true, id = 'ciclo-f0-f5' } = Astro.props;
           norms={phase.norms}
           responsible={detailed ? phase.responsible : undefined}
           controls={detailed ? phase.controls : []}
-          planillas={ phase.planillas }
+          planillas={phase.planillas}
         />
       ))}
-    </div>
+    </ol>
   </div>
 </section>
-
-<style>
-  .sha-section {
-    padding: 4.5rem 0;
-  }
-  @media (max-width: 640px) {
-    .sha-section {
-      padding: 2.75rem 0;
-    }
-  }
-  .sha-section--light {
-    background-color: #f0f4f8;
-    border-top: 1px solid #dfe1e2;
-    border-bottom: 1px solid #dfe1e2;
-  }
-  .sha-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 1.25rem;
-  }
-  .sha-process-summary {
-    background-color: #ffffff !important;
-    border: 1px solid #005ea2 !important;
-    border-left: 6px solid #005ea2 !important;
-    border-radius: 8px;
-    padding: 1.25rem 1.5rem;
-    box-shadow: 0 2px 8px rgba(0, 94, 162, 0.07);
-  }
-  .sha-summary-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.35rem;
-    font-size: 0.76rem;
-    font-weight: 700;
-    color: #ffffff !important;
-    background: #005ea2;
-    padding: 0.4rem 0.8rem;
-    border-radius: 4px;
-    text-decoration: none !important;
-    transition: background-color 0.2s;
-  }
-  .sha-summary-link:hover {
-    background: #162e51;
-  }
-  .sha-summary-link--secondary {
-    background: #eff6fb;
-    color: #005ea2 !important;
-    border: 1px solid #005ea2;
-  }
-  .sha-summary-link--secondary:hover {
-    background: #d9e8f6;
-    color: #162e51 !important;
-  }
-  .sha-steps {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
-    gap: 1.35rem;
-  }
-  @media (max-width: 640px) {
-    .sha-steps {
-      grid-template-columns: 1fr;
-    }
-  }
-</style>

@@ -4,6 +4,7 @@ import Badge from '../atoms/Badge.astro';
 import TeamMemberCard from '../molecules/TeamMemberCard.astro';
 ---
 
+<!-- USWDS: Card group | https://designsystem.digital.gov/components/card/ -->
 <section id="equipo" class="margin-top-6 border-top-2px border-base-lighter padding-top-5">
   <div class="margin-bottom-4 text-center maxw-tablet margin-x-auto">
     <Badge variant="primary" class="margin-bottom-1">RESPALDO PROFESIONAL</Badge>
@@ -15,7 +16,6 @@ import TeamMemberCard from '../molecules/TeamMemberCard.astro';
     </p>
   </div>
 
-  <!-- Grid con los perfiles del equipo -->
   <div class="grid-row grid-gap">
     {TEAM_MEMBERS.map((member) => (
       <div class="tablet:grid-col-6 margin-bottom-4">

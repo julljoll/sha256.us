@@ -1,11 +1,13 @@
 ---
+// USWDS: Card Group | https://designsystem.digital.gov/components/card/
 import SectionHeader from '../atoms/SectionHeader.astro';
 import ServiceCard from '../molecules/ServiceCard.astro';
 import { CORE_SERVICES } from '../../consts';
 ---
 
-<section id="servicios" class="sha-section bg-white">
-  <div class="sha-container">
+<!-- USWDS: Card Group | https://designsystem.digital.gov/components/card/ -->
+<section id="servicios" class="usa-section">
+  <div class="grid-container">
     <SectionHeader
       tag="¿EN QUÉ PODEMOS AYUDARTE?"
       tagVariant="primary"
@@ -13,31 +15,12 @@ import { CORE_SERVICES } from '../../consts';
       sub="Soluciones claras para abogados, empresas y particulares que necesitan demostrar la verdad técnica ante un juez o resolver un incidente digital."
     />
 
-    <div class="sha-card-grid">
+    <ul class="usa-card-group">
       {CORE_SERVICES.map((serv, index) => (
-        <ServiceCard service={serv} index={index} />
+        <li class="usa-card tablet:grid-col-6">
+          <ServiceCard service={serv} index={index} />
+        </li>
       ))}
-    </div>
+    </ul>
   </div>
 </section>
-
-<style>
-  .sha-section {
-    padding: 4.5rem 0;
-  }
-  @media (max-width: 640px) {
-    .sha-section {
-      padding: 2.75rem 0;
-    }
-  }
-  .sha-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 1.25rem;
-  }
-  .sha-card-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.5rem;
-  }
-</style>

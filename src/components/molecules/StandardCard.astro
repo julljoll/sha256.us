@@ -1,6 +1,5 @@
 ---
-import Icon from '../atoms/Icon.astro';
-
+// USWDS: Card | https://designsystem.digital.gov/components/card/
 export interface Props {
   tag: string;
   code: string;
@@ -12,80 +11,20 @@ export interface Props {
 const { tag, code, title, desc, hash } = Astro.props;
 ---
 
-<div class="sha-standard">
-  <div class="sha-standard__header">
-    <div class="sha-standard__tag">{tag}</div>
-    {hash && (
-      <span class="sha-standard__hash" title="Hash SHA-256 del documento en el repositorio normativo /Informatica/">
-        <Icon name="lock" size={11} />
-        SHA-256: {hash}
-      </span>
-    )}
+<!-- USWDS: Card | https://designsystem.digital.gov/components/card/ -->
+<div class="usa-card__container">
+  <div class="usa-card__header">
+    <div class="display-flex flex-wrap flex-justify margin-bottom-1">
+      <span class="usa-tag bg-primary text-white">{tag}</span>
+      {hash && (
+        <span class="usa-tag bg-base-lightest text-primary-darker font-mono-3xs">
+          SHA-256: {hash}
+        </span>
+      )}
+    </div>
+    <h3 class="usa-card__heading">{code} — {title}</h3>
   </div>
-  <div class="sha-standard__code">{code}</div>
-  <div class="sha-standard__title">{title}</div>
-  <p class="sha-standard__desc">{desc}</p>
+  <div class="usa-card__body">
+    <p>{desc}</p>
+  </div>
 </div>
-
-<style>
-  .sha-standard {
-    background: #ffffff;
-    border: 1px solid #dfe1e2;
-    border-left: 4px solid #005ea2;
-    border-radius: 4px;
-    padding: 1.35rem;
-    position: relative;
-    transition: border-color 0.15s ease;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-  }
-  .sha-standard:hover {
-    border-color: #005ea2;
-  }
-  .sha-standard__header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 0.5rem;
-    margin-bottom: 0.35rem;
-    flex-wrap: wrap;
-  }
-  .sha-standard__tag {
-    font-size: 0.65rem;
-    font-weight: 700;
-    color: #005ea2;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-  }
-  .sha-standard__hash {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.25rem;
-    font-size: 0.65rem;
-    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-    background: #f0f4f8;
-    color: #162e51;
-    padding: 0.15rem 0.4rem;
-    border-radius: 3px;
-    border: 1px solid #d9e8f6;
-  }
-  .sha-standard__code {
-    font-size: 1.12rem;
-    font-weight: 800;
-    color: #162e51;
-    margin-bottom: 0.2rem;
-  }
-  .sha-standard__title {
-    font-size: 0.85rem;
-    font-weight: 700;
-    color: #3d4551;
-    margin-bottom: 0.65rem;
-  }
-  .sha-standard__desc {
-    font-size: 0.82rem;
-    color: #565c65;
-    line-height: 1.48;
-    margin: 0;
-  }
-</style>

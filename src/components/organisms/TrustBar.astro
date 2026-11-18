@@ -1,37 +1,18 @@
 ---
+// USWDS: Section & Icon List | https://designsystem.digital.gov/components/icon-list/
 import TrustItem from '../molecules/TrustItem.astro';
 import { TRUST_ITEMS } from '../../consts';
 ---
 
-<section class="sha-trustbar" aria-label="Garantías institucionales y estándares técnicos">
-  <div class="sha-trustbar__inner">
-    {TRUST_ITEMS.map((item) => (
-      <TrustItem icon={item.icon} text={item.text} />
-    ))}
+<!-- USWDS: Icon List | https://designsystem.digital.gov/components/icon-list/ -->
+<section class="bg-base-lightest border-bottom-1px border-base-lighter padding-y-2" aria-label="Garantías institucionales y estándares técnicos">
+  <div class="grid-container">
+    <div class="grid-row grid-gap">
+      {TRUST_ITEMS.map((item) => (
+        <div class="tablet:grid-col-6 desktop:grid-col-3 margin-y-05">
+          <TrustItem icon={item.icon} text={item.text} />
+        </div>
+      ))}
+    </div>
   </div>
 </section>
-
-<style>
-  .sha-trustbar {
-    background: #1a2b4b;
-    border-bottom: 2px solid #0050a4;
-  }
-  .sha-trustbar__inner {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0.85rem 1.25rem;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem 1.5rem;
-    justify-content: center;
-    align-items: center;
-  }
-  @media (max-width: 640px) {
-    .sha-trustbar__inner {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 0.65rem;
-      padding: 0.75rem 1rem;
-    }
-  }
-</style>

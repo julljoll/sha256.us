@@ -1,4 +1,5 @@
 ---
+// USWDS: Button Group | https://designsystem.digital.gov/components/button-group/
 import Icon, { type IconName } from '../atoms/Icon.astro';
 
 export interface PillItem {
@@ -16,46 +17,23 @@ export interface Props {
 const { title = 'Salta directamente a la división pericial requerida:', items, class: className = '' } = Astro.props;
 ---
 
+<!-- USWDS: Button Group | https://designsystem.digital.gov/components/button-group/ -->
 <div class={className}>
   {title && (
-    <span class="font-sans-3xs text-bold text-base-dark text-uppercase letter-spacing-1 display-block margin-bottom-1">
+    <p class="font-sans-2xs text-bold text-base-dark text-uppercase margin-bottom-1">
       {title}
-    </span>
+    </p>
   )}
-  <div class="sha-quick-nav">
+  <ul class="usa-button-group">
     {items.map((item) => (
-      <a href={item.href} class="sha-pill-link">
-        {item.iconName && (
-          <Icon name={item.iconName} size={15} class="margin-right-05" />
-        )}
-        <span>{item.label}</span>
-      </a>
+      <li class="usa-button-group__item">
+        <a href={item.href} class="usa-button usa-button--outline">
+          {item.iconName && (
+            <Icon name={item.iconName} class="margin-right-05" />
+          )}
+          <span>{item.label}</span>
+        </a>
+      </li>
     ))}
-  </div>
+  </ul>
 </div>
-
-<style>
-  .sha-quick-nav {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-  }
-  .sha-pill-link {
-    display: inline-flex;
-    align-items: center;
-    padding: 0.4rem 0.85rem;
-    background-color: #f0f7fc;
-    color: #005ea2;
-    border: 1px solid #b8daed;
-    border-radius: 4px;
-    font-size: 0.78rem;
-    font-weight: 700;
-    text-decoration: none;
-    transition: all 0.2s ease;
-  }
-  .sha-pill-link:hover {
-    background-color: #005ea2;
-    color: #ffffff;
-    border-color: #005ea2;
-  }
-</style>

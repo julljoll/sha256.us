@@ -1,13 +1,14 @@
 ---
-import { CONTACT, STANDARDS } from '../../consts';
+import { STANDARDS } from '../../consts';
 import Badge from '../atoms/Badge.astro';
 ---
 
+<!-- USWDS: List & Button | https://designsystem.digital.gov/components/list/ -->
 <div class="bg-white padding-4 radius-lg shadow-1 border-1px border-base-lighter height-full display-flex flex-column">
   <h3 class="font-sans-md text-bold text-primary-darker margin-top-0 margin-bottom-2">
     Acreditaciones Técnicas
   </h3>
-  <ul class="list-style-none padding-0 margin-0 flex-1">
+  <ul class="add-list-reset padding-0 margin-0 flex-1">
     {STANDARDS.map((s) => (
       <li class="border-bottom-1px border-base-lighter padding-y-2">
         <Badge variant="light" class="margin-bottom-05">{s.tag}</Badge>
@@ -16,8 +17,8 @@ import Badge from '../atoms/Badge.astro';
       </li>
     ))}
   </ul>
-  <div class="margin-top-3 display-flex flex-column gap-1">
-    <a href="/normativa" class="usa-button usa-button--primary width-full text-center font-sans-xs">
+  <div class="margin-top-3 display-flex flex-column">
+    <a href="/normativa" class="usa-button width-full text-center font-sans-xs margin-bottom-1">
       Marco Legal &amp; 13 Planillas Folio
     </a>
     <a href="/servicios" class="usa-button usa-button--outline width-full text-center font-sans-xs">

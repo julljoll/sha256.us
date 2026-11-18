@@ -1,6 +1,6 @@
 ---
+// USWDS: Card Group | https://designsystem.digital.gov/components/card/
 import SectionHeader from '../atoms/SectionHeader.astro';
-import Icon from '../atoms/Icon.astro';
 import FolioFormCard from '../molecules/FolioFormCard.astro';
 import { FOLIO_FORMS_CATALOG, ADMISSIBILITY_GUARANTEES, FORENSE_PORTAL_URL } from '../../consts';
 
@@ -11,8 +11,9 @@ export interface Props {
 const { id = 'planillas-folio' } = Astro.props;
 ---
 
-<section id={id} class="sha-section bg-white border-top-1px border-base-lighter">
-  <div class="sha-container">
+<!-- USWDS: Card Group | https://designsystem.digital.gov/components/card/ -->
+<section id={id} class="usa-section border-top-1px border-base-lighter">
+  <div class="grid-container">
     <SectionHeader
       tag="INSTRUMENTOS PERICIALES EN FORMATO FOLIO (216mm × 330mm)"
       tagVariant="primary"
@@ -21,119 +22,54 @@ const { id = 'planillas-folio' } = Astro.props;
     />
 
     <!-- 4 Garantías de Admisibilidad Probatoria (COPP Art. 187 & MUCC-2017) -->
-    <div class="sha-guarantees-grid margin-bottom-5">
+    <ul class="usa-card-group margin-bottom-4">
       {ADMISSIBILITY_GUARANTEES.map((g) => (
-        <div class="sha-guarantee-card">
-          <div class="sha-guarantee-card__icon">
-            <Icon name={g.iconName as any} size={22} fill="#005ea2" />
+        <li class="usa-card tablet:grid-col-6 desktop:grid-col-3">
+          <div class="usa-card__container">
+            <div class="usa-card__header">
+              <span class="usa-tag bg-primary-lighter text-primary-darker margin-bottom-1">{g.code}</span>
+              <h3 class="usa-card__heading">{g.title}</h3>
+            </div>
+            <div class="usa-card__body">
+              <p class="font-sans-2xs">{g.description}</p>
+            </div>
           </div>
-          <div class="sha-guarantee-card__body">
-            <span class="sha-guarantee-card__code">{g.code}</span>
-            <h3 class="sha-guarantee-card__title">{g.title}</h3>
-            <p class="sha-guarantee-card__desc">{g.description}</p>
-          </div>
-        </div>
+        </li>
       ))}
-    </div>
+    </ul>
 
     <!-- Grid de las 13 Planillas Oficiales en Folio -->
-    <div class="sha-folio-grid">
+    <ul class="usa-card-group">
       {FOLIO_FORMS_CATALOG.map((form) => (
-        <FolioFormCard form={form} />
+        <li class="usa-card tablet:grid-col-6 desktop:grid-col-4">
+          <FolioFormCard form={form} />
+        </li>
       ))}
-    </div>
+    </ul>
 
-    <!-- Pie de sección con acceso directo a forense.sha256.us/planillas y /custodia -->
-    <div class="margin-top-4 text-center">
-      <a
-        href={`${FORENSE_PORTAL_URL}/planillas`}
-        target="_blank"
-        rel="noopener noreferrer"
-        class="usa-button usa-button--primary"
-      >
-        <Icon name="description" size={16} class="margin-right-05" />
-        <span>Acceder al Generador de Planillas en forense.sha256.us/planillas</span>
-        <Icon name="launch" size={12} class="margin-left-05" />
-      </a>
-      <a
-        href={`${FORENSE_PORTAL_URL}/custodia`}
-        target="_blank"
-        rel="noopener noreferrer"
-        class="usa-button usa-button--outline margin-left-1"
-      >
-        <Icon name="verified_user" size={16} class="margin-right-05" />
-        <span>Protocolo de Cadena de Custodia (PRCC)</span>
-        <Icon name="launch" size={12} class="margin-left-05" />
-      </a>
+    <div class="margin-top-4">
+      <ul class="usa-button-group">
+        <li class="usa-button-group__item">
+          <a
+            href={`${FORENSE_PORTAL_URL}/planillas`}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="usa-button"
+          >
+            Acceder al Generador de Planillas en forense.sha256.us/planillas
+          </a>
+        </li>
+        <li class="usa-button-group__item">
+          <a
+            href={`${FORENSE_PORTAL_URL}/custodia`}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="usa-button usa-button--outline"
+          >
+            Protocolo de Cadena de Custodia (PRCC)
+          </a>
+        </li>
+      </ul>
     </div>
   </div>
 </section>
-
-<style>
-  .sha-section {
-    padding: 4.5rem 0;
-  }
-  @media (max-width: 640px) {
-    .sha-section {
-      padding: 2.75rem 0;
-    }
-  }
-  .sha-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 1.25rem;
-  }
-  .sha-guarantees-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 1.15rem;
-  }
-  .sha-guarantee-card {
-    display: flex;
-    align-items: flex-start;
-    gap: 0.85rem;
-    background: #f8fafc;
-    border: 1px solid #d9e8f6;
-    border-left: 4px solid #005ea2;
-    border-radius: 8px;
-    padding: 1.1rem 1.2rem;
-  }
-  .sha-guarantee-card__icon {
-    width: 40px;
-    height: 40px;
-    border-radius: 8px;
-    background: #eff6fb;
-    border: 1px solid #cfe8ff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-  }
-  .sha-guarantee-card__code {
-    font-size: 0.65rem;
-    font-weight: 800;
-    color: #005ea2;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-    display: block;
-    margin-bottom: 0.2rem;
-  }
-  .sha-guarantee-card__title {
-    font-size: 0.9rem;
-    font-weight: 800;
-    color: #162e51;
-    margin: 0 0 0.3rem 0;
-    line-height: 1.25;
-  }
-  .sha-guarantee-card__desc {
-    font-size: 0.78rem;
-    color: #565c65;
-    line-height: 1.45;
-    margin: 0;
-  }
-  .sha-folio-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
-    gap: 1.15rem;
-  }
-</style>

@@ -1,4 +1,5 @@
 ---
+// USWDS: Process List & Card | https://designsystem.digital.gov/components/process-list/
 import Badge from '../atoms/Badge.astro';
 import Icon from '../atoms/Icon.astro';
 
@@ -15,7 +16,6 @@ export interface Props {
 }
 
 const {
-  stepNumber,
   badgeTag,
   badgeVariant = 'primary',
   title,
@@ -27,174 +27,48 @@ const {
 } = Astro.props;
 ---
 
-<article class="sha-step">
-  <div class="sha-step__top">
+<!-- USWDS: Process List Item | https://designsystem.digital.gov/components/process-list/ -->
+<li class="usa-process-list__item">
+  <div class="margin-bottom-1">
     <Badge variant={badgeVariant}>{badgeTag}</Badge>
-    <span class="sha-step__num" aria-hidden="true">{stepNumber}</span>
+    {norms && (
+      <span class="usa-tag bg-base-lightest text-primary-darker margin-left-05">{norms}</span>
+    )}
   </div>
-
-  <h3 class="sha-step__title">{title}</h3>
-
-  {norms && (
-    <div class="sha-step__norms">
-      <Icon name="gavel" size={13} class="sha-step__norms-icon" />
-      <span>{norms}</span>
-    </div>
-  )}
-
-  <p class="sha-step__text">{description}</p>
+  <h3 class="usa-process-list__heading">{title}</h3>
+  <p class="margin-top-05">{description}</p>
 
   {controls.length > 0 && (
-    <ul class="sha-step__controls">
+    <ul class="usa-icon-list margin-top-1">
       {controls.map((c) => (
-        <li>
-          <Icon name="check_circle" size={13} fill="#00a91c" class="sha-step__check" />
-          <span>{c}</span>
+        <li class="usa-icon-list__item">
+          <div class="usa-icon-list__icon text-primary">
+            <Icon name="check_circle" />
+          </div>
+          <div class="usa-icon-list__content font-sans-2xs">
+            {c}
+          </div>
         </li>
       ))}
     </ul>
   )}
 
   {planillas.length > 0 && (
-    <div class="sha-step__planillas">
-      <span class="sha-step__planillas-label">
-        <Icon name="description" size={12} />
+    <div class="margin-top-1">
+      <p class="font-sans-3xs text-bold text-base-dark margin-bottom-05">
         Instrumentos en Folio (216×330 mm):
-      </span>
-      <div class="sha-step__planillas-tags">
+      </p>
+      <div class="display-flex flex-wrap">
         {planillas.map((p) => (
-          <span class="sha-step__planilla-pill">{p}</span>
+          <span class="usa-tag bg-primary-lighter text-primary-darker margin-right-05 margin-bottom-05">{p}</span>
         ))}
       </div>
     </div>
   )}
 
   {responsible && (
-    <div class="sha-step__footer">
-      <Icon name="verified_user" size={13} fill="#005ea2" />
-      <span><strong>Responsable:</strong> {responsible}</span>
-    </div>
+    <p class="font-sans-2xs text-base-dark margin-top-1 margin-bottom-0">
+      <strong>Responsable:</strong> {responsible}
+    </p>
   )}
-</article>
-
-<style>
-  .sha-step {
-    background: #ffffff;
-    border: 1px solid #dfe1e2;
-    border-top: 4px solid #005ea2;
-    border-radius: 4px;
-    padding: 1.35rem;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    transition: border-color 0.15s ease;
-    height: 100%;
-  }
-  .sha-step:hover {
-    border-color: #005ea2;
-  }
-  .sha-step__top {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 0.65rem;
-  }
-  .sha-step__num {
-    font-size: 1.65rem;
-    font-weight: 800;
-    color: #d9e8f6;
-    line-height: 1;
-    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-  }
-  .sha-step__title {
-    font-size: 1.05rem;
-    font-weight: 800;
-    color: #162e51;
-    margin: 0 0 0.45rem 0;
-    line-height: 1.3;
-  }
-  .sha-step__norms {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.35rem;
-    font-size: 0.72rem;
-    font-weight: 700;
-    color: #005ea2;
-    background: #eff6fb;
-    border: 1px solid #cfe8ff;
-    border-radius: 4px;
-    padding: 0.25rem 0.5rem;
-    margin-bottom: 0.65rem;
-    line-height: 1.3;
-  }
-  .sha-step__norms-icon {
-    flex-shrink: 0;
-  }
-  .sha-step__text {
-    font-size: 0.84rem;
-    color: #3d4551;
-    line-height: 1.5;
-    margin: 0 0 0.85rem 0;
-  }
-  .sha-step__controls {
-    list-style: none;
-    padding: 0;
-    margin: 0 0 0.9rem 0;
-    display: flex;
-    flex-direction: column;
-    gap: 0.35rem;
-  }
-  .sha-step__controls li {
-    display: flex;
-    align-items: flex-start;
-    gap: 0.4rem;
-    font-size: 0.77rem;
-    color: #565c65;
-    line-height: 1.4;
-  }
-  .sha-step__check {
-    flex-shrink: 0;
-    margin-top: 2px;
-  }
-  .sha-step__planillas {
-    margin-top: auto;
-    padding-top: 0.75rem;
-    border-top: 1px dashed #dfe1e2;
-  }
-  .sha-step__planillas-label {
-    display: flex;
-    align-items: center;
-    gap: 0.3rem;
-    font-size: 0.68rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-    color: #565c65;
-    margin-bottom: 0.4rem;
-  }
-  .sha-step__planillas-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.35rem;
-  }
-  .sha-step__planilla-pill {
-    font-size: 0.7rem;
-    font-weight: 600;
-    background: #f0f4f8;
-    color: #162e51;
-    border: 1px solid #c9cdd1;
-    border-radius: 4px;
-    padding: 0.2rem 0.45rem;
-    line-height: 1.25;
-  }
-  .sha-step__footer {
-    margin-top: 0.65rem;
-    padding-top: 0.55rem;
-    border-top: 1px solid #f0f2f5;
-    display: flex;
-    align-items: center;
-    gap: 0.35rem;
-    font-size: 0.73rem;
-    color: #3d4551;
-  }
-</style>
+</li>

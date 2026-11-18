@@ -1,4 +1,5 @@
 ---
+// USWDS: Tag | https://designsystem.digital.gov/components/tag/
 export interface Props {
   variant?: 'primary' | 'secondary' | 'light' | 'accent' | 'dark' | 'outline';
   class?: string;
@@ -8,16 +9,17 @@ const { variant = 'primary', class: className = '' } = Astro.props;
 
 const variantClasses: Record<string, string> = {
   primary: 'bg-primary text-white',
-  secondary: 'bg-secondary text-primary-darkest font-bold',
-  light: 'bg-primary-lighter text-primary-darker font-bold',
+  secondary: 'bg-secondary text-white text-bold',
+  light: 'bg-primary-lighter text-primary-darker text-bold',
   accent: 'bg-secondary-dark text-white',
-  dark: 'bg-primary-dark text-white',
-  outline: 'bg-transparent text-primary border-1px border-primary font-bold',
+  dark: 'bg-primary-darker text-white',
+  outline: 'bg-white text-primary border-1px border-primary text-bold',
 };
 
 const badgeClass = variantClasses[variant] || variantClasses.primary;
 ---
 
-<span class={`usa-tag font-sans-3xs ${badgeClass} ${className}`.trim()}>
+<!-- USWDS: Tag | https://designsystem.digital.gov/components/tag/ -->
+<span class={`usa-tag ${badgeClass} ${className}`.trim()}>
   <slot />
 </span>

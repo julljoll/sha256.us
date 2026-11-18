@@ -1,5 +1,6 @@
 ---
-import Icon from '../atoms/Icon.astro';
+// USWDS: Icon List Item | https://designsystem.digital.gov/components/icon-list/
+import Icon, { type IconName } from '../atoms/Icon.astro';
 
 export interface Props {
   icon?: 'court' | 'hash' | 'chain' | 'shield';
@@ -7,8 +8,6 @@ export interface Props {
 }
 
 const { icon = 'shield', text } = Astro.props;
-
-type IconName = 'account_balance' | 'fingerprint' | 'link' | 'shield';
 
 const iconMap: Record<string, IconName> = {
   court: 'account_balance',
@@ -20,27 +19,12 @@ const iconMap: Record<string, IconName> = {
 const iconName = iconMap[icon] || 'shield';
 ---
 
-<div class="sha-trust-item">
-  <Icon name={iconName} size={18} class="flex-shrink-0" />
-  <span>{text}</span>
+<!-- USWDS: Icon List | https://designsystem.digital.gov/components/icon-list/ -->
+<div class="display-flex flex-align-center">
+  <div class="usa-icon-list__icon text-primary margin-right-1">
+    <Icon name={iconName} />
+  </div>
+  <div class="usa-icon-list__content font-sans-2xs text-bold text-primary-darker">
+    {text}
+  </div>
 </div>
-
-<style>
-  .sha-trust-item {
-    display: flex;
-    align-items: center;
-    gap: 0.45rem;
-    font-size: 0.78rem;
-    font-weight: 600;
-    color: #1a2b4b;
-    white-space: nowrap;
-  }
-  .sha-trust-item :global(svg) {
-    color: #005ea2;
-  }
-  @media (max-width: 639px) {
-    .sha-trust-item {
-      font-size: 0.72rem;
-    }
-  }
-</style>

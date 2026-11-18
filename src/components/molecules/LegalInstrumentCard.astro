@@ -1,5 +1,5 @@
 ---
-import Icon from '../atoms/Icon.astro';
+// USWDS: Card | https://designsystem.digital.gov/components/card/
 import type { LegalInstrument } from '../../consts';
 
 export interface Props {
@@ -10,172 +10,35 @@ const { instrument } = Astro.props;
 const shortHash = `${instrument.sha256Hash.slice(0, 12)}...${instrument.sha256Hash.slice(-8)}`;
 ---
 
-<article class="sha-law-card" data-category={instrument.category}>
-  <div class="sha-law-card__top">
-    <div class="sha-law-card__badges">
-      <span class="sha-law-card__cat">{instrument.category}</span>
-      <span class="sha-law-card__year">{instrument.year}</span>
+<!-- USWDS: Card | https://designsystem.digital.gov/components/card/ -->
+<div class="usa-card__container">
+  <div class="usa-card__header">
+    <div class="display-flex flex-wrap flex-justify margin-bottom-1">
+      <span class="usa-tag bg-primary-lighter text-primary-darker">{instrument.category}</span>
+      <span class="usa-tag bg-base-lightest text-base-darkest">{instrument.year}</span>
+      <span class="usa-tag bg-primary-darker text-white">{instrument.code}</span>
     </div>
-    <span class="sha-law-card__code">{instrument.code}</span>
+    <h3 class="usa-card__heading">{instrument.title}</h3>
   </div>
-
-  <h3 class="sha-law-card__title">{instrument.title}</h3>
-
-  <div class="sha-law-card__meta">
-    <span><strong>Fuente / Referencia:</strong> {instrument.gacetaOrRef}</span>
-    <span><strong>Ámbito / Articulado:</strong> {instrument.articlesOrScope}</span>
-  </div>
-
-  <p class="sha-law-card__desc">{instrument.description}</p>
-
-  <div class="sha-law-card__app">
-    <Icon name="verified_user" size={14} fill="#005ea2" class="sha-law-card__app-icon" />
-    <div>
-      <strong>Aplicación en sha256.us y forense.sha256.us:</strong> {instrument.keyApplication}
-    </div>
-  </div>
-
-  <div class="sha-law-card__footer">
-    <div class="sha-law-card__file" title={`Repositorio documental raíz: ${instrument.fileRef}`}>
-      <Icon name="folder_open" size={12} />
-      <span>{instrument.fileRef}</span>
-    </div>
-    <div class="sha-law-card__hash" title={`SHA-256 íntegro del PDF original: ${instrument.sha256Hash}`}>
-      <Icon name="lock" size={11} />
-      <span>SHA-256: {shortHash}</span>
+  <div class="usa-card__body">
+    <p class="font-sans-2xs text-base-dark margin-top-0 margin-bottom-05">
+      <strong>Fuente / Referencia:</strong> {instrument.gacetaOrRef}
+    </p>
+    <p class="font-sans-2xs text-base-dark margin-top-0 margin-bottom-1">
+      <strong>Ámbito / Articulado:</strong> {instrument.articlesOrScope}
+    </p>
+    <p class="font-sans-xs margin-top-0 margin-bottom-2">{instrument.description}</p>
+    <div class="usa-alert usa-alert--info usa-alert--slim">
+      <div class="usa-alert__body">
+        <p class="usa-alert__text font-sans-2xs">
+          <strong>Aplicación en sha256.us y forense.sha256.us:</strong> {instrument.keyApplication}
+        </p>
+      </div>
     </div>
   </div>
-</article>
-
-<style>
-  .sha-law-card {
-    background: #ffffff;
-    border: 1px solid #dfe1e2;
-    border-left: 4px solid #162e51;
-    border-radius: 4px;
-    padding: 1.35rem;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    transition: border-color 0.15s ease;
-  }
-  .sha-law-card:hover {
-    border-color: #005ea2;
-    border-left-color: #005ea2;
-  }
-  .sha-law-card__top {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 0.5rem;
-    margin-bottom: 0.55rem;
-    flex-wrap: wrap;
-  }
-  .sha-law-card__badges {
-    display: flex;
-    align-items: center;
-    gap: 0.35rem;
-    flex-wrap: wrap;
-  }
-  .sha-law-card__cat {
-    font-size: 0.65rem;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    background: #eff6fb;
-    color: #005ea2;
-    border: 1px solid #cfe8ff;
-    padding: 0.18rem 0.5rem;
-    border-radius: 3px;
-  }
-  .sha-law-card__year {
-    font-size: 0.65rem;
-    font-weight: 700;
-    background: #f0f2f5;
-    color: #3d4551;
-    padding: 0.18rem 0.45rem;
-    border-radius: 3px;
-  }
-  .sha-law-card__code {
-    font-size: 0.85rem;
-    font-weight: 800;
-    color: #d83933;
-    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-  }
-  .sha-law-card__title {
-    font-size: 1rem;
-    font-weight: 800;
-    color: #162e51;
-    margin: 0 0 0.5rem 0;
-    line-height: 1.3;
-  }
-  .sha-law-card__meta {
-    display: flex;
-    flex-direction: column;
-    gap: 0.2rem;
-    font-size: 0.74rem;
-    color: #3d4551;
-    background: #f8fafc;
-    padding: 0.5rem 0.65rem;
-    border-radius: 4px;
-    border: 1px solid #edf1f5;
-    margin-bottom: 0.65rem;
-  }
-  .sha-law-card__desc {
-    font-size: 0.82rem;
-    color: #565c65;
-    line-height: 1.5;
-    margin: 0 0 0.75rem 0;
-    flex: 1;
-  }
-  .sha-law-card__app {
-    display: flex;
-    align-items: flex-start;
-    gap: 0.45rem;
-    background: #f0f7fc;
-    border-left: 3px solid #005ea2;
-    padding: 0.55rem 0.7rem;
-    border-radius: 4px;
-    font-size: 0.76rem;
-    color: #162e51;
-    line-height: 1.4;
-    margin-bottom: 0.75rem;
-  }
-  .sha-law-card__app-icon {
-    flex-shrink: 0;
-    margin-top: 2px;
-  }
-  .sha-law-card__footer {
-    padding-top: 0.55rem;
-    border-top: 1px dashed #dfe1e2;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 0.5rem;
-    flex-wrap: wrap;
-    font-size: 0.68rem;
-    color: #565c65;
-  }
-  .sha-law-card__file {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.25rem;
-    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-    color: #3d4551;
-    max-width: 100%;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-  .sha-law-card__hash {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.25rem;
-    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-    background: #162e51;
-    color: #ffffff;
-    padding: 0.15rem 0.45rem;
-    border-radius: 3px;
-    font-size: 0.65rem;
-  }
-</style>
+  <div class="usa-card__footer">
+    <p class="font-mono-3xs text-base-dark margin-0">
+      {instrument.fileRef} — <strong>SHA-256: {shortHash}</strong>
+    </p>
+  </div>
+</div>

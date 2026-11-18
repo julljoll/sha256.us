@@ -12,6 +12,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
+    "sync:uswds": "node scripts/sync_uswds_assets.mjs",
     "verify:uswds": "node scripts/verify_uswds_only.mjs"
   },
   "dependencies": {

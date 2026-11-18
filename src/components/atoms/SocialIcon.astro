@@ -1,34 +1,27 @@
 ---
-import Icon from './Icon.astro';
+// USWDS: Icon | https://designsystem.digital.gov/components/icon/
+import Icon, { type IconName } from './Icon.astro';
 
 export interface Props {
   network: 'whatsapp' | 'linkedin' | 'twitter' | 'x' | 'github' | 'web' | 'instagram' | 'facebook';
   size?: number | string;
   class?: string;
-  fill?: string;
 }
 
-const { network, size = 16, class: className = '', fill } = Astro.props;
+const { network, size = 16, class: className = '' } = Astro.props;
 
-type IconName = 'whatsapp' | 'linkedin' | 'x' | 'twitter' | 'github' | 'public' | 'instagram' | 'facebook';
-
-const iconConfig: Record<string, { name: IconName; defaultFill: string }> = {
-  whatsapp: { name: 'whatsapp', defaultFill: '#25D366' },
-  linkedin: { name: 'linkedin', defaultFill: 'currentColor' },
-  twitter: { name: 'x', defaultFill: 'currentColor' },
-  x: { name: 'x', defaultFill: 'currentColor' },
-  github: { name: 'github', defaultFill: 'currentColor' },
-  web: { name: 'public', defaultFill: 'currentColor' },
-  instagram: { name: 'instagram', defaultFill: 'currentColor' },
-  facebook: { name: 'facebook', defaultFill: 'currentColor' },
+const iconMap: Record<string, IconName> = {
+  whatsapp: 'chat',
+  linkedin: 'linkedin',
+  twitter: 'x',
+  x: 'x',
+  github: 'github',
+  web: 'public',
+  instagram: 'instagram',
+  facebook: 'facebook',
 };
 
-const config = iconConfig[network] || { name: 'public', defaultFill: 'currentColor' };
+const iconName = iconMap[network] || 'public';
 ---
 
-<Icon
-  name={config.name}
-  size={size}
-  fill={fill || config.defaultFill}
-  class={className}
-/>
+<Icon name={iconName} size={size} class={className} />

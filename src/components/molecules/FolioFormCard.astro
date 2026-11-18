@@ -1,5 +1,5 @@
 ---
-import Icon from '../atoms/Icon.astro';
+// USWDS: Card | https://designsystem.digital.gov/components/card/
 import type { FolioFormItem } from '../../consts';
 
 export interface Props {
@@ -9,133 +9,30 @@ export interface Props {
 const { form } = Astro.props;
 ---
 
-<article class="sha-folio-card">
-  <div class="sha-folio-card__top">
-    <div class="sha-folio-card__badges">
-      <span class="sha-folio-card__phase">FASE {form.phase}</span>
-      <span class="sha-folio-card__sheets">
-        <Icon name="description" size={11} />
-        {form.sheets} (216×330 mm)
-      </span>
+<!-- USWDS: Card | https://designsystem.digital.gov/components/card/ -->
+<div class="usa-card__container">
+  <div class="usa-card__header">
+    <div class="display-flex flex-wrap flex-justify margin-bottom-1">
+      <span class="usa-tag bg-primary-darker text-white">FASE {form.phase}</span>
+      <span class="usa-tag bg-base-lightest text-base-darkest">{form.sheets} (216×330 mm)</span>
+      <span class="usa-tag bg-primary text-white">#{form.number}</span>
     </div>
-    <span class="sha-folio-card__num">#{form.number}</span>
+    <h3 class="usa-card__heading">{form.title}</h3>
   </div>
-
-  <h3 class="sha-folio-card__title">{form.title}</h3>
-
-  <div class="sha-folio-card__standards">
-    <Icon name="gavel" size={12} />
-    <span>{form.standards}</span>
+  <div class="usa-card__body">
+    <p class="font-sans-2xs text-primary text-bold margin-top-0 margin-bottom-1">
+      {form.standards}
+    </p>
+    <p class="margin-0">{form.description}</p>
   </div>
-
-  <p class="sha-folio-card__desc">{form.description}</p>
-
-  <div class="sha-folio-card__footer">
+  <div class="usa-card__footer">
     <a
       href={form.portalUrl}
       target="_blank"
       rel="noopener noreferrer"
-      class="sha-folio-card__link"
-      title={`Abrir ${form.title} en el Sistema Forense forense.sha256.us`}
+      class="usa-button usa-button--outline width-full"
     >
-      <span>Ver Instrumento en Sistema Forense</span>
-      <Icon name="launch" size={12} />
+      Ver Instrumento en Sistema Forense
     </a>
   </div>
-</article>
-
-<style>
-  .sha-folio-card {
-    background: #ffffff;
-    border: 1px solid #dfe1e2;
-    border-radius: 4px;
-    padding: 1.25rem;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    transition: border-color 0.15s ease;
-  }
-  .sha-folio-card:hover {
-    border-color: #005ea2;
-  }
-  .sha-folio-card__top {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 0.5rem;
-    margin-bottom: 0.6rem;
-  }
-  .sha-folio-card__badges {
-    display: flex;
-    align-items: center;
-    gap: 0.4rem;
-    flex-wrap: wrap;
-  }
-  .sha-folio-card__phase {
-    background: #162e51;
-    color: #ffffff;
-    font-size: 0.65rem;
-    font-weight: 800;
-    padding: 0.2rem 0.5rem;
-    border-radius: 3px;
-    letter-spacing: 0.05em;
-  }
-  .sha-folio-card__sheets {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.25rem;
-    background: #f0f4f8;
-    color: #3d4551;
-    border: 1px solid #c9cdd1;
-    font-size: 0.65rem;
-    font-weight: 700;
-    padding: 0.18rem 0.45rem;
-    border-radius: 3px;
-  }
-  .sha-folio-card__num {
-    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-    font-size: 1.1rem;
-    font-weight: 800;
-    color: #a9aeb1;
-  }
-  .sha-folio-card__title {
-    font-size: 0.96rem;
-    font-weight: 800;
-    color: #162e51;
-    margin: 0 0 0.45rem 0;
-    line-height: 1.3;
-  }
-  .sha-folio-card__standards {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.3rem;
-    font-size: 0.7rem;
-    font-weight: 700;
-    color: #005ea2;
-    margin-bottom: 0.55rem;
-  }
-  .sha-folio-card__desc {
-    font-size: 0.8rem;
-    color: #565c65;
-    line-height: 1.45;
-    margin: 0 0 0.9rem 0;
-    flex: 1;
-  }
-  .sha-folio-card__footer {
-    padding-top: 0.65rem;
-    border-top: 1px solid #f0f2f5;
-  }
-  .sha-folio-card__link {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.35rem;
-    font-size: 0.75rem;
-    font-weight: 700;
-    color: #005ea2;
-    text-decoration: none;
-  }
-  .sha-folio-card__link:hover {
-    color: #162e51;
-    text-decoration: underline;
-  }
-</style>
+</div>

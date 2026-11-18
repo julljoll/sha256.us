@@ -3,6 +3,7 @@ import Badge from '../../atoms/Badge.astro';
 import Icon from '../../atoms/Icon.astro';
 ---
 
+<!-- USWDS: Summary box & Grid | https://designsystem.digital.gov/components/summary-box/ -->
 <section id="moviles" class="margin-bottom-6 tablet:margin-bottom-8 bg-white padding-3 tablet:padding-6 radius-lg shadow-1 border-1px border-base-lighter">
   <div class="grid-row grid-gap flex-align-center">
     <div class="tablet:grid-col-8">
@@ -11,64 +12,64 @@ import Icon from '../../atoms/Icon.astro';
         Extracción Forense y Certificación de Smartphones, WhatsApp y Notas de Voz
       </h2>
 
-      <!-- Resumen claro para no técnicos -->
-      <div class="sha-plain-summary margin-bottom-3">
-        <span class="sha-plain-summary__label">
-          <Icon name="check" size={14} class="margin-right-05" />
-          ¿Para qué sirve este servicio?
-        </span>
-        <p class="sha-plain-summary__text">
-          Si necesitas demostrar ante un juez o autoridad lo que se dijo en conversaciones de WhatsApp, notas de voz, fotos o llamadas, incluso si los mensajes fueron borrados del celular.
-        </p>
+      <div class="usa-summary-box margin-bottom-3" role="region" aria-label="¿Para qué sirve este servicio?">
+        <div class="usa-summary-box__body">
+          <h3 class="usa-summary-box__heading font-sans-xs text-uppercase display-flex flex-align-center">
+            <Icon name="check_circle" class="margin-right-05 text-primary" />
+            ¿Para qué sirve este servicio?
+          </h3>
+          <div class="usa-summary-box__text font-sans-xs">
+            Si necesitas demostrar ante un juez o autoridad lo que se dijo en conversaciones de WhatsApp, notas de voz, fotos o llamadas, incluso si los mensajes fueron borrados del celular.
+          </div>
+        </div>
       </div>
 
       <p class="font-sans-sm text-base-dark line-height-sans-4 margin-bottom-2">
         Aplicamos aislamiento electromagnético en <strong>Bolsa de Faraday</strong> (Fase F1) y adquisición lógica no intrusiva bajo <strong>NIST SP 800-101 Rev. 1</strong>, <strong>ISO/IEC 27042</strong> y protocolos especializados (<em>Avilla Forensics</em>) para certificar:
       </p>
       <div class="grid-row grid-gap margin-bottom-2">
-        <div class="mobile:grid-col-6">
+        <div class="mobile-lg:grid-col-6">
           <div class="bg-base-lightest padding-2 radius-md border-left-05 border-primary margin-bottom-2">
             <strong class="font-sans-xs text-primary-darker display-block">Bases SQLite y Mensajería</strong>
-            <span class="font-sans-3xs text-base">Extracción de <code>msgstore.db</code> y <code>wa.db</code> en WhatsApp, Telegram, Signal y contraste UX vs. SQLite (Planilla #07).</span>
+            <span class="font-sans-3xs text-base-dark">Extracción de <code>msgstore.db</code> y <code>wa.db</code> en WhatsApp, Telegram, Signal y contraste UX vs. SQLite (Planilla #07).</span>
           </div>
         </div>
-        <div class="mobile:grid-col-6">
+        <div class="mobile-lg:grid-col-6">
           <div class="bg-base-lightest padding-2 radius-md border-left-05 border-primary margin-bottom-2">
             <strong class="font-sans-xs text-primary-darker display-block">Peritaje Acústico de Notas de Voz</strong>
-            <span class="font-sans-3xs text-base">Análisis espectral FFT, contenedor OGG/Opus 48 kHz, detección de edición o empalme (Planillas #06 y #10).</span>
+            <span class="font-sans-3xs text-base-dark">Análisis espectral FFT, contenedor OGG/Opus 48 kHz, detección de edición o empalme (Planillas #06 y #10).</span>
           </div>
         </div>
-        <div class="mobile:grid-col-6">
+        <div class="mobile-lg:grid-col-6">
           <div class="bg-base-lightest padding-2 radius-md border-left-05 border-primary margin-bottom-2">
             <strong class="font-sans-xs text-primary-darker display-block">Evidencia Fotográfica EXIF / ELA</strong>
-            <span class="font-sans-3xs text-base">Auditoría de cabeceras EXIF, tablas de cuantización JPEG, Error Level Analysis (ELA) y coordenadas GPS (Planilla #09).</span>
+            <span class="font-sans-3xs text-base-dark">Auditoría de cabeceras EXIF, tablas de cuantización JPEG, Error Level Analysis (ELA) y coordenadas GPS (Planilla #09).</span>
           </div>
         </div>
-        <div class="mobile:grid-col-6">
+        <div class="mobile-lg:grid-col-6">
           <div class="bg-base-lightest padding-2 radius-md border-left-05 border-primary margin-bottom-2">
             <strong class="font-sans-xs text-primary-darker display-block">Redes Sociales y Telecomunicaciones</strong>
-            <span class="font-sans-3xs text-base">Fijación de interacciones en Instagram, Facebook, X, TikTok, SMS y registros CDR bajo LOTEL y Ley RESORTE-ME.</span>
+            <span class="font-sans-3xs text-base-dark">Fijación de interacciones en Instagram, Facebook, X, TikTok, SMS y registros CDR bajo LOTEL y Ley RESORTE-ME.</span>
           </div>
         </div>
       </div>
 
-      <!-- Sustento Legal Directo (/Informatica/) -->
-      <div class="sha-legal-backing">
-        <span class="sha-legal-backing__title">
-          <Icon name="gavel" size={13} />
+      <div class="bg-base-lightest border-1px border-base-lighter radius-md padding-2">
+        <span class="display-flex flex-align-center font-sans-3xs text-bold text-primary-darker text-uppercase margin-bottom-1">
+          <Icon name="gavel" class="margin-right-05" />
           Sustento Normativo (/Informatica/) e Instrumentos en Folio:
         </span>
-        <div class="sha-legal-backing__pills">
-          <span>NIST SP 800-101 Rev. 1</span>
-          <span>LMDFE Arts. 4, 7 y 8</span>
-          <span>Ley Privacidad Comunicaciones (G.O. 34.863)</span>
-          <span>LOTEL G.O. 39.610</span>
-          <span>Protocolo Avilla Android</span>
-          <span>Planillas Folio #05, #06, #07, #09 y #10</span>
+        <div class="display-flex flex-wrap">
+          <span class="usa-tag bg-white text-primary border-1px border-primary-light margin-right-05 margin-bottom-05">NIST SP 800-101 Rev. 1</span>
+          <span class="usa-tag bg-white text-primary border-1px border-primary-light margin-right-05 margin-bottom-05">LMDFE Arts. 4, 7 y 8</span>
+          <span class="usa-tag bg-white text-primary border-1px border-primary-light margin-right-05 margin-bottom-05">Ley Privacidad Comunicaciones (G.O. 34.863)</span>
+          <span class="usa-tag bg-white text-primary border-1px border-primary-light margin-right-05 margin-bottom-05">LOTEL G.O. 39.610</span>
+          <span class="usa-tag bg-white text-primary border-1px border-primary-light margin-right-05 margin-bottom-05">Protocolo Avilla Android</span>
+          <span class="usa-tag bg-white text-primary border-1px border-primary-light margin-right-05 margin-bottom-05">Planillas Folio #05, #06, #07, #09 y #10</span>
         </div>
       </div>
     </div>
-    <div class="tablet:grid-col-4 margin-top-3 tablet:margin-top-0 display-flex flex-column flex-center text-center">
+    <div class="tablet:grid-col-4 margin-top-3 tablet:margin-top-0 display-flex flex-column flex-justify-center text-center">
       <div class="bg-accent-cool-lighter padding-4 radius-lg width-full border-1px border-accent-cool-light">
         <h3 class="font-sans-md text-bold text-primary-darker margin-top-0 margin-bottom-1">Peritaje de Móvil y WhatsApp</h3>
         <p class="font-sans-xs text-base-dark margin-bottom-2">Extracción lógica con Hash Génesis SHA-256 y devolución rápida de tu equipo en Fase F2.</p>
@@ -78,60 +79,3 @@ import Icon from '../../atoms/Icon.astro';
     </div>
   </div>
 </section>
-
-<style>
-  .sha-plain-summary {
-    background-color: #f8fafc;
-    border-left: 3px solid #005ea2;
-    border-radius: 4px;
-    padding: 0.75rem 1rem;
-  }
-  .sha-plain-summary__label {
-    display: flex;
-    align-items: center;
-    gap: 0.35rem;
-    font-size: 0.75rem;
-    font-weight: 700;
-    color: #005ea2;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    margin-bottom: 0.25rem;
-  }
-  .sha-plain-summary__text {
-    font-size: 0.88rem;
-    color: #1a2b4b;
-    line-height: 1.5;
-    margin: 0;
-  }
-  .sha-legal-backing {
-    background: #f0f4f8;
-    border: 1px solid #d9e8f6;
-    border-radius: 6px;
-    padding: 0.75rem 0.95rem;
-  }
-  .sha-legal-backing__title {
-    display: flex;
-    align-items: center;
-    gap: 0.35rem;
-    font-size: 0.72rem;
-    font-weight: 800;
-    color: #162e51;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-    margin-bottom: 0.45rem;
-  }
-  .sha-legal-backing__pills {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.35rem;
-  }
-  .sha-legal-backing__pills span {
-    font-size: 0.7rem;
-    font-weight: 700;
-    background: #ffffff;
-    color: #005ea2;
-    border: 1px solid #cfe8ff;
-    padding: 0.18rem 0.5rem;
-    border-radius: 4px;
-  }
-</style>

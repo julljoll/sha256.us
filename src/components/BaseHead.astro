@@ -1,5 +1,4 @@
 ---
-import '../styles/global.css';
 import type { ImageMetadata } from 'astro';
 import { COMPANY, CONTACT, FOUNDER, SITE_DESCRIPTION, SITE_TITLE, SITE_URL } from '../consts';
 
@@ -178,10 +177,11 @@ const schemaOrg = {
 };
 ---
 
-<!-- Global Metadata & Favicons (USWDS Standard) -->
+<!-- USWDS: Head & Precompiled Assets | https://designsystem.digital.gov/documentation/developers/ -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<meta name="theme-color" content="#162e51" />
+<link rel="stylesheet" href="/assets/uswds/css/uswds.min.css" />
+<script is:inline src="/assets/uswds/js/uswds-init.min.js"></script>
 <link rel="icon" type="image/png" sizes="48x48" href="/favicon.png?v=202611" />
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=202611" />
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=202611" />

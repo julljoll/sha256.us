@@ -1,4 +1,5 @@
 ---
+// USWDS: Language Selector | https://designsystem.digital.gov/components/language-selector/
 import Icon from '../atoms/Icon.astro';
 
 export interface Props {
@@ -6,209 +7,25 @@ export interface Props {
 }
 
 const { variant = 'header' } = Astro.props;
+
+const btnClass =
+  variant === 'banner'
+    ? 'usa-button usa-button--unstyled text-white font-sans-2xs text-no-underline'
+    : variant === 'mobile'
+      ? 'usa-button usa-button--outline width-full'
+      : 'usa-button usa-button--outline padding-y-1 padding-x-105 font-sans-2xs';
 ---
 
-{variant === 'banner' && (
-  <div class="sha-lang-banner" role="group" aria-label="Selector de idioma: Español - Inglés">
-    <Icon name="language" size={13} class="sha-lang-banner__icon" />
-    <button
-      type="button"
-      class="sha-lang-banner__btn is-active"
-      data-set-lang="es"
-      data-lang-ui="true"
-      aria-pressed="true"
-      title="Seleccionar idioma Español (por defecto)"
-    >
-      Español
-    </button>
-    <span class="sha-lang-banner__sep" aria-hidden="true">-</span>
-    <button
-      type="button"
-      class="sha-lang-banner__btn"
-      data-set-lang="en"
-      data-lang-ui="true"
-      aria-pressed="false"
-      title="Select English language"
-    >
-      Inglés
-    </button>
-  </div>
-)}
-
-{variant === 'header' && (
-  <button
-    type="button"
-    class="sha-lang-toggle"
-    data-lang-toggle
-    data-lang-ui="true"
-    aria-label="Cambiar idioma entre Español e Inglés"
-    title="Alternar idioma: Español - Inglés"
-  >
-    <Icon name="language" size={16} class="sha-lang-toggle__icon" />
-    <span class="sha-lang-toggle__opt is-active" data-lang-indicator="es" data-lang-ui="true">Español</span>
-    <span class="sha-lang-toggle__hyphen" aria-hidden="true" data-lang-ui="true">-</span>
-    <span class="sha-lang-toggle__opt" data-lang-indicator="en" data-lang-ui="true">Inglés</span>
-  </button>
-)}
-
-{variant === 'mobile' && (
-  <div class="sha-lang-mobile" role="group" aria-label="Selector de idioma: Español - Inglés">
-    <div class="sha-lang-mobile__btns">
-      <button
-        type="button"
-        class="sha-lang-mobile__btn is-active"
-        data-set-lang="es"
-        data-lang-ui="true"
-        aria-pressed="true"
-      >
-        <Icon name="language" size={15} />
-        <span data-lang-ui="true">Español</span>
-      </button>
-      <span class="sha-lang-mobile__sep" aria-hidden="true" data-lang-ui="true">-</span>
-      <button
-        type="button"
-        class="sha-lang-mobile__btn"
-        data-set-lang="en"
-        data-lang-ui="true"
-        aria-pressed="false"
-      >
-        <Icon name="language" size={15} />
-        <span data-lang-ui="true">Inglés</span>
-      </button>
-    </div>
-  </div>
-)}
-
-<style>
-  /* 1. Variante Banner Oficial USWDS (.usa-banner) */
-  .sha-lang-banner {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.25rem;
-    background: #162e51;
-    border: 1px solid #73b3e7;
-    border-radius: 0.25rem;
-    padding: 0.15rem 0.5rem;
-    color: #ffffff;
-  }
-  .sha-lang-banner__icon {
-    color: #73b3e7;
-    flex-shrink: 0;
-  }
-  .sha-lang-banner__btn {
-    background: transparent;
-    border: none;
-    color: #dfe1e2;
-    font-size: 0.72rem;
-    font-weight: 600;
-    padding: 0.1rem 0.3rem;
-    cursor: pointer;
-    border-radius: 0.15rem;
-    line-height: 1.2;
-  }
-  .sha-lang-banner__btn:hover {
-    color: #ffffff;
-    text-decoration: underline;
-  }
-  .sha-lang-banner__btn.is-active {
-    background: #005ea2;
-    color: #ffffff;
-    font-weight: 700;
-  }
-  .sha-lang-banner__sep {
-    font-size: 0.72rem;
-    color: #73b3e7;
-    font-weight: 700;
-  }
-
-  /* 2. Variante Encabezado Principal USWDS (.usa-header) */
-  .sha-lang-toggle {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.3rem;
-    background: #ffffff;
-    border: 2px solid #005ea2;
-    color: #162e51;
-    border-radius: 0.25rem;
-    padding: 0.4rem 0.65rem;
-    font-size: 0.78rem;
-    font-weight: 700;
-    cursor: pointer;
-    min-height: 2.5rem; /* 40px+ */
-    touch-action: manipulation;
-    white-space: nowrap;
-  }
-  .sha-lang-toggle:hover {
-    background: #f0f4f8;
-    border-color: #162e51;
-  }
-  .sha-lang-toggle__icon {
-    color: #005ea2;
-    flex-shrink: 0;
-  }
-  .sha-lang-toggle__opt {
-    padding: 0.15rem 0.4rem;
-    border-radius: 0.15rem;
-    color: #565c65;
-    font-weight: 700;
-  }
-  .sha-lang-toggle__opt.is-active {
-    background: #005ea2;
-    color: #ffffff;
-  }
-  .sha-lang-toggle__hyphen {
-    color: #162e51;
-    font-weight: 800;
-  }
-
-  @media (max-width: 639px) {
-    .sha-lang-toggle {
-      padding: 0.35rem 0.5rem;
-      font-size: 0.72rem;
-      min-height: 2.4rem;
-    }
-    .sha-lang-toggle__opt {
-      padding: 0.12rem 0.3rem;
-    }
-  }
-
-  /* 3. Variante Menú Móvil USWDS */
-  .sha-lang-mobile {
-    background: #ffffff;
-    border: 1px solid #c9cdd1;
-    border-radius: 0.25rem;
-    padding: 0.5rem;
-  }
-  .sha-lang-mobile__btns {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-  }
-  .sha-lang-mobile__btn {
-    flex: 1;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.35rem;
-    background: #f0f0f0;
-    border: 1px solid #a9aeb1;
-    color: #1b1b1b;
-    font-size: 0.85rem;
-    font-weight: 700;
-    padding: 0.6rem 0.75rem;
-    border-radius: 0.25rem;
-    min-height: 2.75rem; /* 44px touch target */
-    cursor: pointer;
-  }
-  .sha-lang-mobile__btn.is-active {
-    background: #005ea2;
-    border-color: #005ea2;
-    color: #ffffff;
-  }
-  .sha-lang-mobile__sep {
-    font-weight: 800;
-    color: #162e51;
-    font-size: 1rem;
-  }
-</style>
+<!-- USWDS: Language Selector | https://designsystem.digital.gov/components/language-selector/ -->
+<button
+  type="button"
+  class={btnClass}
+  data-lang-toggle
+  data-lang-ui="true"
+  aria-label="Cambiar idioma del sitio: Español - Inglés"
+>
+  <Icon name="language" class="margin-right-05" />
+  <span data-lang-indicator="es" class="text-bold">Español</span>
+  <span class="margin-x-05">-</span>
+  <span data-lang-indicator="en">Inglés</span>
+</button>

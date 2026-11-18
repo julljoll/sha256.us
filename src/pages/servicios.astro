@@ -21,47 +21,34 @@ const servicePills: PillItem[] = [
 ];
 ---
 
+<!-- USWDS: Documentation page template | https://designsystem.digital.gov/templates/documentation-page/ -->
 <BaseLayout
 	title={`Peritaje Digital Judicial y Servicios Forenses en Venezuela | ${COMPANY.name}`}
 	description={`Servicios periciales de informática forense en Venezuela: dictámenes judiciales, peritaje de WhatsApp y móviles, recuperación de discos dañados y auditoría de documentos electrónicos bajo normas ISO, NIST, LMDFE y MUCC-2017.`}
 	mainClass="padding-top-4 tablet:padding-top-6"
 >
-	<div class="grid-container maxw-desktop margin-x-auto padding-x-2">
+	<div class="grid-container">
 		<Breadcrumb items={[{ label: 'Servicios Forenses' }]} />
 
-		<!-- Header de página -->
 		<div class="margin-bottom-4 border-bottom-2px border-base-lighter padding-bottom-3">
 			<span class="usa-tag bg-primary text-white margin-bottom-1 font-sans-3xs">DIVISIONES PERICIALES ESPECIALIZADAS</span>
 			<h1 class="font-sans-2xl tablet:font-sans-3xl text-bold text-primary-darker margin-top-1 margin-bottom-2">
 				Peritaje Digital Judicial y Servicios de Informática Forense en Venezuela
 			</h1>
-			<p class="font-sans-md text-base-dark line-height-sans-4 maxw-tablet margin-bottom-3">
+			<p class="font-sans-md text-base-dark line-height-sans-4 measure-6 margin-bottom-3">
 				Metodologías científicas de laboratorio aplicadas por el equipo forense multidisciplinario de {COMPANY.name} bajo estrictos protocolos técnicos internacionales (ISO/IEC 27037, ISO/IEC 27042, NIST SP 800-86/101 y MUCC-2017) y leyes especiales (LMDFE G.O. 37.148, LEDI G.O. 37.313 y COPP Arts. 187 y 223–225) para extraer, analizar y certificar la evidencia probatoria requerida en juicios.
 			</p>
 
-			<!-- Barra de Salto Rápido con Iconos Oficiales USWDS -->
 			<PillNav items={servicePills} />
 		</div>
 
-		<!-- Servicio 1: Informática Forense y Peritaje Judicial -->
 		<ServiceForense />
-
-		<!-- Servicio 2: Dispositivos Móviles -->
 		<ServiceMoviles />
-
-		<!-- Servicio 3: Almacenamiento -->
 		<ServiceAlmacenamiento />
-
-		<!-- Servicio 4: Contratos y Documentos Digitales -->
 		<ServiceDocumentos />
 	</div>
 
-	<!-- Ciclo Pericial ISO de 6 Fases (F0 a F5) -->
 	<ProcessSteps detailed={true} id="ciclo-f0-f5" />
-
-	<!-- Catálogo de 13 Planillas Oficiales en Folio -->
 	<FolioFormsSection id="planillas-folio" />
-
-	<!-- CTA Final -->
 	<CtaBanner />
 </BaseLayout>

@@ -1,12 +1,13 @@
 ---
+// USWDS: Card Group & Summary Box | https://designsystem.digital.gov/components/card/
 import SectionHeader from '../atoms/SectionHeader.astro';
-import Icon from '../atoms/Icon.astro';
 import StandardCard from '../molecules/StandardCard.astro';
 import { STANDARDS, FORENSE_PORTAL_URL } from '../../consts';
 ---
 
-<section class="sha-section bg-white">
-  <div class="sha-container">
+<!-- USWDS: Card Group | https://designsystem.digital.gov/components/card/ -->
+<section class="usa-section">
+  <div class="grid-container">
     <SectionHeader
       tag="SUSTENTO LEGAL Y CIENTÍFICO (/Informatica/)"
       tagVariant="primary"
@@ -14,104 +15,49 @@ import { STANDARDS, FORENSE_PORTAL_URL } from '../../consts';
       sub="La admisibilidad jurídica de la evidencia digital depende del rigor normativo. Todas nuestras actuaciones están sustentadas en 28 instrumentos legales y técnicos verificados con Hash SHA-256."
     />
 
-    <div class="sha-standards-grid">
+    <ul class="usa-card-group">
       {STANDARDS.map((std) => (
-        <StandardCard
-          tag={std.tag}
-          code={std.code}
-          title={std.title}
-          desc={std.desc}
-          hash={std.hash}
-        />
+        <li class="usa-card tablet:grid-col-6 desktop:grid-col-4">
+          <StandardCard
+            tag={std.tag}
+            code={std.code}
+            title={std.title}
+            desc={std.desc}
+            hash={std.hash}
+          />
+        </li>
       ))}
-    </div>
+    </ul>
 
-    <!-- Barra de enlace al Compendio Legal Completo y Pirámide COPP Art. 225 -->
-    <div class="sha-standards-cta margin-top-4">
-      <div class="sha-standards-cta__info">
-        <div class="sha-standards-cta__badge">
-          <Icon name="gavel" size={20} fill="#005ea2" />
-          <span>PIRÁMIDE NORMATIVA COPP ART. 225 &bull; REPOSITORIO /Informatica/</span>
+    <!-- USWDS: Summary Box | https://designsystem.digital.gov/components/summary-box/ -->
+    <div class="usa-summary-box margin-top-4" role="region" aria-labelledby="summary-box-piramide">
+      <div class="usa-summary-box__body">
+        <h3 class="usa-summary-box__heading" id="summary-box-piramide">
+          PIRÁMIDE NORMATIVA COPP ART. 225 &bull; REPOSITORIO /Informatica/
+        </h3>
+        <div class="usa-summary-box__text">
+          <p>
+            Consulta la <strong>Pirámide de Aplicación y Supletoriedad</strong> (CRBV, COPP, CPC, LMDFE, LEDI, MUCC-2017, CENIF, SUSCERTE, LOTEL, ISO/IEC y NIST), el catálogo de las <strong>13 Planillas Oficiales en Folio</strong> y los hashes SHA-256 de cada ley informática que sustenta nuestro laboratorio.
+          </p>
+          <ul class="usa-button-group margin-top-2">
+            <li class="usa-button-group__item">
+              <a href="/normativa" class="usa-button">
+                Ver Marco Legal y 13 Planillas Folio &rarr;
+              </a>
+            </li>
+            <li class="usa-button-group__item">
+              <a
+                href={`${FORENSE_PORTAL_URL}/normativa`}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="usa-button usa-button--outline"
+              >
+                Portal Forense
+              </a>
+            </li>
+          </ul>
         </div>
-        <p class="sha-standards-cta__text">
-          Consulta la <strong>Pirámide de Aplicación y Supletoriedad</strong> (CRBV, COPP, CPC, LMDFE, LEDI, MUCC-2017, CENIF, SUSCERTE, LOTEL, ISO/IEC y NIST), el catálogo de las <strong>13 Planillas Oficiales en Folio</strong> y los hashes SHA-256 de cada ley informática que sustenta nuestro laboratorio.
-        </p>
-      </div>
-      <div class="sha-standards-cta__actions">
-        <a href="/normativa" class="usa-button usa-button--primary">
-          Ver Marco Legal y 13 Planillas Folio &rarr;
-        </a>
-        <a
-          href={`${FORENSE_PORTAL_URL}/normativa`}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="usa-button usa-button--outline"
-        >
-          <Icon name="lock" size={14} class="margin-right-05" />
-          <span>Portal Forense</span>
-          <Icon name="launch" size={11} class="margin-left-05" />
-        </a>
       </div>
     </div>
   </div>
 </section>
-
-<style>
-  .sha-section {
-    padding: 4.5rem 0;
-  }
-  @media (max-width: 640px) {
-    .sha-section {
-      padding: 2.75rem 0;
-    }
-  }
-  .sha-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 1.25rem;
-  }
-  .sha-standards-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
-    gap: 1.25rem;
-  }
-  .sha-standards-cta {
-    background: #f0f4f8;
-    border: 1px solid #c9cdd1;
-    border-left: 5px solid #162e51;
-    border-radius: 8px;
-    padding: 1.5rem 1.75rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1.5rem;
-    flex-wrap: wrap;
-  }
-  .sha-standards-cta__info {
-    flex: 1;
-    min-width: 260px;
-  }
-  .sha-standards-cta__badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.45rem;
-    font-size: 0.72rem;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: #005ea2;
-    margin-bottom: 0.4rem;
-  }
-  .sha-standards-cta__text {
-    font-size: 0.86rem;
-    color: #3d4551;
-    line-height: 1.5;
-    margin: 0;
-  }
-  .sha-standards-cta__actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.75rem;
-    align-items: center;
-  }
-</style>
