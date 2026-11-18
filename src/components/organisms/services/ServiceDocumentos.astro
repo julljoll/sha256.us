@@ -3,57 +3,68 @@ import Badge from '../../atoms/Badge.astro';
 import Icon from '../../atoms/Icon.astro';
 ---
 
-<!-- USWDS: Summary box & List | https://designsystem.digital.gov/components/summary-box/ -->
+<!-- USWDS: Summary box, List & Accordion | https://designsystem.digital.gov/components/accordion/ -->
 <section id="documentos" class="margin-bottom-6 tablet:margin-bottom-8 bg-white padding-3 tablet:padding-6 radius-lg shadow-1 border-1px border-base-lighter">
   <div class="grid-row grid-gap flex-align-center">
     <div class="tablet:grid-col-8">
-      <Badge variant="accent" class="margin-bottom-1">AUDITORÍA DOCUMENTAL · LMDFE G.O. 37.148 &amp; SUSCERTE</Badge>
+      <Badge variant="accent" class="margin-bottom-1">4. CONTRATOS PDF, CORREOS Y ESTAFAS</Badge>
       <h2 class="font-sans-xl text-bold text-primary-darker margin-top-1 margin-bottom-2">
-        Peritaje de Contratos Digitales, Metadatos PDF, Correos y Firmas Electrónicas
+        Verificación de Contratos en PDF, Firmas Electrónicas y Correos Falsos
       </h2>
 
-      <div class="usa-summary-box margin-bottom-3" role="region" aria-label="¿Para qué sirve este servicio?">
+      <div class="usa-summary-box margin-bottom-3" role="region" aria-label="¿Cuándo necesitas este servicio?">
         <div class="usa-summary-box__body">
           <h3 class="usa-summary-box__heading font-sans-xs text-uppercase display-flex flex-align-center">
             <Icon name="check_circle" class="margin-right-05 text-primary" />
-            ¿Para qué sirve este servicio?
+            ¿Cuándo necesitas este servicio?
           </h3>
           <div class="usa-summary-box__text font-sans-xs">
-            Si sospechas que un contrato en PDF fue alterado, que una firma electrónica no corresponde al autor real o que un correo electrónico con facturas o transferencias fue suplantado para una estafa.
+            Si sospechas que alguien modificó un contrato, factura o recibo en PDF, falsificó una firma digital o envió un correo electrónico falso haciéndose pasar por otra persona o empresa.
           </div>
         </div>
       </div>
 
-      <p class="font-sans-sm text-base-dark line-height-sans-4 margin-bottom-2">
-        Determinamos científicamente la autenticidad, integridad, autoría y cronología de mensajes de datos y documentos electrónicos conforme a la <strong>Ley sobre Mensajes de Datos y Firmas Electrónicas (LMDFE)</strong>:
+      <p class="font-sans-sm text-bold text-primary-darker margin-bottom-1">
+        ¿Qué hacemos por ti y qué recibes?
       </p>
       <ul class="usa-list font-sans-sm text-base-dark line-height-sans-4 margin-bottom-3">
-        <li><strong>Firmas electrónicas e infraestructura PKI:</strong> Validación criptográfica de certificados X.509, sellado de tiempo (TSA) y homologación de proveedores extranjeros bajo <strong>LMDFE Arts. 16 y 38</strong> y <strong>NORMA-063-1.1-2011 de SUSCERTE</strong>.</li>
-        <li><strong>Auditoría de estructura interna PDF y metadatos XMP:</strong> Inspección de árboles de objetos PDF, actualizaciones incrementales (<em>Incremental Updates</em>), fuentes incrustadas y trazas de edición o falsificación documental (<strong>LEDI Art. 14</strong> y <strong>Código Civil Arts. 1.357–1.427</strong>).</li>
-        <li><strong>Cabeceras de correo electrónico (RFC 5322):</strong> Trazabilidad de saltos SMTP, firmas criptográficas <strong>DKIM</strong>, políticas <strong>SPF / DMARC</strong> y contraste de interfaz UX vs. buzón original MBOX/PST (Planilla #07).</li>
+        <li><strong>Detección de documentos PDF alterados:</strong> Revisamos las capas internas del archivo para demostrar si fue editado, en qué fecha y con qué programa.</li>
+        <li><strong>Rastreo de correos electrónicos reales o falsos:</strong> Verificamos el origen verdadero de un correo para demostrar fraudes, suplantaciones o acuerdos comerciales.</li>
+        <li><strong>Validación de firmas electrónicas:</strong> Comprobamos si una firma digital pertenece realmente a su autor bajo las leyes venezolanas.</li>
       </ul>
 
-      <div class="bg-base-lightest border-1px border-base-lighter radius-md padding-2">
-        <span class="display-flex flex-align-center font-sans-3xs text-bold text-primary-darker text-uppercase margin-bottom-1">
-          <Icon name="gavel" class="margin-right-05" />
-          Sustento Normativo (/Informatica/) e Instrumentos en Folio:
-        </span>
-        <div class="display-flex flex-wrap">
-          <span class="usa-tag bg-white text-primary border-1px border-primary-light margin-right-05 margin-bottom-05">LMDFE G.O. 37.148 (Arts. 4, 7, 16)</span>
-          <span class="usa-tag bg-white text-primary border-1px border-primary-light margin-right-05 margin-bottom-05">SUSCERTE PKI &amp; NORMA-063</span>
-          <span class="usa-tag bg-white text-primary border-1px border-primary-light margin-right-05 margin-bottom-05">LEDI Art. 14 (Falsificación)</span>
-          <span class="usa-tag bg-white text-primary border-1px border-primary-light margin-right-05 margin-bottom-05">Ley de Infogobierno</span>
-          <span class="usa-tag bg-white text-primary border-1px border-primary-light margin-right-05 margin-bottom-05">Código Civil Arts. 1.422–1.427</span>
-          <span class="usa-tag bg-white text-primary border-1px border-primary-light margin-right-05 margin-bottom-05">Planillas Folio #07, #08 y #13</span>
+      <!-- Revelación Progresiva para Abogados y Jueces -->
+      <div class="usa-accordion usa-accordion--bordered">
+        <h3 class="usa-accordion__heading">
+          <button
+            type="button"
+            class="usa-accordion__button font-sans-xs"
+            aria-expanded="false"
+            aria-controls="acc-tech-documentos"
+          >
+            Ver respaldo legal y normas técnicas (para abogados y tribunales)
+          </button>
+        </h3>
+        <div id="acc-tech-documentos" class="usa-accordion__content usa-prose" hidden>
+          <p class="font-sans-xs text-base-dark">
+            Auditamos la equivalencia funcional y autenticidad conforme a la <strong>Ley sobre Mensajes de Datos y Firmas Electrónicas (LMDFE G.O. N° 37.148 Arts. 4, 7, 16 y 38)</strong> y <strong>NORMA-063-1.1-2011 de SUSCERTE</strong>: inspección de árboles de objetos PDF, actualizaciones incrementales (<em>Incremental Updates</em>), metadatos XMP (<strong>LEDI Art. 14</strong>) y cabeceras SMTP/MIME RFC 5322 (<strong>SPF, DKIM, DMARC</strong>).
+          </p>
+          <div class="display-flex flex-wrap margin-top-1">
+            <span class="usa-tag bg-white text-primary border-1px border-primary-light margin-right-05 margin-bottom-05">LMDFE G.O. 37.148 (Arts. 4, 7, 16)</span>
+            <span class="usa-tag bg-white text-primary border-1px border-primary-light margin-right-05 margin-bottom-05">SUSCERTE PKI &amp; NORMA-063</span>
+            <span class="usa-tag bg-white text-primary border-1px border-primary-light margin-right-05 margin-bottom-05">LEDI Art. 14 (Falsificación)</span>
+            <span class="usa-tag bg-white text-primary border-1px border-primary-light margin-right-05 margin-bottom-05">Código Civil Arts. 1.422–1.427</span>
+            <span class="usa-tag bg-white text-primary border-1px border-primary-light margin-right-05 margin-bottom-05">Planillas Folio #07, #08 y #13</span>
+          </div>
         </div>
       </div>
     </div>
     <div class="tablet:grid-col-4 margin-top-3 tablet:margin-top-0 display-flex flex-column flex-justify-center text-center">
       <div class="bg-accent-cool-lighter padding-4 radius-lg width-full border-1px border-accent-cool-light">
-        <h3 class="font-sans-md text-bold text-primary-darker margin-top-0 margin-bottom-1">Peritaje Documental y PKI</h3>
-        <p class="font-sans-xs text-base-dark margin-bottom-2">Certificación de integridad SHA-256 y validez probatoria para litigios y arbitrajes.</p>
-        <a href="/contacto" class="usa-button usa-button--secondary width-full margin-bottom-1">Auditar Documento</a>
-        <a href="/normativa#compendio" class="usa-button usa-button--outline width-full font-sans-2xs">Ver Leyes LMDFE y SUSCERTE</a>
+        <h3 class="font-sans-md text-bold text-primary-darker margin-top-0 margin-bottom-1">¿Dudas de un PDF o Correo?</h3>
+        <p class="font-sans-xs text-base-dark margin-bottom-2">Envíanos tu consulta y comprobamos científicamente si el documento es original o fue manipulado.</p>
+        <a href="/contacto" class="usa-button usa-button--secondary width-full margin-bottom-1">Verificar un Documento</a>
+        <a href="/normativa#compendio" class="usa-button usa-button--outline width-full font-sans-2xs">Ver Leyes de Documentos</a>
       </div>
     </div>
   </div>

@@ -10,10 +10,10 @@ import FolioFormsSection from '../components/organisms/FolioFormsSection.astro';
 import CtaBanner from '../components/organisms/CtaBanner.astro';
 
 const normativaPills: PillItem[] = [
-	{ href: '#piramide-legal', label: 'Pirámide COPP Art. 225', iconName: 'account_balance' },
-	{ href: '#compendio', label: `Leyes e ISO (${LEGAL_INSTRUMENTS.length})`, iconName: 'gavel' },
-	{ href: '#ciclo-f0-f5', label: `Ciclo ISO (${ISO_FORENSIC_PHASES.length} Fases)`, iconName: 'verified_user' },
-	{ href: '#planillas-folio', label: `Planillas Folio (${FOLIO_FORMS_CATALOG.length})`, iconName: 'description' },
+	{ href: '#piramide-legal', label: '1. Pirámide Legal (COPP Art. 225)', iconName: 'account_balance' },
+	{ href: '#compendio', label: `2. Leyes y Normas (${LEGAL_INSTRUMENTS.length})`, iconName: 'gavel' },
+	{ href: '#ciclo-f0-f5', label: `3. Ciclo Técnico ISO (${ISO_FORENSIC_PHASES.length} Fases)`, iconName: 'verified_user' },
+	{ href: '#planillas-folio', label: `4. Planillas Oficiales (${FOLIO_FORMS_CATALOG.length})`, iconName: 'description' },
 ];
 ---
 
@@ -28,20 +28,34 @@ const normativaPills: PillItem[] = [
 
 		<div class="margin-bottom-4 border-bottom-2px border-base-lighter padding-bottom-3">
 			<span class="usa-tag bg-primary text-white margin-bottom-1 font-sans-3xs">
-				FORENSIC CHIEF COMPLIANCE OFFICER · SUSTENTO NORMATIVO /Informatica/
+				RESPALDO JURÍDICO Y CIENTÍFICO · BIBLIOTECA NORMATIVA
 			</span>
 			<h1 class="font-sans-2xl tablet:font-sans-3xl text-bold text-primary-darker margin-top-1 margin-bottom-2">
-				Marco Legal de Leyes Informáticas, Ciclo Pericial ISO (F0–F5) y Planillas en Folio
+				Marco Legal, Ciclo Técnico ISO (F0–F5) y 13 Planillas Oficiales
 			</h1>
-			<p class="font-sans-md text-base-dark line-height-sans-4 measure-6 margin-bottom-3">
-				Toda actuación técnica del laboratorio <strong>{COMPANY.name}</strong> y de nuestra plataforma operativa <a href={FORENSE_PORTAL_URL} target="_blank" rel="noopener noreferrer" class="usa-link text-bold">forense.sha256.us</a> se encuentra respaldada por el compendio de leyes informáticas venezolanas y estándares internacionales resguardados con verificación criptográfica <strong>SHA-256</strong> en nuestro repositorio normativo.
-			</p>
+
+			<!-- Explicación en Lenguaje Claro para Todo Público -->
+			<div class="usa-summary-box margin-bottom-3" role="region" aria-labelledby="summary-normativa-claro">
+				<div class="usa-summary-box__body">
+					<h2 class="usa-summary-box__heading font-sans-sm" id="summary-normativa-claro">
+						¿Por qué es importante esta sección para tu caso?
+					</h2>
+					<div class="usa-summary-box__text font-sans-xs">
+						<p class="margin-top-0 margin-bottom-1">
+							<strong>Si eres cliente o particular:</strong> Aquí puedes comprobar que nuestro trabajo cumple con todas las leyes de Venezuela y estándares internacionales para que ningún juez o contraparte pueda rechazar tu prueba digital.
+						</p>
+						<p class="margin-0">
+							<strong>Si eres abogado, juez, fiscal o perito:</strong> Aquí tienes acceso directo a los 28 instrumentos legales y técnicos verificados con <strong>SHA-256</strong>, el flujo técnico completo de <strong>6 fases (F0 a F5)</strong> y las <strong>13 Planillas en formato Folio</strong> de <a href={FORENSE_PORTAL_URL} target="_blank" rel="noopener noreferrer" class="usa-link text-bold">forense.sha256.us</a>.
+						</p>
+					</div>
+				</div>
+			</div>
 
 			<div class="bg-primary-darker text-white padding-3 radius-md border-left-05 border-primary margin-bottom-3">
 				<div class="grid-row grid-gap">
 					<div class="grid-col-6 tablet:grid-col-3 margin-bottom-2 tablet:margin-bottom-0">
 						<span class="display-block font-mono-lg text-bold text-accent-cool">6 Fases</span>
-						<span class="display-block font-sans-2xs text-base-lightest">Ciclo ISO (F0 a F5)</span>
+						<span class="display-block font-sans-2xs text-base-lightest">Ciclo Técnico ISO (F0 a F5)</span>
 					</div>
 					<div class="grid-col-6 tablet:grid-col-3 margin-bottom-2 tablet:margin-bottom-0">
 						<span class="display-block font-mono-lg text-bold text-accent-cool">13 Actas</span>
@@ -49,16 +63,16 @@ const normativaPills: PillItem[] = [
 					</div>
 					<div class="grid-col-6 tablet:grid-col-3">
 						<span class="display-block font-mono-lg text-bold text-accent-cool">28 Normas</span>
-						<span class="display-block font-sans-2xs text-base-lightest">Carpeta /Informatica/ SHA-256</span>
+						<span class="display-block font-sans-2xs text-base-lightest">Leyes Venezolanas e ISO/NIST</span>
 					</div>
 					<div class="grid-col-6 tablet:grid-col-3">
 						<span class="display-block font-mono-lg text-bold text-accent-cool">Art. 187</span>
-						<span class="display-block font-sans-2xs text-base-lightest">COPP &amp; MUCC-2017 (PRCC)</span>
+						<span class="display-block font-sans-2xs text-base-lightest">Cadena de Custodia Oficial</span>
 					</div>
 				</div>
 			</div>
 
-			<PillNav items={normativaPills} />
+			<PillNav items={normativaPills} label="Explora el respaldo jurídico y técnico por sección:" />
 		</div>
 	</div>
 
@@ -68,9 +82,9 @@ const normativaPills: PillItem[] = [
 	<FolioFormsSection id="planillas-folio" />
 
 	<CtaBanner
-		title="¿Necesitas sustentar una prueba digital con validez procesal plena?"
-		sub="Nuestro gabinete pericial aplica el Ciclo ISO F0–F5 y emite las Planillas Oficiales en Folio listas para su consignación ante tribunales."
-		buttonText="Solicitar Peritaje Forense"
+		title="¿Necesitas presentar una prueba digital con validez legal plena?"
+		sub="Nuestro equipo se encarga de aplicar todo este respaldo legal y técnico por ti para entregarte un informe claro, sólido y listo para el tribunal."
+		buttonText="Consultar mi Caso"
 		buttonHref="/contacto"
 	/>
 </BaseLayout>

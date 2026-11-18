@@ -95,10 +95,54 @@ export interface TrustBarItem {
 }
 
 export const TRUST_ITEMS: TrustBarItem[] = [
-	{ icon: 'court', text: 'Admisibilidad Judicial (COPP Art. 187 & LMDFE)' },
-	{ icon: 'hash', text: 'Sellado Génesis SHA-256 (FIPS 180-4)' },
-	{ icon: 'chain', text: 'Cadena de Custodia Oficial (MUCC-2017 & PRCC)' },
-	{ icon: 'shield', text: 'Ciclo ISO F0–F5 (ISO/IEC 27037 · 27042 · NIST)' },
+	{ icon: 'court', text: 'Válido en Tribunales y Juicios' },
+	{ icon: 'shield', text: 'Tu Equipo Seguro (Sin Borrar tus Datos)' },
+	{ icon: 'hash', text: 'Sello Digital Inalterable SHA-256' },
+	{ icon: 'chain', text: 'Explicación Clara sin Tecnicismos' },
+];
+
+export interface ClientSimpleStep {
+	stepNumber: string;
+	badgeTag: string;
+	title: string;
+	description: string;
+	bullets: string[];
+}
+
+export const CLIENT_SIMPLE_STEPS: ClientSimpleStep[] = [
+	{
+		stepNumber: '1',
+		badgeTag: 'PASO 1 · ORIENTACIÓN INICIAL',
+		title: 'Cuéntanos tu situación en palabras sencillas',
+		description:
+			'Nos explicas por WhatsApp o en consulta qué ocurrió y qué necesitas demostrar (mensajes, audios, correos, documentos o equipos). Te orientamos sin tecnicismos sobre cómo podemos ayudarte.',
+		bullets: [
+			'Atención confidencial para personas, abogados y empresas',
+			'Te indicamos qué hacer para no perder ni dañar tu prueba digital',
+		],
+	},
+	{
+		stepNumber: '2',
+		badgeTag: 'PASO 2 · REVISIÓN SEGURA',
+		title: 'Extraemos y protegemos tu prueba sin alterar tu equipo',
+		description:
+			'Revisamos tu teléfono, documento o computadora en nuestro laboratorio con equipos especializados que leen la información sin borrar ni modificar tus archivos originales, devolviéndote tu dispositivo rápidamente.',
+		bullets: [
+			'Tu teléfono o computadora nunca sufre alteraciones ni pérdida de datos',
+			'Sellamos digitalmente la evidencia (SHA-256) para que nadie pueda cuestionarla',
+		],
+	},
+	{
+		stepNumber: '3',
+		badgeTag: 'PASO 3 · INFORME LEGAL',
+		title: 'Recibes tu informe oficial listo para el juez o tribunal',
+		description:
+			'Te entregamos el informe pericial firmado y sellado con conclusiones claras y comprensibles, respaldado por todas las leyes vigentes para que tú y tu abogado lo presenten con total seguridad.',
+		bullets: [
+			'Conclusiones redactadas en lenguaje claro para jueces, abogados y clientes',
+			'Incluye todo el respaldo legal y cadena de custodia oficial si vas a juicio',
+		],
+	},
 ];
 
 export interface TeamMember {
@@ -1036,57 +1080,57 @@ export const STANDARDS = [
 export const CORE_SERVICES = [
 	{
 		id: 'informatica-forense',
-		tag: 'SERVICIO PRINCIPAL · F0–F5',
-		title: 'Informática Forense y Peritajes Judiciales',
-		sub: 'Dictámenes Periciales con Validez Procesal (COPP Arts. 187 y 223–225)',
+		tag: 'JUICIOS Y TRIBUNALES',
+		title: 'Pruebas Digitales e Informes para Juicios',
+		sub: 'Para casos laborales, civiles, familiares, mercantiles y penales',
 		desc: 'Ejecución del Ciclo Pericial ISO de 6 Fases (F0 a F5): adquisición bit a bit con Write-Blockers, sellado Génesis SHA-256, Planilla PRCC (MUCC-2017) y Dictamen Pericial Oficial en Folio.',
-		simpleDesc: 'Validamos y certificamos pruebas digitales con las 13 planillas oficiales en Folio para que un juez o tribunal las admita legalmente en tu juicio o demanda.',
+		simpleDesc: 'Convertimos tus mensajes, correos, transferencias o archivos en una prueba legal certificada para que el juez la acepte en tu demanda o defensa.',
 		cases: [
-			'Pruebas digitales certificadas bajo COPP Art. 187 y LMDFE Arts. 4 y 7',
-			'Cadena de custodia PRCC (MUCC-2017 G.O. 41.247) y Hash Génesis SHA-256',
-			'Dictamen firmado por gabinete pericial con comparecencia en tribunales',
+			'Demostrar despidos, acuerdos, deudas o incumplimientos en un juicio',
+			'Evitar que la otra parte diga que tus pruebas son falsas o editadas',
+			'Informe oficial firmado por peritos que pueden defender tu caso en el tribunal',
 		],
 		href: '/servicios#forense',
 	},
 	{
 		id: 'moviles',
-		tag: 'FORENSE MÓVIL · NIST 800-101',
-		title: 'Extracción y Certificación de Dispositivos Móviles',
-		sub: 'Smartphones, WhatsApp, Notas de Voz (Opus/FFT) y Bases SQLite',
+		tag: 'WHATSAPP Y CELULARES',
+		title: 'Certificación de WhatsApp, Notas de Voz y Teléfonos',
+		sub: 'Chats, audios, fotos, llamadas y mensajes borrados',
 		desc: 'Extracción lógica y física en aislamiento Faraday, correlación de bases de datos SQLite (msgstore.db / wa.db), análisis espectral de notas de voz y contraste heurístico UX vs. SQLite.',
-		simpleDesc: 'Extraemos y certificamos conversaciones de WhatsApp, notas de voz, fotos y mensajes borrados de teléfonos celulares con validez legal plena.',
+		simpleDesc: 'Extraemos y certificamos lo que realmente se envió o recibió en un teléfono celular, incluso si intentaron borrar los mensajes.',
 		cases: [
-			'Extracción de bases de datos SQLite (msgstore.db) de WhatsApp y Telegram',
-			'Peritaje acústico espectral FFT de notas de voz y metadatos EXIF/ELA de fotos',
-			'Certificación bajo LMDFE G.O. 37.148, ISO/IEC 27037, ISO/IEC 27042 y NIST SP 800-101',
+			'Conversaciones de WhatsApp, Telegram o redes sociales',
+			'Verificar que una nota de voz o grabación es real y no fue cortada ni editada',
+			'Comprobar la fecha, hora y ubicación real de una fotografía o video',
 		],
 		href: '/servicios#moviles',
 	},
 	{
 		id: 'almacenamiento',
-		tag: 'LABORATORIO DE DATOS · ISO 27037',
-		title: 'Recuperación y Análisis Forense de Almacenamiento',
-		sub: 'Discos HDD, SSD, NVMe, Memorias Flash, Servidores y RAID',
+		tag: 'COMPUTADORAS Y DISCOS',
+		title: 'Recuperación de Archivos y Revisión de Computadoras',
+		sub: 'Discos duros, laptops, memorias USB y servidores de empresas',
 		desc: 'Adquisición por consignación con bloqueadores de escritura, preservación según el Orden de Volatilidad (RFC 3227), recuperación de particiones y sanitización NIST SP 800-88.',
-		simpleDesc: 'Recuperamos y clonamos archivos críticos de discos duros, memorias USB, computadoras o servidores dañados o intervenidos sin alterar el original.',
+		simpleDesc: 'Recuperamos información importante de equipos dañados o formateados y demostramos si alguien entró sin permiso a tu computadora.',
 		cases: [
-			'Clonado bit a bit con Write-Blockers (ISO/IEC 27037 y ACPO Principio 1)',
-			'Investigación de acceso indebido o sabotaje de sistemas (LEDI Arts. 6 y 7)',
-			'Sanitización criptográfica (Crypto-Erase NIST SP 800-88) de copias temporales',
+			'Archivos, contabilidad o documentos borrados por error o sabotaje',
+			'Discos duros o memorias USB que dejaron de funcionar',
+			'Investigar robos de información o accesos no autorizados en tu empresa',
 		],
 		href: '/servicios#almacenamiento',
 	},
 	{
 		id: 'contratos-digitales',
-		tag: 'AUDITORÍA DOCUMENTAL · LMDFE',
-		title: 'Peritaje de Contratos, Correos y Documentos Electrónicos',
-		sub: 'Autenticidad PDF, Firmas Electrónicas (SUSCERTE PKI) y Cabeceras MIME',
+		tag: 'DOCUMENTOS PDF Y CORREOS',
+		title: 'Verificación de Contratos PDF, Correos y Estafas',
+		sub: 'Detección de documentos alterados, firmas falsas y correos suplantados',
 		desc: 'Auditoría técnica de integridad documental conforme a la LMDFE (G.O. 37.148), validación de certificados X.509 y certificación cruzada (NORMA-063 SUSCERTE), cabeceras SPF/DKIM/DMARC y metadatos XMP.',
-		simpleDesc: 'Demostramos científicamente si un contrato PDF, firma electrónica, captura o correo electrónico es auténtico o fue falsificado o modificado.',
+		simpleDesc: 'Comprobamos científicamente si un contrato en PDF, recibo de pago, firma electrónica o correo es auténtico o fue manipulado.',
 		cases: [
-			'Validez jurídica y equivalencia funcional (LMDFE Arts. 4, 7, 8 y 16)',
-			'Auditoría de certificados digitales y sellos de tiempo (Normativa SUSCERTE)',
-			'Trazabilidad de cabeceras de correo (SPF, DKIM, DMARC) ante estafas o repudio',
+			'Descubrir si un contrato, factura o recibo en PDF fue modificado',
+			'Rastrear el origen real de un correo electrónico en casos de fraude o estafa',
+			'Validar firmas electrónicas y acuerdos comerciales digitales',
 		],
 		href: '/servicios#documentos',
 	},

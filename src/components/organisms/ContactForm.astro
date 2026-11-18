@@ -5,10 +5,10 @@
 <!-- USWDS: Form | https://designsystem.digital.gov/components/form/ -->
 <div class="bg-white padding-4 border-1px border-base-lighter">
 	<h2 class="font-sans-xl text-bold text-primary-darker margin-top-0 margin-bottom-1">
-		Envíanos los datos de tu caso
+		Cuéntanos tu caso en palabras sencillas
 	</h2>
 	<p class="font-sans-xs text-base-dark margin-bottom-3">
-		Completa el siguiente formulario para canalizar tu solicitud por WhatsApp o Correo Institucional:
+		No necesitas usar términos técnicos. Completa estos datos básicos y elige si prefieres enviarnos tu consulta por WhatsApp o por Correo Electrónico:
 	</p>
 
 	<!-- USWDS: Alert | https://designsystem.digital.gov/components/alert/ -->
@@ -22,9 +22,9 @@
 
 	<form class="usa-form maxw-full" id="contactForm">
 		<fieldset class="usa-fieldset">
-			<legend class="usa-legend">Formulario de Recepción Pericial</legend>
+			<legend class="usa-legend">Solicitud de Orientación o Peritaje</legend>
 
-			<label class="usa-label" for="nombre">Nombre Completo o Razón Social</label>
+			<label class="usa-label" for="nombre">Tu Nombre o Empresa</label>
 			<span class="usa-hint" id="nombre-hint">Ej: Abg. Carlos Mendoza o Tu Nombre</span>
 			<input class="usa-input" id="nombre" name="nombre" type="text" aria-describedby="nombre-hint" required />
 
@@ -36,16 +36,16 @@
 			<span class="usa-hint" id="telefono-hint">+57 316 3931945</span>
 			<input class="usa-input" id="telefono" name="telefono" type="tel" aria-describedby="telefono-hint" />
 
-			<label class="usa-label" for="servicio">¿Qué tipo de problema necesitas resolver?</label>
+			<label class="usa-label" for="servicio">¿Qué necesitas certificar o resolver?</label>
 			<select class="usa-select" id="servicio" name="servicio">
-				<option value="Peritaje Judicial de Informática Forense">Peritaje Judicial para Juicio (Pruebas digitales)</option>
-				<option value="Peritaje de Dispositivo Móvil (WhatsApp, Audios, etc.)">Certificación de WhatsApp, Teléfono o Mensajes</option>
-				<option value="Reparación / Extracción de Disco o Servidor">Recuperación de Archivos en Disco o Memoria dañada</option>
-				<option value="Auditoría de Contratos Digitales o Correos">Verificación de Contrato PDF, Firma o Correo</option>
-				<option value="Otra consulta pericial">Otra consulta o asesoría técnica</option>
+				<option value="Mensajes o audios de WhatsApp / Teléfono celular">Mensajes o audios de WhatsApp / Teléfono celular</option>
+				<option value="Informe pericial para un juicio o tribunal">Informe pericial para un juicio o tribunal</option>
+				<option value="Contrato PDF, firma electrónica o correo falso">Contrato PDF, firma electrónica o correo falso</option>
+				<option value="Computadora, disco duro o memoria con archivos dañados o borrados">Computadora, disco duro o memoria con archivos dañados o borrados</option>
+				<option value="Tengo dudas y necesito orientación sobre mi caso">Tengo dudas y necesito orientación sobre mi caso</option>
 			</select>
 
-			<label class="usa-label" for="mensaje">Detalles de la situación</label>
+			<label class="usa-label" for="mensaje">¿Qué ocurrió y cómo podemos ayudarte?</label>
 			<span class="usa-hint" id="mensaje-hint">Describe brevemente qué ocurrió, qué archivos necesitas o si tienes una fecha límite de tribunal...</span>
 			<textarea class="usa-textarea" id="mensaje" name="mensaje" rows="4" aria-describedby="mensaje-hint" required></textarea>
 
@@ -105,11 +105,11 @@
 			if (!data) return;
 
 			const text =
-				`*Solicitud de Peritaje en sha256.us*\n\n` +
+				`*Consulta en sha256.us*\n\n` +
 				`*Nombre:* ${data.nombre}\n` +
 				`*Correo:* ${data.email}\n` +
 				`*Teléfono:* ${data.telefono || 'No indicado'}\n` +
-				`*Servicio Requerido:* ${data.servicio}\n\n` +
+				`*Necesidad:* ${data.servicio}\n\n` +
 				`*Detalles del caso:*\n${data.mensaje}`;
 
 			const waUrl = `https://wa.me/573163931945?text=${encodeURIComponent(text)}`;
@@ -120,12 +120,12 @@
 			const data = getFormData();
 			if (!data) return;
 
-			const subject = encodeURIComponent(`[Peritaje sha256.us] ${data.servicio} - ${data.nombre}`);
+			const subject = encodeURIComponent(`[Consulta sha256.us] ${data.servicio} - ${data.nombre}`);
 			const body = encodeURIComponent(
 				`Nombre: ${data.nombre}\n` +
 				`Correo: ${data.email}\n` +
 				`Teléfono: ${data.telefono || 'No indicado'}\n` +
-				`Servicio: ${data.servicio}\n\n` +
+				`Necesidad: ${data.servicio}\n\n` +
 				`Detalles del caso:\n${data.mensaje}`
 			);
 

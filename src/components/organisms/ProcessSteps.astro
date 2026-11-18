@@ -2,71 +2,123 @@
 // USWDS: Summary Box & Process List | https://designsystem.digital.gov/components/process-list/
 import SectionHeader from '../atoms/SectionHeader.astro';
 import ProcessStepCard from '../molecules/ProcessStepCard.astro';
-import { ISO_FORENSIC_PHASES, FORENSE_PORTAL_URL } from '../../consts';
+import { ISO_FORENSIC_PHASES, CLIENT_SIMPLE_STEPS, FORENSE_PORTAL_URL } from '../../consts';
 
 export interface Props {
   detailed?: boolean;
   id?: string;
 }
 
-const { detailed = true, id = 'ciclo-f0-f5' } = Astro.props;
+const { detailed = false, id = 'ciclo-f0-f5' } = Astro.props;
 ---
 
 <!-- USWDS: Process List | https://designsystem.digital.gov/components/process-list/ -->
 <section id={id} class="usa-section usa-section--light">
   <div class="grid-container">
-    <SectionHeader
-      tag="CICLO PERICIAL ISO DE 6 FASES (F0 A F5)"
-      tagVariant="secondary"
-      title="Flujo de Trabajo Forense y Cadena de Custodia Auditada"
-      sub="Procedimiento científico sincronizado con el sistema oficial forense.sha256.us bajo ISO/IEC 27037, ISO/IEC 27042, NIST SP 800-86, MUCC-2017 y el Artículo 187 del COPP."
-    />
-
-    <!-- USWDS: Summary Box | https://designsystem.digital.gov/components/summary-box/ -->
-    <div class="usa-summary-box margin-bottom-4" role="region" aria-labelledby="summary-box-forense-flujo">
-      <div class="usa-summary-box__body">
-        <h3 class="usa-summary-box__heading" id="summary-box-forense-flujo">
-          Garantía de Trazabilidad e Inalterabilidad Criptográfica (F0 &rarr; F5)
-        </h3>
-        <div class="usa-summary-box__text">
-          <p>
-            Ninguna fase del ciclo pericial puede iniciarse sin haber cerrado y firmado los controles obligatorios de la fase precedente en papel <strong>Folio (216 mm &times; 330 mm)</strong>. El dispositivo original jamás es analizado directamente: en la <strong>Fase F2</strong> se bloquea la escritura por hardware (<em>Write-Blocker</em>), se genera el <strong>Hash Génesis SHA-256</strong> y el equipo físico se resguarda o devuelve al titular mientras el laboratorio opera sobre la copia forense verificada.
-          </p>
-          <ul class="usa-button-group margin-top-2">
-            <li class="usa-button-group__item">
-              <a
-                href={`${FORENSE_PORTAL_URL}/flujo`}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="usa-button"
-              >
-                Ver Flujo Interactivo en forense.sha256.us/flujo
-              </a>
-            </li>
-            <li class="usa-button-group__item">
-              <a href="/normativa#planillas-folio" class="usa-button usa-button--outline">
-                Explorar las 13 Planillas Oficiales en Folio &rarr;
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <ol class="usa-process-list">
-      {ISO_FORENSIC_PHASES.map((phase) => (
-        <ProcessStepCard
-          stepNumber={phase.stepNumber}
-          badgeTag={phase.badgeTag}
-          badgeVariant={phase.badgeVariant}
-          title={phase.title}
-          description={phase.description}
-          norms={phase.norms}
-          responsible={detailed ? phase.responsible : undefined}
-          controls={detailed ? phase.controls : []}
-          planillas={phase.planillas}
+    {detailed ? (
+      <>
+        <SectionHeader
+          tag="CICLO PERICIAL ISO DE 6 FASES (F0 A F5)"
+          tagVariant="secondary"
+          title="Flujo de Trabajo Forense y Cadena de Custodia Auditada"
+          sub="Procedimiento científico sincronizado con el sistema oficial forense.sha256.us bajo ISO/IEC 27037, ISO/IEC 27042, NIST SP 800-86, MUCC-2017 y el Artículo 187 del COPP."
         />
-      ))}
-    </ol>
+
+        <!-- USWDS: Summary Box | https://designsystem.digital.gov/components/summary-box/ -->
+        <div class="usa-summary-box margin-bottom-4" role="region" aria-labelledby="summary-box-forense-flujo">
+          <div class="usa-summary-box__body">
+            <h3 class="usa-summary-box__heading" id="summary-box-forense-flujo">
+              Garantía de Trazabilidad e Inalterabilidad Criptográfica (F0 &rarr; F5)
+            </h3>
+            <div class="usa-summary-box__text">
+              <p>
+                Ninguna fase del ciclo pericial puede iniciarse sin haber cerrado y firmado los controles obligatorios de la fase precedente en papel <strong>Folio (216 mm &times; 330 mm)</strong>. El dispositivo original jamás es analizado directamente: en la <strong>Fase F2</strong> se bloquea la escritura por hardware (<em>Write-Blocker</em>), se genera el <strong>Hash Génesis SHA-256</strong> y el equipo físico se resguarda o devuelve al titular mientras el laboratorio opera sobre la copia forense verificada.
+              </p>
+              <ul class="usa-button-group margin-top-2">
+                <li class="usa-button-group__item">
+                  <a
+                    href={`${FORENSE_PORTAL_URL}/flujo`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="usa-button"
+                  >
+                    Ver Flujo Interactivo en forense.sha256.us/flujo
+                  </a>
+                </li>
+                <li class="usa-button-group__item">
+                  <a href="/normativa#planillas-folio" class="usa-button usa-button--outline">
+                    Explorar las 13 Planillas Oficiales en Folio &rarr;
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <ol class="usa-process-list">
+          {ISO_FORENSIC_PHASES.map((phase) => (
+            <ProcessStepCard
+              stepNumber={phase.stepNumber}
+              badgeTag={phase.badgeTag}
+              badgeVariant={phase.badgeVariant}
+              title={phase.title}
+              description={phase.description}
+              norms={phase.norms}
+              responsible={phase.responsible}
+              controls={phase.controls}
+              planillas={phase.planillas}
+            />
+          ))}
+        </ol>
+      </>
+    ) : (
+      <>
+        <SectionHeader
+          tag="PROCESO FÁCIL Y TRANSPARENTE"
+          tagVariant="secondary"
+          title="¿Cómo trabajamos tu caso en 3 simples pasos?"
+          sub="Nos encargamos de toda la complejidad técnica y legal en nuestro laboratorio para que tú solo tengas que seguir tres pasos sencillos."
+        />
+
+        <ol class="usa-process-list">
+          {CLIENT_SIMPLE_STEPS.map((step) => (
+            <ProcessStepCard
+              stepNumber={step.stepNumber}
+              badgeTag={step.badgeTag}
+              badgeVariant="primary"
+              title={step.title}
+              description={step.description}
+              controls={step.bullets}
+            />
+          ))}
+        </ol>
+
+        <!-- USWDS: Summary Box | https://designsystem.digital.gov/components/summary-box/ -->
+        <div class="usa-summary-box margin-top-4" role="region" aria-labelledby="summary-box-proceso-tecnico">
+          <div class="usa-summary-box__body">
+            <h3 class="usa-summary-box__heading" id="summary-box-proceso-tecnico">
+              ¿Eres abogado, juez o deseas conocer el protocolo técnico completo?
+            </h3>
+            <div class="usa-summary-box__text">
+              <p>
+                Internamente, cada caso cumple con nuestro <strong>Ciclo Pericial ISO de 6 Fases (F0 a F5)</strong> y las <strong>13 Planillas Oficiales de Cadena de Custodia en Folio</strong> exigidas por los tribunales venezolanos.
+              </p>
+              <ul class="usa-button-group margin-top-2">
+                <li class="usa-button-group__item">
+                  <a href="/normativa#ciclo-f0-f5" class="usa-button">
+                    Ver Ciclo Técnico Completo (F0–F5) y 13 Planillas &rarr;
+                  </a>
+                </li>
+                <li class="usa-button-group__item">
+                  <a href="/contacto" class="usa-button usa-button--outline">
+                    Consultar mi Caso Ahora
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </>
+    )}
   </div>
 </section>

@@ -8,38 +8,36 @@ import ServiceMoviles from '../components/organisms/services/ServiceMoviles.astr
 import ServiceAlmacenamiento from '../components/organisms/services/ServiceAlmacenamiento.astro';
 import ServiceDocumentos from '../components/organisms/services/ServiceDocumentos.astro';
 import ProcessSteps from '../components/organisms/ProcessSteps.astro';
-import FolioFormsSection from '../components/organisms/FolioFormsSection.astro';
 import CtaBanner from '../components/organisms/CtaBanner.astro';
 
 const servicePills: PillItem[] = [
-	{ href: '#forense', label: 'Pruebas para Juicios', iconName: 'account_balance' },
-	{ href: '#moviles', label: 'WhatsApp y Móviles', iconName: 'phone' },
-	{ href: '#almacenamiento', label: 'Discos y Memorias', iconName: 'folder_open' },
-	{ href: '#documentos', label: 'Contratos y Correos PDF', iconName: 'file_present' },
-	{ href: '#ciclo-f0-f5', label: 'Ciclo ISO F0–F5', iconName: 'verified_user' },
-	{ href: '#planillas-folio', label: '13 Planillas Folio', iconName: 'description' },
+	{ href: '#forense', label: '1. Juicios y Tribunales', iconName: 'account_balance' },
+	{ href: '#moviles', label: '2. WhatsApp y Celulares', iconName: 'phone' },
+	{ href: '#almacenamiento', label: '3. Computadoras y Discos', iconName: 'folder_open' },
+	{ href: '#documentos', label: '4. Contratos PDF y Correos', iconName: 'file_present' },
+	{ href: '#como-trabajamos', label: '5. ¿Cómo trabajamos?', iconName: 'verified_user' },
 ];
 ---
 
 <!-- USWDS: Documentation page template | https://designsystem.digital.gov/templates/documentation-page/ -->
 <BaseLayout
 	title={`Peritaje Digital Judicial y Servicios Forenses en Venezuela | ${COMPANY.name}`}
-	description={`Servicios periciales de informática forense en Venezuela: dictámenes judiciales, peritaje de WhatsApp y móviles, recuperación de discos dañados y auditoría de documentos electrónicos bajo normas ISO, NIST, LMDFE y MUCC-2017.`}
+	description={`Servicios de pruebas digitales e informática forense en Venezuela: certificación de WhatsApp y notas de voz, informes para juicios, recuperación de discos y verificación de contratos PDF.`}
 	mainClass="padding-top-4 tablet:padding-top-6"
 >
 	<div class="grid-container">
 		<Breadcrumb items={[{ label: 'Servicios Forenses' }]} />
 
 		<div class="margin-bottom-4 border-bottom-2px border-base-lighter padding-bottom-3">
-			<span class="usa-tag bg-primary text-white margin-bottom-1 font-sans-3xs">DIVISIONES PERICIALES ESPECIALIZADAS</span>
+			<span class="usa-tag bg-primary text-white margin-bottom-1 font-sans-3xs">SOLUCIONES PARA PERSONAS, ABOGADOS Y EMPRESAS</span>
 			<h1 class="font-sans-2xl tablet:font-sans-3xl text-bold text-primary-darker margin-top-1 margin-bottom-2">
-				Peritaje Digital Judicial y Servicios de Informática Forense en Venezuela
+				¿En qué podemos ayudarte? Servicios de Pruebas Digitales y Peritaje
 			</h1>
 			<p class="font-sans-md text-base-dark line-height-sans-4 measure-6 margin-bottom-3">
-				Metodologías científicas de laboratorio aplicadas por el equipo forense multidisciplinario de {COMPANY.name} bajo estrictos protocolos técnicos internacionales (ISO/IEC 27037, ISO/IEC 27042, NIST SP 800-86/101 y MUCC-2017) y leyes especiales (LMDFE G.O. 37.148, LEDI G.O. 37.313 y COPP Arts. 187 y 223–225) para extraer, analizar y certificar la evidencia probatoria requerida en juicios.
+				Selecciona el tipo de problema que necesitas resolver. Hemos organizado cada servicio con una explicación sencilla para ti y una ficha desplegable con el respaldo legal y técnico para tu abogado o el juez.
 			</p>
 
-			<PillNav items={servicePills} />
+			<PillNav items={servicePills} label="Selecciona tu necesidad para ir directamente:" />
 		</div>
 
 		<ServiceForense />
@@ -48,7 +46,6 @@ const servicePills: PillItem[] = [
 		<ServiceDocumentos />
 	</div>
 
-	<ProcessSteps detailed={true} id="ciclo-f0-f5" />
-	<FolioFormsSection id="planillas-folio" />
+	<ProcessSteps detailed={false} id="como-trabajamos" />
 	<CtaBanner />
 </BaseLayout>

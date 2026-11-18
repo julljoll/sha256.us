@@ -1,61 +1,85 @@
 ---
-// USWDS: Card Group & Summary Box | https://designsystem.digital.gov/components/card/
+// USWDS: Summary Box & Icon List | https://designsystem.digital.gov/components/summary-box/
 import SectionHeader from '../atoms/SectionHeader.astro';
-import StandardCard from '../molecules/StandardCard.astro';
-import { STANDARDS, FORENSE_PORTAL_URL } from '../../consts';
+import Icon from '../atoms/Icon.astro';
+import { FORENSE_PORTAL_URL } from '../../consts';
 ---
 
-<!-- USWDS: Card Group | https://designsystem.digital.gov/components/card/ -->
+<!-- USWDS: Summary Box & Icon List | https://designsystem.digital.gov/components/summary-box/ -->
 <section class="usa-section">
   <div class="grid-container">
     <SectionHeader
-      tag="SUSTENTO LEGAL Y CIENTÍFICO (/Informatica/)"
+      tag="RESPALDO LEGAL GARANTIZADO"
       tagVariant="primary"
-      title="Leyes Informáticas y Normas Técnicas Oficiales"
-      sub="La admisibilidad jurídica de la evidencia digital depende del rigor normativo. Todas nuestras actuaciones están sustentadas en 28 instrumentos legales y técnicos verificados con Hash SHA-256."
+      title="¿Por qué nuestros informes sí son aceptados en un juicio?"
+      sub="Una simple captura de pantalla o impresión puede ser rechazada fácilmente en un tribunal. Nosotros certificamos tu evidencia cumpliendo todas las leyes venezolanas y normas internacionales."
     />
 
-    <ul class="usa-card-group">
-      {STANDARDS.map((std) => (
-        <li class="usa-card tablet:grid-col-6 desktop:grid-col-4">
-          <StandardCard
-            tag={std.tag}
-            code={std.code}
-            title={std.title}
-            desc={std.desc}
-            hash={std.hash}
-          />
-        </li>
-      ))}
-    </ul>
-
-    <!-- USWDS: Summary Box | https://designsystem.digital.gov/components/summary-box/ -->
-    <div class="usa-summary-box margin-top-4" role="region" aria-labelledby="summary-box-piramide">
-      <div class="usa-summary-box__body">
-        <h3 class="usa-summary-box__heading" id="summary-box-piramide">
-          PIRÁMIDE NORMATIVA COPP ART. 225 &bull; REPOSITORIO /Informatica/
-        </h3>
-        <div class="usa-summary-box__text">
-          <p>
-            Consulta la <strong>Pirámide de Aplicación y Supletoriedad</strong> (CRBV, COPP, CPC, LMDFE, LEDI, MUCC-2017, CENIF, SUSCERTE, LOTEL, ISO/IEC y NIST), el catálogo de las <strong>13 Planillas Oficiales en Folio</strong> y los hashes SHA-256 de cada ley informática que sustenta nuestro laboratorio.
-          </p>
-          <ul class="usa-button-group margin-top-2">
-            <li class="usa-button-group__item">
-              <a href="/normativa" class="usa-button">
-                Ver Marco Legal y 13 Planillas Folio &rarr;
-              </a>
+    <div class="grid-row grid-gap">
+      <div class="tablet:grid-col-6 margin-bottom-3">
+        <div class="bg-white padding-3 border-1px border-base-lighter height-full">
+          <h3 class="font-sans-md text-bold text-primary-darker margin-top-0 margin-bottom-2">
+            Lo que garantizamos para tu tranquilidad
+          </h3>
+          <ul class="usa-icon-list">
+            <li class="usa-icon-list__item">
+              <div class="usa-icon-list__icon text-primary">
+                <Icon name="check_circle" />
+              </div>
+              <div class="usa-icon-list__content font-sans-xs">
+                <strong>Validez legal plena en Venezuela:</strong> Cumplimos con la Ley sobre Mensajes de Datos y Firmas Electrónicas (LMDFE) y el Código Orgánico Procesal Penal (COPP).
+              </div>
             </li>
-            <li class="usa-button-group__item">
-              <a
-                href={`${FORENSE_PORTAL_URL}/normativa`}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="usa-button usa-button--outline"
-              >
-                Portal Forense
-              </a>
+            <li class="usa-icon-list__item">
+              <div class="usa-icon-list__icon text-primary">
+                <Icon name="check_circle" />
+              </div>
+              <div class="usa-icon-list__content font-sans-xs">
+                <strong>Cadena de Custodia Oficial:</strong> Registramos cada paso en las planillas oficiales requeridas para demostrar que nadie alteró tu evidencia.
+              </div>
+            </li>
+            <li class="usa-icon-list__item">
+              <div class="usa-icon-list__icon text-primary">
+                <Icon name="check_circle" />
+              </div>
+              <div class="usa-icon-list__content font-sans-xs">
+                <strong>Respeto a tu privacidad:</strong> Solo certificamos la información relacionada con tu caso, bajo autorización firmada y confidencialidad absoluta.
+              </div>
             </li>
           </ul>
+        </div>
+      </div>
+
+      <div class="tablet:grid-col-6 margin-bottom-3">
+        <!-- USWDS: Summary Box | https://designsystem.digital.gov/components/summary-box/ -->
+        <div class="usa-summary-box height-full margin-0" role="region" aria-labelledby="summary-box-piramide">
+          <div class="usa-summary-box__body">
+            <h3 class="usa-summary-box__heading" id="summary-box-piramide">
+              Biblioteca Legal y Técnica para Abogados y Jueces
+            </h3>
+            <div class="usa-summary-box__text">
+              <p>
+                Si eres abogado, fiscal, juez o perito, hemos dispuesto una sección dedicada con las <strong>28 leyes informáticas y estándares ISO/NIST</strong>, la <strong>Pirámide de Aplicación (COPP Art. 225)</strong> y las <strong>13 Planillas Oficiales en Folio</strong>.
+              </p>
+              <ul class="usa-button-group margin-top-2">
+                <li class="usa-button-group__item">
+                  <a href="/normativa" class="usa-button">
+                    Consultar Marco Legal y Normas &rarr;
+                  </a>
+                </li>
+                <li class="usa-button-group__item">
+                  <a
+                    href={`${FORENSE_PORTAL_URL}/normativa`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="usa-button usa-button--outline"
+                  >
+                    Portal Forense
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
     </div>

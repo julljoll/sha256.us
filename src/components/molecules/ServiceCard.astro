@@ -19,9 +19,11 @@ export interface Props {
 const { service } = Astro.props;
 
 const serviceIconMap: Record<string, IconName> = {
+  'informatica-forense': 'account_balance',
   forense: 'account_balance',
   moviles: 'phone',
   almacenamiento: 'folder_open',
+  'contratos-digitales': 'file_present',
   documentos: 'file_present',
 };
 const cardIconName: IconName = serviceIconMap[service.id] || 'security';
@@ -37,12 +39,13 @@ const cardIconName: IconName = serviceIconMap[service.id] || 'security';
       <Icon name={cardIconName} class="margin-right-05 text-primary" />
       {service.title}
     </h3>
+    <p class="font-sans-2xs text-base-dark margin-top-05 margin-bottom-0">{service.sub}</p>
   </div>
   <div class="usa-card__body">
     <!-- USWDS: Summary Box | https://designsystem.digital.gov/components/summary-box/ -->
     <div class="usa-summary-box margin-y-2" role="region" aria-label={service.title}>
       <div class="usa-summary-box__body">
-        <p class="usa-summary-box__heading font-sans-xs">Alcance pericial directo:</p>
+        <p class="usa-summary-box__heading font-sans-xs">¿Cómo te ayudamos?</p>
         <div class="usa-summary-box__text">
           <p class="font-sans-2xs margin-0">{service.simpleDesc}</p>
         </div>
@@ -50,7 +53,7 @@ const cardIconName: IconName = serviceIconMap[service.id] || 'security';
     </div>
 
     <p class="font-sans-3xs text-bold text-base-dark text-uppercase margin-top-2 margin-bottom-1">
-      Casos frecuentes que resolvemos:
+      Ejemplos de situaciones que resolvemos:
     </p>
     <!-- USWDS: Icon List | https://designsystem.digital.gov/components/icon-list/ -->
     <ul class="usa-icon-list">
@@ -68,7 +71,7 @@ const cardIconName: IconName = serviceIconMap[service.id] || 'security';
   </div>
   <div class="usa-card__footer">
     <a href={service.href} class="usa-button usa-button--outline width-full">
-      Ver detalles técnicos y solicitar &rarr;
+      Ver cómo funciona y solicitar &rarr;
     </a>
   </div>
 </div>
