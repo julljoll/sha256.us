@@ -21,12 +21,13 @@ function isActive(href: string) {
     <header class="usa-banner__header">
       <div class="usa-banner__inner">
         <div class="grid-col-auto">
-          <img
+          <svg
+            class="usa-icon usa-banner__header-flag text-primary"
             aria-hidden="true"
-            class="usa-banner__header-flag"
-            src="/favicon-32x32.png"
-            alt=""
-          />
+            role="img"
+          >
+            <use href="/assets/uswds/img/sprite.svg#verified_user"></use>
+          </svg>
         </div>
         <div class="grid-col-fill tablet:grid-col-auto" aria-hidden="true">
           <p class="usa-banner__header-text">
@@ -94,8 +95,26 @@ function isActive(href: string) {
   <div class="usa-navbar">
     <div class="usa-logo">
       <em class="usa-logo__text">
-        <a href="/" title={COMPANY.name}>
-          {COMPANY.name}<span class="display-none desktop:display-inline"> — Laboratorio de Informática Forense &amp; Peritaje Judicial</span>
+        <a href="/" title={COMPANY.name} class="display-flex flex-align-center">
+          <img
+            src="/logo.png"
+            alt=""
+            aria-hidden="true"
+            class="width-4 height-4 margin-right-1 desktop:display-none"
+            width="32"
+            height="32"
+          />
+          <img
+            src="/logo.png"
+            alt=""
+            aria-hidden="true"
+            class="display-none desktop:display-inline-block width-8 height-8 margin-right-2"
+            width="64"
+            height="64"
+          />
+          <span class="flex-1">
+            {COMPANY.name}<span class="display-none desktop:display-inline"> — Laboratorio de Informática Forense &amp; Peritaje Judicial</span>
+          </span>
         </a>
       </em>
     </div>
