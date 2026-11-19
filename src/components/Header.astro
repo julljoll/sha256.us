@@ -95,11 +95,33 @@ function isActive(href: string) {
     <div class="usa-logo">
       <em class="usa-logo__text">
         <a href="/" title={COMPANY.name}>
-          {COMPANY.name} — Laboratorio de Informática Forense &amp; Peritaje Judicial
+          {COMPANY.name}<span class="display-none desktop:display-inline"> — Laboratorio de Informática Forense &amp; Peritaje Judicial</span>
         </a>
       </em>
     </div>
     <button type="button" class="usa-menu-btn">Menú</button>
+  </div>
+  <!-- Barra de Acceso Rápido Móvil (Español - Inglés y WhatsApp directo en 1 toque) -->
+  <div class="desktop:display-none bg-base-lightest border-bottom-1px border-base-lighter padding-y-1">
+    <div class="grid-container display-flex flex-justify flex-align-center">
+      <LanguageSwitcher variant="header" />
+      <div class="display-flex flex-align-center">
+        <a
+          href={CONTACT.whatsapp}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="usa-button usa-button--unstyled font-sans-3xs text-bold text-primary margin-right-2"
+        >
+          WhatsApp
+        </a>
+        <a
+          href="/contacto"
+          class="usa-button usa-button--unstyled font-sans-3xs text-bold text-primary"
+        >
+          Consultar Caso
+        </a>
+      </div>
+    </div>
   </div>
   <nav aria-label="Navegación principal" class="usa-nav">
     <div class="usa-nav__inner">

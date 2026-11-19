@@ -1,6 +1,11 @@
 ---
 // USWDS: Card | https://designsystem.digital.gov/components/card/
+import { Image } from 'astro:assets';
 import Icon, { type IconName } from '../atoms/Icon.astro';
+import imgJuicios from '../../assets/services/servicio-juicios.jpg';
+import imgMoviles from '../../assets/services/servicio-moviles.jpg';
+import imgAlmacenamiento from '../../assets/services/servicio-almacenamiento.jpg';
+import imgDocumentos from '../../assets/services/servicio-documentos.jpg';
 
 export interface Props {
   service: {
@@ -27,6 +32,16 @@ const serviceIconMap: Record<string, IconName> = {
   documentos: 'file_present',
 };
 const cardIconName: IconName = serviceIconMap[service.id] || 'security';
+
+const serviceImgMap: Record<string, ImageMetadata> = {
+  'informatica-forense': imgJuicios,
+  forense: imgJuicios,
+  moviles: imgMoviles,
+  almacenamiento: imgAlmacenamiento,
+  'contratos-digitales': imgDocumentos,
+  documentos: imgDocumentos,
+};
+const cardImage = serviceImgMap[service.id];
 ---
 
 <!-- USWDS: Card | https://designsystem.digital.gov/components/card/ -->
@@ -41,6 +56,22 @@ const cardIconName: IconName = serviceIconMap[service.id] || 'security';
     </h3>
     <p class="font-sans-2xs text-base-dark margin-top-05 margin-bottom-0">{service.sub}</p>
   </div>
+  {cardImage && (
+    <div class="usa-card__media">
+      <div class="usa-card__img">
+        <Image
+          src={cardImage}
+          alt={`Ilustración visual de ${service.title}`}
+          width={640}
+          height={360}
+          format="webp"
+          quality={82}
+          loading="lazy"
+          decoding="async"
+        />
+      </div>
+    </div>
+  )}
   <div class="usa-card__body">
     <!-- USWDS: Summary Box | https://designsystem.digital.gov/components/summary-box/ -->
     <div class="usa-summary-box margin-y-2" role="region" aria-label={service.title}>

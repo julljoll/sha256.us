@@ -31,63 +31,7 @@ export const NAV_ITEMS: NavItem[] = [
 	{ href: '/contacto', label: 'Contacto' },
 ];
 
-export interface HeroSlide {
-	id: number;
-	img: string;
-	tag: string;
-	title: string;
-	desc: string;
-	cta1: { label: string; href: string };
-	cta2: { label: string; href: string };
-}
 
-export const HERO_SLIDES: HeroSlide[] = [
-	{
-		id: 1,
-		img: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=1400&q=80',
-		tag: 'LABORATORIO PERICIAL FORENSE · CICLO F0–F5',
-		title: 'Laboratorio de Informática Forense en Venezuela & Peritaje Judicial',
-		desc: 'Ejecutamos el Ciclo Pericial ISO de 6 Fases (F0 a F5) y 13 Planillas Oficiales en Folio con cadena de custodia MUCC-2017 y COPP Art. 187.',
-		cta1: { label: 'Nuestros Servicios', href: '/servicios' },
-		cta2: { label: 'Marco Legal & Proceso', href: '/normativa' },
-	},
-	{
-		id: 2,
-		img: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1400&q=80',
-		tag: 'LMDFE G.O. 37.148 · SUSCERTE PKI',
-		title: 'Análisis y Peritaje de Documentos Electrónicos y Firmas Digitales',
-		desc: 'Verificación forense de contratos digitales, firmas electrónicas y metadatos con equivalencia funcional plena (LMDFE Arts. 4, 7 y 16).',
-		cta1: { label: 'Ver Servicios Documentales', href: '/servicios#documentos' },
-		cta2: { label: 'Compendio Legal', href: '/normativa#compendio' },
-	},
-	{
-		id: 3,
-		img: 'https://images.unsplash.com/photo-1551434678-e076c223a692?w=1400&q=80',
-		tag: 'FORENSIC CHIEF COMPLIANCE OFFICER',
-		title: 'Cumplimiento Normativo ISO/IEC 27037, 27042, NIST y MUCC-2017',
-		desc: 'Trazabilidad criptográfica SHA-256 auditada, bloqueo físico de escritura (Write-Blockers) y admisibilidad probatoria ante tribunales.',
-		cta1: { label: 'Ciclo Pericial F0–F5', href: '/normativa#ciclo-f0-f5' },
-		cta2: { label: 'Solicitar Peritaje', href: '/contacto' },
-	},
-	{
-		id: 4,
-		img: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1400&q=80',
-		tag: 'ANÁLISIS DE DATOS JURÍDICOS · COPP ARTS. 223–225',
-		title: 'Extracción Forense de WhatsApp, Notas de Voz y Bases SQLite',
-		desc: 'Adquisición lógica (NIST SP 800-101), análisis espectral acústico FFT/Opus 48 kHz y certificación de mensajes en teléfonos móviles.',
-		cta1: { label: 'Forense Móvil', href: '/servicios#moviles' },
-		cta2: { label: '13 Planillas Folio', href: '/normativa#planillas-folio' },
-	},
-	{
-		id: 5,
-		img: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1400&q=80',
-		tag: 'LABORATORIO FORENSE DIGITAL · CENIF G.O. 39.847',
-		title: 'Tecnología de Punta para la Verdad Científica y Procesal',
-		desc: 'Gabinete pericial multidisciplinario acreditado para la preservación, análisis e interpretación de evidencia informática.',
-		cta1: { label: 'Conocer sha256.us', href: '/about' },
-		cta2: { label: 'Solicitar Recepción', href: '/contacto' },
-	},
-];
 
 export interface TrustBarItem {
 	icon: 'court' | 'hash' | 'chain' | 'shield';

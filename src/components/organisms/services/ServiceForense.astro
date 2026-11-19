@@ -1,6 +1,8 @@
 ---
+import { Image } from 'astro:assets';
 import Badge from '../../atoms/Badge.astro';
 import Icon from '../../atoms/Icon.astro';
+import imgForense from '../../../assets/services/servicio-juicios.jpg';
 ---
 
 <!-- USWDS: Summary box, List & Accordion | https://designsystem.digital.gov/components/accordion/ -->
@@ -61,6 +63,18 @@ import Icon from '../../atoms/Icon.astro';
       </div>
     </div>
     <div class="tablet:grid-col-4 margin-top-3 tablet:margin-top-0 display-flex flex-column flex-justify-center text-center">
+      <div class="margin-bottom-2 radius-lg overflow-hidden border-1px border-primary-light">
+        <Image
+          src={imgForense}
+          alt="Peritaje digital judicial para tribunales"
+          width={640}
+          height={360}
+          format="webp"
+          quality={82}
+          loading="lazy"
+          decoding="async"
+        />
+      </div>
       <div class="bg-primary-lighter padding-4 radius-lg width-full border-1px border-primary-light">
         <h3 class="font-sans-md text-bold text-primary-darker margin-top-0 margin-bottom-1">¿Necesitas presentar una prueba en juicio?</h3>
         <p class="font-sans-xs text-base-dark margin-bottom-2">Cuéntanos tu caso y evaluamos cómo certificar tu evidencia de forma rápida y confidencial.</p>

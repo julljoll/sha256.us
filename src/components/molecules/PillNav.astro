@@ -10,21 +10,23 @@ export interface PillItem {
 
 export interface Props {
   title?: string;
+  label?: string;
   items: PillItem[];
   class?: string;
 }
 
-const { title = 'Salta directamente a la división pericial requerida:', items, class: className = '' } = Astro.props;
+const { title, label, items, class: className = '' } = Astro.props;
+const displayTitle = title || label || 'Salta directamente a la sección requerida:';
 ---
 
 <!-- USWDS: Button Group | https://designsystem.digital.gov/components/button-group/ -->
 <div class={className}>
-  {title && (
+  {displayTitle && (
     <p class="font-sans-2xs text-bold text-base-dark text-uppercase margin-bottom-1">
-      {title}
+      {displayTitle}
     </p>
   )}
-  <ul class="usa-button-group">
+  <ul class="usa-button-group flex-wrap">
     {items.map((item) => (
       <li class="usa-button-group__item">
         <a href={item.href} class="usa-button usa-button--outline">
