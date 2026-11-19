@@ -16,8 +16,8 @@ const { member } = Astro.props;
 <div class="usa-card__container">
   <div class="usa-card__header">
     <div class="display-flex flex-wrap flex-justify margin-bottom-1">
-      <Badge variant="light">{member.titleTag}</Badge>
-      <span class="usa-tag bg-base-lightest text-base-darkest">{member.phases}</span>
+      <Badge variant="light" class="margin-bottom-05">{member.titleTag}</Badge>
+      <span class="usa-tag bg-base-lightest text-base-darkest margin-bottom-05">{member.phases}</span>
     </div>
     <h3 class="usa-card__heading">{member.name}</h3>
     <p class="font-sans-xs text-secondary-dark text-bold margin-top-05 margin-bottom-0">
@@ -48,7 +48,7 @@ const { member } = Astro.props;
     </div>
   </div>
   <div class="usa-card__footer">
-    <ul class="usa-button-group">
+    <ul class="usa-button-group flex-wrap">
       {member.social.linkedin && (
         <li class="usa-button-group__item">
           <a

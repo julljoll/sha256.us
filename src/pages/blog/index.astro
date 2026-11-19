@@ -31,7 +31,9 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
 
 		<ul class="usa-card-group">
 			{posts.map((post) => (
-				<BlogCard post={post} HeadingTag="h2" />
+				<li class="usa-card tablet:grid-col-6 desktop:grid-col-4">
+					<BlogCard post={post} HeadingTag="h2" />
+				</li>
 			))}
 		</ul>
 	</div>

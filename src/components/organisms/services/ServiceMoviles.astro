@@ -1,6 +1,8 @@
 ---
+import { Image } from 'astro:assets';
 import Badge from '../../atoms/Badge.astro';
 import Icon from '../../atoms/Icon.astro';
+import imgMoviles from '../../../assets/services/servicio-moviles.jpg';
 ---
 
 <!-- USWDS: Summary box, Grid & Accordion | https://designsystem.digital.gov/components/accordion/ -->
@@ -81,6 +83,18 @@ import Icon from '../../atoms/Icon.astro';
       </div>
     </div>
     <div class="tablet:grid-col-4 margin-top-3 tablet:margin-top-0 display-flex flex-column flex-justify-center text-center">
+      <div class="margin-bottom-2 radius-lg overflow-hidden border-1px border-accent-cool-light">
+        <Image
+          src={imgMoviles}
+          alt="Extracción forense de WhatsApp, notas de voz y teléfonos"
+          width={640}
+          height={360}
+          format="webp"
+          quality={82}
+          loading="lazy"
+          decoding="async"
+        />
+      </div>
       <div class="bg-accent-cool-lighter padding-4 radius-lg width-full border-1px border-accent-cool-light">
         <h3 class="font-sans-md text-bold text-primary-darker margin-top-0 margin-bottom-1">Certifica tu WhatsApp o Audio</h3>
         <p class="font-sans-xs text-base-dark margin-bottom-2">Revisamos tu teléfono sin borrar tu información y te lo devolvemos rápidamente.</p>

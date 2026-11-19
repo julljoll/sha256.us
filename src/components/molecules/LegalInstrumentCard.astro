@@ -8,15 +8,16 @@ export interface Props {
 
 const { instrument } = Astro.props;
 const shortHash = `${instrument.sha256Hash.slice(0, 12)}...${instrument.sha256Hash.slice(-8)}`;
+const fileBaseName = instrument.fileRef.split('/').pop() || instrument.fileRef;
 ---
 
 <!-- USWDS: Card | https://designsystem.digital.gov/components/card/ -->
 <div class="usa-card__container">
   <div class="usa-card__header">
     <div class="display-flex flex-wrap flex-justify margin-bottom-1">
-      <span class="usa-tag bg-primary-lighter text-primary-darker">{instrument.category}</span>
-      <span class="usa-tag bg-base-lightest text-base-darkest">{instrument.year}</span>
-      <span class="usa-tag bg-primary-darker text-white">{instrument.code}</span>
+      <span class="usa-tag bg-primary-lighter text-primary-darker margin-bottom-05">{instrument.category}</span>
+      <span class="usa-tag bg-base-lightest text-base-darkest margin-bottom-05">{instrument.year}</span>
+      <span class="usa-tag bg-primary-darker text-white margin-bottom-05">{instrument.code}</span>
     </div>
     <h3 class="usa-card__heading">{instrument.title}</h3>
   </div>
@@ -38,7 +39,7 @@ const shortHash = `${instrument.sha256Hash.slice(0, 12)}...${instrument.sha256Ha
   </div>
   <div class="usa-card__footer">
     <p class="font-mono-3xs text-base-dark margin-0">
-      {instrument.fileRef} — <strong>SHA-256: {shortHash}</strong>
+      <span class="text-bold">{fileBaseName}</span> — SHA-256: {shortHash}
     </p>
   </div>
 </div>
