@@ -95,25 +95,30 @@ function isActive(href: string) {
   <div class="usa-navbar">
     <div class="usa-logo">
       <em class="usa-logo__text">
-        <a href="/" title={COMPANY.name} class="display-flex flex-align-center">
+        <a href="/" title={COMPANY.name} class="display-flex flex-align-center text-no-underline">
           <img
             src="/logo.png"
             alt=""
             aria-hidden="true"
-            class="width-4 height-4 margin-right-1 desktop:display-none"
-            width="32"
-            height="32"
+            class="width-5 height-5 margin-right-1 desktop:display-none"
+            width="40"
+            height="40"
           />
           <img
             src="/logo.png"
             alt=""
             aria-hidden="true"
-            class="display-none desktop:display-inline-block width-8 height-8 margin-right-2"
-            width="64"
-            height="64"
+            class="display-none desktop:display-block width-7 height-7 margin-right-105"
+            width="56"
+            height="56"
           />
-          <span class="flex-1">
-            {COMPANY.name}<span class="display-none desktop:display-inline"> — Laboratorio de Informática Forense &amp; Peritaje Judicial</span>
+          <span class="display-flex flex-column flex-justify-center">
+            <span class="font-sans-lg text-bold text-primary-darker line-height-sans-1">
+              {COMPANY.name}
+            </span>
+            <span class="display-none desktop:display-block font-sans-3xs text-normal text-base-dark line-height-sans-2 margin-top-05">
+              Laboratorio de Informática Forense &amp; Peritaje Judicial
+            </span>
           </span>
         </a>
       </em>
