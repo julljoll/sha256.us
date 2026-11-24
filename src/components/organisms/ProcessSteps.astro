@@ -1,8 +1,9 @@
 ---
-// USWDS: Summary Box & Process List | https://designsystem.digital.gov/components/process-list/
+// USWDS: Summary Box, Alert, Icon List & Process List | https://designsystem.digital.gov/components/process-list/
 import SectionHeader from '../atoms/SectionHeader.astro';
 import ProcessStepCard from '../molecules/ProcessStepCard.astro';
-import { ISO_FORENSIC_PHASES, CLIENT_SIMPLE_STEPS, FORENSE_PORTAL_URL } from '../../consts';
+import Icon from '../atoms/Icon.astro';
+import { ISO_FORENSIC_PHASES, CLIENT_SIMPLE_STEPS, FORENSE_PORTAL_URL, CONTACT } from '../../consts';
 
 export interface Props {
   detailed?: boolean;
@@ -93,70 +94,118 @@ const { detailed = false, id = 'ciclo-f0-f5' } = Astro.props;
           ))}
         </ol>
 
-        <!-- USWDS: Summary Box | https://designsystem.digital.gov/components/summary-box/ -->
-        <div class="usa-summary-box margin-top-4" role="region" aria-labelledby="summary-box-caso-estafa">
-          <div class="usa-summary-box__body">
-            <div class="display-flex flex-align-center margin-bottom-1">
-              <span class="usa-tag bg-secondary text-white font-sans-3xs text-bold">CASO DE USO REAL</span>
+        <!-- USWDS: Card, Icon List & Alert | https://designsystem.digital.gov/components/icon-list/ & https://designsystem.digital.gov/components/alert/ -->
+        <div class="bg-white border-1px border-base-lighter shadow-2 radius-md overflow-hidden margin-top-4" role="region" aria-labelledby="heading-caso-estafa">
+          <!-- Cabecera Institucional Oscura -->
+          <div class="bg-primary-darker text-white padding-3 tablet:padding-4">
+            <div class="display-flex flex-align-center flex-wrap margin-bottom-1">
+              <span class="usa-tag bg-secondary text-white font-sans-3xs text-bold margin-right-1">CASO DE USO REAL</span>
+              <span class="usa-tag bg-gold text-ink font-sans-3xs text-bold">RECUPERACIÓN Y PERITAJE DE EVIDENCIA</span>
             </div>
-            <h3 class="usa-summary-box__heading" id="summary-box-caso-estafa">
+            <h3 class="font-sans-lg tablet:font-sans-xl text-bold text-white margin-top-1 margin-bottom-1" id="heading-caso-estafa">
               Caso de Uso: Estafa mediante WhatsApp y TikTok
             </h3>
-            <div class="usa-summary-box__text">
-              <p class="font-sans-xs text-base-dark line-height-sans-4 margin-top-1 margin-bottom-2">
-                Si fuiste víctima de un fraude digital y el estafador borró la conversación o te bloqueó, aún es posible recuperar y certificar legalmente las pruebas. Este es un caso típico que resolvemos en nuestro laboratorio:
-              </p>
+            <p class="font-sans-xs text-base-lightest line-height-sans-4 margin-0">
+              Si fuiste víctima de un fraude digital y el estafador borró la conversación o te bloqueó, aún es posible recuperar y certificar legalmente las pruebas. Este es un caso típico que resolvemos en nuestro laboratorio:
+            </p>
+          </div>
 
-              <div class="grid-row grid-gap margin-bottom-2">
-                <!-- Columna 1: El Escenario (Los Hechos) -->
-                <div class="tablet:grid-col-6 margin-bottom-2 tablet:margin-bottom-0">
-                  <div class="bg-base-lightest padding-2 border-left-05 border-secondary height-full">
-                    <strong class="font-sans-2xs text-bold text-primary-darker display-block margin-bottom-1">
-                      1. El Escenario (Los Hechos)
-                    </strong>
-                    <ul class="usa-list font-sans-3xs text-base-dark line-height-sans-3 margin-0 padding-left-2">
-                      <li class="margin-bottom-1">
-                        <strong>Contacto inicial (TikTok):</strong> Identificas un perfil con ofertas atractivas de inversión en criptoactivos (USDT), venta de vehículos o equipos a bajo costo. Por mensajes directos (DM), te envían videos o audios explicativos y te solicitan continuar la negociación por WhatsApp para coordinar el pago.
-                      </li>
-                      <li>
-                        <strong>Cierre y estafa (WhatsApp):</strong> Mediante notas de voz y documentos persuasivos, te inducen a realizar un Pago Móvil, transferencia bancaria o envío de USDT bajo concepto de "reserva" o "adelanto". Al confirmar la recepción del dinero, el estafador presiona <em>"Eliminar para todos"</em>, te bloquea en ambas aplicaciones y desaparece.
-                      </li>
-                    </ul>
+          <!-- Cuerpo Principal del Caso de Uso -->
+          <div class="padding-3 tablet:padding-4">
+            <div class="grid-row grid-gap margin-bottom-3">
+              <!-- Columna 1: El Escenario (Los Hechos) -->
+              <div class="tablet:grid-col-6 margin-bottom-2 tablet:margin-bottom-0">
+                <div class="bg-base-lightest padding-3 border-top-05 border-secondary radius-md height-full">
+                  <div class="display-flex flex-align-center margin-bottom-2">
+                    <span class="usa-tag bg-secondary text-white font-sans-3xs text-bold margin-right-1">FASE 1</span>
+                    <h4 class="font-sans-sm text-bold text-primary-darker margin-0">
+                      El Escenario (Los Hechos)
+                    </h4>
                   </div>
-                </div>
-
-                <!-- Columna 2: La Solución Pericial (La Evidencia Técnica) -->
-                <div class="tablet:grid-col-6">
-                  <div class="bg-base-lightest padding-2 border-left-05 border-primary height-full">
-                    <strong class="font-sans-2xs text-bold text-primary-darker display-block margin-bottom-1">
-                      2. Cómo Protegemos y Certificamos tu Prueba
-                    </strong>
-                    <ul class="usa-list font-sans-3xs text-base-dark line-height-sans-3 margin-0 padding-left-2">
-                      <li class="margin-bottom-1">
-                        <strong>La evidencia no desaparece:</strong> Aunque en tu pantalla aparezca <em>"Este mensaje fue eliminado"</em>, los registros reales siguen grabados en la base de datos interna de tu teléfono (<code>msgstore.db</code>), los archivos de audio en caché (.opus) y los registros de red.
-                      </li>
-                      <li>
-                        <strong>Validez para tu denuncia:</strong> Extraemos los mensajes originales con Hash Génesis SHA-256 (inmutable), certificamos la voz del estafador y emitimos un dictamen pericial con plena validez para consignar tu denuncia formal ante el Ministerio Público o el CICPC.
-                      </li>
-                    </ul>
-                  </div>
+                  <ul class="usa-icon-list">
+                    <li class="usa-icon-list__item margin-bottom-2">
+                      <div class="usa-icon-list__icon text-secondary">
+                        <Icon name="warning" />
+                      </div>
+                      <div class="usa-icon-list__content font-sans-2xs text-base-dark line-height-sans-3">
+                        <strong class="text-ink display-block margin-bottom-05">Contacto inicial (TikTok):</strong>
+                        Identificas un perfil con ofertas atractivas de inversión en criptoactivos (USDT), venta de vehículos o equipos a bajo costo. Por mensajes directos (DM), te envían videos o audios explicativos y te solicitan continuar la negociación por WhatsApp para coordinar el pago.
+                      </div>
+                    </li>
+                    <li class="usa-icon-list__item">
+                      <div class="usa-icon-list__icon text-secondary">
+                        <Icon name="error" />
+                      </div>
+                      <div class="usa-icon-list__content font-sans-2xs text-base-dark line-height-sans-3">
+                        <strong class="text-ink display-block margin-bottom-05">Cierre y estafa (WhatsApp):</strong>
+                        Mediante notas de voz y documentos persuasivos, te inducen a realizar un Pago Móvil, transferencia bancaria o envío de USDT bajo concepto de "reserva" o "adelanto". Al confirmar la recepción del dinero, el estafador presiona <em>"Eliminar para todos"</em>, te bloquea en ambas aplicaciones y desaparece.
+                      </div>
+                    </li>
+                  </ul>
                 </div>
               </div>
 
-              <!-- Alerta de recomendación urgente para el afectado -->
-              <div class="bg-white border-1px border-base-lighter padding-2 radius-md margin-bottom-3">
-                <strong class="font-sans-3xs text-bold text-ink display-block margin-bottom-05">
+              <!-- Columna 2: Cómo Protegemos y Certificamos tu Prueba -->
+              <div class="tablet:grid-col-6">
+                <div class="bg-base-lightest padding-3 border-top-05 border-primary radius-md height-full">
+                  <div class="display-flex flex-align-center margin-bottom-2">
+                    <span class="usa-tag bg-primary text-white font-sans-3xs text-bold margin-right-1">FASE 2</span>
+                    <h4 class="font-sans-sm text-bold text-primary-darker margin-0">
+                      Cómo Protegemos y Certificamos tu Prueba
+                    </h4>
+                  </div>
+                  <ul class="usa-icon-list">
+                    <li class="usa-icon-list__item margin-bottom-2">
+                      <div class="usa-icon-list__icon text-primary">
+                        <Icon name="check_circle" />
+                      </div>
+                      <div class="usa-icon-list__content font-sans-2xs text-base-dark line-height-sans-3">
+                        <strong class="text-ink display-block margin-bottom-05">La evidencia no desaparece:</strong>
+                        Aunque en tu pantalla aparezca <em>"Este mensaje fue eliminado"</em>, los registros reales siguen grabados en la base de datos interna de tu teléfono (<code>msgstore.db</code>), los archivos de audio en caché (<code>.opus</code>) y los registros de red.
+                      </div>
+                    </li>
+                    <li class="usa-icon-list__item">
+                      <div class="usa-icon-list__icon text-primary">
+                        <Icon name="verified_user" />
+                      </div>
+                      <div class="usa-icon-list__content font-sans-2xs text-base-dark line-height-sans-3">
+                        <strong class="text-ink display-block margin-bottom-05">Validez para tu denuncia:</strong>
+                        Extraemos los mensajes originales con Hash Génesis SHA-256 (inmutable), certificamos la voz del estafador y emitimos un dictamen pericial con plena validez para consignar tu denuncia formal ante el Ministerio Público o el CICPC.
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- Alerta Oficial USWDS de Recomendación Urgente -->
+            <div class="usa-alert usa-alert--warning margin-top-0 margin-bottom-3">
+              <div class="usa-alert__body">
+                <h4 class="usa-alert__heading font-sans-xs text-bold">
                   ¿Te ocurrió una situación similar? Recomendación urgente del perito:
-                </strong>
-                <p class="font-sans-3xs text-base-dark margin-0">
+                </h4>
+                <p class="usa-alert__text font-sans-2xs">
                   <strong>No borres el chat</strong>, no desinstales WhatsApp ni restablezcas tu teléfono. Activa el <strong>Modo Avión</strong> para evitar comandos remotos de borrado y contáctanos de inmediato para preservar la evidencia antes de que se sobreescriba.
                 </p>
               </div>
+            </div>
 
-              <ul class="usa-button-group margin-top-2">
+            <!-- Barra Inferior de Acción Directa (CTA) -->
+            <div class="border-top-1px border-base-lighter padding-top-3 display-flex flex-align-center flex-wrap">
+              <ul class="usa-button-group">
                 <li class="usa-button-group__item">
                   <a href="/contacto" class="usa-button bg-gold hover:bg-warning-dark text-ink">
                     <span class="text-ink text-bold">Consultar mi Caso Ahora</span>
+                  </a>
+                </li>
+                <li class="usa-button-group__item">
+                  <a
+                    href={CONTACT.whatsapp}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="usa-button"
+                  >
+                    Atención Inmediata por WhatsApp
                   </a>
                 </li>
                 <li class="usa-button-group__item">
