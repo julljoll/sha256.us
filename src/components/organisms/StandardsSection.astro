@@ -2,7 +2,7 @@
 // USWDS: Summary Box & Icon List | https://designsystem.digital.gov/components/summary-box/
 import SectionHeader from '../atoms/SectionHeader.astro';
 import Icon from '../atoms/Icon.astro';
-import { FORENSE_PORTAL_URL } from '../../consts';
+import { CONTACT } from '../../consts';
 ---
 
 <!-- USWDS: Summary Box & Icon List | https://designsystem.digital.gov/components/summary-box/ -->
@@ -52,29 +52,29 @@ import { FORENSE_PORTAL_URL } from '../../consts';
 
       <div class="tablet:grid-col-6 margin-bottom-3">
         <!-- USWDS: Summary Box | https://designsystem.digital.gov/components/summary-box/ -->
-        <div class="usa-summary-box height-full margin-0" role="region" aria-labelledby="summary-box-piramide">
+        <div class="usa-summary-box height-full margin-0" role="region" aria-labelledby="summary-box-evaluacion">
           <div class="usa-summary-box__body">
-            <h3 class="usa-summary-box__heading" id="summary-box-piramide">
-              Biblioteca Legal y Técnica para Abogados y Jueces
+            <h3 class="usa-summary-box__heading" id="summary-box-evaluacion">
+              ¿Sufriste una estafa, suplantación o conflicto con pruebas digitales?
             </h3>
             <div class="usa-summary-box__text">
               <p>
-                Si eres abogado, fiscal, juez o perito, hemos dispuesto una sección dedicada con las <strong>28 leyes informáticas y estándares ISO/NIST</strong>, la <strong>Pirámide de Aplicación (COPP Art. 225)</strong> y las <strong>13 Planillas Oficiales en Folio</strong>.
+                No esperes a que el responsable borre los mensajes o cierre sus cuentas. Evaluamos tu situación de inmediato, aseguramos los chats, notas de voz, transferencias o correos en tu dispositivo y te entregamos el <strong>Dictamen Pericial Oficial</strong> listo para presentar tu denuncia o demanda.
               </p>
               <ul class="usa-button-group margin-top-2">
                 <li class="usa-button-group__item">
-                  <a href="/normativa" class="usa-button">
-                    Consultar Marco Legal y Normas &rarr;
+                  <a href="/contacto" class="usa-button bg-gold hover:bg-warning-dark text-ink">
+                    <span class="text-ink text-bold">Solicitar Evaluación de mi Caso &rarr;</span>
                   </a>
                 </li>
                 <li class="usa-button-group__item">
                   <a
-                    href={`${FORENSE_PORTAL_URL}/normativa`}
+                    href={CONTACT.whatsapp}
                     target="_blank"
                     rel="noopener noreferrer"
                     class="usa-button usa-button--outline"
                   >
-                    Portal Forense
+                    Atención por WhatsApp
                   </a>
                 </li>
               </ul>
