@@ -10,10 +10,10 @@ const { variant = 'header' } = Astro.props;
 
 const btnClass =
   variant === 'banner'
-    ? 'usa-button usa-button--unstyled text-white font-sans-2xs text-no-underline'
+    ? 'usa-button usa-button--unstyled text-white font-sans-2xs text-no-underline display-inline-flex flex-align-center'
     : variant === 'mobile'
-      ? 'usa-button usa-button--outline width-full'
-      : 'usa-button usa-button--outline padding-y-1 padding-x-105 font-sans-2xs';
+      ? 'usa-button usa-button--outline display-flex flex-align-center flex-justify-center padding-y-05 padding-x-105 font-sans-2xs radius-pill bg-white shadow-1'
+      : 'usa-button usa-button--outline display-inline-flex flex-align-center padding-y-05 padding-x-105 font-sans-2xs line-height-sans-1 radius-pill bg-white shadow-1';
 ---
 
 <!-- USWDS: Language Selector | https://designsystem.digital.gov/components/language-selector/ -->
@@ -23,9 +23,10 @@ const btnClass =
   data-lang-toggle
   data-lang-ui="true"
   aria-label="Cambiar idioma del sitio: Español - Inglés"
+  title="Cambiar idioma / Switch language (Español - Inglés)"
 >
-  <Icon name="language" class="margin-right-05" />
-  <span data-lang-indicator="es" class="text-bold">Español</span>
-  <span class="margin-x-05">-</span>
-  <span data-lang-indicator="en">Inglés</span>
+  <Icon name="language" class="margin-right-05 text-primary" />
+  <span data-lang-es class="text-bold text-primary-dark">Español</span>
+  <span class="margin-x-05 text-base-light" aria-hidden="true">-</span>
+  <span data-lang-en class="text-base text-normal">Inglés</span>
 </button>

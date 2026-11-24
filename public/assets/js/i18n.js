@@ -23,8 +23,9 @@
       const params = new URLSearchParams(window.location.search);
       const urlLang = params.get('lang');
       if (urlLang === 'en' || urlLang === 'es') return urlLang;
-      const saved = localStorage.getItem(STORAGE_KEY);
-      if (saved === 'en' || saved === 'es') return saved;
+      // Idioma oficial por defecto: Español ('es')
+      const sessionLang = sessionStorage.getItem(STORAGE_KEY);
+      if (sessionLang === 'en' || sessionLang === 'es') return sessionLang;
     } catch (e) {
       // Fallback seguro
     }
@@ -73,6 +74,9 @@
           if (tag === 'SCRIPT' || tag === 'STYLE' || tag === 'CODE' || tag === 'PRE' || tag === 'NOSCRIPT') {
             return NodeFilter.FILTER_REJECT;
           }
+          if (parent.closest && (parent.closest('[data-lang-toggle]') || parent.closest('[data-lang-ui]'))) {
+            return NodeFilter.FILTER_REJECT;
+          }
           const text = node.nodeValue.trim();
           if (text.length > 0 && dict[text]) {
             return NodeFilter.FILTER_ACCEPT;
@@ -116,13 +120,32 @@
     // Toggle buttons
     document.querySelectorAll('[data-lang-toggle]').forEach((btn) => {
       btn.setAttribute('aria-pressed', isEn ? 'true' : 'false');
+      btn.setAttribute(
+        'aria-label',
+        isEn
+          ? 'Switch site language: Spanish - English (Current: English)'
+          : 'Cambiar idioma del sitio: Español - Inglés (Actual: Español)'
+      );
+
+      const esEl = btn.querySelector('[data-lang-es]');
+      const enEl = btn.querySelector('[data-lang-en]');
+      if (esEl && enEl) {
+        if (isEn) {
+          esEl.classList.remove('text-bold', 'text-primary-dark');
+          esEl.classList.add('text-normal', 'text-base');
+          enEl.classList.remove('text-normal', 'text-base');
+          enEl.classList.add('text-bold', 'text-primary-dark');
+        } else {
+          esEl.classList.remove('text-normal', 'text-base');
+          esEl.classList.add('text-bold', 'text-primary-dark');
+          enEl.classList.remove('text-bold', 'text-primary-dark');
+          enEl.classList.add('text-normal', 'text-base');
+        }
+      }
+
       const textEl = btn.querySelector('[data-lang-text]');
       if (textEl) {
         textEl.textContent = isEn ? 'Inglés (EN)' : 'Español (ES)';
-      }
-      const indicator = btn.querySelector('[data-lang-indicator]');
-      if (indicator) {
-        indicator.textContent = isEn ? 'EN' : 'ES';
       }
     });
 
@@ -142,6 +165,7 @@
   async function applyLanguage(lang) {
     const normalized = lang === 'en' ? 'en' : 'es';
     try {
+      sessionStorage.setItem(STORAGE_KEY, normalized);
       localStorage.setItem(STORAGE_KEY, normalized);
     } catch (e) {}
 
