@@ -5,7 +5,6 @@ import HeroCarousel from '../components/HeroCarousel.astro';
 import TrustBar from '../components/organisms/TrustBar.astro';
 import HomeServices from '../components/organisms/HomeServices.astro';
 import ProcessSteps from '../components/organisms/ProcessSteps.astro';
-import TeamBacking from '../components/organisms/TeamBacking.astro';
 import StandardsSection from '../components/organisms/StandardsSection.astro';
 import LatestPosts from '../components/organisms/LatestPosts.astro';
 import CtaBanner from '../components/organisms/CtaBanner.astro';
@@ -22,7 +21,6 @@ const latestPosts = (await getCollection('blog', ({ data }) => !data.draft))
 	<TrustBar />
 	<HomeServices />
 	<ProcessSteps />
-	<TeamBacking />
 	<StandardsSection />
 	<LatestPosts posts={latestPosts} />
 	<CtaBanner />
