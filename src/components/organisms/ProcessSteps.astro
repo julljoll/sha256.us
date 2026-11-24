@@ -94,24 +94,74 @@ const { detailed = false, id = 'ciclo-f0-f5' } = Astro.props;
         </ol>
 
         <!-- USWDS: Summary Box | https://designsystem.digital.gov/components/summary-box/ -->
-        <div class="usa-summary-box margin-top-4" role="region" aria-labelledby="summary-box-proceso-tecnico">
+        <div class="usa-summary-box margin-top-4" role="region" aria-labelledby="summary-box-caso-estafa">
           <div class="usa-summary-box__body">
-            <h3 class="usa-summary-box__heading" id="summary-box-proceso-tecnico">
-              ¿Eres abogado, juez o deseas conocer el protocolo técnico completo?
+            <div class="display-flex flex-align-center margin-bottom-1">
+              <span class="usa-tag bg-secondary text-white font-sans-3xs text-bold">CASO DE USO REAL</span>
+            </div>
+            <h3 class="usa-summary-box__heading" id="summary-box-caso-estafa">
+              Caso de Uso: Estafa mediante WhatsApp y TikTok
             </h3>
             <div class="usa-summary-box__text">
-              <p>
-                Internamente, cada caso cumple con nuestro <strong>Ciclo Pericial ISO de 6 Fases (F0 a F5)</strong> y las <strong>13 Planillas Oficiales de Cadena de Custodia en Folio</strong> exigidas por los tribunales venezolanos.
+              <p class="font-sans-xs text-base-dark line-height-sans-4 margin-top-1 margin-bottom-2">
+                Si fuiste víctima de un fraude digital y el estafador borró la conversación o te bloqueó, aún es posible recuperar y certificar legalmente las pruebas. Este es un caso típico que resolvemos en nuestro laboratorio:
               </p>
+
+              <div class="grid-row grid-gap margin-bottom-2">
+                <!-- Columna 1: El Escenario (Los Hechos) -->
+                <div class="tablet:grid-col-6 margin-bottom-2 tablet:margin-bottom-0">
+                  <div class="bg-base-lightest padding-2 border-left-05 border-secondary height-full">
+                    <strong class="font-sans-2xs text-bold text-primary-darker display-block margin-bottom-1">
+                      1. El Escenario (Los Hechos)
+                    </strong>
+                    <ul class="usa-list font-sans-3xs text-base-dark line-height-sans-3 margin-0 padding-left-2">
+                      <li class="margin-bottom-1">
+                        <strong>Contacto inicial (TikTok):</strong> Identificas un perfil con ofertas atractivas de inversión en criptoactivos (USDT), venta de vehículos o equipos a bajo costo. Por mensajes directos (DM), te envían videos o audios explicativos y te solicitan continuar la negociación por WhatsApp para coordinar el pago.
+                      </li>
+                      <li>
+                        <strong>Cierre y estafa (WhatsApp):</strong> Mediante notas de voz y documentos persuasivos, te inducen a realizar un Pago Móvil, transferencia bancaria o envío de USDT bajo concepto de "reserva" o "adelanto". Al confirmar la recepción del dinero, el estafador presiona <em>"Eliminar para todos"</em>, te bloquea en ambas aplicaciones y desaparece.
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+                <!-- Columna 2: La Solución Pericial (La Evidencia Técnica) -->
+                <div class="tablet:grid-col-6">
+                  <div class="bg-base-lightest padding-2 border-left-05 border-primary height-full">
+                    <strong class="font-sans-2xs text-bold text-primary-darker display-block margin-bottom-1">
+                      2. Cómo Protegemos y Certificamos tu Prueba
+                    </strong>
+                    <ul class="usa-list font-sans-3xs text-base-dark line-height-sans-3 margin-0 padding-left-2">
+                      <li class="margin-bottom-1">
+                        <strong>La evidencia no desaparece:</strong> Aunque en tu pantalla aparezca <em>"Este mensaje fue eliminado"</em>, los registros reales siguen grabados en la base de datos interna de tu teléfono (<code>msgstore.db</code>), los archivos de audio en caché (.opus) y los registros de red.
+                      </li>
+                      <li>
+                        <strong>Validez para tu denuncia:</strong> Extraemos los mensajes originales con Hash Génesis SHA-256 (inmutable), certificamos la voz del estafador y emitimos un dictamen pericial con plena validez para consignar tu denuncia formal ante el Ministerio Público o el CICPC.
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Alerta de recomendación urgente para el afectado -->
+              <div class="bg-white border-1px border-base-lighter padding-2 radius-md margin-bottom-3">
+                <strong class="font-sans-3xs text-bold text-ink display-block margin-bottom-05">
+                  ¿Te ocurrió una situación similar? Recomendación urgente del perito:
+                </strong>
+                <p class="font-sans-3xs text-base-dark margin-0">
+                  <strong>No borres el chat</strong>, no desinstales WhatsApp ni restablezcas tu teléfono. Activa el <strong>Modo Avión</strong> para evitar comandos remotos de borrado y contáctanos de inmediato para preservar la evidencia antes de que se sobreescriba.
+                </p>
+              </div>
+
               <ul class="usa-button-group margin-top-2">
-                <li class="usa-button-group__item">
-                  <a href="/normativa#ciclo-f0-f5" class="usa-button">
-                    Ver Ciclo Técnico Completo (F0–F5) y 13 Planillas &rarr;
-                  </a>
-                </li>
                 <li class="usa-button-group__item">
                   <a href="/contacto" class="usa-button bg-gold hover:bg-warning-dark text-ink">
                     <span class="text-ink text-bold">Consultar mi Caso Ahora</span>
+                  </a>
+                </li>
+                <li class="usa-button-group__item">
+                  <a href="/servicios#moviles" class="usa-button usa-button--outline">
+                    Ver Peritaje de WhatsApp y Móviles &rarr;
                   </a>
                 </li>
               </ul>
