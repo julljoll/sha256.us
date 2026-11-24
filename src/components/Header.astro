@@ -1,6 +1,6 @@
 ---
 // USWDS: Banner & Header | https://designsystem.digital.gov/components/banner/ & https://designsystem.digital.gov/components/header/
-import { COMPANY, CONTACT, NAV_ITEMS } from '../consts';
+import { COMPANY, FORENSE_PORTAL_URL, NAV_ITEMS } from '../consts';
 import Icon from './atoms/Icon.astro';
 import LanguageSwitcher from './molecules/LanguageSwitcher.astro';
 
@@ -125,26 +125,20 @@ function isActive(href: string) {
     </div>
     <button type="button" class="usa-menu-btn">Menú</button>
   </div>
-  <!-- Barra de Acceso Rápido Móvil (Español - Inglés y WhatsApp directo en 1 toque) -->
+  <!-- Barra de Acceso Rápido Móvil (Selector de Idioma y Acceso a Iniciar Sesión) -->
   <div class="desktop:display-none bg-base-lightest border-bottom-1px border-base-lighter padding-y-1">
     <div class="grid-container display-flex flex-justify flex-align-center">
       <LanguageSwitcher variant="header" />
-      <div class="display-flex flex-align-center">
-        <a
-          href={CONTACT.whatsapp}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="usa-button usa-button--unstyled font-sans-3xs text-bold text-primary margin-right-2"
-        >
-          WhatsApp
-        </a>
-        <a
-          href="/contacto"
-          class="usa-button usa-button--unstyled font-sans-3xs text-bold text-primary"
-        >
-          Consultar Caso
-        </a>
-      </div>
+      <a
+        href={FORENSE_PORTAL_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="usa-button usa-button--outline display-inline-flex flex-align-center padding-y-05 padding-x-1 font-sans-3xs line-height-sans-1 radius-pill bg-white shadow-1 text-primary text-bold text-no-underline"
+        title="Iniciar Sesión en forense.sha256.us"
+      >
+        <Icon name="lock" class="margin-right-05 text-primary" />
+        <span>Iniciar Sesión</span>
+      </a>
     </div>
   </div>
   <nav aria-label="Navegación principal" class="usa-nav">
@@ -165,30 +159,17 @@ function isActive(href: string) {
         ))}
       </ul>
       <div class="usa-nav__secondary">
-        <ul class="usa-nav__secondary-links">
-          <li class="usa-nav__secondary-item">
-            <a
-              href="https://forense.sha256.us/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Iniciar Sesión (forense.sha256.us)
-            </a>
-          </li>
-          <li class="usa-nav__secondary-item">
-            <a
-              href={CONTACT.whatsapp}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Hablar por WhatsApp
-            </a>
-          </li>
-          <li class="usa-nav__secondary-item">
-            <a href="/contacto">Solicitar Peritaje</a>
-          </li>
-        </ul>
-        <div class="margin-top-1 display-flex flex-justify-end">
+        <div class="display-flex flex-align-center flex-justify-end">
+          <a
+            href={FORENSE_PORTAL_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="usa-button usa-button--outline display-inline-flex flex-align-center padding-y-05 padding-x-105 font-sans-2xs line-height-sans-1 radius-pill bg-white shadow-1 text-primary text-bold margin-right-1 text-no-underline"
+            title="Iniciar Sesión en forense.sha256.us"
+          >
+            <Icon name="lock" class="margin-right-05 text-primary" />
+            <span>Iniciar Sesión</span>
+          </a>
           <LanguageSwitcher variant="header" />
         </div>
       </div>
