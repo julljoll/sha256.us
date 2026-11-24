@@ -1,5 +1,5 @@
 ---
-// USWDS: Footer & Identifier | https://designsystem.digital.gov/components/footer/ & https://designsystem.digital.gov/components/identifier/
+// USWDS: Footer | https://designsystem.digital.gov/components/footer/
 import { COMPANY, CONTACT } from '../consts';
 ---
 
@@ -32,6 +32,12 @@ import { COMPANY, CONTACT } from '../consts';
         <li class="mobile-lg:grid-col-4 desktop:grid-col-auto usa-footer__primary-content">
           <a class="usa-footer__primary-link" href="/contacto">Contacto y Recepción</a>
         </li>
+        <li class="mobile-lg:grid-col-4 desktop:grid-col-auto usa-footer__primary-content">
+          <a class="usa-footer__primary-link" href="https://forense.sha256.us/" target="_blank" rel="noopener noreferrer">Sistema de Gestión Forense</a>
+        </li>
+        <li class="mobile-lg:grid-col-4 desktop:grid-col-auto usa-footer__primary-content">
+          <a class="usa-footer__primary-link" href="/sitemap-index.xml">Mapa del Sitio (XML)</a>
+        </li>
       </ul>
     </nav>
   </div>
@@ -44,6 +50,9 @@ import { COMPANY, CONTACT } from '../consts';
           </div>
           <div class="mobile-lg:grid-col-auto">
             <p class="usa-footer__logo-heading">{COMPANY.name} — Laboratorio Forense Digital</p>
+            <p class="font-sans-xs text-base-light margin-top-1 margin-bottom-0">
+              Un portal institucional oficial del <a class="usa-link" href="/about">Laboratorio de Informática Forense y Peritaje Digital Judicial {COMPANY.name}</a>
+            </p>
           </div>
         </div>
         <div class="usa-footer__contact-links mobile-lg:grid-col-6">
@@ -87,77 +96,3 @@ import { COMPANY, CONTACT } from '../consts';
     </div>
   </div>
 </footer>
-
-<!-- USWDS: Identifier | https://designsystem.digital.gov/components/identifier/ -->
-<div class="usa-identifier">
-  <section
-    class="usa-identifier__section usa-identifier__section--masthead"
-    aria-label="Identificación institucional del laboratorio"
-  >
-    <div class="usa-identifier__container">
-      <div class="usa-identifier__logos">
-        <a href="/" class="usa-identifier__logo">
-          <img
-            class="usa-identifier__logo-img"
-            src="/logo.png"
-            alt="Logo de sha256.us"
-            role="img"
-          />
-        </a>
-      </div>
-      <section
-        class="usa-identifier__identity"
-        aria-label="Entidad responsable"
-      >
-        <p class="usa-identifier__identity-domain">{COMPANY.name}</p>
-        <p class="usa-identifier__identity-disclaimer">
-          Un portal institucional oficial del <a href="/about">Laboratorio de Informática Forense y Peritaje Digital Judicial {COMPANY.name}</a>
-        </p>
-      </section>
-    </div>
-  </section>
-  <nav
-    class="usa-identifier__section usa-identifier__section--required-links"
-    aria-label="Enlaces institucionales requeridos"
-  >
-    <div class="usa-identifier__container">
-      <ul class="usa-identifier__required-links-list">
-        <li class="usa-identifier__required-links-item">
-          <a href="/about" class="usa-identifier__required-link usa-link">Sobre sha256.us</a>
-        </li>
-        <li class="usa-identifier__required-links-item">
-          <a href="/about#equipo" class="usa-identifier__required-link usa-link">Gabinete Pericial Acreditado</a>
-        </li>
-        <li class="usa-identifier__required-links-item">
-          <a href="/normativa" class="usa-identifier__required-link usa-link">Marco Legal &amp; Proceso (F0–F5)</a>
-        </li>
-        <li class="usa-identifier__required-links-item">
-          <a href="/normativa#planillas-folio" class="usa-identifier__required-link usa-link">13 Planillas en Folio</a>
-        </li>
-        <li class="usa-identifier__required-links-item">
-          <a href="/servicios#forense" class="usa-identifier__required-link usa-link">Dictámenes Judiciales</a>
-        </li>
-        <li class="usa-identifier__required-links-item">
-          <a href="/servicios#moviles" class="usa-identifier__required-link usa-link">Extracción Forense Móvil</a>
-        </li>
-        <li class="usa-identifier__required-links-item">
-          <a href="https://forense.sha256.us/" target="_blank" rel="noopener noreferrer" class="usa-identifier__required-link usa-link">Sistema de Gestión Forense</a>
-        </li>
-        <li class="usa-identifier__required-links-item">
-          <a href="/sitemap-index.xml" class="usa-identifier__required-link usa-link">Mapa del Sitio (XML)</a>
-        </li>
-      </ul>
-    </div>
-  </nav>
-  <section
-    class="usa-identifier__section usa-identifier__section--usagov"
-    aria-label="Información de contacto y sede"
-  >
-    <div class="usa-identifier__container">
-      <div class="usa-identifier__usagov-description">
-        ¿Requieres asistencia pericial o evaluación preliminar de evidencia?
-      </div>
-      <a href="/contacto" class="usa-link">Solicitar Peritaje Forense</a>
-    </div>
-  </section>
-</div>
