@@ -11,7 +11,8 @@
  * fuentes sin uso 4.5 MB, archivos sin minificar 3 MB) y copia exclusivamente:
  *  - Los 50 recursos exactos referenciados por url(...) en uswds.min.css.
  *  - Los 7 iconos SVG directos usados por Header y Footer.
- *  - Integra el Hero banner forense personalizado desde src/assets/hero/hero.jpg
+ *  - Integra el Hero banner forense personalizado desde
+ *    src/assets/hero/laboratorio-peritaje-informatico-forense-quibor-lara-sha256.jpg
  *    hacia public/assets/uswds/img/hero.jpg para renderizado nativo en .usa-hero.
  * 
  * Realiza verificación anti-404 asegurando 0 recursos faltantes.
@@ -24,7 +25,7 @@ import crypto from 'node:crypto';
 const root = process.cwd();
 const srcDist = path.join(root, 'node_modules/@uswds/uswds/dist');
 const destBase = path.join(root, 'public/assets/uswds');
-const customHeroPath = path.join(root, 'src/assets/hero/hero.jpg');
+const customHeroPath = path.join(root, 'src/assets/hero/laboratorio-peritaje-informatico-forense-quibor-lara-sha256.jpg');
 
 function sha256File(filePath) {
   const buf = fs.readFileSync(filePath);
