@@ -1,17 +1,18 @@
 ---
+// USWDS: Card, Summary Box & Accordion | https://designsystem.digital.gov/components/card/
 import { Image } from 'astro:assets';
 import Badge from '../../atoms/Badge.astro';
 import Icon from '../../atoms/Icon.astro';
 import imgMoviles from '../../../assets/services/servicio-moviles.jpg';
 ---
 
-<!-- USWDS: Summary box, Grid & Accordion | https://designsystem.digital.gov/components/accordion/ -->
-<section id="moviles" class="margin-bottom-6 tablet:margin-bottom-8 bg-white padding-3 tablet:padding-6 radius-lg shadow-1 border-1px border-base-lighter">
+<!-- USWDS: Card, Summary box & Accordion | https://designsystem.digital.gov/components/accordion/ -->
+<section id="moviles" class="margin-bottom-6 bg-white padding-3 tablet:padding-5 radius-lg shadow-1 border-1px border-base-lighter">
   <div class="grid-row grid-gap flex-align-center">
     <div class="tablet:grid-col-8">
-      <Badge variant="accent" class="margin-bottom-1">2. WHATSAPP, AUDIOS Y CELULARES</Badge>
+      <Badge variant="accent" class="margin-bottom-1">1. WHATSAPP, PRÉSTAMOS Y CELULARES</Badge>
       <h2 class="font-sans-xl text-bold text-primary-darker margin-top-1 margin-bottom-2">
-        Certificación de Conversaciones de WhatsApp, Notas de Voz, Fotos y Teléfonos
+        Certificación de Chats de WhatsApp, Audios y Fotos de Teléfonos
       </h2>
 
       <div class="usa-summary-box margin-bottom-3" role="region" aria-label="¿Cuándo necesitas este servicio?">
@@ -21,40 +22,53 @@ import imgMoviles from '../../../assets/services/servicio-moviles.jpg';
             ¿Cuándo necesitas este servicio?
           </h3>
           <div class="usa-summary-box__text font-sans-xs">
-            Si necesitas demostrar lo que realmente se dijo o envió en un chat de WhatsApp, una nota de voz, una foto o una llamada en tu teléfono celular, incluso si la otra persona borró los mensajes.
+            Cuando prestaste dinero, cerraste un acuerdo o sufriste un fraude por WhatsApp y necesitas demostrar la conversación original ante un juez, incluso si la otra parte niega el chat o borró mensajes.
           </div>
         </div>
       </div>
 
-      <p class="font-sans-sm text-bold text-primary-darker margin-bottom-2">
-        ¿Qué podemos certificar en tu teléfono?
-      </p>
-      <div class="grid-row grid-gap margin-bottom-2">
-        <div class="mobile-lg:grid-col-6">
-          <div class="bg-base-lightest padding-2 radius-md border-left-05 border-primary margin-bottom-2">
-            <strong class="font-sans-xs text-primary-darker display-block">Chats de WhatsApp y Telegram</strong>
-            <span class="font-sans-3xs text-base-dark">Certificamos conversaciones completas, fechas, números de teléfono y mensajes eliminados.</span>
+      <ul class="usa-card-group margin-bottom-2">
+        <li class="usa-card mobile-lg:grid-col-6">
+          <div class="usa-card__container">
+            <div class="usa-card__header">
+              <h3 class="usa-card__heading font-sans-sm">Chats de WhatsApp y Mensajería</h3>
+            </div>
+            <div class="usa-card__body">
+              <p class="font-sans-2xs text-base-dark margin-0">Extraemos la base de datos SQLite verificando emisor, destinatario, fechas y mensajes.</p>
+            </div>
           </div>
-        </div>
-        <div class="mobile-lg:grid-col-6">
-          <div class="bg-base-lightest padding-2 radius-md border-left-05 border-primary margin-bottom-2">
-            <strong class="font-sans-xs text-primary-darker display-block">Notas de Voz y Grabaciones</strong>
-            <span class="font-sans-3xs text-base-dark">Comprobamos que un audio es auténtico y que no fue editado, cortado ni alterado.</span>
+        </li>
+        <li class="usa-card mobile-lg:grid-col-6">
+          <div class="usa-card__container">
+            <div class="usa-card__header">
+              <h3 class="usa-card__heading font-sans-sm">Notas de Voz y Audios</h3>
+            </div>
+            <div class="usa-card__body">
+              <p class="font-sans-2xs text-base-dark margin-0">Preservamos los archivos de audio asociados al chat con huella criptográfica SHA-256.</p>
+            </div>
           </div>
-        </div>
-        <div class="mobile-lg:grid-col-6">
-          <div class="bg-base-lightest padding-2 radius-md border-left-05 border-primary margin-bottom-2">
-            <strong class="font-sans-xs text-primary-darker display-block">Fotos y Videos tomados con el Móvil</strong>
-            <span class="font-sans-3xs text-base-dark">Verificamos la fecha exacta, el lugar (GPS) y que la imagen no sea un montaje.</span>
+        </li>
+        <li class="usa-card mobile-lg:grid-col-6">
+          <div class="usa-card__container">
+            <div class="usa-card__header">
+              <h3 class="usa-card__heading font-sans-sm">Fotos, Capturas y Metadatos</h3>
+            </div>
+            <div class="usa-card__body">
+              <p class="font-sans-2xs text-base-dark margin-0">Auditamos fecha real, modelo de cámara y metadatos de imágenes con herramientas como ExifTool.</p>
+            </div>
           </div>
-        </div>
-        <div class="mobile-lg:grid-col-6">
-          <div class="bg-base-lightest padding-2 radius-md border-left-05 border-primary margin-bottom-2">
-            <strong class="font-sans-xs text-primary-darker display-block">Redes Sociales y Llamadas</strong>
-            <span class="font-sans-3xs text-base-dark">Dejamos constancia legal de publicaciones o mensajes en Instagram, Facebook, X, TikTok y SMS.</span>
+        </li>
+        <li class="usa-card mobile-lg:grid-col-6">
+          <div class="usa-card__container">
+            <div class="usa-card__header">
+              <h3 class="usa-card__heading font-sans-sm">Historial de Llamadas y SMS</h3>
+            </div>
+            <div class="usa-card__body">
+              <p class="font-sans-2xs text-base-dark margin-0">Documentamos registros de llamadas, contactos y mensajes de texto sin alterar tu equipo.</p>
+            </div>
           </div>
-        </div>
-      </div>
+        </li>
+      </ul>
 
       <!-- Revelación Progresiva para Abogados y Jueces -->
       <div class="usa-accordion usa-accordion--bordered">
@@ -70,14 +84,13 @@ import imgMoviles from '../../../assets/services/servicio-moviles.jpg';
         </h3>
         <div id="acc-tech-moviles" class="usa-accordion__content usa-prose" hidden>
           <p class="font-sans-xs text-base-dark">
-            Aplicamos aislamiento electromagnético en <strong>Bolsa de Faraday</strong> (Fase F1) y adquisición lógica no intrusiva bajo <strong>NIST SP 800-101 Rev. 1</strong> e <strong>ISO/IEC 27042</strong>: extracción de bases SQLite (<code>msgstore.db</code> y <code>wa.db</code>), análisis espectral acústico FFT en contenedores OGG/Opus 48 kHz y auditoría de cabeceras EXIF / Error Level Analysis (ELA).
+            Aplicamos aislamiento electromagnético en <strong>Bolsa de Faraday</strong>, extracción lógica o física bajo <strong>NIST SP 800-101 Rev. 1</strong> y protocolo Android con <strong>Avilla Forensics / ADB</strong>: lectura de bases <strong>SQLite</strong> en copia de trabajo (<strong>ISO/IEC 27042</strong>), cálculo de hash <strong>SHA-256</strong> (<strong>ISO/IEC 27037</strong>) y validez jurídica conforme a los <strong>Arts. 4, 7 y 8 de la LMDFE</strong>.
           </p>
           <div class="display-flex flex-wrap margin-top-1">
             <span class="usa-tag bg-white text-primary border-1px border-primary-light margin-right-05 margin-bottom-05">NIST SP 800-101 Rev. 1</span>
             <span class="usa-tag bg-white text-primary border-1px border-primary-light margin-right-05 margin-bottom-05">LMDFE Arts. 4, 7 y 8</span>
-            <span class="usa-tag bg-white text-primary border-1px border-primary-light margin-right-05 margin-bottom-05">Ley Privacidad Comunicaciones (G.O. 34.863)</span>
-            <span class="usa-tag bg-white text-primary border-1px border-primary-light margin-right-05 margin-bottom-05">LOTEL G.O. 39.610</span>
-            <span class="usa-tag bg-white text-primary border-1px border-primary-light margin-right-05 margin-bottom-05">Planillas Folio #05, #06, #07, #09 y #10</span>
+            <span class="usa-tag bg-white text-primary border-1px border-primary-light margin-right-05 margin-bottom-05">LPPC (Privacidad Comunicaciones)</span>
+            <span class="usa-tag bg-white text-primary border-1px border-primary-light margin-right-05 margin-bottom-05">MUCC-2017 (PRCC)</span>
           </div>
         </div>
       </div>
@@ -96,12 +109,12 @@ import imgMoviles from '../../../assets/services/servicio-moviles.jpg';
         />
       </div>
       <div class="bg-accent-cool-lighter padding-4 radius-lg width-full border-1px border-accent-cool-light">
-        <h3 class="font-sans-md text-bold text-primary-darker margin-top-0 margin-bottom-1">Certifica tu WhatsApp o Audio</h3>
-        <p class="font-sans-xs text-base-dark margin-bottom-2">Revisamos tu teléfono sin borrar tu información y te lo devolvemos rápidamente.</p>
+        <h3 class="font-sans-md text-bold text-primary-darker margin-top-0 margin-bottom-1">Certifica tu WhatsApp</h3>
+        <p class="font-sans-xs text-base-dark margin-bottom-2">Revisamos tu teléfono sin borrar tu información y te lo devolvemos bajo acta.</p>
         <a href="/contacto" class="usa-button bg-gold hover:bg-warning-dark text-ink width-full margin-bottom-1">
           <span class="text-ink text-bold">Consultar por mi Teléfono</span>
         </a>
-        <a href="/normativa#planillas-folio" class="usa-button usa-button--outline width-full font-sans-2xs">Ver Planillas Oficiales</a>
+        <a href="/normativa#cadena-custodia" class="usa-button usa-button--outline width-full font-sans-2xs">Ver Cadena de Custodia</a>
       </div>
     </div>
   </div>

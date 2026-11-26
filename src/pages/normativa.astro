@@ -1,51 +1,51 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { COMPANY, FORENSE_PORTAL_URL, LEGAL_INSTRUMENTS, FOLIO_FORMS_CATALOG, ISO_FORENSIC_PHASES } from '../consts';
+import { COMPANY, LEGAL_INSTRUMENTS, FORENSIC_PHASES, CHAIN_OF_CUSTODY_ITEMS } from '../consts';
 import Breadcrumb from '../components/molecules/Breadcrumb.astro';
 import PillNav, { type PillItem } from '../components/molecules/PillNav.astro';
-import LegalPyramidSection from '../components/organisms/LegalPyramidSection.astro';
-import LegalCompendiumSection from '../components/organisms/LegalCompendiumSection.astro';
 import ProcessSteps from '../components/organisms/ProcessSteps.astro';
 import FolioFormsSection from '../components/organisms/FolioFormsSection.astro';
+import LegalPyramidSection from '../components/organisms/LegalPyramidSection.astro';
+import LegalCompendiumSection from '../components/organisms/LegalCompendiumSection.astro';
 import CtaBanner from '../components/organisms/CtaBanner.astro';
 
 const normativaPills: PillItem[] = [
-	{ href: '#piramide-legal', label: '1. Pirámide Legal (COPP Art. 225)', iconName: 'account_balance' },
-	{ href: '#compendio', label: `2. Leyes y Normas (${LEGAL_INSTRUMENTS.length})`, iconName: 'gavel' },
-	{ href: '#ciclo-f0-f5', label: `3. Ciclo Técnico ISO (${ISO_FORENSIC_PHASES.length} Fases)`, iconName: 'verified_user' },
-	{ href: '#planillas-folio', label: `4. Planillas Oficiales (${FOLIO_FORMS_CATALOG.length})`, iconName: 'description' },
+	{ href: '#proceso-forense', label: `1. Proceso Forense (${FORENSIC_PHASES.length} Fases)`, iconName: 'verified_user' },
+	{ href: '#cadena-custodia', label: `2. Cadena de Custodia (${CHAIN_OF_CUSTODY_ITEMS.length})`, iconName: 'lock' },
+	{ href: '#piramide-legal', label: '3. Pirámide Legal', iconName: 'account_balance' },
+	{ href: '#compendio', label: `4. Fuentes RAG (${LEGAL_INSTRUMENTS.length})`, iconName: 'gavel' },
 ];
 ---
 
 <!-- USWDS: Layout grid & Documentation template | https://designsystem.digital.gov/templates/documentation-page/ -->
 <BaseLayout
-	title={`Marco Legal, Leyes Informáticas y Ciclo Pericial ISO F0–F5 | ${COMPANY.name}`}
-	description={`Sustento jurídico y técnico del laboratorio sha256.us y forense.sha256.us: Pirámide de Aplicación (COPP Art. 225), LMDFE, LEDI, MUCC-2017, ISO/IEC 27037, ISO/IEC 27042, NIST SP 800 y 13 Planillas Oficiales en Folio.`}
+	title={`Proceso Forense, Cadena de Custodia MUCC-2017 y Leyes Informáticas | ${COMPANY.name}`}
+	description={`Sustento jurídico y técnico verificado de sha256.us: 4 fases del peritaje (ISO/IEC 27037 e ISO/IEC 27042), Cadena de Custodia (MUCC-2017), LMDFE, LEDI, COPP, CPC y Código Civil.`}
 	mainClass="padding-top-4 tablet:padding-top-6"
 >
 	<div class="grid-container">
-		<Breadcrumb items={[{ label: 'Marco Legal & Proceso Forense (F0–F5)' }]} />
+		<Breadcrumb items={[{ label: 'Proceso & Leyes' }]} />
 
 		<div class="margin-bottom-4 border-bottom-2px border-base-lighter padding-bottom-3">
 			<span class="usa-tag bg-primary text-white margin-bottom-1 font-sans-3xs">
-				RESPALDO JURÍDICO Y CIENTÍFICO · BIBLIOTECA NORMATIVA
+				PROCESO FORENSE PASO A PASO · ÚNICA FUENTE RAG VERIFICADA
 			</span>
 			<h1 class="font-sans-2xl tablet:font-sans-3xl text-bold text-primary-darker margin-top-1 margin-bottom-2">
-				Marco Legal, Ciclo Técnico ISO (F0–F5) y 13 Planillas Oficiales
+				Proceso de Análisis Forense, Cadena de Custodia y Marco Legal
 			</h1>
 
-			<!-- Explicación en Lenguaje Claro para Todo Público -->
+			<!-- Explicación en Lenguaje Claro -->
 			<div class="usa-summary-box margin-bottom-3" role="region" aria-labelledby="summary-normativa-claro">
 				<div class="usa-summary-box__body">
 					<h2 class="usa-summary-box__heading font-sans-sm" id="summary-normativa-claro">
-						¿Por qué es importante esta sección para tu caso?
+						¿Por qué este procedimiento garantiza ganar o sostener tu prueba en juicio?
 					</h2>
 					<div class="usa-summary-box__text font-sans-xs">
 						<p class="margin-top-0 margin-bottom-1">
-							<strong>Si eres cliente o particular:</strong> Aquí puedes comprobar que nuestro trabajo cumple con todas las leyes de Venezuela y estándares internacionales para que ningún juez o contraparte pueda rechazar tu prueba digital.
+							<strong>Si eres particular:</strong> Un chat o archivo digital solo tiene fuerza plena en tribunales si se demuestra que no fue alterado y se respetó la Cadena de Custodia.
 						</p>
 						<p class="margin-0">
-							<strong>Si eres abogado, juez, fiscal o perito:</strong> Aquí tienes acceso directo a los 28 instrumentos legales y técnicos verificados con <strong>SHA-256</strong>, el flujo técnico completo de <strong>6 fases (F0 a F5)</strong> y las <strong>13 Planillas en formato Folio</strong> de <a href={FORENSE_PORTAL_URL} target="_blank" rel="noopener noreferrer" class="usa-link text-bold">forense.sha256.us</a>.
+							<strong>Si eres abogado, juez o perito:</strong> Cada etapa técnica y cada instrumento legal citado en esta página proviene directamente del repositorio documental <code>RAG/</code> verificado con su hash criptográfico <strong>SHA-256</strong>.
 						</p>
 					</div>
 				</div>
@@ -54,36 +54,36 @@ const normativaPills: PillItem[] = [
 			<div class="bg-primary-darker text-white padding-3 radius-md border-left-05 border-primary margin-bottom-3">
 				<div class="grid-row grid-gap">
 					<div class="grid-col-6 tablet:grid-col-3 margin-bottom-2 tablet:margin-bottom-0">
-						<span class="display-block font-mono-lg text-bold text-accent-cool">6 Fases</span>
-						<span class="display-block font-sans-2xs text-base-lightest">Ciclo Técnico ISO (F0 a F5)</span>
+						<span class="display-block font-mono-lg text-bold text-accent-cool">{FORENSIC_PHASES.length} Fases</span>
+						<span class="display-block font-sans-2xs text-base-lightest">Proceso Forense ISO 27037 / 27042</span>
 					</div>
 					<div class="grid-col-6 tablet:grid-col-3 margin-bottom-2 tablet:margin-bottom-0">
-						<span class="display-block font-mono-lg text-bold text-accent-cool">13 Actas</span>
-						<span class="display-block font-sans-2xs text-base-lightest">Formato Folio (216×330 mm)</span>
+						<span class="display-block font-mono-lg text-bold text-accent-cool">PRCC</span>
+						<span class="display-block font-sans-2xs text-base-lightest">Cadena de Custodia MUCC-2017</span>
 					</div>
 					<div class="grid-col-6 tablet:grid-col-3">
-						<span class="display-block font-mono-lg text-bold text-accent-cool">28 Normas</span>
-						<span class="display-block font-sans-2xs text-base-lightest">Leyes Venezolanas e ISO/NIST</span>
+						<span class="display-block font-mono-lg text-bold text-accent-cool">{LEGAL_INSTRUMENTS.length} Fuentes</span>
+						<span class="display-block font-sans-2xs text-base-lightest">Verificadas con SHA-256 en RAG/</span>
 					</div>
 					<div class="grid-col-6 tablet:grid-col-3">
-						<span class="display-block font-mono-lg text-bold text-accent-cool">Art. 187</span>
-						<span class="display-block font-sans-2xs text-base-lightest">Cadena de Custodia Oficial</span>
+						<span class="display-block font-mono-lg text-bold text-accent-cool">LMDFE Art. 4</span>
+						<span class="display-block font-sans-2xs text-base-lightest">Equivalencia de Mensaje de Datos</span>
 					</div>
 				</div>
 			</div>
 
-			<PillNav items={normativaPills} title="Explora el respaldo jurídico y técnico por sección:" />
+			<PillNav items={normativaPills} title="Explora el proceso y el marco legal paso a paso:" />
 		</div>
 	</div>
 
+	<ProcessSteps detailed={true} id="proceso-forense" />
+	<FolioFormsSection id="cadena-custodia" />
 	<LegalPyramidSection />
 	<LegalCompendiumSection />
-	<ProcessSteps detailed={true} id="ciclo-f0-f5" />
-	<FolioFormsSection id="planillas-folio" />
 
 	<CtaBanner
-		title="¿Necesitas presentar una prueba digital con validez legal plena?"
-		sub="Nuestro equipo se encarga de aplicar todo este respaldo legal y técnico por ti para entregarte un informe claro, sólido y listo para el tribunal."
+		title="¿Necesitas validar una prueba digital para tu juicio o reclamo?"
+		sub="Aplicamos todo este protocolo técnico y legal por ti para entregarte un dictamen claro, reproducible y listo para el tribunal."
 		buttonText="Consultar mi Caso"
 		buttonHref="/contacto"
 	/>

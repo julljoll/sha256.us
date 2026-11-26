@@ -12,11 +12,13 @@ const { tierItem } = Astro.props;
 
 <!-- USWDS: Process List Item | https://designsystem.digital.gov/components/process-list/ -->
 <li class="usa-process-list__item">
-  <div class="margin-bottom-1">
-    <span class="usa-tag bg-secondary-dark text-white">{tierItem.tier}</span>
-    <span class="usa-tag bg-primary-lighter text-primary-darker margin-left-05">{tierItem.articles}</span>
+  <div class="bg-white padding-3 border-1px border-base-lighter radius-md shadow-1">
+    <div class="margin-bottom-1">
+      <span class="usa-tag bg-secondary-dark text-white">{tierItem.tier}</span>
+      <span class="usa-tag bg-primary-lighter text-primary-darker margin-left-05">{tierItem.articles}</span>
+    </div>
+    <h3 class="usa-process-list__heading margin-top-05">{tierItem.levelName}</h3>
+    <p class="font-sans-xs text-bold text-primary margin-top-05 margin-bottom-05">{tierItem.normTitle}</p>
+    <p class="font-sans-xs text-base-dark margin-0">{tierItem.application}</p>
   </div>
-  <h3 class="usa-process-list__heading">{tierItem.levelName}</h3>
-  <p class="font-sans-xs text-bold text-primary margin-top-05 margin-bottom-05">{tierItem.normTitle}</p>
-  <p class="margin-top-0">{tierItem.application}</p>
 </li>

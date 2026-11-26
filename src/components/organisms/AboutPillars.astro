@@ -1,28 +1,29 @@
 ---
+// USWDS: Card Group | https://designsystem.digital.gov/components/card/
 import PillarCard from '../molecules/PillarCard.astro';
 ---
 
-<!-- USWDS: Layout grid | https://designsystem.digital.gov/utilities/layout-grid/ -->
-<div class="grid-row grid-gap margin-top-2">
-  <div class="tablet:grid-col-4 margin-bottom-2 tablet:margin-bottom-0">
+<!-- USWDS: Card Group | https://designsystem.digital.gov/components/card/ -->
+<ul class="usa-card-group margin-top-2">
+  <li class="usa-card tablet:grid-col-4">
     <PillarCard
       number="1"
       title="Evidencia Inalterable"
-      description="Cálculo matemático con el algoritmo SHA-256 para certificar que ningún archivo o bit fue manipulado."
+      description="Cálculo matemático SHA-256 antes y después de la copia para demostrar que ningún dato fue alterado."
     />
-  </div>
-  <div class="tablet:grid-col-4 margin-bottom-2 tablet:margin-bottom-0">
+  </li>
+  <li class="usa-card tablet:grid-col-4">
     <PillarCard
       number="2"
       title="Validez ante Tribunales"
-      description="Planillas oficiales de cadena de custodia (PRCC / MUCC-2017) y actas de entrevista para que el juez admita la prueba."
+      description="Planilla de Registro de Cadena de Custodia (PRCC — MUCC-2017) y dictamen motivado para que el juez admita la prueba."
     />
-  </div>
-  <div class="tablet:grid-col-4">
+  </li>
+  <li class="usa-card tablet:grid-col-4">
     <PillarCard
       number="3"
-      title="Conclusiones Claras"
-      description="Traducimos la complejidad informática y telemática a conclusiones certeras y comprensibles para jueces y litigantes."
+      title="Explicación Clara"
+      description="Traducimos los hallazgos técnicos (SQLite, metadatos, hashes) a conclusiones comprensibles para clientes y jueces."
     />
-  </div>
-</div>
+  </li>
+</ul>

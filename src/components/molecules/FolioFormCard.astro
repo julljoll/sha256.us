@@ -1,38 +1,32 @@
 ---
 // USWDS: Card | https://designsystem.digital.gov/components/card/
-import type { FolioFormItem } from '../../consts';
+import type { CustodyItem } from '../../consts';
 
 export interface Props {
-  form: FolioFormItem;
+  item: CustodyItem;
 }
 
-const { form } = Astro.props;
+const { item } = Astro.props;
 ---
 
 <!-- USWDS: Card | https://designsystem.digital.gov/components/card/ -->
 <div class="usa-card__container">
   <div class="usa-card__header">
     <div class="display-flex flex-wrap flex-justify margin-bottom-1">
-      <span class="usa-tag bg-primary-darker text-white margin-bottom-05">FASE {form.phase}</span>
-      <span class="usa-tag bg-base-lightest text-base-darkest margin-bottom-05">{form.sheets} (216×330 mm)</span>
-      <span class="usa-tag bg-primary text-white margin-bottom-05">#{form.number}</span>
+      <span class="usa-tag bg-primary-darker text-white margin-bottom-05">{item.category}</span>
+      <span class="usa-tag bg-primary text-white margin-bottom-05">#{item.number}</span>
     </div>
-    <h3 class="usa-card__heading">{form.title}</h3>
+    <h3 class="usa-card__heading">{item.title}</h3>
   </div>
   <div class="usa-card__body">
     <p class="font-sans-2xs text-primary text-bold margin-top-0 margin-bottom-1">
-      {form.standards}
+      {item.standards}
     </p>
-    <p class="margin-0">{form.description}</p>
+    <p class="font-sans-xs text-base-dark margin-0">{item.description}</p>
   </div>
   <div class="usa-card__footer">
-    <a
-      href={form.portalUrl}
-      target="_blank"
-      rel="noopener noreferrer"
-      class="usa-button usa-button--outline width-full"
-    >
-      Ver Instrumento en Sistema Forense
+    <a href="/contacto" class="usa-button usa-button--outline width-full">
+      Consultar Consignación de Evidencia &rarr;
     </a>
   </div>
 </div>

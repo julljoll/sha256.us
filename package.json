@@ -13,7 +13,9 @@
     "preview": "astro preview",
     "astro": "astro",
     "sync:uswds": "node scripts/sync_uswds_assets.mjs",
-    "verify:uswds": "node scripts/verify_uswds_only.mjs"
+    "verify:uswds": "node scripts/verify_uswds_only.mjs",
+    "verify:rag": "node scripts/verify_rag_truth.mjs",
+    "test:qa": "node scripts/verify_rag_truth.mjs && node scripts/verify_uswds_only.mjs"
   },
   "dependencies": {
     "@astrojs/mdx": "^8.1.2",

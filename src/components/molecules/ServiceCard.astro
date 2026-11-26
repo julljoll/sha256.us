@@ -73,18 +73,8 @@ const cardImage = serviceImgMap[service.id];
     </div>
   )}
   <div class="usa-card__body">
-    <!-- USWDS: Summary Box | https://designsystem.digital.gov/components/summary-box/ -->
-    <div class="usa-summary-box margin-y-2" role="region" aria-label={service.title}>
-      <div class="usa-summary-box__body">
-        <p class="usa-summary-box__heading font-sans-xs">¿Cómo te ayudamos?</p>
-        <div class="usa-summary-box__text">
-          <p class="font-sans-2xs margin-0">{service.simpleDesc}</p>
-        </div>
-      </div>
-    </div>
-
-    <p class="font-sans-3xs text-bold text-base-dark text-uppercase margin-top-2 margin-bottom-1">
-      Ejemplos de situaciones que resolvemos:
+    <p class="font-sans-xs text-ink line-height-sans-4 margin-top-0 margin-bottom-2">
+      {service.simpleDesc}
     </p>
     <!-- USWDS: Icon List | https://designsystem.digital.gov/components/icon-list/ -->
     <ul class="usa-icon-list">

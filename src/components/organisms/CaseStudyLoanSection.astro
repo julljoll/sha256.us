@@ -1,0 +1,95 @@
+---
+// USWDS: Card Group & Alert | https://designsystem.digital.gov/components/card/
+import SectionHeader from '../atoms/SectionHeader.astro';
+import Icon from '../atoms/Icon.astro';
+import { WHATSAPP_LOAN_CASE_STUDY, CONTACT } from '../../consts';
+
+export interface Props {
+  id?: string;
+}
+
+const { id = 'caso-prestamo-whatsapp' } = Astro.props;
+---
+
+<!-- USWDS: Card Group & Alert | https://designsystem.digital.gov/components/card/ -->
+<section id={id} class="usa-section border-top-1px border-base-lighter">
+  <div class="grid-container">
+    <SectionHeader
+      tag={WHATSAPP_LOAN_CASE_STUDY.tag}
+      tagVariant="accent"
+      title={WHATSAPP_LOAN_CASE_STUDY.title}
+      sub={WHATSAPP_LOAN_CASE_STUDY.sub}
+    />
+
+    <ul class="usa-card-group">
+      {WHATSAPP_LOAN_CASE_STUDY.cards.map((card) => (
+        <li class="usa-card tablet:grid-col-4">
+          <div class="usa-card__container">
+            <div class="usa-card__header">
+              <div class="margin-bottom-1">
+                <span class={`usa-tag text-white ${card.badgeVariant === 'secondary' ? 'bg-secondary' : card.badgeVariant === 'dark' ? 'bg-primary-darker' : 'bg-primary'}`}>
+                  {card.tag}
+                </span>
+              </div>
+              <h3 class="usa-card__heading">{card.title}</h3>
+            </div>
+            <div class="usa-card__body">
+              <p class="font-sans-xs text-ink line-height-sans-4 margin-top-0 margin-bottom-2">
+                {card.summary}
+              </p>
+              <ul class="usa-icon-list">
+                {card.points.map((pt) => (
+                  <li class="usa-icon-list__item">
+                    <div class="usa-icon-list__icon text-primary">
+                      <Icon name="check_circle" />
+                    </div>
+                    <div class="usa-icon-list__content font-sans-2xs">
+                      {pt}
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div class="usa-card__footer border-top-1px border-base-lighter padding-top-2">
+              <p class="font-sans-3xs text-primary-darker text-bold margin-0">
+                {card.legalBasis}
+              </p>
+            </div>
+          </div>
+        </li>
+      ))}
+    </ul>
+
+    <!-- USWDS: Alert | https://designsystem.digital.gov/components/alert/ -->
+    <div class="usa-alert usa-alert--warning margin-top-3 margin-bottom-3">
+      <div class="usa-alert__body">
+        <h3 class="usa-alert__heading font-sans-xs text-bold">
+          ¿Te deben dinero o tienes un conflicto con chats de WhatsApp?
+        </h3>
+        <p class="usa-alert__text font-sans-2xs">
+          <strong>No borres el chat ni reenvíes los mensajes.</strong> Activa el Modo Avión si temes que borren mensajes recientes y consúltanos para preservar la base de datos original con validez legal.
+        </p>
+      </div>
+    </div>
+
+    <div class="text-center">
+      <ul class="usa-button-group flex-justify-center">
+        <li class="usa-button-group__item">
+          <a href="/contacto" class="usa-button bg-gold hover:bg-warning-dark text-ink">
+            <span class="text-ink text-bold">Consultar mi Caso Ahora</span>
+          </a>
+        </li>
+        <li class="usa-button-group__item">
+          <a
+            href={CONTACT.whatsapp}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="usa-button usa-button--outline"
+          >
+            Escribir por WhatsApp
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>

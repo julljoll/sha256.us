@@ -8,7 +8,6 @@ export interface Props {
 
 const { instrument } = Astro.props;
 const shortHash = `${instrument.sha256Hash.slice(0, 12)}...${instrument.sha256Hash.slice(-8)}`;
-const fileBaseName = instrument.fileRef.split('/').pop() || instrument.fileRef;
 ---
 
 <!-- USWDS: Card | https://designsystem.digital.gov/components/card/ -->
@@ -32,14 +31,14 @@ const fileBaseName = instrument.fileRef.split('/').pop() || instrument.fileRef;
     <div class="usa-alert usa-alert--info usa-alert--slim">
       <div class="usa-alert__body">
         <p class="usa-alert__text font-sans-2xs">
-          <strong>Aplicación en sha256.us y forense.sha256.us:</strong> {instrument.keyApplication}
+          <strong>Aplicación en sha256.us:</strong> {instrument.keyApplication}
         </p>
       </div>
     </div>
   </div>
   <div class="usa-card__footer">
     <p class="font-mono-3xs text-base-dark margin-0">
-      <span class="text-bold">{fileBaseName}</span> — SHA-256: {shortHash}
+      <span class="text-bold">{instrument.fileRef}</span> — SHA-256: {shortHash}
     </p>
   </div>
 </div>

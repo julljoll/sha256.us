@@ -1,87 +1,114 @@
 ---
-// USWDS: Summary Box & Icon List | https://designsystem.digital.gov/components/summary-box/
+// USWDS: Card Group & Summary Box | https://designsystem.digital.gov/components/card/
 import SectionHeader from '../atoms/SectionHeader.astro';
 import Icon from '../atoms/Icon.astro';
 import { CONTACT } from '../../consts';
 ---
 
-<!-- USWDS: Summary Box & Icon List | https://designsystem.digital.gov/components/summary-box/ -->
-<section class="usa-section">
+<!-- USWDS: Card Group | https://designsystem.digital.gov/components/card/ -->
+<section class="usa-section usa-section--light border-top-1px border-base-lighter">
   <div class="grid-container">
     <SectionHeader
-      tag="RESPALDO LEGAL GARANTIZADO"
+      tag="VALOR PROBATORIO DECISIVO"
       tagVariant="primary"
-      title="¿Por qué nuestros informes sí son aceptados en un juicio?"
-      sub="Una simple captura de pantalla o impresión puede ser rechazada fácilmente en un tribunal. Nosotros certificamos tu evidencia cumpliendo todas las leyes venezolanas y normas internacionales."
+      title="¿Por qué un análisis forense bien hecho garantiza validez en juicio?"
+      sub="En un proceso judicial, la diferencia entre perder o ganar está en cómo presentas tu prueba digital."
     />
 
-    <div class="grid-row grid-gap">
-      <div class="tablet:grid-col-6 margin-bottom-3">
-        <div class="bg-white padding-3 border-1px border-base-lighter height-full">
-          <h3 class="font-sans-md text-bold text-primary-darker margin-top-0 margin-bottom-2">
-            Lo que garantizamos para tu tranquilidad
-          </h3>
-          <ul class="usa-icon-list">
-            <li class="usa-icon-list__item">
-              <div class="usa-icon-list__icon text-primary">
-                <Icon name="check_circle" />
-              </div>
-              <div class="usa-icon-list__content font-sans-xs">
-                <strong>Validez legal plena en Venezuela:</strong> Cumplimos con la Ley sobre Mensajes de Datos y Firmas Electrónicas (LMDFE) y el Código Orgánico Procesal Penal (COPP).
-              </div>
-            </li>
-            <li class="usa-icon-list__item">
-              <div class="usa-icon-list__icon text-primary">
-                <Icon name="check_circle" />
-              </div>
-              <div class="usa-icon-list__content font-sans-xs">
-                <strong>Cadena de Custodia Oficial:</strong> Registramos cada paso en las planillas oficiales requeridas para demostrar que nadie alteró tu evidencia.
-              </div>
-            </li>
-            <li class="usa-icon-list__item">
-              <div class="usa-icon-list__icon text-primary">
-                <Icon name="check_circle" />
-              </div>
-              <div class="usa-icon-list__content font-sans-xs">
-                <strong>Respeto a tu privacidad:</strong> Solo certificamos la información relacionada con tu caso, bajo autorización firmada y confidencialidad absoluta.
-              </div>
-            </li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="tablet:grid-col-6 margin-bottom-3">
-        <!-- USWDS: Summary Box | https://designsystem.digital.gov/components/summary-box/ -->
-        <div class="usa-summary-box height-full margin-0" role="region" aria-labelledby="summary-box-evaluacion">
-          <div class="usa-summary-box__body">
-            <h3 class="usa-summary-box__heading" id="summary-box-evaluacion">
-              ¿Sufriste una estafa, suplantación o conflicto con pruebas digitales?
-            </h3>
-            <div class="usa-summary-box__text">
-              <p>
-                No esperes a que el responsable borre los mensajes o cierre sus cuentas. Evaluamos tu situación de inmediato, aseguramos los chats, notas de voz, transferencias o correos en tu dispositivo y te entregamos el <strong>Dictamen Pericial Oficial</strong> listo para presentar tu denuncia o demanda.
-              </p>
-              <ul class="usa-button-group margin-top-2">
-                <li class="usa-button-group__item">
-                  <a href="/contacto" class="usa-button bg-gold hover:bg-warning-dark text-ink">
-                    <span class="text-ink text-bold">Solicitar Evaluación de mi Caso &rarr;</span>
-                  </a>
-                </li>
-                <li class="usa-button-group__item">
-                  <a
-                    href={CONTACT.whatsapp}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="usa-button usa-button--outline"
-                  >
-                    Atención por WhatsApp
-                  </a>
-                </li>
-              </ul>
-            </div>
+    <ul class="usa-card-group">
+      <li class="usa-card tablet:grid-col-6">
+        <div class="usa-card__container">
+          <div class="usa-card__header">
+            <span class="usa-tag bg-secondary text-white margin-bottom-1">RIESGO PROCESAL</span>
+            <h3 class="usa-card__heading">Captura de Pantalla o Impresión Simple</h3>
+          </div>
+          <div class="usa-card__body">
+            <p class="font-sans-xs text-base-dark margin-top-0 margin-bottom-2">
+              Según el <strong>Art. 4 de la LMDFE</strong>, un mensaje reproducido en papel solo equivale a una copia fotostática simple.
+            </p>
+            <ul class="usa-icon-list">
+              <li class="usa-icon-list__item">
+                <div class="usa-icon-list__icon text-secondary">
+                  <Icon name="warning" />
+                </div>
+                <div class="usa-icon-list__content font-sans-2xs">
+                  La contraparte puede desconocerla alegando edición o montaje.
+                </div>
+              </li>
+              <li class="usa-icon-list__item">
+                <div class="usa-icon-list__icon text-secondary">
+                  <Icon name="warning" />
+                </div>
+                <div class="usa-icon-list__content font-sans-2xs">
+                  No demuestra integridad matemática ni fecha real de origen en base de datos.
+                </div>
+              </li>
+              <li class="usa-icon-list__item">
+                <div class="usa-icon-list__icon text-secondary">
+                  <Icon name="warning" />
+                </div>
+                <div class="usa-icon-list__content font-sans-2xs">
+                  Carece de Cadena de Custodia oficial (PRCC — MUCC-2017).
+                </div>
+              </li>
+            </ul>
           </div>
         </div>
-      </div>
-    </div>
+      </li>
+
+      <li class="usa-card tablet:grid-col-6">
+        <div class="usa-card__container">
+          <div class="usa-card__header">
+            <span class="usa-tag bg-primary text-white margin-bottom-1">GARANTÍA sha256.us</span>
+            <h3 class="usa-card__heading">Dictamen Pericial Forense Certificado</h3>
+          </div>
+          <div class="usa-card__body">
+            <p class="font-sans-xs text-base-dark margin-top-0 margin-bottom-2">
+              Cumple con la <strong>LMDFE (Arts. 4 y 7)</strong>, <strong>CPC (Arts. 395 y 451)</strong>, <strong>COPP (Arts. 197 y 237–239)</strong> e <strong>ISO/IEC 27037 y 27042</strong>.
+            </p>
+            <ul class="usa-icon-list">
+              <li class="usa-icon-list__item">
+                <div class="usa-icon-list__icon text-primary">
+                  <Icon name="check_circle" />
+                </div>
+                <div class="usa-icon-list__content font-sans-2xs">
+                  <strong>Equivalencia legal con documentos escritos:</strong> integridad probada con SHA-256.
+                </div>
+              </li>
+              <li class="usa-icon-list__item">
+                <div class="usa-icon-list__icon text-primary">
+                  <Icon name="check_circle" />
+                </div>
+                <div class="usa-icon-list__content font-sans-2xs">
+                  <strong>Cadena de Custodia (PRCC):</strong> trazabilidad completa desde la recepción hasta el fallo.
+                </div>
+              </li>
+              <li class="usa-icon-list__item">
+                <div class="usa-icon-list__icon text-primary">
+                  <Icon name="check_circle" />
+                </div>
+                <div class="usa-icon-list__content font-sans-2xs">
+                  <strong>Privacidad garantizada:</strong> extracción bajo consentimiento expreso (CRBV Art. 28).
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="usa-card__footer">
+            <ul class="usa-button-group flex-wrap">
+              <li class="usa-button-group__item">
+                <a href="/contacto" class="usa-button bg-gold hover:bg-warning-dark text-ink">
+                  <span class="text-ink text-bold">Evaluar mi Caso &rarr;</span>
+                </a>
+              </li>
+              <li class="usa-button-group__item">
+                <a href={CONTACT.whatsapp} target="_blank" rel="noopener noreferrer" class="usa-button usa-button--outline">
+                  WhatsApp Directo
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </li>
+    </ul>
   </div>
 </section>

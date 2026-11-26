@@ -1,17 +1,18 @@
 ---
+// USWDS: Card, Summary Box & Accordion | https://designsystem.digital.gov/components/card/
 import { Image } from 'astro:assets';
 import Badge from '../../atoms/Badge.astro';
 import Icon from '../../atoms/Icon.astro';
 import imgAlmacenamiento from '../../../assets/services/servicio-almacenamiento.jpg';
 ---
 
-<!-- USWDS: Summary box, List & Accordion | https://designsystem.digital.gov/components/accordion/ -->
-<section id="almacenamiento" class="margin-bottom-6 tablet:margin-bottom-8 bg-white padding-3 tablet:padding-6 radius-lg shadow-1 border-1px border-base-lighter">
+<!-- USWDS: Summary box, Card & Accordion | https://designsystem.digital.gov/components/accordion/ -->
+<section id="almacenamiento" class="margin-bottom-6 bg-white padding-3 tablet:padding-5 radius-lg shadow-1 border-1px border-base-lighter">
   <div class="grid-row grid-gap flex-align-center">
     <div class="tablet:grid-col-8">
-      <Badge variant="dark" class="margin-bottom-1">3. COMPUTADORAS, DISCOS Y EMPRESAS</Badge>
+      <Badge variant="dark" class="margin-bottom-1">4. COMPUTADORAS, DISCOS Y EMPRESAS</Badge>
       <h2 class="font-sans-xl text-bold text-primary-darker margin-top-1 margin-bottom-2">
-        Recuperación de Archivos y Revisión Forense de Computadoras y Discos
+        Recuperación de Archivos y Revisión Forense de Computadoras
       </h2>
 
       <div class="usa-summary-box margin-bottom-3" role="region" aria-label="¿Cuándo necesitas este servicio?">
@@ -21,18 +22,52 @@ import imgAlmacenamiento from '../../../assets/services/servicio-almacenamiento.
             ¿Cuándo necesitas este servicio?
           </h3>
           <div class="usa-summary-box__text font-sans-xs">
-            Si tu computadora, disco duro, servidor o memoria USB se dañó, fue formateado o sospechas que alguien entró sin permiso para borrar o robar información de tu negocio o trabajo.
+            Si tu computadora, disco duro o memoria USB fue formateado, presenta fallas o sospechas que alguien accedió sin permiso para copiar, alterar o borrar información importante.
           </div>
         </div>
       </div>
 
-      <p class="font-sans-sm text-bold text-primary-darker margin-bottom-1">
-        ¿Qué hacemos por ti y qué recibes?
-      </p>
-      <ul class="usa-list font-sans-sm text-base-dark line-height-sans-4 margin-bottom-3">
-        <li><strong>Recuperación segura de archivos:</strong> Rescatamos documentos, bases de datos y fotos borradas o dañadas trabajando sobre una copia segura para no arriesgar tu disco original.</li>
-        <li><strong>Investigación de sabotaje o robo de datos:</strong> Descubrimos qué archivos fueron copiados, borrados o modificados y en qué fecha y hora ocurrió.</li>
-        <li><strong>Confidencialidad total:</strong> Al terminar tu caso y entregarte tus archivos e informe, eliminamos de forma definitiva cualquier copia temporal de nuestro laboratorio.</li>
+      <ul class="usa-card-group margin-bottom-2">
+        <li class="usa-card mobile-lg:grid-col-6">
+          <div class="usa-card__container">
+            <div class="usa-card__header">
+              <h3 class="usa-card__heading font-sans-sm">Clonado Seguro sin Riesgos</h3>
+            </div>
+            <div class="usa-card__body">
+              <p class="font-sans-2xs text-base-dark margin-0">Creamos una imagen bit a bit con bloqueadores de escritura para nunca dañar tu disco original.</p>
+            </div>
+          </div>
+        </li>
+        <li class="usa-card mobile-lg:grid-col-6">
+          <div class="usa-card__container">
+            <div class="usa-card__header">
+              <h3 class="usa-card__heading font-sans-sm">Recuperación y Cronología</h3>
+            </div>
+            <div class="usa-card__body">
+              <p class="font-sans-2xs text-base-dark margin-0">Recuperamos archivos borrados y reconstruimos la línea de tiempo de uso con Autopsy.</p>
+            </div>
+          </div>
+        </li>
+        <li class="usa-card mobile-lg:grid-col-6">
+          <div class="usa-card__container">
+            <div class="usa-card__header">
+              <h3 class="usa-card__heading font-sans-sm">Captura de Memoria RAM</h3>
+            </div>
+            <div class="usa-card__body">
+              <p class="font-sans-2xs text-base-dark margin-0">Si el equipo está encendido, preservamos primero la memoria volátil y conexiones (RFC 3227).</p>
+            </div>
+          </div>
+        </li>
+        <li class="usa-card mobile-lg:grid-col-6">
+          <div class="usa-card__container">
+            <div class="usa-card__header">
+              <h3 class="usa-card__heading font-sans-sm">Auditoría de Intrusiones</h3>
+            </div>
+            <div class="usa-card__body">
+              <p class="font-sans-2xs text-base-dark margin-0">Detectamos accesos indebidos, programas espía o sabotaje a sistemas (LEDI Arts. 6 y 7).</p>
+            </div>
+          </div>
+        </li>
       </ul>
 
       <!-- Revelación Progresiva para Abogados y Jueces -->
@@ -49,15 +84,14 @@ import imgAlmacenamiento from '../../../assets/services/servicio-almacenamiento.
         </h3>
         <div id="acc-tech-almacenamiento" class="usa-accordion__content usa-prose" hidden>
           <p class="font-sans-xs text-base-dark">
-            Intervenimos medios HDD, SSD, NVMe, M.2 y arreglos RAID respetando el <strong>Orden de Volatilidad (RFC 3227)</strong> y los <strong>4 Principios ACPO</strong>: clonado bit a bit con bloqueadores físicos (<em>Write-Blockers</em>) bajo <strong>ISO/IEC 27037</strong>, auditoría de delitos informáticos tipificados en la <strong>LEDI (G.O. N° 37.313 Arts. 6 al 12)</strong> y sanitización irreversible <strong>NIST SP 800-88 Rev. 1 (Crypto-Erase)</strong>.
+            Aplicamos el <strong>Orden de Volatilidad (RFC 3227)</strong> y los <strong>4 Principios ACPO</strong>: adquisición bit a bit con bloqueadores de escritura y <strong>FTK Imager</strong> bajo <strong>ISO/IEC 27037</strong>, examen estructurado en <strong>Autopsy</strong> y <strong>QuickHash SHA-256</strong> bajo <strong>ISO/IEC 27042</strong> y <strong>NIST SP 800-86</strong>, con sustento penal en la <strong>LEDI (G.O. N° 37.313 Arts. 6–11)</strong>.
           </p>
           <div class="display-flex flex-wrap margin-top-1">
-            <span class="usa-tag bg-white text-primary border-1px border-primary-light margin-right-05 margin-bottom-05">LEDI G.O. 37.313 (Arts. 6–12)</span>
-            <span class="usa-tag bg-white text-primary border-1px border-primary-light margin-right-05 margin-bottom-05">ISO/IEC 27037:2012</span>
+            <span class="usa-tag bg-white text-primary border-1px border-primary-light margin-right-05 margin-bottom-05">LEDI G.O. 37.313 (Arts. 6–11)</span>
+            <span class="usa-tag bg-white text-primary border-1px border-primary-light margin-right-05 margin-bottom-05">ISO/IEC 27037 &amp; 27042</span>
             <span class="usa-tag bg-white text-primary border-1px border-primary-light margin-right-05 margin-bottom-05">ISO/IEC 27001 &amp; 27002:2022</span>
-            <span class="usa-tag bg-white text-primary border-1px border-primary-light margin-right-05 margin-bottom-05">NIST SP 800-86 &amp; 800-88</span>
+            <span class="usa-tag bg-white text-primary border-1px border-primary-light margin-right-05 margin-bottom-05">NIST SP 800-86</span>
             <span class="usa-tag bg-white text-primary border-1px border-primary-light margin-right-05 margin-bottom-05">RFC 3227 (IETF)</span>
-            <span class="usa-tag bg-white text-primary border-1px border-primary-light margin-right-05 margin-bottom-05">Planillas Folio #03, #05 y #12</span>
           </div>
         </div>
       </div>
@@ -77,7 +111,7 @@ import imgAlmacenamiento from '../../../assets/services/servicio-almacenamiento.
       </div>
       <div class="bg-primary-lighter padding-4 radius-lg width-full border-1px border-primary-light">
         <h3 class="font-sans-md text-bold text-primary-darker margin-top-0 margin-bottom-1">¿Disco Dañado o Archivos Borrados?</h3>
-        <p class="font-sans-xs text-base-dark margin-bottom-2">No intentes instalar programas por tu cuenta: contáctanos para recuperar tu información con seguridad.</p>
+        <p class="font-sans-xs text-base-dark margin-bottom-2">No instales programas sobre el disco: consígnalo para proteger la evidencia.</p>
         <a href="/contacto" class="usa-button bg-gold hover:bg-warning-dark text-ink width-full margin-bottom-1">
           <span class="text-ink text-bold">Solicitar Revisión de Equipo</span>
         </a>

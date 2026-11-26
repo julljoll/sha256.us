@@ -2,26 +2,26 @@
 // USWDS: Card Group | https://designsystem.digital.gov/components/card/
 import SectionHeader from '../atoms/SectionHeader.astro';
 import FolioFormCard from '../molecules/FolioFormCard.astro';
-import { FOLIO_FORMS_CATALOG, ADMISSIBILITY_GUARANTEES, FORENSE_PORTAL_URL } from '../../consts';
+import { CHAIN_OF_CUSTODY_ITEMS, ADMISSIBILITY_GUARANTEES } from '../../consts';
 
 export interface Props {
   id?: string;
 }
 
-const { id = 'planillas-folio' } = Astro.props;
+const { id = 'cadena-custodia' } = Astro.props;
 ---
 
 <!-- USWDS: Card Group | https://designsystem.digital.gov/components/card/ -->
 <section id={id} class="usa-section border-top-1px border-base-lighter">
   <div class="grid-container">
     <SectionHeader
-      tag="INSTRUMENTOS PERICIALES EN FORMATO FOLIO (216mm × 330mm)"
+      tag="GARANTÍAS DE INALTERABILIDAD · MUCC-2017 & ISO/IEC 27037"
       tagVariant="primary"
-      title="Catálogo Oficial de 13 Planillas Forenses y Cadena de Custodia"
-      sub="Cada fase del ciclo pericial (F0 a F5) se documenta en papel tamaño Folio/Oficio con doble firma pericial, control dactiloscópico bilateral y código de verificación criptográfica SHA-256."
+      title="Sistema de Cadena de Custodia (PRCC) y Garantías Técnicas"
+      sub="Aplicamos el Manual Único de Cadena de Custodia (MUCC-2017) y las normas ISO/IEC 27037 y NIST SP 800-101 para demostrar que la evidencia no fue alterada desde su recepción hasta la sentencia."
     />
 
-    <!-- 4 Garantías de Admisibilidad Probatoria (COPP Art. 187 & MUCC-2017) -->
+    <!-- 4 Garantías Técnicas Verificadas -->
     <ul class="usa-card-group margin-bottom-4">
       {ADMISSIBILITY_GUARANTEES.map((g) => (
         <li class="usa-card tablet:grid-col-6 desktop:grid-col-3">
@@ -31,45 +31,20 @@ const { id = 'planillas-folio' } = Astro.props;
               <h3 class="usa-card__heading">{g.title}</h3>
             </div>
             <div class="usa-card__body">
-              <p class="font-sans-2xs">{g.description}</p>
+              <p class="font-sans-2xs text-base-dark margin-0">{g.description}</p>
             </div>
           </div>
         </li>
       ))}
     </ul>
 
-    <!-- Grid de las 13 Planillas Oficiales en Folio -->
+    <!-- 6 Fases, Modalidades y Figuras Oficiales del MUCC-2017 -->
     <ul class="usa-card-group">
-      {FOLIO_FORMS_CATALOG.map((form) => (
+      {CHAIN_OF_CUSTODY_ITEMS.map((item) => (
         <li class="usa-card tablet:grid-col-6 desktop:grid-col-4">
-          <FolioFormCard form={form} />
+          <FolioFormCard item={item} />
         </li>
       ))}
     </ul>
-
-    <div class="margin-top-4">
-      <ul class="usa-button-group">
-        <li class="usa-button-group__item">
-          <a
-            href={`${FORENSE_PORTAL_URL}/planillas`}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="usa-button"
-          >
-            Acceder al Generador de Planillas en forense.sha256.us/planillas
-          </a>
-        </li>
-        <li class="usa-button-group__item">
-          <a
-            href={`${FORENSE_PORTAL_URL}/custodia`}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="usa-button usa-button--outline"
-          >
-            Protocolo de Cadena de Custodia (PRCC)
-          </a>
-        </li>
-      </ul>
-    </div>
   </div>
 </section>

@@ -1,17 +1,18 @@
 ---
+// USWDS: Card, Summary Box & Accordion | https://designsystem.digital.gov/components/card/
 import { Image } from 'astro:assets';
 import Badge from '../../atoms/Badge.astro';
 import Icon from '../../atoms/Icon.astro';
 import imgDocumentos from '../../../assets/services/servicio-documentos.jpg';
 ---
 
-<!-- USWDS: Summary box, List & Accordion | https://designsystem.digital.gov/components/accordion/ -->
-<section id="documentos" class="margin-bottom-6 tablet:margin-bottom-8 bg-white padding-3 tablet:padding-6 radius-lg shadow-1 border-1px border-base-lighter">
+<!-- USWDS: Summary box, Card & Accordion | https://designsystem.digital.gov/components/accordion/ -->
+<section id="documentos" class="margin-bottom-6 bg-white padding-3 tablet:padding-5 radius-lg shadow-1 border-1px border-base-lighter">
   <div class="grid-row grid-gap flex-align-center">
     <div class="tablet:grid-col-8">
-      <Badge variant="accent" class="margin-bottom-1">4. CONTRATOS PDF, CORREOS Y ESTAFAS</Badge>
+      <Badge variant="accent" class="margin-bottom-1">3. CONTRATOS PDF, FIRMAS Y CORREOS</Badge>
       <h2 class="font-sans-xl text-bold text-primary-darker margin-top-1 margin-bottom-2">
-        Verificación de Contratos en PDF, Firmas Electrónicas y Correos Falsos
+        Verificación de Contratos PDF, Firmas Electrónicas y Correos
       </h2>
 
       <div class="usa-summary-box margin-bottom-3" role="region" aria-label="¿Cuándo necesitas este servicio?">
@@ -21,18 +22,52 @@ import imgDocumentos from '../../../assets/services/servicio-documentos.jpg';
             ¿Cuándo necesitas este servicio?
           </h3>
           <div class="usa-summary-box__text font-sans-xs">
-            Si sospechas que alguien modificó un contrato, factura o recibo en PDF, falsificó una firma digital o envió un correo electrónico falso haciéndose pasar por otra persona o empresa.
+            Si sospechas que alguien modificó un contrato, factura o recibo en PDF, falsificó una firma electrónica o envió un correo falso para cometer un fraude comercial.
           </div>
         </div>
       </div>
 
-      <p class="font-sans-sm text-bold text-primary-darker margin-bottom-1">
-        ¿Qué hacemos por ti y qué recibes?
-      </p>
-      <ul class="usa-list font-sans-sm text-base-dark line-height-sans-4 margin-bottom-3">
-        <li><strong>Detección de documentos PDF alterados:</strong> Revisamos las capas internas del archivo para demostrar si fue editado, en qué fecha y con qué programa.</li>
-        <li><strong>Rastreo de correos electrónicos reales o falsos:</strong> Verificamos el origen verdadero de un correo para demostrar fraudes, suplantaciones o acuerdos comerciales.</li>
-        <li><strong>Validación de firmas electrónicas:</strong> Comprobamos si una firma digital pertenece realmente a su autor bajo las leyes venezolanas.</li>
+      <ul class="usa-card-group margin-bottom-2">
+        <li class="usa-card mobile-lg:grid-col-6">
+          <div class="usa-card__container">
+            <div class="usa-card__header">
+              <h3 class="usa-card__heading font-sans-sm">Auditoría de PDF y Metadatos</h3>
+            </div>
+            <div class="usa-card__body">
+              <p class="font-sans-2xs text-base-dark margin-0">Examinamos estructura interna, fechas de creación/edición y software utilizado en el archivo.</p>
+            </div>
+          </div>
+        </li>
+        <li class="usa-card mobile-lg:grid-col-6">
+          <div class="usa-card__container">
+            <div class="usa-card__header">
+              <h3 class="usa-card__heading font-sans-sm">Firmas y Certificados</h3>
+            </div>
+            <div class="usa-card__body">
+              <p class="font-sans-2xs text-base-dark margin-0">Validamos firmas electrónicas y certificados conforme a la LMDFE y la Norma 063 de SUSCERTE.</p>
+            </div>
+          </div>
+        </li>
+        <li class="usa-card mobile-lg:grid-col-6">
+          <div class="usa-card__container">
+            <div class="usa-card__header">
+              <h3 class="usa-card__heading font-sans-sm">Correos y Cabeceras</h3>
+            </div>
+            <div class="usa-card__body">
+              <p class="font-sans-2xs text-base-dark margin-0">Verificamos el emisor real, fecha de envío y recepción del mensaje de datos (LMDFE Arts. 9–11).</p>
+            </div>
+          </div>
+        </li>
+        <li class="usa-card mobile-lg:grid-col-6">
+          <div class="usa-card__container">
+            <div class="usa-card__header">
+              <h3 class="usa-card__heading font-sans-sm">Detección de Falsificación</h3>
+            </div>
+            <div class="usa-card__body">
+              <p class="font-sans-2xs text-base-dark margin-0">Documentamos alteraciones para acciones civiles o denuncias por falsificación y fraude (LEDI).</p>
+            </div>
+          </div>
+        </li>
       </ul>
 
       <!-- Revelación Progresiva para Abogados y Jueces -->
@@ -49,14 +84,14 @@ import imgDocumentos from '../../../assets/services/servicio-documentos.jpg';
         </h3>
         <div id="acc-tech-documentos" class="usa-accordion__content usa-prose" hidden>
           <p class="font-sans-xs text-base-dark">
-            Auditamos la equivalencia funcional y autenticidad conforme a la <strong>Ley sobre Mensajes de Datos y Firmas Electrónicas (LMDFE G.O. N° 37.148 Arts. 4, 7, 16 y 38)</strong> y <strong>NORMA-063-1.1-2011 de SUSCERTE</strong>: inspección de árboles de objetos PDF, actualizaciones incrementales (<em>Incremental Updates</em>), metadatos XMP (<strong>LEDI Art. 14</strong>) y cabeceras SMTP/MIME RFC 5322 (<strong>SPF, DKIM, DMARC</strong>).
+            Auditamos la integridad y equivalencia probatoria conforme a la <strong>LMDFE (G.O. N° 37.148 Arts. 4, 7, 8, 9, 16 y 38)</strong>, la <strong>Norma SUSCERTE N° 063-08/11 (Certificación Cruzada)</strong> y tipificación de falsificación de documentos (<strong>LEDI Art. 12</strong>) y fraude (<strong>LEDI Art. 14</strong>), con verificación SHA-256 (<strong>QuickHash / ISO/IEC 27042</strong>).
           </p>
           <div class="display-flex flex-wrap margin-top-1">
-            <span class="usa-tag bg-white text-primary border-1px border-primary-light margin-right-05 margin-bottom-05">LMDFE G.O. 37.148 (Arts. 4, 7, 16)</span>
-            <span class="usa-tag bg-white text-primary border-1px border-primary-light margin-right-05 margin-bottom-05">SUSCERTE PKI &amp; NORMA-063</span>
-            <span class="usa-tag bg-white text-primary border-1px border-primary-light margin-right-05 margin-bottom-05">LEDI Art. 14 (Falsificación)</span>
-            <span class="usa-tag bg-white text-primary border-1px border-primary-light margin-right-05 margin-bottom-05">Código Civil Arts. 1.422–1.427</span>
-            <span class="usa-tag bg-white text-primary border-1px border-primary-light margin-right-05 margin-bottom-05">Planillas Folio #07, #08 y #13</span>
+            <span class="usa-tag bg-white text-primary border-1px border-primary-light margin-right-05 margin-bottom-05">LMDFE G.O. 37.148</span>
+            <span class="usa-tag bg-white text-primary border-1px border-primary-light margin-right-05 margin-bottom-05">SUSCERTE NORMA-063</span>
+            <span class="usa-tag bg-white text-primary border-1px border-primary-light margin-right-05 margin-bottom-05">LEDI Art. 12 (Falsificación)</span>
+            <span class="usa-tag bg-white text-primary border-1px border-primary-light margin-right-05 margin-bottom-05">LEDI Art. 14 (Fraude)</span>
+            <span class="usa-tag bg-white text-primary border-1px border-primary-light margin-right-05 margin-bottom-05">Código Civil Art. 1.354</span>
           </div>
         </div>
       </div>
@@ -76,11 +111,11 @@ import imgDocumentos from '../../../assets/services/servicio-documentos.jpg';
       </div>
       <div class="bg-accent-cool-lighter padding-4 radius-lg width-full border-1px border-accent-cool-light">
         <h3 class="font-sans-md text-bold text-primary-darker margin-top-0 margin-bottom-1">¿Dudas de un PDF o Correo?</h3>
-        <p class="font-sans-xs text-base-dark margin-bottom-2">Envíanos tu consulta y comprobamos científicamente si el documento es original o fue manipulado.</p>
+        <p class="font-sans-xs text-base-dark margin-bottom-2">Comprobamos científicamente si el documento es auténtico o fue manipulado.</p>
         <a href="/contacto" class="usa-button bg-gold hover:bg-warning-dark text-ink width-full margin-bottom-1">
           <span class="text-ink text-bold">Verificar un Documento</span>
         </a>
-        <a href="/normativa#compendio" class="usa-button usa-button--outline width-full font-sans-2xs">Ver Leyes de Documentos</a>
+        <a href="/normativa#compendio" class="usa-button usa-button--outline width-full font-sans-2xs">Ver Leyes Aplicables</a>
       </div>
     </div>
   </div>

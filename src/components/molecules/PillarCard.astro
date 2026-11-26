@@ -1,4 +1,5 @@
 ---
+// USWDS: Card | https://designsystem.digital.gov/components/card/
 export interface Props {
   number: string;
   title: string;
@@ -9,11 +10,12 @@ const { number, title, description } = Astro.props;
 ---
 
 <!-- USWDS: Card | https://designsystem.digital.gov/components/card/ -->
-<div class="bg-white padding-3 radius-md border-top-05 border-primary shadow-1 height-full">
-  <strong class="font-sans-xs text-primary-darker display-block margin-bottom-05">
-    {number}. {title}
-  </strong>
-  <span class="font-sans-3xs text-base-dark line-height-sans-3">
-    {description}
-  </span>
+<div class="usa-card__container">
+  <div class="usa-card__header">
+    <span class="usa-tag bg-primary text-white margin-bottom-1">PILAR {number}</span>
+    <h3 class="usa-card__heading">{title}</h3>
+  </div>
+  <div class="usa-card__body">
+    <p class="font-sans-xs text-base-dark line-height-sans-4 margin-0">{description}</p>
+  </div>
 </div>
