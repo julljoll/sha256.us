@@ -9,7 +9,16 @@ interface Props {
 
 const { title } = Astro.props;
 
-const currentUrl = new URL(Astro.url.pathname, Astro.site || SITE_URL).toString();
+const rawPath = Astro.url.pathname
+  .replace(/\/index\.html$/i, '/')
+  .replace(/\.html$/i, '');
+const normalizedPath =
+  rawPath === '/'
+    ? '/'
+    : rawPath.endsWith('/') || /\.[a-z0-9]+$/i.test(rawPath)
+      ? rawPath
+      : `${rawPath}/`;
+const currentUrl = new URL(normalizedPath, Astro.site || SITE_URL).toString();
 const encodedUrl = encodeURIComponent(currentUrl);
 const encodedTitle = encodeURIComponent(title);
 

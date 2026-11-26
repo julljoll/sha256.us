@@ -12,9 +12,21 @@ interface Props {
 	author?: string;
 	section?: string;
 	tags?: string[];
+	noindex?: boolean;
 }
 
-const canonicalURL = new URL(Astro.url.pathname, Astro.site || SITE_URL);
+const rawPath = Astro.url.pathname
+	.replace(/\/index\.html$/i, '/')
+	.replace(/\.html$/i, '');
+const normalizedPath =
+	rawPath === '/'
+		? '/'
+		: rawPath.endsWith('/') || /\.[a-z0-9]+$/i.test(rawPath)
+			? rawPath
+			: `${rawPath}/`;
+const canonicalURL = new URL(normalizedPath, Astro.site || SITE_URL);
+const canonicalURLString = canonicalURL.toString();
+
 const {
 	title = SITE_TITLE,
 	description = SITE_DESCRIPTION,
@@ -25,6 +37,7 @@ const {
 	author = 'Equipo Pericial sha256.us',
 	section = 'Informática Forense',
 	tags = [],
+	noindex = false,
 } = Astro.props;
 
 // Resolución robusta de la URL absoluta de la imagen para Open Graph y Twitter Cards
@@ -54,7 +67,7 @@ const schemaOrg = {
 			'@id': `${SITE_URL}/#organization`,
 			name: COMPANY.name,
 			legalName: COMPANY.legalBrand,
-			url: SITE_URL,
+			url: `${SITE_URL}/`,
 			logo: {
 				'@type': 'ImageObject',
 				url: `${SITE_URL}/logo.png`,
@@ -145,7 +158,7 @@ const schemaOrg = {
 			? [
 					{
 						'@type': 'BlogPosting',
-						'@id': `${canonicalURL.toString()}#article`,
+						'@id': `${canonicalURLString}#article`,
 						isPartOf: {
 							'@id': `${SITE_URL}/#organization`,
 						},
@@ -167,7 +180,7 @@ const schemaOrg = {
 						publisher: {
 							'@id': `${SITE_URL}/#organization`,
 						},
-						mainEntityOfPage: canonicalURL.toString(),
+						mainEntityOfPage: canonicalURLString,
 						articleSection: section,
 						keywords: tags.length ? tags.join(', ') : 'informática forense, evidencia digital',
 					},
@@ -200,8 +213,15 @@ const schemaOrg = {
 />
 <meta name="generator" content={Astro.generator} />
 
-<!-- Canonical URL -->
-<link rel="canonical" href={canonicalURL} />
+<!-- Canonical URL & hreflang (solo páginas indexables) -->
+{!noindex && (
+	<>
+		<link rel="canonical" href={canonicalURLString} />
+		<link rel="alternate" hreflang="es-VE" href={canonicalURLString} />
+		<link rel="alternate" hreflang="es" href={canonicalURLString} />
+		<link rel="alternate" hreflang="x-default" href={canonicalURLString} />
+	</>
+)}
 
 <!-- Primary Meta Tags (Google Search Console & SEO) -->
 <title>{title}</title>
@@ -212,8 +232,17 @@ const schemaOrg = {
 	content="peritaje informático, análisis forense de móviles, peritaje de teléfonos celulares, informe pericial whatsapp, peritaje informático laboral y judicial, peritaje de redes sociales, manipulación de imágenes, certificación de contenido web, recuperación de datos borrados, análisis forense de computadoras, sha256.us"
 />
 <meta name="author" content={`Equipo Forense sha256.us`} />
-<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-<meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+{noindex ? (
+	<>
+		<meta name="robots" content="noindex, nofollow" />
+		<meta name="googlebot" content="noindex, nofollow" />
+	</>
+) : (
+	<>
+		<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+		<meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+	</>
+)}
 <meta name="geo.region" content="VE-K" />
 <meta name="geo.placename" content="Quíbor, Estado Lara, Venezuela" />
 <meta name="geo.position" content="9.9287;-69.6201" />
@@ -226,7 +255,7 @@ const schemaOrg = {
 <meta property="og:type" content={type} />
 <meta property="og:site_name" content={COMPANY.name} />
 <meta property="og:locale" content="es_VE" />
-<meta property="og:url" content={canonicalURL} />
+<meta property="og:url" content={canonicalURLString} />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
 <meta property="og:image" content={ogImageUrlString} />
@@ -252,7 +281,7 @@ const schemaOrg = {
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:site" content="@sha256us" />
 <meta name="twitter:creator" content="@sha256us" />
-<meta name="twitter:url" content={canonicalURL} />
+<meta name="twitter:url" content={canonicalURLString} />
 <meta name="twitter:title" content={title} />
 <meta name="twitter:description" content={description} />
 <meta name="twitter:image" content={ogImageUrlString} />

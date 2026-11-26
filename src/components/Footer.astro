@@ -1,6 +1,45 @@
 ---
 // USWDS: Footer Slim | https://designsystem.digital.gov/components/footer/
 import { COMPANY, CONTACT } from '../consts';
+
+const contactAndSocialLinks = [
+  {
+    href: CONTACT.whatsapp,
+    icon: 'phone',
+    label: `Teléfono / WhatsApp: ${CONTACT.phone.display}`,
+    external: true,
+  },
+  {
+    href: `mailto:${CONTACT.email}`,
+    icon: 'mail',
+    label: `Correo electrónico: ${CONTACT.email}`,
+    external: false,
+  },
+  {
+    href: CONTACT.social.linkedin,
+    icon: 'linkedin',
+    label: 'LinkedIn',
+    external: true,
+  },
+  {
+    href: CONTACT.social.twitter,
+    icon: 'x',
+    label: 'X (Twitter)',
+    external: true,
+  },
+  {
+    href: CONTACT.social.instagram,
+    icon: 'instagram',
+    label: 'Instagram',
+    external: true,
+  },
+  {
+    href: '/rss.xml',
+    icon: 'rss_feed',
+    label: 'RSS Feed',
+    external: false,
+  },
+];
 ---
 
 <!-- USWDS: Footer Slim | https://designsystem.digital.gov/components/footer/ -->
@@ -8,86 +47,53 @@ import { COMPANY, CONTACT } from '../consts';
   <div class="grid-container usa-footer__return-to-top">
     <a href="/#inicio">Volver arriba</a>
   </div>
-  <div class="usa-footer__primary-section">
-    <div class="usa-footer__primary-container grid-row">
-      <div class="mobile-lg:grid-col-8">
-        <nav class="usa-footer__nav" aria-label="Navegación del pie de página">
-          <ul class="grid-row grid-gap">
-            <li class="mobile-lg:grid-col-6 desktop:grid-col-auto usa-footer__primary-content">
-              <a class="usa-footer__primary-link" href="/#inicio">Inicio</a>
-            </li>
-            <li class="mobile-lg:grid-col-6 desktop:grid-col-auto usa-footer__primary-content">
-              <a class="usa-footer__primary-link" href="/#servicios">Servicios</a>
-            </li>
-            <li class="mobile-lg:grid-col-6 desktop:grid-col-auto usa-footer__primary-content">
-              <a class="usa-footer__primary-link" href="/#nosotros">Sobre Nosotros</a>
-            </li>
-            <li class="mobile-lg:grid-col-6 desktop:grid-col-auto usa-footer__primary-content">
-              <a class="usa-footer__primary-link" href="/#blog">Blog</a>
-            </li>
-            <li class="mobile-lg:grid-col-6 desktop:grid-col-auto usa-footer__primary-content">
-              <a class="usa-footer__primary-link" href="/#contacto">Contacto</a>
-            </li>
-            <li class="mobile-lg:grid-col-6 desktop:grid-col-auto usa-footer__primary-content">
-              <a class="usa-footer__primary-link" href="/sitemap-index.xml">Sitemap</a>
-            </li>
-          </ul>
-        </nav>
-      </div>
-      <div class="mobile-lg:grid-col-4">
-        <address class="usa-footer__address">
-          <div class="grid-row grid-gap">
-            <div class="grid-col-auto mobile-lg:grid-col-12 desktop:grid-col-auto">
-              <div class="usa-footer__contact-info">
-                <a href={CONTACT.whatsapp} target="_blank" rel="noopener noreferrer">{CONTACT.phone.display}</a>
-              </div>
-            </div>
-            <div class="grid-col-auto mobile-lg:grid-col-12 desktop:grid-col-auto">
-              <div class="usa-footer__contact-info">
-                <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a>
-              </div>
-            </div>
-          </div>
-        </address>
-      </div>
-    </div>
-  </div>
-  <div class="usa-footer__secondary-section">
+  <div class="usa-footer__secondary-section padding-y-4 border-top-1px border-base-lighter">
     <div class="grid-container">
       <div class="grid-row grid-gap flex-align-center">
-        <div class="usa-footer__logo grid-row mobile-lg:grid-col-8 flex-align-center">
-          <div class="grid-col-auto">
-            <img class="usa-footer__logo-img" src="/logo.png" alt="Logo oficial de sha256.us" />
-          </div>
-          <div class="grid-col-fill">
-            <p class="usa-footer__logo-heading">{COMPANY.name} — Peritaje Informático de Móviles y Computadoras</p>
-            <p class="font-sans-3xs text-base-dark margin-top-05 margin-bottom-0">
-              {CONTACT.address}
-            </p>
+        <div class="tablet:grid-col-7 desktop:grid-col-8">
+          <div class="display-flex flex-align-center">
+            <div class="flex-auto margin-right-2">
+              <img
+                class="width-6 height-6 display-block"
+                src="/logo.png"
+                alt="Logo oficial de sha256.us"
+                width="48"
+                height="48"
+              />
+            </div>
+            <div class="display-flex flex-column flex-justify-center">
+              <p class="font-sans-md tablet:font-sans-lg text-bold text-primary-darker line-height-sans-2 margin-0">
+                {COMPANY.name} — Peritaje Informático de Móviles y Computadoras
+              </p>
+              <p class="font-sans-2xs text-base-darker line-height-sans-3 margin-top-05 margin-bottom-0">
+                {CONTACT.address}
+              </p>
+            </div>
           </div>
         </div>
-        <div class="mobile-lg:grid-col-4">
-          <div class="usa-footer__social-links grid-row grid-gap-1 flex-justify-end">
-            <div class="grid-col-auto">
-              <a class="usa-social-link" href={CONTACT.social.linkedin} target="_blank" rel="noopener noreferrer">
-                <img class="usa-social-link__icon" src="/assets/uswds/img/usa-icons/linkedin.svg" alt="LinkedIn" />
-              </a>
-            </div>
-            <div class="grid-col-auto">
-              <a class="usa-social-link" href={CONTACT.social.twitter} target="_blank" rel="noopener noreferrer">
-                <img class="usa-social-link__icon" src="/assets/uswds/img/usa-icons/x.svg" alt="X" />
-              </a>
-            </div>
-            <div class="grid-col-auto">
-              <a class="usa-social-link" href={CONTACT.social.instagram} target="_blank" rel="noopener noreferrer">
-                <img class="usa-social-link__icon" src="/assets/uswds/img/usa-icons/instagram.svg" alt="Instagram" />
-              </a>
-            </div>
-            <div class="grid-col-auto">
-              <a class="usa-social-link" href="/rss.xml">
-                <img class="usa-social-link__icon" src="/assets/uswds/img/usa-icons/rss_feed.svg" alt="RSS" />
-              </a>
-            </div>
+        <div class="tablet:grid-col-5 desktop:grid-col-4 margin-top-2 tablet:margin-top-0">
+          <div class="usa-footer__social-links grid-row grid-gap-1 tablet:flex-justify-end flex-align-center">
+            {contactAndSocialLinks.map((item) => (
+              <div class="grid-col-auto">
+                <a
+                  class="usa-social-link radius-md"
+                  href={item.href}
+                  title={item.label}
+                  aria-label={item.label}
+                  target={item.external ? '_blank' : undefined}
+                  rel={item.external ? 'noopener noreferrer' : undefined}
+                >
+                  <svg
+                    class="usa-icon usa-social-link__icon width-full height-full display-block text-ink"
+                    aria-hidden="true"
+                    focusable="false"
+                    role="img"
+                  >
+                    <use href={`/assets/uswds/img/sprite.svg#${item.icon}`}></use>
+                  </svg>
+                </a>
+              </div>
+            ))}
           </div>
         </div>
       </div>

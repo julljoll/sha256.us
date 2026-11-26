@@ -17,6 +17,7 @@ interface Props {
 	section?: string;
 	tags?: string[];
 	mainClass?: string;
+	noindex?: boolean;
 }
 
 const {
@@ -30,6 +31,7 @@ const {
 	section,
 	tags,
 	mainClass = '',
+	noindex = false,
 } = Astro.props;
 ---
 
@@ -46,6 +48,7 @@ const {
 			author={author}
 			section={section}
 			tags={tags}
+			noindex={noindex}
 		/>
 	</head>
 	<body>

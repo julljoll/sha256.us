@@ -1,5 +1,9 @@
 User-agent: *
 Allow: /
+Disallow: /*?*
+Disallow: /404.html
+Disallow: /404/
 
 Sitemap: https://sha256.us/sitemap-index.xml
+
 

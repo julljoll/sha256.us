@@ -8,16 +8,22 @@ import { defineConfig } from 'astro/config';
 // Sistema de Diseño Exclusivo: U.S. Web Design System (USWDS 3.14) — Sin Tailwind CSS
 export default defineConfig({
 	site: 'https://sha256.us',
+	trailingSlash: 'always',
+	build: {
+		format: 'directory',
+	},
 	integrations: [
 		mdx(),
 		sitemap({
 			changefreq: 'weekly',
 			priority: 0.8,
 			lastmod: new Date(),
-			customPages: [
-				'https://sha256.us/',
-				'https://sha256.us/blog/',
-			],
+			filter: (page) =>
+				!page.includes('/404') &&
+				!page.includes('/servicios') &&
+				!page.includes('/normativa') &&
+				!page.includes('/about') &&
+				!page.includes('/contacto'),
 			serialize(item) {
 				if (item.url === 'https://sha256.us/') {
 					item.changefreq = 'daily';

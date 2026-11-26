@@ -8,14 +8,29 @@ DirectoryIndex index.html
 # 1. Página 404 personalizada
 ErrorDocument 404 /404.html
 
-# 2. Forzar HTTPS y Redirección de sitemap.xml a sitemap-index.xml
+# 2. Forzar HTTPS, dominio canónico (sin www), barra final y redirecciones 301 SEO
 <IfModule mod_rewrite.c>
   RewriteEngine On
-  RewriteCond %{HTTPS} off
-  RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
-  # Redireccionar peticiones del sitemap viejo al nuevo sitemap oficial de Astro
-  RewriteRule ^sitemap\.xml$ /sitemap-index.xml [R=301,L]
+  # 2.1 Unificar HTTPS y dominio canónico sha256.us en un solo salto 301
+  RewriteCond %{HTTPS} off [OR]
+  RewriteCond %{HTTP_HOST} ^www\.sha256\.us$ [NC]
+  RewriteRule ^(.*)$ https://sha256.us%{REQUEST_URI} [L,R=301]
+
+  # 2.2 Eliminar /index.html de raíz y subdirectorios (evitar contenido duplicado)
+  RewriteCond %{THE_REQUEST} \s/+(.*/)?index\.html[\s?] [NC]
+  RewriteRule ^(.*/)?index\.html$ https://sha256.us/$1 [R=301,L]
+
+  # 2.3 Redirecciones 301 permanentes de rutas antiguas consolidadas en la One-Page
+  RewriteRule ^(about|contacto|servicios|normativa)(/.*)?$ https://sha256.us/ [R=301,L]
+
+  # 2.4 Normalizar barra final (trailing slash) solo en directorios reales (ej: /blog -> /blog/)
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteCond %{REQUEST_URI} !/$
+  RewriteRule ^(.*)$ https://sha256.us/$1/ [R=301,L]
+
+  # 2.5 Redireccionar peticiones del sitemap viejo al nuevo sitemap oficial de Astro
+  RewriteRule ^sitemap\.xml$ https://sha256.us/sitemap-index.xml [R=301,L]
 </IfModule>
 
 # 3. Cabeceras de Seguridad (Estándar Federal OMB M-15-13 & Laboratorio Forense)
