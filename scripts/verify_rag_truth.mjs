@@ -38,12 +38,14 @@ console.log('===================================================================
 // 1. Verificar que todos los instrumentos en src/consts.ts existen en RAG/ y su hash coincide exactamente
 const constsPath = path.join(root, 'src/consts.ts');
 const constsRaw = fs.readFileSync(constsPath, 'utf8');
+const instrumentsStart = constsRaw.indexOf('export const LEGAL_INSTRUMENTS');
+const instrumentsSlice = instrumentsStart >= 0 ? constsRaw.slice(instrumentsStart) : constsRaw;
 
-const entryRegex = /code:\s*'([^']+)'[\s\S]*?fileRef:\s*'([^']+)'[\s\S]*?sha256Hash:\s*'([a-f0-9]{64})'/g;
+const entryRegex = /\{[^{}]*?code:\s*'([^']+)'[^{}]*?fileRef:\s*'([^']+)'[^{}]*?sha256Hash:\s*'([a-f0-9]{64})'[^{}]*?\}/g;
 let match;
 let checkedInstruments = 0;
 
-while ((match = entryRegex.exec(constsRaw)) !== null) {
+while ((match = entryRegex.exec(instrumentsSlice)) !== null) {
   const [, code, fileRef, sha256Hash] = match;
   checkedInstruments++;
   const absRagPath = path.join(root, fileRef);
