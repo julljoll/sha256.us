@@ -4,48 +4,44 @@ import { COMPANY } from '../consts';
 import Breadcrumb from '../components/molecules/Breadcrumb.astro';
 import PillNav, { type PillItem } from '../components/molecules/PillNav.astro';
 import ServiceMoviles from '../components/organisms/services/ServiceMoviles.astro';
-import ServiceForense from '../components/organisms/services/ServiceForense.astro';
-import ServiceDocumentos from '../components/organisms/services/ServiceDocumentos.astro';
 import ServiceAlmacenamiento from '../components/organisms/services/ServiceAlmacenamiento.astro';
+import ServiceDocumentos from '../components/organisms/services/ServiceDocumentos.astro';
+import ServiceForense from '../components/organisms/services/ServiceForense.astro';
 import ProcessSteps from '../components/organisms/ProcessSteps.astro';
 import CtaBanner from '../components/organisms/CtaBanner.astro';
 
 const servicePills: PillItem[] = [
-	{ href: '#moviles', label: '1. WhatsApp, Préstamos y Móviles', iconName: 'phone' },
-	{ href: '#forense', label: '2. Juicios y Tribunales', iconName: 'account_balance' },
-	{ href: '#documentos', label: '3. Contratos PDF y Correos', iconName: 'file_present' },
-	{ href: '#almacenamiento', label: '4. Computadoras y Discos', iconName: 'folder_open' },
-	{ href: '#proceso-forense', label: '5. ¿Cómo trabajamos?', iconName: 'verified_user' },
+	{ href: '#moviles', label: '1. Móviles, WhatsApp y Redes', iconName: 'phone' },
+	{ href: '#almacenamiento', label: '2. Computadoras y Datos', iconName: 'folder_open' },
+	{ href: '#documentos', label: '3. Imágenes, Web y Correos', iconName: 'file_present' },
+	{ href: '#forense', label: '4. Laboral y Judicial', iconName: 'account_balance' },
 ];
 ---
 
 <!-- USWDS: Documentation page template | https://designsystem.digital.gov/templates/documentation-page/ -->
 <BaseLayout
-	title={`Servicios Forenses y Certificación de Pruebas Digitales en Venezuela | ${COMPANY.name}`}
-	description={`Certificación forense de WhatsApp, dictámenes periciales para juicios, auditoría de contratos PDF y recuperación de discos bajo ISO/IEC 27037, ISO/IEC 27042, MUCC-2017 y LMDFE.`}
-	mainClass="padding-top-4 tablet:padding-top-6"
+	title={`Servicios de Peritaje Informático de Móviles y Computadoras | ${COMPANY.name}`}
+	description={`Contratar peritaje informático: WhatsApp, teléfonos móviles, computadoras, redes sociales, manipulación de imágenes, certificación web, recuperación de datos y peritaje laboral y judicial.`}
+	mainClass="padding-top-4"
 >
-	<div class="grid-container">
+	<div class="grid-container padding-bottom-4">
 		<Breadcrumb items={[{ label: 'Servicios Forenses' }]} />
 
-		<div class="margin-bottom-4 border-bottom-2px border-base-lighter padding-bottom-3">
-			<span class="usa-tag bg-primary text-white margin-bottom-1 font-sans-3xs">SOLUCIONES FORENSES PARA PERSONAS, ABOGADOS Y EMPRESAS</span>
-			<h1 class="font-sans-2xl tablet:font-sans-3xl text-bold text-primary-darker margin-top-1 margin-bottom-2">
-				¿Qué evidencia digital necesitas certificar o recuperar?
-			</h1>
-			<p class="font-sans-md text-base-dark line-height-sans-4 measure-6 margin-bottom-3">
-				Organizamos cada servicio en tarjetas claras para explicar qué hacemos por ti y un apartado desplegable con las leyes y normas exactas para tu abogado o el juez.
-			</p>
+		<span class="usa-tag bg-primary text-white margin-bottom-1 font-sans-3xs">ANÁLISIS FORENSE DE MÓVILES Y COMPUTADORAS</span>
+		<h1 class="font-sans-2xl tablet:font-sans-3xl text-bold text-primary-darker margin-top-1 margin-bottom-2">
+			Servicios de Peritaje Informático
+		</h1>
+		<p class="font-sans-md text-base-dark line-height-sans-4 measure-6 margin-bottom-3">
+			Elige el dispositivo o prueba digital que necesitas analizar o certificar para tu caso.
+		</p>
 
-			<PillNav items={servicePills} title="Elige tu caso para ir directamente:" />
-		</div>
-
-		<ServiceMoviles />
-		<ServiceForense />
-		<ServiceDocumentos />
-		<ServiceAlmacenamiento />
+		<PillNav items={servicePills} title="Ir directamente a:" />
 	</div>
 
-	<ProcessSteps detailed={false} id="proceso-forense" />
+	<ServiceMoviles />
+	<ServiceAlmacenamiento />
+	<ServiceDocumentos />
+	<ServiceForense />
+	<ProcessSteps />
 	<CtaBanner />
 </BaseLayout>

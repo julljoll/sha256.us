@@ -1,97 +1,55 @@
 ---
-// USWDS: Process List & Summary Box | https://designsystem.digital.gov/components/process-list/
+// USWDS: Card Group | https://designsystem.digital.gov/components/card/
 import SectionHeader from '../atoms/SectionHeader.astro';
-import ProcessStepCard from '../molecules/ProcessStepCard.astro';
-import { FORENSIC_PHASES, CLIENT_SIMPLE_STEPS, FORENSE_PORTAL_URL } from '../../consts';
+import Icon from '../atoms/Icon.astro';
+import { CLIENT_SIMPLE_STEPS } from '../../consts';
 
 export interface Props {
   detailed?: boolean;
   id?: string;
 }
 
-const { detailed = false, id = 'proceso-forense' } = Astro.props;
+const { id = 'como-trabajamos' } = Astro.props;
 ---
 
-<!-- USWDS: Process List | https://designsystem.digital.gov/components/process-list/ -->
+<!-- USWDS: Card Group | https://designsystem.digital.gov/components/card/ -->
 <section id={id} class="usa-section usa-section--light border-top-1px border-base-lighter">
   <div class="grid-container">
-    {detailed ? (
-      <>
-        <SectionHeader
-          tag="METODOLOGÍA CIENTÍFICA · 4 FASES VERIFICADAS"
-          tagVariant="secondary"
-          title="Flujo Técnico Forense y Cadena de Custodia (MUCC-2017)"
-          sub="Proceso estándar ejecutado conforme a ISO/IEC 27037:2012, ISO/IEC 27042:2015, NIST SP 800-101, RFC 3227, ACPO v5 y el Manual Único de Cadena de Custodia."
-        />
+    <SectionHeader
+      tag="CÓMO CONTRATAR"
+      tagVariant="secondary"
+      title="Tu informe pericial en 3 pasos"
+      sub="Proceso directo, confidencial y sin alterar la información de tu equipo."
+    />
 
-        <!-- USWDS: Summary Box | https://designsystem.digital.gov/components/summary-box/ -->
-        <div class="usa-summary-box margin-bottom-4" role="region" aria-labelledby="summary-box-forense-flujo">
-          <div class="usa-summary-box__body">
-            <h3 class="usa-summary-box__heading" id="summary-box-forense-flujo">
-              Principio Rector: Cero Alteración del Dispositivo Original
-            </h3>
-            <div class="usa-summary-box__text">
-              <p>
-                Ninguna acción del laboratorio modifica los datos originales del teléfono o computadora consignada. En la <strong>Fase 2</strong> aislamos el equipo de la red, realizamos la copia con bloqueo de escritura (<em>Write-Blocker</em>) y verificamos el <strong>Hash SHA-256</strong> antes y después del copiado para analizar exclusivamente la copia de trabajo.
+    <ul class="usa-card-group">
+      {CLIENT_SIMPLE_STEPS.map((step) => (
+        <li class="usa-card tablet:grid-col-4">
+          <div class="usa-card__container">
+            <div class="usa-card__header">
+              <span class="usa-tag bg-primary text-white margin-bottom-1">{step.badgeTag}</span>
+              <h3 class="usa-card__heading">{step.title}</h3>
+            </div>
+            <div class="usa-card__body">
+              <p class="font-sans-xs text-ink line-height-sans-3 margin-top-0 margin-bottom-2">
+                {step.description}
               </p>
-              <ul class="usa-button-group margin-top-2">
-                <li class="usa-button-group__item">
-                  <a
-                    href={`${FORENSE_PORTAL_URL}/flujo`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="usa-button"
-                  >
-                    Ver Flujo en forense.sha256.us
-                  </a>
-                </li>
-                <li class="usa-button-group__item">
-                  <a href="/normativa#cadena-custodia" class="usa-button usa-button--outline">
-                    Ver Cadena de Custodia (PRCC) &rarr;
-                  </a>
-                </li>
+              <ul class="usa-icon-list">
+                {step.bullets.map((b) => (
+                  <li class="usa-icon-list__item">
+                    <div class="usa-icon-list__icon text-primary">
+                      <Icon name="check_circle" />
+                    </div>
+                    <div class="usa-icon-list__content font-sans-2xs">
+                      {b}
+                    </div>
+                  </li>
+                ))}
               </ul>
             </div>
           </div>
-        </div>
-
-        <ol class="usa-process-list">
-          {FORENSIC_PHASES.map((phase) => (
-            <ProcessStepCard
-              stepNumber={phase.stepNumber}
-              badgeTag={phase.badgeTag}
-              badgeVariant={phase.badgeVariant}
-              title={phase.title}
-              description={phase.description}
-              norms={phase.norms}
-              responsible={phase.responsible}
-              controls={phase.controls}
-            />
-          ))}
-        </ol>
-      </>
-    ) : (
-      <>
-        <SectionHeader
-          tag="PROCESO PASO A PASO"
-          tagVariant="secondary"
-          title="¿Cómo protegemos y certificamos tu prueba en 3 pasos?"
-          sub="Nos encargamos de toda la parte técnica y legal para que tu evidencia digital sea aceptada sin objeciones."
-        />
-
-        <ol class="usa-process-list">
-          {CLIENT_SIMPLE_STEPS.map((step) => (
-            <ProcessStepCard
-              stepNumber={step.stepNumber}
-              badgeTag={step.badgeTag}
-              badgeVariant="primary"
-              title={step.title}
-              description={step.description}
-              controls={step.bullets}
-            />
-          ))}
-        </ol>
-      </>
-    )}
+        </li>
+      ))}
+    </ul>
   </div>
 </section>

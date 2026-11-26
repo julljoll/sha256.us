@@ -9,15 +9,15 @@ import { CORE_SERVICES } from '../../consts';
 <section id="servicios" class="usa-section">
   <div class="grid-container">
     <SectionHeader
-      tag="¿QUÉ PROBLEMA NECESITAS RESOLVER?"
+      tag="SERVICIOS FORENSES"
       tagVariant="primary"
-      title="Soluciones Forenses para Problemas Reales"
-      sub="No necesitas saber de informática para defender tus derechos. Elige tu situación y protegemos tu prueba digital con plena validez legal."
+      title="¿Qué necesitas certificar o recuperar?"
+      sub="Análisis forense especializado en teléfonos móviles, computadoras y evidencias digitales para particulares, abogados y empresas."
     />
 
     <ul class="usa-card-group">
       {CORE_SERVICES.map((serv, index) => (
-        <li class="usa-card tablet:grid-col-6">
+        <li class="usa-card tablet:grid-col-6 desktop:grid-col-4">
           <ServiceCard service={serv} index={index} />
         </li>
       ))}

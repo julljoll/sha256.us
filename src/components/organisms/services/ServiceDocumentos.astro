@@ -1,122 +1,113 @@
 ---
-// USWDS: Card, Summary Box & Accordion | https://designsystem.digital.gov/components/card/
-import { Image } from 'astro:assets';
-import Badge from '../../atoms/Badge.astro';
+// USWDS: Card Group | https://designsystem.digital.gov/components/card/
 import Icon from '../../atoms/Icon.astro';
-import imgDocumentos from '../../../assets/services/servicio-documentos.jpg';
+import SectionHeader from '../../atoms/SectionHeader.astro';
 ---
 
-<!-- USWDS: Summary box, Card & Accordion | https://designsystem.digital.gov/components/accordion/ -->
-<section id="documentos" class="margin-bottom-6 bg-white padding-3 tablet:padding-5 radius-lg shadow-1 border-1px border-base-lighter">
-  <div class="grid-row grid-gap flex-align-center">
-    <div class="tablet:grid-col-8">
-      <Badge variant="accent" class="margin-bottom-1">3. CONTRATOS PDF, FIRMAS Y CORREOS</Badge>
-      <h2 class="font-sans-xl text-bold text-primary-darker margin-top-1 margin-bottom-2">
-        Verificación de Contratos PDF, Firmas Electrónicas y Correos
-      </h2>
+<!-- USWDS: Card Group | https://designsystem.digital.gov/components/card/ -->
+<section id="documentos" class="usa-section border-top-1px border-base-lighter">
+  <div class="grid-container">
+    <SectionHeader
+      tag="3. IMÁGENES, WEB Y DOCUMENTOS"
+      tagVariant="accent"
+      title="Manipulación de Imágenes, Contenido Web y Correos"
+      sub="Comprobamos la autenticidad de archivos digitales para detectar montajes, fraudes o alteraciones."
+      align="left"
+    />
 
-      <div class="usa-summary-box margin-bottom-3" role="region" aria-label="¿Cuándo necesitas este servicio?">
-        <div class="usa-summary-box__body">
-          <h3 class="usa-summary-box__heading font-sans-xs text-uppercase display-flex flex-align-center">
-            <Icon name="check_circle" class="margin-right-05 text-primary" />
-            ¿Cuándo necesitas este servicio?
-          </h3>
-          <div class="usa-summary-box__text font-sans-xs">
-            Si sospechas que alguien modificó un contrato, factura o recibo en PDF, falsificó una firma electrónica o envió un correo falso para cometer un fraude comercial.
+    <ul class="usa-card-group">
+      <li class="usa-card tablet:grid-col-4">
+        <div class="usa-card__container">
+          <div class="usa-card__header">
+            <span class="usa-tag bg-primary text-white margin-bottom-1">IMÁGENES Y AUDIOS</span>
+            <h3 class="usa-card__heading">Manipulación de Imágenes y Audios</h3>
+          </div>
+          <div class="usa-card__body">
+            <p class="font-sans-xs text-ink margin-top-0 margin-bottom-2">
+              Analizamos fotografías, capturas, grabaciones y videos para detectar si fueron editados.
+            </p>
+            <ul class="usa-icon-list">
+              <li class="usa-icon-list__item">
+                <div class="usa-icon-list__icon text-primary"><Icon name="check" /></div>
+                <div class="usa-icon-list__content font-sans-2xs">Detección de fotomontajes</div>
+              </li>
+              <li class="usa-icon-list__item">
+                <div class="usa-icon-list__icon text-primary"><Icon name="check" /></div>
+                <div class="usa-icon-list__content font-sans-2xs">Verificación de fecha y cámara</div>
+              </li>
+              <li class="usa-icon-list__item">
+                <div class="usa-icon-list__icon text-primary"><Icon name="check" /></div>
+                <div class="usa-icon-list__content font-sans-2xs">Autenticidad de notas de voz</div>
+              </li>
+            </ul>
+          </div>
+          <div class="usa-card__footer">
+            <a href="/contacto" class="usa-button usa-button--outline width-full">Analizar archivo &rarr;</a>
           </div>
         </div>
-      </div>
+      </li>
 
-      <ul class="usa-card-group margin-bottom-2">
-        <li class="usa-card mobile-lg:grid-col-6">
-          <div class="usa-card__container">
-            <div class="usa-card__header">
-              <h3 class="usa-card__heading font-sans-sm">Auditoría de PDF y Metadatos</h3>
-            </div>
-            <div class="usa-card__body">
-              <p class="font-sans-2xs text-base-dark margin-0">Examinamos estructura interna, fechas de creación/edición y software utilizado en el archivo.</p>
-            </div>
+      <li class="usa-card tablet:grid-col-4">
+        <div class="usa-card__container">
+          <div class="usa-card__header">
+            <span class="usa-tag bg-primary text-white margin-bottom-1">CONTENIDO WEB</span>
+            <h3 class="usa-card__heading">Certificación de Contenido Web</h3>
           </div>
-        </li>
-        <li class="usa-card mobile-lg:grid-col-6">
-          <div class="usa-card__container">
-            <div class="usa-card__header">
-              <h3 class="usa-card__heading font-sans-sm">Firmas y Certificados</h3>
-            </div>
-            <div class="usa-card__body">
-              <p class="font-sans-2xs text-base-dark margin-0">Validamos firmas electrónicas y certificados conforme a la LMDFE y la Norma 063 de SUSCERTE.</p>
-            </div>
+          <div class="usa-card__body">
+            <p class="font-sans-xs text-ink margin-top-0 margin-bottom-2">
+              Dejamos constancia certificada de páginas web, anuncios o reseñas antes de que desaparezcan.
+            </p>
+            <ul class="usa-icon-list">
+              <li class="usa-icon-list__item">
+                <div class="usa-icon-list__icon text-primary"><Icon name="check" /></div>
+                <div class="usa-icon-list__content font-sans-2xs">Páginas web y tiendas online</div>
+              </li>
+              <li class="usa-icon-list__item">
+                <div class="usa-icon-list__icon text-primary"><Icon name="check" /></div>
+                <div class="usa-icon-list__content font-sans-2xs">Anuncios y ofertas engañosas</div>
+              </li>
+              <li class="usa-icon-list__item">
+                <div class="usa-icon-list__icon text-primary"><Icon name="check" /></div>
+                <div class="usa-icon-list__content font-sans-2xs">Sello de fecha e integridad</div>
+              </li>
+            </ul>
           </div>
-        </li>
-        <li class="usa-card mobile-lg:grid-col-6">
-          <div class="usa-card__container">
-            <div class="usa-card__header">
-              <h3 class="usa-card__heading font-sans-sm">Correos y Cabeceras</h3>
-            </div>
-            <div class="usa-card__body">
-              <p class="font-sans-2xs text-base-dark margin-0">Verificamos el emisor real, fecha de envío y recepción del mensaje de datos (LMDFE Arts. 9–11).</p>
-            </div>
-          </div>
-        </li>
-        <li class="usa-card mobile-lg:grid-col-6">
-          <div class="usa-card__container">
-            <div class="usa-card__header">
-              <h3 class="usa-card__heading font-sans-sm">Detección de Falsificación</h3>
-            </div>
-            <div class="usa-card__body">
-              <p class="font-sans-2xs text-base-dark margin-0">Documentamos alteraciones para acciones civiles o denuncias por falsificación y fraude (LEDI).</p>
-            </div>
-          </div>
-        </li>
-      </ul>
-
-      <!-- Revelación Progresiva para Abogados y Jueces -->
-      <div class="usa-accordion usa-accordion--bordered">
-        <h3 class="usa-accordion__heading">
-          <button
-            type="button"
-            class="usa-accordion__button font-sans-xs"
-            aria-expanded="false"
-            aria-controls="acc-tech-documentos"
-          >
-            Ver respaldo legal y normas técnicas (para abogados y tribunales)
-          </button>
-        </h3>
-        <div id="acc-tech-documentos" class="usa-accordion__content usa-prose" hidden>
-          <p class="font-sans-xs text-base-dark">
-            Auditamos la integridad y equivalencia probatoria conforme a la <strong>LMDFE (G.O. N° 37.148 Arts. 4, 7, 8, 9, 16 y 38)</strong>, la <strong>Norma SUSCERTE N° 063-08/11 (Certificación Cruzada)</strong> y tipificación de falsificación de documentos (<strong>LEDI Art. 12</strong>) y fraude (<strong>LEDI Art. 14</strong>), con verificación SHA-256 (<strong>QuickHash / ISO/IEC 27042</strong>).
-          </p>
-          <div class="display-flex flex-wrap margin-top-1">
-            <span class="usa-tag bg-white text-primary border-1px border-primary-light margin-right-05 margin-bottom-05">LMDFE G.O. 37.148</span>
-            <span class="usa-tag bg-white text-primary border-1px border-primary-light margin-right-05 margin-bottom-05">SUSCERTE NORMA-063</span>
-            <span class="usa-tag bg-white text-primary border-1px border-primary-light margin-right-05 margin-bottom-05">LEDI Art. 12 (Falsificación)</span>
-            <span class="usa-tag bg-white text-primary border-1px border-primary-light margin-right-05 margin-bottom-05">LEDI Art. 14 (Fraude)</span>
-            <span class="usa-tag bg-white text-primary border-1px border-primary-light margin-right-05 margin-bottom-05">Código Civil Art. 1.354</span>
+          <div class="usa-card__footer">
+            <a href="/contacto" class="usa-button usa-button--outline width-full">Certificar web &rarr;</a>
           </div>
         </div>
-      </div>
-    </div>
-    <div class="tablet:grid-col-4 margin-top-3 tablet:margin-top-0 display-flex flex-column flex-justify-center text-center">
-      <div class="margin-bottom-2 radius-lg overflow-hidden border-1px border-accent-cool-light">
-        <Image
-          src={imgDocumentos}
-          alt="Verificación pericial de contratos en PDF y documentos electrónicos"
-          width={640}
-          height={360}
-          format="webp"
-          quality={82}
-          loading="lazy"
-          decoding="async"
-        />
-      </div>
-      <div class="bg-accent-cool-lighter padding-4 radius-lg width-full border-1px border-accent-cool-light">
-        <h3 class="font-sans-md text-bold text-primary-darker margin-top-0 margin-bottom-1">¿Dudas de un PDF o Correo?</h3>
-        <p class="font-sans-xs text-base-dark margin-bottom-2">Comprobamos científicamente si el documento es auténtico o fue manipulado.</p>
-        <a href="/contacto" class="usa-button bg-gold hover:bg-warning-dark text-ink width-full margin-bottom-1">
-          <span class="text-ink text-bold">Verificar un Documento</span>
-        </a>
-        <a href="/normativa#compendio" class="usa-button usa-button--outline width-full font-sans-2xs">Ver Leyes Aplicables</a>
-      </div>
-    </div>
+      </li>
+
+      <li class="usa-card tablet:grid-col-4">
+        <div class="usa-card__container">
+          <div class="usa-card__header">
+            <span class="usa-tag bg-primary text-white margin-bottom-1">CORREOS Y PDF</span>
+            <h3 class="usa-card__heading">Correos Electrónicos y Contratos PDF</h3>
+          </div>
+          <div class="usa-card__body">
+            <p class="font-sans-xs text-ink margin-top-0 margin-bottom-2">
+              Verificamos la autoría real de correos electrónicos y detectamos recibos o PDFs alterados.
+            </p>
+            <ul class="usa-icon-list">
+              <li class="usa-icon-list__item">
+                <div class="usa-icon-list__icon text-primary"><Icon name="check" /></div>
+                <div class="usa-icon-list__content font-sans-2xs">Correos falsos o suplantación</div>
+              </li>
+              <li class="usa-icon-list__item">
+                <div class="usa-icon-list__icon text-primary"><Icon name="check" /></div>
+                <div class="usa-icon-list__content font-sans-2xs">Facturas y comprobantes editados</div>
+              </li>
+              <li class="usa-icon-list__item">
+                <div class="usa-icon-list__icon text-primary"><Icon name="check" /></div>
+                <div class="usa-icon-list__content font-sans-2xs">Contratos y firmas digitales</div>
+              </li>
+            </ul>
+          </div>
+          <div class="usa-card__footer">
+            <a href="/contacto" class="usa-button usa-button--outline width-full">Verificar documento &rarr;</a>
+          </div>
+        </div>
+      </li>
+    </ul>
   </div>
 </section>

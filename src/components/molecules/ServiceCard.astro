@@ -1,20 +1,14 @@
 ---
 // USWDS: Card | https://designsystem.digital.gov/components/card/
-import { Image } from 'astro:assets';
 import Icon, { type IconName } from '../atoms/Icon.astro';
-import imgJuicios from '../../assets/services/servicio-juicios.jpg';
-import imgMoviles from '../../assets/services/servicio-moviles.jpg';
-import imgAlmacenamiento from '../../assets/services/servicio-almacenamiento.jpg';
-import imgDocumentos from '../../assets/services/servicio-documentos.jpg';
 
 export interface Props {
   service: {
     id: string;
     tag: string;
+    icon?: IconName;
     title: string;
-    sub: string;
     desc: string;
-    simpleDesc: string;
     cases: string[];
     href: string;
   };
@@ -24,24 +18,14 @@ export interface Props {
 const { service } = Astro.props;
 
 const serviceIconMap: Record<string, IconName> = {
-  'informatica-forense': 'account_balance',
-  forense: 'account_balance',
+  whatsapp: 'chat',
   moviles: 'phone',
-  almacenamiento: 'folder_open',
-  'contratos-digitales': 'file_present',
-  documentos: 'file_present',
+  computadoras: 'folder_open',
+  'laboral-judicial': 'account_balance',
+  'redes-web': 'public',
+  'imagenes-multimedia': 'verified_user',
 };
-const cardIconName: IconName = serviceIconMap[service.id] || 'security';
-
-const serviceImgMap: Record<string, ImageMetadata> = {
-  'informatica-forense': imgJuicios,
-  forense: imgJuicios,
-  moviles: imgMoviles,
-  almacenamiento: imgAlmacenamiento,
-  'contratos-digitales': imgDocumentos,
-  documentos: imgDocumentos,
-};
-const cardImage = serviceImgMap[service.id];
+const cardIconName: IconName = service.icon || serviceIconMap[service.id] || 'security';
 ---
 
 <!-- USWDS: Card | https://designsystem.digital.gov/components/card/ -->
@@ -54,27 +38,10 @@ const cardImage = serviceImgMap[service.id];
       <Icon name={cardIconName} class="margin-right-05 text-primary" />
       {service.title}
     </h3>
-    <p class="font-sans-2xs text-base-dark margin-top-05 margin-bottom-0">{service.sub}</p>
   </div>
-  {cardImage && (
-    <div class="usa-card__media">
-      <div class="usa-card__img">
-        <Image
-          src={cardImage}
-          alt={`Ilustración visual de ${service.title}`}
-          width={640}
-          height={360}
-          format="webp"
-          quality={82}
-          loading="lazy"
-          decoding="async"
-        />
-      </div>
-    </div>
-  )}
   <div class="usa-card__body">
-    <p class="font-sans-xs text-ink line-height-sans-4 margin-top-0 margin-bottom-2">
-      {service.simpleDesc}
+    <p class="font-sans-xs text-ink line-height-sans-3 margin-top-0 margin-bottom-2">
+      {service.desc}
     </p>
     <!-- USWDS: Icon List | https://designsystem.digital.gov/components/icon-list/ -->
     <ul class="usa-icon-list">
@@ -92,7 +59,7 @@ const cardImage = serviceImgMap[service.id];
   </div>
   <div class="usa-card__footer">
     <a href={service.href} class="usa-button usa-button--outline width-full">
-      Ver cómo funciona y solicitar &rarr;
+      Solicitar peritaje &rarr;
     </a>
   </div>
 </div>

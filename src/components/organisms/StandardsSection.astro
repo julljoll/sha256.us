@@ -1,5 +1,5 @@
 ---
-// USWDS: Card Group & Summary Box | https://designsystem.digital.gov/components/card/
+// USWDS: Card Group | https://designsystem.digital.gov/components/card/
 import SectionHeader from '../atoms/SectionHeader.astro';
 import Icon from '../atoms/Icon.astro';
 import { CONTACT } from '../../consts';
@@ -9,30 +9,27 @@ import { CONTACT } from '../../consts';
 <section class="usa-section usa-section--light border-top-1px border-base-lighter">
   <div class="grid-container">
     <SectionHeader
-      tag="VALOR PROBATORIO DECISIVO"
+      tag="GARANTÍA EN JUICIO"
       tagVariant="primary"
-      title="¿Por qué un análisis forense bien hecho garantiza validez en juicio?"
-      sub="En un proceso judicial, la diferencia entre perder o ganar está en cómo presentas tu prueba digital."
+      title="¿Por qué contratar un peritaje en lugar de llevar capturas?"
+      sub="En un juicio, la diferencia entre que rechacen o acepten tu prueba está en el informe pericial."
     />
 
     <ul class="usa-card-group">
       <li class="usa-card tablet:grid-col-6">
         <div class="usa-card__container">
           <div class="usa-card__header">
-            <span class="usa-tag bg-secondary text-white margin-bottom-1">RIESGO PROCESAL</span>
-            <h3 class="usa-card__heading">Captura de Pantalla o Impresión Simple</h3>
+            <span class="usa-tag bg-secondary text-white margin-bottom-1">SIN PERITAJE</span>
+            <h3 class="usa-card__heading">Captura de Pantalla Simple</h3>
           </div>
           <div class="usa-card__body">
-            <p class="font-sans-xs text-base-dark margin-top-0 margin-bottom-2">
-              Según el <strong>Art. 4 de la LMDFE</strong>, un mensaje reproducido en papel solo equivale a una copia fotostática simple.
-            </p>
             <ul class="usa-icon-list">
               <li class="usa-icon-list__item">
                 <div class="usa-icon-list__icon text-secondary">
                   <Icon name="warning" />
                 </div>
                 <div class="usa-icon-list__content font-sans-2xs">
-                  La contraparte puede desconocerla alegando edición o montaje.
+                  La otra parte puede impugnarla diciendo que fue editada.
                 </div>
               </li>
               <li class="usa-icon-list__item">
@@ -40,7 +37,7 @@ import { CONTACT } from '../../consts';
                   <Icon name="warning" />
                 </div>
                 <div class="usa-icon-list__content font-sans-2xs">
-                  No demuestra integridad matemática ni fecha real de origen en base de datos.
+                  No prueba quién envió realmente el mensaje ni la fecha exacta.
                 </div>
               </li>
               <li class="usa-icon-list__item">
@@ -48,7 +45,7 @@ import { CONTACT } from '../../consts';
                   <Icon name="warning" />
                 </div>
                 <div class="usa-icon-list__content font-sans-2xs">
-                  Carece de Cadena de Custodia oficial (PRCC — MUCC-2017).
+                  No sirve para recuperar mensajes borrados del teléfono.
                 </div>
               </li>
             </ul>
@@ -59,20 +56,17 @@ import { CONTACT } from '../../consts';
       <li class="usa-card tablet:grid-col-6">
         <div class="usa-card__container">
           <div class="usa-card__header">
-            <span class="usa-tag bg-primary text-white margin-bottom-1">GARANTÍA sha256.us</span>
-            <h3 class="usa-card__heading">Dictamen Pericial Forense Certificado</h3>
+            <span class="usa-tag bg-primary text-white margin-bottom-1">CON sha256.us</span>
+            <h3 class="usa-card__heading">Informe Pericial Forense</h3>
           </div>
           <div class="usa-card__body">
-            <p class="font-sans-xs text-base-dark margin-top-0 margin-bottom-2">
-              Cumple con la <strong>LMDFE (Arts. 4 y 7)</strong>, <strong>CPC (Arts. 395 y 451)</strong>, <strong>COPP (Arts. 197 y 237–239)</strong> e <strong>ISO/IEC 27037 y 27042</strong>.
-            </p>
             <ul class="usa-icon-list">
               <li class="usa-icon-list__item">
                 <div class="usa-icon-list__icon text-primary">
                   <Icon name="check_circle" />
                 </div>
                 <div class="usa-icon-list__content font-sans-2xs">
-                  <strong>Equivalencia legal con documentos escritos:</strong> integridad probada con SHA-256.
+                  Prueba auténtica extraída directamente del dispositivo original.
                 </div>
               </li>
               <li class="usa-icon-list__item">
@@ -80,7 +74,7 @@ import { CONTACT } from '../../consts';
                   <Icon name="check_circle" />
                 </div>
                 <div class="usa-icon-list__content font-sans-2xs">
-                  <strong>Cadena de Custodia (PRCC):</strong> trazabilidad completa desde la recepción hasta el fallo.
+                  Sello digital único que garantiza que el archivo no fue manipulado.
                 </div>
               </li>
               <li class="usa-icon-list__item">
@@ -88,7 +82,7 @@ import { CONTACT } from '../../consts';
                   <Icon name="check_circle" />
                 </div>
                 <div class="usa-icon-list__content font-sans-2xs">
-                  <strong>Privacidad garantizada:</strong> extracción bajo consentimiento expreso (CRBV Art. 28).
+                  Dictamen firmado por perito para presentar y defender en juicio.
                 </div>
               </li>
             </ul>
@@ -97,7 +91,7 @@ import { CONTACT } from '../../consts';
             <ul class="usa-button-group flex-wrap">
               <li class="usa-button-group__item">
                 <a href="/contacto" class="usa-button bg-gold hover:bg-warning-dark text-ink">
-                  <span class="text-ink text-bold">Evaluar mi Caso &rarr;</span>
+                  <span class="text-ink text-bold">Solicitar Presupuesto &rarr;</span>
                 </a>
               </li>
               <li class="usa-button-group__item">

@@ -1,122 +1,115 @@
 ---
-// USWDS: Card, Summary Box & Accordion | https://designsystem.digital.gov/components/card/
-import { Image } from 'astro:assets';
-import Badge from '../../atoms/Badge.astro';
+// USWDS: Card Group | https://designsystem.digital.gov/components/card/
 import Icon from '../../atoms/Icon.astro';
-import imgForense from '../../../assets/services/servicio-juicios.jpg';
+import SectionHeader from '../../atoms/SectionHeader.astro';
 ---
 
-<!-- USWDS: Summary box, Card & Accordion | https://designsystem.digital.gov/components/accordion/ -->
-<section id="forense" class="margin-bottom-6 bg-white padding-3 tablet:padding-5 radius-lg shadow-1 border-1px border-base-lighter">
-  <div class="grid-row grid-gap flex-align-center">
-    <div class="tablet:grid-col-8">
-      <Badge variant="dark" class="margin-bottom-1">2. JUICIOS Y TRIBUNALES</Badge>
-      <h2 class="font-sans-xl text-bold text-primary-darker margin-top-1 margin-bottom-2">
-        Dictámenes Periciales Informáticos para Procesos Judiciales
-      </h2>
+<!-- USWDS: Card Group | https://designsystem.digital.gov/components/card/ -->
+<section id="forense" class="usa-section usa-section--light border-top-1px border-base-lighter">
+  <div class="grid-container">
+    <SectionHeader
+      tag="4. PERITAJE LABORAL Y JUDICIAL"
+      tagVariant="dark"
+      title="Informes Periciales para Juicios Laborales, Civiles y Penales"
+      sub="Convertimos tus pruebas de móviles o computadoras en un dictamen claro aceptado en tribunales."
+      align="left"
+    />
 
-      <div class="usa-summary-box margin-bottom-3" role="region" aria-label="¿Cuándo necesitas este servicio?">
-        <div class="usa-summary-box__body">
-          <h3 class="usa-summary-box__heading font-sans-xs text-uppercase display-flex flex-align-center">
-            <Icon name="check_circle" class="margin-right-05 text-primary" />
-            ¿Cuándo necesitas este servicio?
-          </h3>
-          <div class="usa-summary-box__text font-sans-xs">
-            Si estás en un juicio civil, mercantil, laboral o penal y necesitas probar una deuda, acuerdo o delito digital sin que la contraparte invalide tus pruebas alegando manipulación.
+    <ul class="usa-card-group">
+      <li class="usa-card tablet:grid-col-4">
+        <div class="usa-card__container">
+          <div class="usa-card__header">
+            <span class="usa-tag bg-primary-darker text-white margin-bottom-1">LABORAL</span>
+            <h3 class="usa-card__heading">Peritaje Informático Laboral</h3>
+          </div>
+          <div class="usa-card__body">
+            <p class="font-sans-xs text-ink margin-top-0 margin-bottom-2">
+              Acreditamos pruebas digitales en conflictos entre empresas y trabajadores.
+            </p>
+            <ul class="usa-icon-list">
+              <li class="usa-icon-list__item">
+                <div class="usa-icon-list__icon text-primary"><Icon name="check" /></div>
+                <div class="usa-icon-list__content font-sans-2xs">Despidos, órdenes y horarios</div>
+              </li>
+              <li class="usa-icon-list__item">
+                <div class="usa-icon-list__icon text-primary"><Icon name="check" /></div>
+                <div class="usa-icon-list__content font-sans-2xs">Acoso laboral por mensajería</div>
+              </li>
+              <li class="usa-icon-list__item">
+                <div class="usa-icon-list__icon text-primary"><Icon name="check" /></div>
+                <div class="usa-icon-list__content font-sans-2xs">Competencia desleal o fugas</div>
+              </li>
+            </ul>
+          </div>
+          <div class="usa-card__footer">
+            <a href="/contacto" class="usa-button usa-button--outline width-full">Consultar caso laboral &rarr;</a>
           </div>
         </div>
-      </div>
+      </li>
 
-      <ul class="usa-card-group margin-bottom-2">
-        <li class="usa-card mobile-lg:grid-col-6">
-          <div class="usa-card__container">
-            <div class="usa-card__header">
-              <h3 class="usa-card__heading font-sans-sm">Recepción Legal y Privacidad</h3>
-            </div>
-            <div class="usa-card__body">
-              <p class="font-sans-2xs text-base-dark margin-0">Actuamos únicamente con consentimiento expreso del titular (CRBV Art. 28) o mandato judicial.</p>
-            </div>
+      <li class="usa-card tablet:grid-col-4">
+        <div class="usa-card__container">
+          <div class="usa-card__header">
+            <span class="usa-tag bg-primary-darker text-white margin-bottom-1">CIVIL Y PENAL</span>
+            <h3 class="usa-card__heading">Peritaje Civil, Mercantil y Penal</h3>
           </div>
-        </li>
-        <li class="usa-card mobile-lg:grid-col-6">
-          <div class="usa-card__container">
-            <div class="usa-card__header">
-              <h3 class="usa-card__heading font-sans-sm">Copia Segura y Hash SHA-256</h3>
-            </div>
-            <div class="usa-card__body">
-              <p class="font-sans-2xs text-base-dark margin-0">Adquirimos la evidencia sin modificar tu equipo y sellamos cada archivo con SHA-256.</p>
-            </div>
+          <div class="usa-card__body">
+            <p class="font-sans-xs text-ink margin-top-0 margin-bottom-2">
+              Evidencia digital certificada para respaldar demandas, denuncias o defensas.
+            </p>
+            <ul class="usa-icon-list">
+              <li class="usa-icon-list__item">
+                <div class="usa-icon-list__icon text-primary"><Icon name="check" /></div>
+                <div class="usa-icon-list__content font-sans-2xs">Cobro de préstamos y deudas</div>
+              </li>
+              <li class="usa-icon-list__item">
+                <div class="usa-icon-list__icon text-primary"><Icon name="check" /></div>
+                <div class="usa-icon-list__content font-sans-2xs">Estafas, amenazas y extorsión</div>
+              </li>
+              <li class="usa-icon-list__item">
+                <div class="usa-icon-list__icon text-primary"><Icon name="check" /></div>
+                <div class="usa-icon-list__content font-sans-2xs">Incumplimientos de contrato</div>
+              </li>
+            </ul>
           </div>
-        </li>
-        <li class="usa-card mobile-lg:grid-col-6">
-          <div class="usa-card__container">
-            <div class="usa-card__header">
-              <h3 class="usa-card__heading font-sans-sm">Dictamen Motivado</h3>
-            </div>
-            <div class="usa-card__body">
-              <p class="font-sans-2xs text-base-dark margin-0">Describimos el objeto, los exámenes científicos practicados y las conclusiones claras para el juez.</p>
-            </div>
-          </div>
-        </li>
-        <li class="usa-card mobile-lg:grid-col-6">
-          <div class="usa-card__container">
-            <div class="usa-card__header">
-              <h3 class="usa-card__heading font-sans-sm">Cadena de Custodia (PRCC)</h3>
-            </div>
-            <div class="usa-card__body">
-              <p class="font-sans-2xs text-base-dark margin-0">Trazabilidad completa conforme al Manual Único de Cadena de Custodia (MUCC-2017).</p>
-            </div>
-          </div>
-        </li>
-      </ul>
-
-      <!-- Revelación Progresiva para Abogados y Jueces -->
-      <div class="usa-accordion usa-accordion--bordered">
-        <h3 class="usa-accordion__heading">
-          <button
-            type="button"
-            class="usa-accordion__button font-sans-xs"
-            aria-expanded="false"
-            aria-controls="acc-tech-forense"
-          >
-            Ver respaldo legal y normas técnicas (para abogados y tribunales)
-          </button>
-        </h3>
-        <div id="acc-tech-forense" class="usa-accordion__content usa-prose" hidden>
-          <p class="font-sans-xs text-base-dark">
-            Ejecutamos las 4 fases de identificación, preservación, análisis y dictamen bajo <strong>ISO/IEC 27037:2012</strong> e <strong>ISO/IEC 27042:2015</strong>, registro en Planilla <strong>PRCC (MUCC-2017)</strong> y dictamen motivado conforme a los <strong>Arts. 197 y 237–239 del COPP</strong>, <strong>Arts. 395 y 451–471 del CPC</strong>, <strong>Arts. 1.354 y 1.422–1.427 del Código Civil</strong> y <strong>LMDFE (G.O. N° 37.148)</strong>.
-          </p>
-          <div class="display-flex flex-wrap margin-top-1">
-            <span class="usa-tag bg-white text-primary border-1px border-primary-light margin-right-05 margin-bottom-05">CRBV Arts. 28, 48 y 49</span>
-            <span class="usa-tag bg-white text-primary border-1px border-primary-light margin-right-05 margin-bottom-05">COPP Arts. 197, 237–239</span>
-            <span class="usa-tag bg-white text-primary border-1px border-primary-light margin-right-05 margin-bottom-05">CPC Arts. 395, 451–471</span>
-            <span class="usa-tag bg-white text-primary border-1px border-primary-light margin-right-05 margin-bottom-05">CC Arts. 1.354 y 1.422</span>
-            <span class="usa-tag bg-white text-primary border-1px border-primary-light margin-right-05 margin-bottom-05">LMDFE Arts. 4 y 7</span>
+          <div class="usa-card__footer">
+            <a href="/contacto" class="usa-button usa-button--outline width-full">Solicitar peritaje &rarr;</a>
           </div>
         </div>
-      </div>
-    </div>
-    <div class="tablet:grid-col-4 margin-top-3 tablet:margin-top-0 display-flex flex-column flex-justify-center text-center">
-      <div class="margin-bottom-2 radius-lg overflow-hidden border-1px border-primary-light">
-        <Image
-          src={imgForense}
-          alt="Peritaje digital judicial para tribunales"
-          width={640}
-          height={360}
-          format="webp"
-          quality={82}
-          loading="lazy"
-          decoding="async"
-        />
-      </div>
-      <div class="bg-primary-lighter padding-4 radius-lg width-full border-1px border-primary-light">
-        <h3 class="font-sans-md text-bold text-primary-darker margin-top-0 margin-bottom-1">¿Necesitas presentar una prueba en juicio?</h3>
-        <p class="font-sans-xs text-base-dark margin-bottom-2">Cuéntanos tu caso y evaluamos cómo certificar tu evidencia de forma rápida y confidencial.</p>
-        <a href="/contacto" class="usa-button bg-gold hover:bg-warning-dark text-ink width-full margin-bottom-1">
-          <span class="text-ink text-bold">Consultar mi Caso</span>
-        </a>
-        <a href="/normativa" class="usa-button usa-button--outline width-full font-sans-2xs">Ver Respaldo Legal</a>
-      </div>
-    </div>
+      </li>
+
+      <li class="usa-card tablet:grid-col-4">
+        <div class="usa-card__container">
+          <div class="usa-card__header">
+            <span class="usa-tag bg-primary-darker text-white margin-bottom-1">TRIBUNALES</span>
+            <h3 class="usa-card__heading">Informe y Defensa en Juicio</h3>
+          </div>
+          <div class="usa-card__body">
+            <p class="font-sans-xs text-ink margin-top-0 margin-bottom-2">
+              Entregamos un dictamen pericial comprensible para el juez y ratificamos en audiencia.
+            </p>
+            <ul class="usa-icon-list">
+              <li class="usa-icon-list__item">
+                <div class="usa-icon-list__icon text-primary"><Icon name="check" /></div>
+                <div class="usa-icon-list__content font-sans-2xs">Lenguaje claro y preciso</div>
+              </li>
+              <li class="usa-icon-list__item">
+                <div class="usa-icon-list__icon text-primary"><Icon name="check" /></div>
+                <div class="usa-icon-list__content font-sans-2xs">Anexos con huellas digitales</div>
+              </li>
+              <li class="usa-icon-list__item">
+                <div class="usa-icon-list__icon text-primary"><Icon name="check" /></div>
+                <div class="usa-icon-list__content font-sans-2xs">Ratificación oral del perito</div>
+              </li>
+            </ul>
+          </div>
+          <div class="usa-card__footer">
+            <a href="/contacto" class="usa-button bg-gold hover:bg-warning-dark text-ink width-full">
+              <span class="text-ink text-bold">Pedir presupuesto &rarr;</span>
+            </a>
+          </div>
+        </div>
+      </li>
+    </ul>
   </div>
 </section>
