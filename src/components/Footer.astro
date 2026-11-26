@@ -1,59 +1,73 @@
 ---
-// USWDS: Footer | https://designsystem.digital.gov/components/footer/
+// USWDS: Footer Slim | https://designsystem.digital.gov/components/footer/
 import { COMPANY, CONTACT } from '../consts';
 ---
 
-<!-- USWDS: Footer | https://designsystem.digital.gov/components/footer/ -->
-<footer class="usa-footer">
+<!-- USWDS: Footer Slim | https://designsystem.digital.gov/components/footer/ -->
+<footer class="usa-footer usa-footer--slim">
   <div class="grid-container usa-footer__return-to-top">
-    <a href="#">Volver al inicio de la página</a>
+    <a href="/#inicio">Volver arriba</a>
   </div>
   <div class="usa-footer__primary-section">
-    <nav class="usa-footer__nav" aria-label="Navegación del pie de página">
-      <ul class="grid-row grid-gap">
-        <li class="mobile-lg:grid-col-4 desktop:grid-col-auto usa-footer__primary-content">
-          <a class="usa-footer__primary-link" href="/">Inicio</a>
-        </li>
-        <li class="mobile-lg:grid-col-4 desktop:grid-col-auto usa-footer__primary-content">
-          <a class="usa-footer__primary-link" href="/servicios#moviles">WhatsApp y Móviles</a>
-        </li>
-        <li class="mobile-lg:grid-col-4 desktop:grid-col-auto usa-footer__primary-content">
-          <a class="usa-footer__primary-link" href="/servicios#almacenamiento">Computadoras y Datos</a>
-        </li>
-        <li class="mobile-lg:grid-col-4 desktop:grid-col-auto usa-footer__primary-content">
-          <a class="usa-footer__primary-link" href="/servicios#documentos">Imágenes, Web y Correos</a>
-        </li>
-        <li class="mobile-lg:grid-col-4 desktop:grid-col-auto usa-footer__primary-content">
-          <a class="usa-footer__primary-link" href="/servicios#forense">Laboral y Judicial</a>
-        </li>
-        <li class="mobile-lg:grid-col-4 desktop:grid-col-auto usa-footer__primary-content">
-          <a class="usa-footer__primary-link" href="/blog">Casos &amp; Blog</a>
-        </li>
-        <li class="mobile-lg:grid-col-4 desktop:grid-col-auto usa-footer__primary-content">
-          <a class="usa-footer__primary-link" href="/about">Sobre Nosotros</a>
-        </li>
-        <li class="mobile-lg:grid-col-4 desktop:grid-col-auto usa-footer__primary-content">
-          <a class="usa-footer__primary-link" href="/contacto">Contacto</a>
-        </li>
-      </ul>
-    </nav>
+    <div class="usa-footer__primary-container grid-row">
+      <div class="mobile-lg:grid-col-8">
+        <nav class="usa-footer__nav" aria-label="Navegación del pie de página">
+          <ul class="grid-row grid-gap">
+            <li class="mobile-lg:grid-col-6 desktop:grid-col-auto usa-footer__primary-content">
+              <a class="usa-footer__primary-link" href="/#inicio">Inicio</a>
+            </li>
+            <li class="mobile-lg:grid-col-6 desktop:grid-col-auto usa-footer__primary-content">
+              <a class="usa-footer__primary-link" href="/#servicios">Servicios</a>
+            </li>
+            <li class="mobile-lg:grid-col-6 desktop:grid-col-auto usa-footer__primary-content">
+              <a class="usa-footer__primary-link" href="/#nosotros">Sobre Nosotros</a>
+            </li>
+            <li class="mobile-lg:grid-col-6 desktop:grid-col-auto usa-footer__primary-content">
+              <a class="usa-footer__primary-link" href="/#blog">Blog</a>
+            </li>
+            <li class="mobile-lg:grid-col-6 desktop:grid-col-auto usa-footer__primary-content">
+              <a class="usa-footer__primary-link" href="/#contacto">Contacto</a>
+            </li>
+            <li class="mobile-lg:grid-col-6 desktop:grid-col-auto usa-footer__primary-content">
+              <a class="usa-footer__primary-link" href="/sitemap-index.xml">Sitemap</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <div class="mobile-lg:grid-col-4">
+        <address class="usa-footer__address">
+          <div class="grid-row grid-gap">
+            <div class="grid-col-auto mobile-lg:grid-col-12 desktop:grid-col-auto">
+              <div class="usa-footer__contact-info">
+                <a href={CONTACT.whatsapp} target="_blank" rel="noopener noreferrer">{CONTACT.phone.display}</a>
+              </div>
+            </div>
+            <div class="grid-col-auto mobile-lg:grid-col-12 desktop:grid-col-auto">
+              <div class="usa-footer__contact-info">
+                <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a>
+              </div>
+            </div>
+          </div>
+        </address>
+      </div>
+    </div>
   </div>
   <div class="usa-footer__secondary-section">
     <div class="grid-container">
-      <div class="grid-row grid-gap">
-        <div class="usa-footer__logo grid-row mobile-lg:grid-col-6 mobile-lg:grid-gap-2">
-          <div class="mobile-lg:grid-col-auto">
+      <div class="grid-row grid-gap flex-align-center">
+        <div class="usa-footer__logo grid-row mobile-lg:grid-col-8 flex-align-center">
+          <div class="grid-col-auto">
             <img class="usa-footer__logo-img" src="/logo.png" alt="Logo oficial de sha256.us" />
           </div>
-          <div class="mobile-lg:grid-col-auto">
-            <p class="usa-footer__logo-heading">{COMPANY.name} — Laboratorio Forense Digital</p>
-            <p class="font-sans-xs text-base-light margin-top-1 margin-bottom-0">
-              Análisis forense de teléfonos móviles y computadoras · <a class="usa-link" href="/contacto">Solicitar peritaje</a>
+          <div class="grid-col-fill">
+            <p class="usa-footer__logo-heading">{COMPANY.name} — Peritaje Informático de Móviles y Computadoras</p>
+            <p class="font-sans-3xs text-base-dark margin-top-05 margin-bottom-0">
+              {CONTACT.address}
             </p>
           </div>
         </div>
-        <div class="usa-footer__contact-links mobile-lg:grid-col-6">
-          <div class="usa-footer__social-links grid-row grid-gap-1">
+        <div class="mobile-lg:grid-col-4">
+          <div class="usa-footer__social-links grid-row grid-gap-1 flex-justify-end">
             <div class="grid-col-auto">
               <a class="usa-social-link" href={CONTACT.social.linkedin} target="_blank" rel="noopener noreferrer">
                 <img class="usa-social-link__icon" src="/assets/uswds/img/usa-icons/linkedin.svg" alt="LinkedIn" />
@@ -75,19 +89,6 @@ import { COMPANY, CONTACT } from '../consts';
               </a>
             </div>
           </div>
-          <p class="usa-footer__contact-heading">Atención Pericial Directa</p>
-          <address class="usa-footer__address">
-            <div class="usa-footer__contact-info grid-row grid-gap">
-              <div class="grid-col-auto">
-                <a href={CONTACT.whatsapp} target="_blank" rel="noopener noreferrer">
-                  {CONTACT.phone.display}
-                </a>
-              </div>
-              <div class="grid-col-auto">
-                <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a>
-              </div>
-            </div>
-          </address>
         </div>
       </div>
     </div>

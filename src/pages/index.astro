@@ -1,4 +1,5 @@
 ---
+import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import HeroCarousel from '../components/HeroCarousel.astro';
 import TrustBar from '../components/organisms/TrustBar.astro';
@@ -6,8 +7,14 @@ import HomeServices from '../components/organisms/HomeServices.astro';
 import ProcessSteps from '../components/organisms/ProcessSteps.astro';
 import CaseStudyLoanSection from '../components/organisms/CaseStudyLoanSection.astro';
 import StandardsSection from '../components/organisms/StandardsSection.astro';
+import HomeAboutSection from '../components/organisms/HomeAboutSection.astro';
 import CtaBanner from '../components/organisms/CtaBanner.astro';
+import LatestPosts from '../components/organisms/LatestPosts.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+
+const latestPosts = (await getCollection('blog', ({ data }) => !data.draft))
+	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+	.slice(0, 3);
 ---
 
 <!-- USWDS: Landing page template | https://designsystem.digital.gov/templates/landing-page/ -->
@@ -18,5 +25,7 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 	<ProcessSteps />
 	<CaseStudyLoanSection />
 	<StandardsSection />
+	<HomeAboutSection />
 	<CtaBanner />
+	<LatestPosts posts={latestPosts} />
 </BaseLayout>

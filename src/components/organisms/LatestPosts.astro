@@ -6,22 +6,23 @@ import Badge from '../atoms/Badge.astro';
 
 export interface Props {
   posts: CollectionEntry<'blog'>[];
+  id?: string;
 }
 
-const { posts } = Astro.props;
+const { posts, id = 'blog' } = Astro.props;
 ---
 
 <!-- USWDS: Card Group | https://designsystem.digital.gov/components/card/ -->
-<section class="usa-section border-top-1px border-base-lighter">
+<section id={id} class="usa-section usa-section--light border-top-1px border-base-lighter">
   <div class="grid-container">
     <div class="display-flex flex-wrap flex-justify flex-align-center margin-bottom-3">
       <div>
-        <Badge variant="secondary">CASOS Y GUÍAS PRÁCTICAS</Badge>
+        <Badge variant="secondary">BLOG Y CASOS</Badge>
         <h2 class="font-sans-xl text-bold text-primary-darker margin-top-1 margin-bottom-0">
-          Casos &amp; Artículos Verificados
+          Últimas Publicaciones
         </h2>
       </div>
-      <a href="/blog" class="usa-button usa-button--outline margin-top-2 tablet:margin-top-0">Ver todos los casos</a>
+      <a href="/blog" class="usa-button usa-button--outline margin-top-2 tablet:margin-top-0">Ver todo el Blog</a>
     </div>
 
     <ul class="usa-card-group">

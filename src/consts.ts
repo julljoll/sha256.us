@@ -23,11 +23,12 @@ export interface NavItem {
 }
 
 export const NAV_ITEMS: NavItem[] = [
-	{ href: '/', label: 'Inicio' },
-	{ href: '/servicios', label: 'Servicios Forenses' },
-	{ href: '/blog', label: 'Casos & Blog' },
-	{ href: '/about', label: 'Sobre Nosotros' },
-	{ href: '/contacto', label: 'Contacto' },
+	{ href: '/#inicio', label: 'Inicio' },
+	{ href: '/#servicios', label: 'Servicios' },
+	{ href: '/#como-trabajamos', label: 'Cómo Funciona' },
+	{ href: '/#nosotros', label: 'Sobre Nosotros' },
+	{ href: '/#blog', label: 'Blog' },
+	{ href: '/#contacto', label: 'Contacto' },
 ];
 
 export interface TrustBarItem {
@@ -98,7 +99,7 @@ export const CORE_SERVICES = [
 			'Audios y archivos enviados en el chat',
 			'Recuperación de mensajes eliminados',
 		],
-		href: '/servicios#moviles',
+		href: '/#contacto',
 	},
 	{
 		id: 'moviles',
@@ -111,7 +112,7 @@ export const CORE_SERVICES = [
 			'Ubicaciones GPS e historial del equipo',
 			'Extracción segura sin borrar tus datos',
 		],
-		href: '/servicios#moviles',
+		href: '/#contacto',
 	},
 	{
 		id: 'computadoras',
@@ -124,7 +125,7 @@ export const CORE_SERVICES = [
 			'Revisión de discos duros y memorias USB',
 			'Detección de fuga o borrado de archivos',
 		],
-		href: '/servicios#almacenamiento',
+		href: '/#contacto',
 	},
 	{
 		id: 'laboral-judicial',
@@ -137,7 +138,7 @@ export const CORE_SERVICES = [
 			'Demostrar préstamos, pagos o acuerdos',
 			'Dictamen firmado válido ante el juez',
 		],
-		href: '/servicios#forense',
+		href: '/#contacto',
 	},
 	{
 		id: 'redes-web',
@@ -150,7 +151,7 @@ export const CORE_SERVICES = [
 			'Certificación de páginas web antes de borrar',
 			'Autenticidad de correos y contratos PDF',
 		],
-		href: '/servicios#documentos',
+		href: '/#contacto',
 	},
 	{
 		id: 'imagenes-multimedia',
@@ -163,7 +164,7 @@ export const CORE_SERVICES = [
 			'Verificación de fecha real de fotografías',
 			'Comprobación de cortes en audios o videos',
 		],
-		href: '/servicios#documentos',
+		href: '/#contacto',
 	},
 ];
 

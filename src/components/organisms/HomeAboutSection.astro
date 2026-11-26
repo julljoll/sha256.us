@@ -1,0 +1,106 @@
+---
+// USWDS: Card Group | https://designsystem.digital.gov/components/card/
+import SectionHeader from '../atoms/SectionHeader.astro';
+import Icon from '../atoms/Icon.astro';
+import { COMPANY } from '../../consts';
+
+export interface Props {
+  id?: string;
+}
+
+const { id = 'nosotros' } = Astro.props;
+---
+
+<!-- USWDS: Card Group | https://designsystem.digital.gov/components/card/ -->
+<section id={id} class="usa-section border-top-1px border-base-lighter">
+  <div class="grid-container">
+    <SectionHeader
+      tag="SOBRE NOSOTROS"
+      tagVariant="primary"
+      title="Especialistas en Análisis Forense de Móviles y Computadoras"
+      sub="Un laboratorio cercano y confidencial enfocado en resolver tu caso con pruebas claras."
+    />
+
+    <ul class="usa-card-group">
+      <li class="usa-card tablet:grid-col-6">
+        <div class="usa-card__container">
+          <div class="usa-card__header">
+            <span class="usa-tag bg-primary text-white margin-bottom-1">LABORATORIO FORENSE · {COMPANY.name}</span>
+            <h3 class="usa-card__heading">¿Quiénes somos?</h3>
+          </div>
+          <div class="usa-card__body">
+            <p class="font-sans-xs text-ink line-height-sans-3 margin-top-0 margin-bottom-2">
+              Somos un laboratorio dedicado al análisis forense de teléfonos móviles y computadoras, transformando chats de WhatsApp, imágenes, correos y datos borrados en informes válidos para tribunales.
+            </p>
+            <ul class="usa-icon-list">
+              <li class="usa-icon-list__item">
+                <div class="usa-icon-list__icon text-primary">
+                  <Icon name="check_circle" />
+                </div>
+                <div class="usa-icon-list__content font-sans-2xs">
+                  Análisis seguro sin borrar ni alterar tu información
+                </div>
+              </li>
+              <li class="usa-icon-list__item">
+                <div class="usa-icon-list__icon text-primary">
+                  <Icon name="check_circle" />
+                </div>
+                <div class="usa-icon-list__content font-sans-2xs">
+                  Especialistas en teléfonos Android, iPhone, laptops y discos
+                </div>
+              </li>
+              <li class="usa-icon-list__item">
+                <div class="usa-icon-list__icon text-primary">
+                  <Icon name="check_circle" />
+                </div>
+                <div class="usa-icon-list__content font-sans-2xs">
+                  Sede en Quíbor, Estado Lara, con atención a toda Venezuela
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </li>
+
+      <li class="usa-card tablet:grid-col-6">
+        <div class="usa-card__container">
+          <div class="usa-card__header">
+            <span class="usa-tag bg-primary-darker text-white margin-bottom-1">EQUIPO PERICIAL</span>
+            <h3 class="usa-card__heading">¿Quiénes analizan tu caso?</h3>
+          </div>
+          <div class="usa-card__body">
+            <p class="font-sans-xs text-ink line-height-sans-3 margin-top-0 margin-bottom-2">
+              Te atiende directamente un equipo humano especializado que cuida tu dispositivo desde la recepción hasta la entrega del informe final.
+            </p>
+            <ul class="usa-icon-list">
+              <li class="usa-icon-list__item">
+                <div class="usa-icon-list__icon text-primary">
+                  <Icon name="verified_user" />
+                </div>
+                <div class="usa-icon-list__content font-sans-2xs">
+                  <strong>Jull (Perito Forense Digital):</strong> Análisis de móviles, computadoras e informes judiciales.
+                </div>
+              </li>
+              <li class="usa-icon-list__item">
+                <div class="usa-icon-list__icon text-primary">
+                  <Icon name="verified_user" />
+                </div>
+                <div class="usa-icon-list__content font-sans-2xs">
+                  <strong>Jhonatan Freitez (Recepción y Extracción):</strong> Atención al cliente, custodia y extracción segura.
+                </div>
+              </li>
+              <li class="usa-icon-list__item">
+                <div class="usa-icon-list__icon text-primary">
+                  <Icon name="verified_user" />
+                </div>
+                <div class="usa-icon-list__content font-sans-2xs">
+                  Acompañamiento desde la consulta inicial hasta la defensa en juicio.
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>

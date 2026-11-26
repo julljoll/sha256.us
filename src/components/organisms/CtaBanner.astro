@@ -1,6 +1,10 @@
 ---
 // USWDS: Section Dark | https://designsystem.digital.gov/page-templates/landing-page/
+import { CONTACT } from '../../consts';
+import Icon from '../atoms/Icon.astro';
+
 export interface Props {
+  id?: string;
   title?: string;
   sub?: string;
   buttonText?: string;
@@ -8,25 +12,45 @@ export interface Props {
 }
 
 const {
-  title = '¿Tienes dudas sobre tu caso o necesitas certificar una prueba?',
-  sub = 'Escríbenos con confianza. Te explicamos en palabras claras cómo podemos ayudarte a proteger o demostrar tu evidencia digital.',
-  buttonText = 'Consultar mi Caso Ahora',
-  buttonHref = '/contacto',
+  id = 'contacto',
+  title = '¿Necesitas un peritaje de tu teléfono o computadora?',
+  sub = 'Escríbenos directamente por WhatsApp o correo electrónico. Te orientamos de forma rápida y confidencial sobre tu caso.',
+  buttonText = 'Escribir por WhatsApp',
+  buttonHref = CONTACT.whatsapp,
 } = Astro.props;
 ---
 
 <!-- USWDS: Section Dark | https://designsystem.digital.gov/page-templates/landing-page/ -->
-<section class="usa-section usa-section--dark">
+<section id={id} class="usa-section usa-section--dark">
   <div class="grid-container">
     <div class="grid-row grid-gap flex-align-center">
-      <div class="tablet:grid-col-8">
-        <h2 class="font-sans-xl text-bold text-white margin-top-0 margin-bottom-1">{title}</h2>
-        <p class="font-sans-sm text-base-lightest margin-0">{sub}</p>
+      <div class="tablet:grid-col-7">
+        <span class="usa-tag bg-secondary text-white margin-bottom-1">CONTACTO DIRECTO</span>
+        <h2 class="font-sans-xl text-bold text-white margin-top-1 margin-bottom-1">{title}</h2>
+        <p class="font-sans-sm text-base-lightest margin-top-0 margin-bottom-2">{sub}</p>
+        <p class="font-sans-xs text-base-lightest margin-0">
+          <Icon name="location_on" class="margin-right-05" />
+          <strong>Sede:</strong> {CONTACT.address} &middot; <strong>Tel:</strong> {CONTACT.phone.display}
+        </p>
       </div>
-      <div class="tablet:grid-col-4 margin-top-2 tablet:margin-top-0">
-        <a href={buttonHref} class="usa-button usa-button--big bg-gold hover:bg-warning-dark text-ink">
-          <span class="text-ink text-bold">{buttonText}</span>
-        </a>
+      <div class="tablet:grid-col-5 margin-top-3 tablet:margin-top-0">
+        <ul class="usa-button-group flex-wrap">
+          <li class="usa-button-group__item">
+            <a
+              href={buttonHref}
+              target={buttonHref.startsWith('http') ? '_blank' : undefined}
+              rel={buttonHref.startsWith('http') ? 'noopener noreferrer' : undefined}
+              class="usa-button usa-button--big bg-gold hover:bg-warning-dark text-ink"
+            >
+              <span class="text-ink text-bold">{buttonText}</span>
+            </a>
+          </li>
+          <li class="usa-button-group__item">
+            <a href={`mailto:${CONTACT.email}`} class="usa-button usa-button--big usa-button--outline usa-button--inverse">
+              {CONTACT.email}
+            </a>
+          </li>
+        </ul>
       </div>
     </div>
   </div>
