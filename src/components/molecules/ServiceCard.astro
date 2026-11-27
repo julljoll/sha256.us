@@ -11,6 +11,8 @@ export interface Props {
     desc: string;
     cases: string[];
     href: string;
+    image?: string;
+    imageAlt?: string;
   };
   index?: number;
 }
@@ -30,6 +32,20 @@ const cardIconName: IconName = service.icon || serviceIconMap[service.id] || 'se
 
 <!-- USWDS: Card | https://designsystem.digital.gov/components/card/ -->
 <div class="usa-card__container">
+  {service.image && (
+    <div class="usa-card__media">
+      <div class="usa-card__img">
+        <img
+          src={service.image}
+          alt={service.imageAlt || service.title}
+          width="800"
+          height="450"
+          loading="lazy"
+          decoding="async"
+        />
+      </div>
+    </div>
+  )}
   <div class="usa-card__header">
     <div class="margin-bottom-1">
       <span class="usa-tag bg-primary text-white">{service.tag}</span>

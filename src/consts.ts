@@ -49,6 +49,8 @@ export interface ClientSimpleStep {
 	title: string;
 	description: string;
 	bullets: string[];
+	image: string;
+	imageAlt: string;
 }
 
 export const CLIENT_SIMPLE_STEPS: ClientSimpleStep[] = [
@@ -62,6 +64,8 @@ export const CLIENT_SIMPLE_STEPS: ClientSimpleStep[] = [
 			'Evaluación inicial rápida y confidencial',
 			'Te indicamos cómo cuidar tu equipo',
 		],
+		image: '/assets/cards/paso-1-consulta-caso-peritaje-whatsapp-sha256.jpg',
+		imageAlt: 'Paso 1: consulta inicial confidencial de tu caso forense por WhatsApp',
 	},
 	{
 		stepNumber: '2',
@@ -73,6 +77,8 @@ export const CLIENT_SIMPLE_STEPS: ClientSimpleStep[] = [
 			'Copia segura con sello digital inalterable',
 			'Devolución rápida de tu teléfono o PC',
 		],
+		image: '/assets/cards/paso-2-analisis-forense-laboratorio-sin-alterar-sha256.jpg',
+		imageAlt: 'Paso 2: análisis forense en laboratorio sin borrar ni alterar tus datos',
 	},
 	{
 		stepNumber: '3',
@@ -84,6 +90,8 @@ export const CLIENT_SIMPLE_STEPS: ClientSimpleStep[] = [
 			'Redactado para jueces y abogados',
 			'Respaldo ante impugnaciones en juicio',
 		],
+		image: '/assets/cards/paso-3-informe-pericial-firmado-para-juicio-sha256.jpg',
+		imageAlt: 'Paso 3: entrega de informe pericial firmado listo para presentar en juicio',
 	},
 ];
 
@@ -100,6 +108,8 @@ export const CORE_SERVICES = [
 			'Recuperación de mensajes eliminados',
 		],
 		href: '/#contacto',
+		image: '/assets/cards/peritaje-informatico-whatsapp-chats-audios-sha256.jpg',
+		imageAlt: 'Informe pericial de WhatsApp: certificación forense de chats, notas de voz y mensajes borrados',
 	},
 	{
 		id: 'moviles',
@@ -113,6 +123,8 @@ export const CORE_SERVICES = [
 			'Extracción segura sin borrar tus datos',
 		],
 		href: '/#contacto',
+		image: '/assets/cards/peritaje-telefonos-moviles-android-iphone-sha256.jpg',
+		imageAlt: 'Peritaje informático de teléfonos móviles Android y iPhone sin borrar datos',
 	},
 	{
 		id: 'computadoras',
@@ -126,6 +138,8 @@ export const CORE_SERVICES = [
 			'Detección de fuga o borrado de archivos',
 		],
 		href: '/#contacto',
+		image: '/assets/cards/analisis-forense-computadoras-discos-datos-sha256.jpg',
+		imageAlt: 'Análisis forense de computadoras, discos duros y recuperación de datos eliminados',
 	},
 	{
 		id: 'laboral-judicial',
@@ -139,6 +153,8 @@ export const CORE_SERVICES = [
 			'Dictamen firmado válido ante el juez',
 		],
 		href: '/#contacto',
+		image: '/assets/cards/peritaje-informatico-laboral-judicial-tribunales-sha256.jpg',
+		imageAlt: 'Peritaje informático laboral y judicial con dictamen válido para tribunales',
 	},
 	{
 		id: 'redes-web',
@@ -152,6 +168,8 @@ export const CORE_SERVICES = [
 			'Autenticidad de correos y contratos PDF',
 		],
 		href: '/#contacto',
+		image: '/assets/cards/certificacion-redes-sociales-paginas-web-correos-sha256.jpg',
+		imageAlt: 'Certificación forense de redes sociales, páginas web, correos electrónicos y documentos PDF',
 	},
 	{
 		id: 'imagenes-multimedia',
@@ -165,6 +183,8 @@ export const CORE_SERVICES = [
 			'Comprobación de cortes en audios o videos',
 		],
 		href: '/#contacto',
+		image: '/assets/cards/peritaje-manipulacion-imagenes-audios-videos-sha256.jpg',
+		imageAlt: 'Peritaje forense de manipulación de imágenes, fotomontajes, audios y videos',
 	},
 ];
 
@@ -186,6 +206,8 @@ export const WHATSAPP_LOAN_CASE_STUDY = {
 				'El deudor desconoció las capturas',
 				'Riesgo de perder la demanda',
 			],
+			image: '/assets/cards/caso-whatsapp-1-prestamo-acordado-sin-contrato-sha256.jpg',
+			imageAlt: 'Caso real paso 1: préstamo de dinero acordado por WhatsApp sin contrato firmado',
 		},
 		{
 			step: '2',
@@ -199,6 +221,8 @@ export const WHATSAPP_LOAN_CASE_STUDY = {
 				'Validación de emisor, fecha y hora',
 				'Informe pericial con sello digital',
 			],
+			image: '/assets/cards/caso-whatsapp-2-extraccion-forense-telefono-sha256.jpg',
+			imageAlt: 'Caso real paso 2: extracción forense y certificación de mensajes de WhatsApp en laboratorio',
 		},
 		{
 			step: '3',
@@ -212,6 +236,8 @@ export const WHATSAPP_LOAN_CASE_STUDY = {
 				'Deuda y transferencia comprobadas',
 				'Sentencia favorable al acreedor',
 			],
+			image: '/assets/cards/caso-whatsapp-3-sentencia-dinero-recuperado-juicio-sha256.jpg',
+			imageAlt: 'Caso real paso 3: informe pericial admitido por el juez y dinero recuperado en juicio',
 		},
 	],
 };

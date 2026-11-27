@@ -26,6 +26,20 @@ const { id = 'como-trabajamos' } = Astro.props;
       {CLIENT_SIMPLE_STEPS.map((step) => (
         <li class="usa-card tablet:grid-col-4">
           <div class="usa-card__container">
+            {step.image && (
+              <div class="usa-card__media">
+                <div class="usa-card__img">
+                  <img
+                    src={step.image}
+                    alt={step.imageAlt}
+                    width="800"
+                    height="450"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+              </div>
+            )}
             <div class="usa-card__header">
               <span class="usa-tag bg-primary text-white margin-bottom-1">{step.badgeTag}</span>
               <h3 class="usa-card__heading">{step.title}</h3>

@@ -25,6 +25,20 @@ const { id = 'caso-prestamo-whatsapp' } = Astro.props;
       {WHATSAPP_LOAN_CASE_STUDY.cards.map((card) => (
         <li class="usa-card tablet:grid-col-4">
           <div class="usa-card__container">
+            {card.image && (
+              <div class="usa-card__media">
+                <div class="usa-card__img">
+                  <img
+                    src={card.image}
+                    alt={card.imageAlt}
+                    width="800"
+                    height="450"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+              </div>
+            )}
             <div class="usa-card__header">
               <div class="margin-bottom-1">
                 <span class={`usa-tag text-white ${card.badgeVariant === 'secondary' ? 'bg-secondary' : card.badgeVariant === 'dark' ? 'bg-primary-darker' : 'bg-primary'}`}>
